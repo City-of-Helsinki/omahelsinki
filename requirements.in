@@ -1,0 +1,4 @@
+Django
+wagtail
+psycopg2 --no-binary psycopg2
+
