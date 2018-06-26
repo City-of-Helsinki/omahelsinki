@@ -1,9 +1,13 @@
 {% load static wagtailuserbar %}
 
 <!DOCTYPE html>
-<html class="no-js">
+
+<html lang="fi">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="" />
+        <link rel="stylesheet" href="https://city-of-helsinki.github.io/hel-page-templates/assets/omahelsinki-styles.css" />
         <title>
             {% block title %}
                 {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
@@ -14,8 +18,6 @@
                 {% endwith %}
             {% endblock %}
         </title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/omahelsinki.css' %}">
@@ -26,15 +28,132 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
+      <div>
+        <nav class="navbar navbar-expand navbar-light navbar-helsinki justify-content-between">
+          <a class="navbar-brand" href="/hel-page-templates/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495 230" style="display: block;"><style type="text/css"> .lc{fill:#000000;}</style><path class="lc" d="M479.8 14.9v131.5c0 25.1-20.7 45.6-46.2 45.6H292.9c-16.9 0-32.9 6.1-45.4 17.4C235 198.2 219 192 202.1 192h-141c-25.3 0-45.8-20.4-45.8-45.6V14.9H479.8zM255 221.9c10.1-10.1 23.6-15.7 38-15.7h140.6c33.3 0 60.4-26.8 60.4-59.8V0.6H1v145.7c0 33 26.9 59.8 60.1 59.8h141c14.3 0 27.8 5.6 38 15.7l7.5 7.5L255 221.9z"/><path class="lc" d="M425.7 74.8c0 4.4-3.5 7.6-7.9 7.6s-7.9-3.2-7.9-7.6 3.5-7.6 7.9-7.6C422.2 67 425.7 70.2 425.7 74.8M410.9 136.9h13.7V88.2h-13.7V136.9zM386.3 107.5l17.9 29.4h-14.9l-12-19.5 -6.5 8.2v11.3h-13.6v-70h13.6v32.3c0 6-0.7 12-0.7 12h0.3c0 0 3.2-5.3 5.9-9.1l10.4-13.9h16L386.3 107.5zM343.4 105.7c0-12.1-5.9-18.7-15.3-18.7 -8 0-12.2 4.7-14.6 9.2h-0.3l0.7-8h-13.6v48.7h13.6V108c0-5.6 3.3-9.5 8.4-9.5s7.3 3.4 7.3 9.9v28.5h13.7L343.4 105.7 343.4 105.7zM287.2 74.8c0 4.4-3.5 7.6-7.9 7.6s-7.9-3.2-7.9-7.6 3.5-7.6 7.9-7.6C283.8 67 287.2 70.2 287.2 74.8M272.4 136.9h13.7V88.2h-13.7V136.9zM248.8 123.3c0-3.9-5.4-4.7-11.7-6.5 -7.3-1.9-16.5-5.6-16.5-14.9 0-9.2 8.8-15 19.2-15 9.7 0 18.6 4.6 22.3 11.1l-11.7 6.6c-1.2-4.3-4.8-7.7-10.2-7.7 -3.5 0-6.4 1.5-6.4 4.4 0 3.7 6.4 4.1 13.6 6.4 7.6 2.4 14.6 5.9 14.6 14.8 0 9.8-9.1 15.6-19.6 15.6 -11.4 0-20.4-4.8-24.4-12.6l11.9-6.7c1.5 5.3 5.8 9.3 12.3 9.3C246.1 128.1 248.8 126.5 248.8 123.3M205.5 67.3h-13.7v56.1c0 5 1.1 8.7 3.2 11 2.2 2.3 5.6 3.4 10.3 3.4 1.6 0 3.3-0.2 4.9-0.5 1.7-0.4 3-0.9 4.1-1.5l1.2-9.2c-1.1 0.4-2 0.7-2.9 0.8 -0.8 0.2-1.8 0.2-2.9 0.2 -1.8 0-2.6-0.5-3.2-1.4 -0.7-0.9-1-2.5-1-4.8V67.3zM159.9 96.8c-5 0-9.1 3.6-10.2 10.2h19.2C169 101.2 165.2 96.8 159.9 96.8M181 116.2h-31.5c0.6 7.9 5 11.8 10.7 11.8 5.1 0 8.6-3.4 9.4-8l11.5 6.5c-3.4 6.2-10.7 11.6-20.9 11.6 -13.6 0-23.6-9.5-23.6-25.5 0-15.9 10.2-25.5 23.3-25.5s21.8 9.3 21.8 22.5C181.6 113.5 181 116.2 181 116.2M111.3 136.9h14.2V69.9h-14.2v26.5H84.6V70H70.4v66.9h14.2v-27.7h26.7V136.9z"/></svg></a>
 
-        {% block content %}{% endblock %}
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown language-menu">
+              <a class="nav-link language-menu__trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg aria-hidden="true" class="icon"><use xlink:href="{% static 'assets/hel-icons.svg' %}#globe"></use></svg>
+                EN
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Suomi</a>
+                <a class="dropdown-item active" href="#">English</a>
+                <a class="dropdown-item" href="#">svenska</a>
+              </div>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link user-menu__trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg aria-hidden="true" class="icon"><use xlink:href="{% static 'assets/hel-icons.svg' %}#user-o"></use></svg>
+                <span class="user-name">{{ request.user.get_display_name }}</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right user-menu__dropdown" aria-labelledby="navbarDropdown">
+                <span class="dropdown-header user-name">{{ request.user.get_display_name }}</span>
+                <a class="dropdown-item" href="/hel-page-templates/pages/cattax/cat-tax-preferences.html">Preferences</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/hel-page-templates/pages/omahelsinki/oma-admin.html">Edit Profile</a>
+                <a class="dropdown-item" href="/hel-page-templates/pages/omahelsinki/index.html">oma.helsinki</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'helusers:auth_logout' %}"><strong>Logout</strong></a>
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'helusers:auth_login' %}">
+                Kirjaudu
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+        
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/omahelsinki.js' %}"></script>
+        <nav class="navbar navbar-expand-lg navbar-light service-navbar">
+          <a class="navbar-brand" href="/hel-page-templates/pages/omahelsinki/index.html">oma.helsinki</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/hel-page-templates/pages/omahelsinki/index.html#oma">Mikä oma.helsinki?</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/hel-page-templates/pages/omahelsinki/index.html#palvelut">Palvelut</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/hel-page-templates/pages/omahelsinki/index.html#apua">Apua</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="/hel-page-templates/pages/omahelsinki/oma-admin.html">Omat tiedot</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {# {% wagtailuserbar %} #}
+      </div>
+
+      <main style='min-height: 200px'>
+      {% block content %}{% endblock %}
+      </main>
+
+      <footer class="site-footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="footer-column col-md-4">
+              Service Title
+            </div>
+            <div class="footer-column col-md-4">
+              <div class="footer-branding footer-branding-helsinki">
+                <a href="http://www.hel.fi">
+                  <svg width=150 foo="bar" xmlns="http://www.w3.org/2000/svg" id="helsinki-logo" viewBox="0 0 495 230">
+                    <style>.st0{fill:#fff}</style>
+                    <path class="st0" d="M479.8 14.9v131.5c0 25.1-20.7 45.6-46.2 45.6H292.9c-16.9 0-32.9 6.1-45.4 17.4C235 198.2 219 192 202.1 192h-141c-25.3 0-45.8-20.4-45.8-45.6V14.9h464.5zM255 221.9c10.1-10.1 23.6-15.7 38-15.7h140.6c33.3 0 60.4-26.8 60.4-59.8V.6H1v145.7c0 33 26.9 59.8 60.1 59.8h141c14.3 0 27.8 5.6 38 15.7l7.5 7.5 7.4-7.4z"/>
+                    <path class="st0" d="M425.7 74.8c0 4.4-3.5 7.6-7.9 7.6s-7.9-3.2-7.9-7.6 3.5-7.6 7.9-7.6c4.4-.2 7.9 3 7.9 7.6m-14.8 62.1h13.7V88.2h-13.7v48.7zm-24.6-29.4l17.9 29.4h-14.9l-12-19.5-6.5 8.2v11.3h-13.6v-70h13.6v32.3c0 6-.7 12-.7 12h.3s3.2-5.3 5.9-9.1l10.4-13.9h16l-16.4 19.3zm-42.9-1.8c0-12.1-5.9-18.7-15.3-18.7-8 0-12.2 4.7-14.6 9.2h-.3l.7-8h-13.6v48.7h13.6V108c0-5.6 3.3-9.5 8.4-9.5s7.3 3.4 7.3 9.9v28.5h13.7l.1-31.2zm-56.2-30.9c0 4.4-3.5 7.6-7.9 7.6s-7.9-3.2-7.9-7.6 3.5-7.6 7.9-7.6c4.5-.2 7.9 3 7.9 7.6m-14.8 62.1h13.7V88.2h-13.7v48.7zm-23.6-13.6c0-3.9-5.4-4.7-11.7-6.5-7.3-1.9-16.5-5.6-16.5-14.9 0-9.2 8.8-15 19.2-15 9.7 0 18.6 4.6 22.3 11.1l-11.7 6.6c-1.2-4.3-4.8-7.7-10.2-7.7-3.5 0-6.4 1.5-6.4 4.4 0 3.7 6.4 4.1 13.6 6.4 7.6 2.4 14.6 5.9 14.6 14.8 0 9.8-9.1 15.6-19.6 15.6-11.4 0-20.4-4.8-24.4-12.6l11.9-6.7c1.5 5.3 5.8 9.3 12.3 9.3 3.9 0 6.6-1.6 6.6-4.8m-43.3-56h-13.7v56.1c0 5 1.1 8.7 3.2 11 2.2 2.3 5.6 3.4 10.3 3.4 1.6 0 3.3-.2 4.9-.5 1.7-.4 3-.9 4.1-1.5l1.2-9.2c-1.1.4-2 .7-2.9.8-.8.2-1.8.2-2.9.2-1.8 0-2.6-.5-3.2-1.4-.7-.9-1-2.5-1-4.8V67.3zm-45.6 29.5c-5 0-9.1 3.6-10.2 10.2h19.2c.1-5.8-3.7-10.2-9-10.2m21.1 19.4h-31.5c.6 7.9 5 11.8 10.7 11.8 5.1 0 8.6-3.4 9.4-8l11.5 6.5c-3.4 6.2-10.7 11.6-20.9 11.6-13.6 0-23.6-9.5-23.6-25.5 0-15.9 10.2-25.5 23.3-25.5s21.8 9.3 21.8 22.5c-.1 3.9-.7 6.6-.7 6.6m-69.7 20.7h14.2v-67h-14.2v26.5H84.6V70H70.4v66.9h14.2v-27.7h26.7v27.7z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="footer-column col-md-4">
+              <div class="page-footer-block">
+                <nav class="nav flex-column">
+                  <a class="nav-link active" href="#">Active</a>
+                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="footer-column col">
+              <div class="site-footer-small-print">
+                <ul class="small-print-nav list-inline">
+                  <li class="list-inline-item">Creative Commons</li>
+                </ul>
+                <ul class="small-print-nav list-inline">
+                  <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#feedbackModal">Feedback</a></li>
+                  <li class="list-inline-item"><a href="mailto:hri@hel.fi">Contact</a></li>
+                  <li class="list-inline-item">2018 Helsingin kaupunki</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+      {# Global javascript #}
+      <script type="text/javascript" src="{% static 'js/omahelsinki.js' %}"></script>
+
+      {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+      {% endblock %}
     </body>
 </html>
