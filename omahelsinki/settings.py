@@ -24,8 +24,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'helusers',
     'home',
     'search',
+    'users',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+
+    'social_django',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -97,23 +101,17 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+#
+# Authentication
+#
+AUTHENTICATION_BACKENDS = (
+    'helusers.tunnistamo_oidc.TunnistamoOIDCAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+AUTH_USER_MODEL = 'users.User'
+LOGOUT_REDIRECT_URL = '/'
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
 
 
 # Internationalization
