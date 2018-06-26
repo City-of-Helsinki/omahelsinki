@@ -1,0 +1,26 @@
+language: python
+python:
+  - '3.6'
+
+sudo: false
+
+cache: pip
+
+before_install:
+  - pip install -U pip
+
+install: 'pip install codecov -r requirements.txt -r requirements-dev.txt'
+
+script:
+  # Run the tests
+  - flake8
+  - isort -c
+  - pytest -ra -vvv --cov=.
+
+addons:
+  postgresql: '9.6'
+  apt:
+    packages:
+    - pkg-config
+
+after_success: codecov
