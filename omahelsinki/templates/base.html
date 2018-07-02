@@ -62,7 +62,7 @@
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'helusers:auth_login' %}">
+              <a class="nav-link" href="{% url 'helusers:auth_login' %}?next={{request.path}}">
                 Kirjaudu
               </a>
             </li>
