@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'social_django',
     'webpack_loader',
+    'compressor',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -136,6 +137,7 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
     'npm.finders.NpmFinder'
 ]
 
@@ -150,6 +152,10 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
     }
 }
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),
+)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
