@@ -1,4 +1,5 @@
 {% load static wagtailuserbar %}
+{% load compress %}
 
 <!DOCTYPE html>
 
@@ -18,12 +19,15 @@
                 {% endwith %}
             {% endblock %}
         </title>
-
+        
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/omahelsinki.css' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/omahelsinki.scss' %}">
 
         {% block extra_css %}
+        {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/home.scss' %}">
             {# Override this in templates to add extra stylesheets #}
+        {% endcompress %}
         {% endblock %}
     </head>
 

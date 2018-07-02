@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
 
+    'compressor',
     'modelcluster',
     'taggit',
 
@@ -92,14 +93,6 @@ WSGI_APPLICATION = 'omahelsinki.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-"""
 
 DATABASES = {
     'default': {
@@ -121,13 +114,13 @@ AUTHENTICATION_BACKENDS = (
 AUTH_USER_MODEL = 'users.User'
 LOGOUT_REDIRECT_URL = '/'
 
-from helusers.defaults import SOCIAL_AUTH_PIPELINE  #noqa isort:skip
+from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'fi'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Helsinki'
 
@@ -144,7 +137,16 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 ]
+
+# Set custom settings for compressor
+# COMPRESS_OUTPUT_DIR = 'compressed'
+COMPRESS_OFFLINE = True
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
