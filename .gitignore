@@ -21,3 +21,7 @@ perf*csv
 /components
 /static
 /*.sublime-*
+/assets/bundles
+/webpack.config.js
+/yarn-error.log
+/webpack-stats.json

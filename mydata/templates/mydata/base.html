@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block body_class %}template-mydata{% endblock %}
+
+{% block content %}
+    <div id="react-app"></div>
+    {% render_bundle 'main' %}
+{% endblock %}

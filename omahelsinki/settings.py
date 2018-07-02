@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'users',
+    'mydata',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'taggit',
 
     'social_django',
+    'webpack_loader',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,11 +136,20 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'npm.finders.NpmFinder'
 ]
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(BASE_DIR, 'assets'),
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
+    }
+}
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
