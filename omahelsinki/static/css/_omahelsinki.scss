@@ -1,0 +1,444 @@
+// Make svg icons pretty
+.icon {
+  /* Lets the icon inherit the text color. */
+  fill: currentColor;
+
+  /* Inherit the text’s size too. Also allows sizing
+     the icon by changing its font-size. */
+  width: 1em !important;
+  height: 1em !important;
+
+  /* Nice visual alignment for icons alongside text.
+     (I got a few questions about this and: with most
+     fonts and styles, this works better than just
+     vertical-align:middle. Try it and see what you
+     like best. */
+  vertical-align: -0.1em;
+
+  /* Paths and strokes that overflow the viewBox can
+     show in IE. If you use normalize.css, it already
+     sets this. */
+  overflow: hidden;
+}
+
+
+.navbar-brand {
+  svg {
+    height: 36px;
+  }
+}
+
+.service-navbar {
+  background-color: $brand-light;
+}
+
+.content {
+  margin-bottom: $spacer * 2;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: $spacer *2;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.hero-section {
+  position: relative;
+  min-height: 20rem;
+  background-position: center;
+  background-size: cover;
+  padding: ($spacer * 3) 0 ($spacer * 8);
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+    z-index: 2;
+  }
+
+  a {
+    color: $white;
+  }
+
+  @include media-breakpoint-up(sm) {
+    min-height: 24rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    min-height: 28rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    min-height: 32rem;
+  }
+}
+
+.hero-content {
+  padding: ($spacer * 2) 0;
+  text-shadow: 1px 1px 4px rgba(#000, 0.2);
+  position: relative;
+  z-index: 1;
+
+  @include media-breakpoint-up(md) {
+    h1 {
+      font-size: 5rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: ($spacer * 5) 0;
+    h1 {
+      font-size: 6rem;
+    }
+  }
+
+  &.hero-content--inverse {
+    color: #FFFFFF;
+    h1, h2, h3, h4 , h5 ,h6, .lead {
+      color: #FFFFFF;
+    }
+  }
+}
+
+/* Site footer */
+
+.site-footer {
+  position: relative;
+  min-height: 14em;
+  clear:both;
+  background-color: $hel-coat;
+  color: #ffffff;
+  padding: ($spacer * 8) 0;
+
+  &::before {
+    content: " ";
+    @include koro("pulse", $hel-coat, 400);
+    width: 100%;
+    height: $spacer * 3;
+    position: absolute;
+    top: $spacer * -3;
+  }
+
+  @include media-breakpoint-down(sm) {
+    &::before {
+      @include koro("pulse", $hel-coat, 100);
+    }
+  }
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.footer-branding .footer-logo {
+  margin: 0 auto 1em;
+  max-width: 8em;
+}
+
+.site-footer .footer-links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-column {
+  text-align: center;
+}
+
+.site-footer-small-print {
+  margin-top: 2em;
+  //text-align: right;
+}
+
+.small-print-nav {
+  color: #ebedf1;
+  font-size: 14px;
+}
+
+.subnav-section {
+  position: relative;
+  background-color: $hel-fog;
+  padding: ($spacer * 3) 0 $spacer;
+}
+
+.sub-content-section {
+  position: relative;
+  background-color: $hel-silver;
+  padding: ($spacer * 4) 0 ($spacer * 8);
+}
+
+.section-header {
+  margin-bottom: $spacer * 2;
+}
+
+.section--intro {
+  position: relative;
+  background-color: $brand-light;
+  padding: ($spacer * 5) 0 ($spacer * 8);
+
+  &::before {
+    content: " ";
+    @include koro("beat", $brand-light, 500);
+    width: 100%;
+    height: $spacer * 4.5;
+    position: absolute;
+    top: $spacer * -4.5;
+  }
+}
+
+.section--cards {
+  position: relative;
+  background-color: $brand-dark;
+  padding: ($spacer * 5) 0 ($spacer * 8);
+
+  .section-header {
+    color: $white;
+  }
+
+  &::before {
+    content: " ";
+    @include koro("beat", $brand-dark, 500);
+    width: 100%;
+    height: $spacer * 4.5;
+    position: absolute;
+    top: $spacer * -4.5;
+  }
+}
+
+.section--faq {
+  position: relative;
+  background-color: $white;
+  padding: ($spacer * 5) 0 ($spacer * 8);
+  color: $brand-dark;
+  h1, h2, h3, h4, h5, h6 {
+    color: $brand-dark;
+  }
+
+  &::before {
+    content: " ";
+    @include koro("beat", $white, 300);
+    width: 100%;
+    height: $spacer * 3;
+    position: absolute;
+    top: $spacer * -3;
+  }
+}
+
+.map-section {
+  position: relative;
+  background-color: $brand-dark;
+  padding: ($spacer * 5) 0 ($spacer * 8);
+  color: $white;
+  h1, h2, h3, h4, h5, h6 {
+    color: $white;
+  }
+
+  &::before {
+    content: " ";
+    @include koro("pulse", $brand-dark, 400);
+    width: 100%;
+    height: $spacer * 3;
+    position: absolute;
+    top: $spacer * -3;
+  }
+}
+
+.calculator-section {
+  position: relative;
+  background-color: $brand-light;
+  padding: ($spacer * 5) 0 ($spacer * 8);
+
+  &::before {
+    content: " ";
+    @include koro("pulse", $brand-light, 400);
+    width: 100%;
+    height: $spacer * 3;
+    position: absolute;
+    top: $spacer * -3;
+  }
+}
+
+.feedback-bubble {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  z-index: 1040;
+  width: 80px;
+  height: 80px;
+  background-color: $hel-suomenlinna;
+  border-radius: 50% 50% 0 50%;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #FFF;
+  box-shadow: 2px 2px 2px 0 rgba(#121114,.25);
+
+  span {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    z-index: 1042;
+  }
+
+  &:hover {
+    color: $white;
+    background-color: darken($hel-suomenlinna, 10%);
+    text-decoration: none;
+  }
+
+  @include media-breakpoint-down(sm) {
+
+  width: 50px;
+  height: 50px;
+
+    span {
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg id='_x33_fe12ba8-7db0-4ffe-8486-a05d0cf9dec4' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cstyle%3E.st0%7Bfill:%23fff%7D%3C/style%3E%3Cpath class='st0' d='M380.7 128.7c28.4-.3 51.7 22.4 52 50.8v125.9c0 30.1-21.9 51.9-52 51.9h-20.8c-18.5-.1-36.7 5.5-52 15.9-15.3-10.4-33.5-15.9-52-15.9H131.3c-30.1 0-52-21.8-52-51.9V180.6c-.3-28.4 22.4-51.7 50.8-52h1.2l249.4.1m0-31.2H131.3c-46.5 0-83.1 36.6-83.1 83.1v124.7c0 47.1 35.8 83.1 83.1 83.1H256c16.3 0 31.9 6.4 43.4 17.9l8.5 8.5 8.5-8.5c11.5-11.5 27.1-18 43.4-17.9h20.8c47.3 0 83.1-36 83.1-83.1V180.6c.1-46.5-36.5-83.1-83-83.1z'/%3E%3Cpath class='st0' d='M135.4 185.8h241.1V217H135.4zM135.4 269h241.1v31.2H135.4z'/%3E%3C/svg%3E");
+      background-size: 70%;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.user-admin-header {
+  .user-avatar {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px auto;
+  }
+  h3 {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+}
+#areamap {
+  .counties {
+    fill: $hel-gold;
+  }
+
+  .counties :hover {
+    fill: $hel-summer;
+  }
+
+  .county-borders {
+    fill: none;
+    stroke: $hel-gold;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    pointer-events: none;
+  }
+}
+
+.service-card {
+  height: 100%;
+  margin-bottom: $spacer * 3;
+  border-bottom: $spacer solid $brand-dark;
+}
+
+.oma-faq {
+  color: $black;
+
+  a {
+    color: $black;
+  }
+}
+
+.oma-admin-section {
+  margin-bottom: $spacer *4;
+  h2 {
+    //margin-bottom: $spacer * 2;
+  }
+}
+
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+
+// Tunnistamo styles
+
+#loginModal .modal-body {
+  background-color: $hel-fog;
+}
+
+.content-container {
+  margin-top: $spacer;
+}
+
+.content-card {
+  padding: $spacer;
+  background-color: $white;
+  box-shadow: 3px 3px 3px rgba($black, 0.5);
+  @extend .clearfix;
+
+  header {
+    @extend .clearfix;
+
+    .service-title {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .logo {
+      height: 3.5em;
+      margin: -0.5em -0.5em 0 0;
+      float: right;
+    }
+  }
+}
+
+.login-method {
+  margin-bottom: $spacer / 2;
+
+  .short-description {
+    margin-top: 6px;
+  }
+
+  .ext-icon img {
+    max-height: 24px;
+    max-width: 24px;
+  }
+}
+
+.login-method__primary {
+  border-bottom: 1px solid $brand-dark;
+  border-top: 1px solid $brand-dark;
+  padding-top: 1em;
+}

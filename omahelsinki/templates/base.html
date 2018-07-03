@@ -7,9 +7,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="" />
-        <link rel="stylesheet" href="https://city-of-helsinki.github.io/hel-page-templates/assets/omahelsinki-styles.css" />
         {% compress css %}
-        <link rel="stylesheet" type="text/x-scss" href="{% static "styles/main.scss" %}" />
+        <link rel="stylesheet" type="text/x-scss" href="{% static "css/main.scss" %}" />
         {% endcompress %}
         <title>
             {% block title %}
@@ -23,7 +22,6 @@
         </title>
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/omahelsinki.css' %}">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -72,7 +70,7 @@
             {% endif %}
           </ul>
         </nav>
-        
+
 
         <nav class="navbar navbar-expand-lg navbar-light service-navbar">
           <a class="navbar-brand" href="/hel-page-templates/pages/omahelsinki/index.html">oma.helsinki</a>
