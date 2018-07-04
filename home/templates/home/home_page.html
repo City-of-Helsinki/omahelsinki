@@ -12,4 +12,12 @@
         <a href={{ page.register_link }}><p>{{ page.register_text }}</p></a>
     </article>
 </div>
+{% for post in page.get_children %}
+<div class="herocontainer">
+    <article>
+        <h1>{{ post.specific.heroHeading }}</h1>
+        <p>{{ post.specific.heroBody| richtext }}</p>
+    </article>
+</div>
+{% endfor %}
 {% endblock %}
