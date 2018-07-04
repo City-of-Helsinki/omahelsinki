@@ -19,6 +19,7 @@ urlpatterns = [
     path('', include('social_django.urls', namespace='social')),
     path('', include('helusers.urls')),
     path('mydata/', TemplateView.as_view(template_name='mydata/base.html')),
+    path('welcome/', TemplateView.as_view(template_name='mydata/base.html')),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

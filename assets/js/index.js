@@ -26,9 +26,7 @@ ReactDOM.render(
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/mydata/' component={MainPage} />
-                        <Route path='/' component={UserOnboarding} />
-                        <Route exact path='/404' component={NotFound} />
-                        <Redirect from='*' to='/404' />
+                        <Route exact path='/welcome/' component={UserOnboarding} />
                     </Switch>
                 </BrowserRouter>
             </App>
