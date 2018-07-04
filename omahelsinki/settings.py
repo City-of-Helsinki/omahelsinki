@@ -26,6 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'helusers',
     'home',
+    'hero',
     'search',
     'users',
     'mydata',
@@ -119,7 +120,7 @@ from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'fi'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Helsinki'
 
