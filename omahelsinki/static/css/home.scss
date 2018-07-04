@@ -1,14 +1,14 @@
 @import "./colors.scss";
 
-.omacontainer{
+.omacontainer {
     background: url(https://source.unsplash.com/collection/145103/1600x900);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 45vh;
-   color: $hel-white;
+    color: $hel-white;
 
-    article{
+    article {
         width: 50%;
         margin: auto;
         text-align: justify;
@@ -16,15 +16,15 @@
         padding-bottom: 7%;
     }
 
-    h1{
+    h1 {
         font-size: 5rem;
     }
 
-    p{
+    p {
         font-size: 1.2rem;
     }
     
-    button{
+    button {
         width: 20rem;
         line-height: 3rem;
         background-color: transparent;
@@ -37,56 +37,56 @@
 
     @media all and (max-width:1280px) {
         height: 55vh;
-        article{
+        article {
             padding-top: 5%;
             padding-bottom: 5%;
         }
-        button{
+        button {
             font-size: 1rem;
             border: 1px solid $hel-white;
             line-height: 2.5rem;
         }
-        p{
+        p {
             font-size: 1rem;
         }
     }
 
     @media all and (max-width: 1024px) and (min-width: 568px) {
         height: 50vh;
-        article{
+        article {
             width: 50%;
             padding-top: 5%;
             height: 50vh;
         }
-        h1{
+        h1 {
             font-size: 2.5rem;
         }
-        button{
+        button {
             font-size: 1rem;
             border: 1px solid $hel-white;
             line-height: 2.5rem;
         }
-        p{
+        p {
             font-size: 1rem;
         }
     }
 
     @media all and (max-width:414px) and (min-width: 0px){
         height: 50vh;
-        article{
+        article {
             width: 90%;
             padding-top: 15%;
             padding-bottom: 15%;
         }
-        h1{
+        h1 {
             font-size: 2.5rem;
         }
-        button{
+        button {
             font-size: 1rem;
             border: 1px solid $hel-white;
             line-height: 2.5rem;
         }
-        p{
+        p {
             font-size: 1rem;
         }
     }
