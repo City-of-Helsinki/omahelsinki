@@ -24,6 +24,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtail_modeltranslation',
+    'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
+
     'helusers',
     'home',
     'search',
@@ -32,6 +36,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.modeladmin',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -59,6 +64,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -86,6 +92,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },
@@ -122,6 +129,15 @@ from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGE_CODE = 'fi'
+
+from django.utils.translation import gettext_lazy as _  # noqa isort:skip
+
+LANGUAGES = (
+    ('fi', _('Finnish')),
+    ('sv', _('Swedish')),
+    ('en', _('English')),
+)
+
 
 TIME_ZONE = 'Europe/Helsinki'
 
