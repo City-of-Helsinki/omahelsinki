@@ -1,17 +1,9 @@
-@import "node_modules/open-city-design/src/scss/helsinki/_colors";
-@import "node_modules/open-city-design/src/scss/helsinki/_custom-styles";
-@import "node_modules/open-city-design/src/scss/helsinki/_variables";
-.herocontainer{
-  background-color: $hel-bus;
+@import "main";
 
-  &::before {
-    content: " ";
-    @include koro("pulse", $hel-coat, 400);
-    width: 100%;
-    height: $spacer * 3;
-    position: absolute;
-    top: $spacer * -3;
-  }
+.herocontainer{
+  @include koro("pulse", $hel-fog, 400);
+  position: relative;
+  top: -26px;
 
   article {
     width: 50%;
@@ -20,13 +12,9 @@
     padding-top: 7%;
     padding-bottom: 7%;
   }
-  h1 {
-    color: $hel-white;
-  }
 
   p {
     font-size: 1rem;
-    color: $hel-white;
   }
 
 }
