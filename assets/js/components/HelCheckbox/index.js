@@ -27,7 +27,7 @@ export default class HelCheckbox extends Component {
         const {selectedFields} = this.state
 
         return (
-            <div className="hel-checkbox-group">
+            <div>
                 <ButtonGroup>
                     {data.map((d, index) => {
                         return (

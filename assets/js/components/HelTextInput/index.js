@@ -18,9 +18,9 @@ class HelTextInput extends Component {
                     name={name}
                     {...rest}
                 />
-                <div className="profile-hel-text__help">
+                <small className="profile-hel-text__help text-muted">
                     {helpText}
-                </div>
+                </small>
             </FormGroup>
         );
     }

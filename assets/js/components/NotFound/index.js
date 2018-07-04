@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './style.scss';
-
 const Notfound = props => {
     return(
         <div>
