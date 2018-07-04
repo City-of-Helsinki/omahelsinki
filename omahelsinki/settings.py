@@ -155,7 +155,7 @@ WEBPACK_LOADER = {
 }
 
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),
+    ('text/x-scss', '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),  # noqa
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
