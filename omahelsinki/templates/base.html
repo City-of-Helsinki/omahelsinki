@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html lang="fi">
+<html lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,6 +26,7 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+        {% block extra_head %}{% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
