@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'users',
+    'mydata',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'taggit',
 
     'social_django',
+    'webpack_loader',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -135,6 +137,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+    'npm.finders.NpmFinder'
 ]
 
 # Set custom settings for compressor
@@ -147,7 +150,21 @@ COMPRESS_PRECOMPILERS = (
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(BASE_DIR, 'assets'),
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
+    }
+}
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss',
+        '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}'
+        % (BASE_DIR, BASE_DIR)),
+)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'

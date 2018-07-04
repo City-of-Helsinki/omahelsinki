@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@import "node_modules/open-city-design/src/scss/helsinki/_colors";
 
 .omacontainer {
     background: url(https://source.unsplash.com/collection/145103/1600x900);
@@ -18,10 +18,16 @@
 
     h1 {
         font-size: 5rem;
+        color: $hel-white;
     }
 
     p {
         font-size: 1.2rem;
+        color: $hel-white;
+    }
+
+    a {
+        text-decoration: none;
     }
     
     button {
@@ -33,6 +39,7 @@
         outline: none;
         cursor: pointer;
         font-size: 1.2rem;
+        margin: 0 0 10px 0;
     }
 
     @media all and (max-width:1280px) {

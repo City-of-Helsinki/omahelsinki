@@ -1,0 +1,44 @@
+{
+  "name": "tunnistamo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/City-of-Helsinki/omahelsinki.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/City-of-Helsinki/omahelsinki/issues"
+  },
+  "homepage": "https://github.com/City-of-Helsinki/omahelsinki#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^1.9.1",
+    "open-city-design": "^1.0.0-alpha.1",
+    "popper.js": "^1.14.3",
+    "react": "^16.4.1",
+    "react-albus": "^2.0.0",
+    "react-dom": "^16.4.1",
+    "react-intl": "^2.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "reactstrap": "^6.2.0",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-react-app": "^3.1.2",
+    "node-sass": "^4.9.0",
+    "node-sass-tilde-importer": "^1.0.2",
+    "webpack": "^4.14.0",
+    "webpack-bundle-tracker": "^0.3.0",
+    "webpack-cli": "^3.0.8"
+  }
+}

@@ -1,5 +1,6 @@
 {% load static wagtailuserbar %}
 {% load compress %}
+{% load static wagtailuserbar compress %}
 
 <!DOCTYPE html>
 
@@ -9,6 +10,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="" />
         <link rel="stylesheet" href="https://city-of-helsinki.github.io/hel-page-templates/assets/omahelsinki-styles.css" />
+        {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static "styles/main.scss" %}" />
+        {% endcompress %}
         <title>
             {% block title %}
                 {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
@@ -66,7 +70,7 @@
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'helusers:auth_login' %}">
+              <a class="nav-link" href="{% url 'helusers:auth_login' %}?next={{request.path}}">
                 Kirjaudu
               </a>
             </li>

@@ -1,8 +1,9 @@
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic import TemplateView
 from wagtail.admin import urls as wagtailadmin_urls
-# from wagtail.core import urls as wagtail_urls
+from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
@@ -17,11 +18,12 @@ urlpatterns = [
 
     path('', include('social_django.urls', namespace='social')),
     path('', include('helusers.urls')),
+    path('mydata/', TemplateView.as_view(template_name='mydata/base.html')),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
-    # path('', include(wagtail_urls)),
+    path('', include(wagtail_urls)),
 
 
     # Alternatively, if you want Wagtail pages to be served from a subpath
