@@ -2,4 +2,6 @@ Django
 wagtail
 psycopg2 --no-binary psycopg2
 social-auth-app-django
+django-compressor
+django-libsass
 -e git+https://github.com/City-of-Helsinki/django-helusers.git#egg=django-helusers
