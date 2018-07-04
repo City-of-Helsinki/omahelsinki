@@ -8,3 +8,4 @@ django-libsass
 django-npm
 django-webpack-loader
 django_compressor
+django-libsass

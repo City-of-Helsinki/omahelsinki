@@ -7,7 +7,7 @@ export default class HelCollapsibleField extends Component {
         super(props)
         
         this.state = {
-            collapse: false,
+            collapse: true,
         }
     }
 
@@ -19,7 +19,7 @@ export default class HelCollapsibleField extends Component {
         const {title, children, collapsible} = this.props
 
         return (
-            <div className="hel-collapsible-field">
+            <div>
                 {collapsible ? <Button onClick={this.toggle}>{title}</Button> :
                     <p>{title}</p>
                 }
