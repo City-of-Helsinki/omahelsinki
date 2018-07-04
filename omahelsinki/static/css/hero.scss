@@ -1,0 +1,20 @@
+@import "main";
+
+.herocontainer{
+  @include koro("pulse", $hel-fog, 400);
+  position: relative;
+  top: -26px;
+
+  article {
+    width: 50%;
+    margin: auto;
+    text-align: justify;
+    padding-top: 7%;
+    padding-bottom: 7%;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+}
