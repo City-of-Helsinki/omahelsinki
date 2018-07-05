@@ -4,8 +4,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-// Import city specific variable overrides.
-@import "~open-city-design/src/scss/helsinki/variables";
 
 // Import Bootstrap styles, with 6Aika default variable settings.
 
@@ -17,9 +15,14 @@
  */
 
 @import "~bootstrap/scss/functions";
+
+// Import ocds specific variable overrides:
 @import "~open-city-design/src/scss/6aika/variables";
+// Import city specific bootstrap variable overrides:
+@import "~open-city-design/src/scss/helsinki/variables";
+
 @import "~bootstrap/scss/_mixins";
-@import "~bootstrap/scss/print";
+@import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
@@ -50,9 +53,12 @@
 @import "~bootstrap/scss/popover";
 @import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/_utilities";
+@import "~bootstrap/scss/print";
 
 // Import city specific style overrides.
 
+@import "~open-city-design/src/scss/helsinki/mixins";
 @import "~open-city-design/src/scss/helsinki/custom-styles";
+
 
 @import "omahelsinki.scss";
