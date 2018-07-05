@@ -19,7 +19,7 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "jquery": "^1.9.1",
-    "open-city-design": "^1.0.0-alpha.1",
+    "open-city-design": "^1.0.0-alpha.2",
     "popper.js": "^1.14.3",
     "react": "^16.4.1",
     "react-albus": "^2.0.0",

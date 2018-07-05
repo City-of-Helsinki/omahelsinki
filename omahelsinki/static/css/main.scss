@@ -1,9 +1,9 @@
-// Service specific color overrides
-
-$brand-light:  #00d7a7; //$hel-fog
-$brand-dark:   #009246; //$hel-tram
-
 // Import Open City Design styles
 
 @import "ocd-bootstrap";
+
+// Service specific color overrides
+$brand-light:  $hel-copper; //$hel-fog
+$brand-dark:   $hel-bus; //$hel-tram
+
 @import "omahelsinki.scss";
