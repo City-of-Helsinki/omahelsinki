@@ -1,9 +1,7 @@
-@import "main";
-
 .herocontainer{
-  @include koro("pulse", $hel-fog, 400);
+  @include koro("beat", $brand-light, 360);
   position: relative;
-  top: -26px;
+  top: -54px;
 
   article {
     width: 50%;
@@ -14,7 +12,7 @@
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
 }

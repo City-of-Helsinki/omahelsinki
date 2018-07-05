@@ -142,14 +142,6 @@ STATICFILES_FINDERS = [
     'npm.finders.NpmFinder'
 ]
 
-# Set custom settings for compressor
-# COMPRESS_OUTPUT_DIR = 'compressed'
-COMPRESS_OFFLINE = True
-
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
-
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
     os.path.join(BASE_DIR, 'assets'),
@@ -163,9 +155,7 @@ WEBPACK_LOADER = {
 }
 
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss',
-        '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}'
-        % (BASE_DIR, BASE_DIR)),
+    ('text/x-scss','%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
