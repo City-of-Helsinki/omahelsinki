@@ -24,6 +24,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtail_modeltranslation',
+    'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
+
     'helusers',
     'home',
     'search',
@@ -32,6 +36,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.modeladmin',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -59,6 +64,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -85,6 +91,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },
@@ -122,6 +130,15 @@ from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
 
 LANGUAGE_CODE = 'fi'
 
+from django.utils.translation import gettext_lazy as _  # noqa isort:skip
+
+LANGUAGES = (
+    ('fi', _('Finnish')),
+    ('sv', _('Swedish')),
+    ('en', _('English')),
+)
+
+
 TIME_ZONE = 'Europe/Helsinki'
 
 USE_I18N = True
@@ -154,7 +171,7 @@ WEBPACK_LOADER = {
 }
 
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),
+    ('text/x-scss', '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),  # noqa
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

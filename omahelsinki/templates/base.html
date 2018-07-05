@@ -1,8 +1,8 @@
-{% load static wagtailuserbar compress %}
+{% load static wagtailuserbar compress i18n %}
 
 <!DOCTYPE html>
 
-<html lang="fi">
+<html lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,6 +26,7 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+        {% block extra_head %}{% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -37,12 +38,12 @@
             <li class="nav-item dropdown language-menu">
               <a class="nav-link language-menu__trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <svg aria-hidden="true" class="icon"><use xlink:href="{% static 'assets/hel-icons.svg' %}#globe"></use></svg>
-                EN
+                {{ LANGUAGE_CODE|upper }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Suomi</a>
-                <a class="dropdown-item active" href="#">English</a>
-                <a class="dropdown-item" href="#">svenska</a>
+                <a class="dropdown-item{% if LANGUAGE_CODE == 'fi' %} active{% endif %}" href="#" data-language="fi">suomi</a>
+                <a class="dropdown-item{% if LANGUAGE_CODE == 'en' %} active{% endif %}" data-language="en" href="#">English</a>
+                <a class="dropdown-item{% if LANGUAGE_CODE == 'sv' %} active{% endif %}" data-language="sv" href="#">svenska</a>
               </div>
             </li>
             {% if request.user.is_authenticated %}
@@ -53,10 +54,10 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right user-menu__dropdown" aria-labelledby="navbarDropdown">
                 <span class="dropdown-header user-name">{{ request.user.get_display_name }}</span>
-                <a class="dropdown-item" href="/hel-page-templates/pages/cattax/cat-tax-preferences.html">Preferences</a>
+                <a class="dropdown-item" href="/nothing-here-yet">Preferences</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/hel-page-templates/pages/omahelsinki/oma-admin.html">Edit Profile</a>
-                <a class="dropdown-item" href="/hel-page-templates/pages/omahelsinki/index.html">oma.helsinki</a>
+                <a class="dropdown-item" href="{% url 'mydata' %}">Edit Profile</a>
+                <a class="dropdown-item" href="/">oma.helsinki</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'helusers:auth_logout' %}"><strong>Logout</strong></a>
               </div>
@@ -73,7 +74,7 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-light service-navbar">
-          <a class="navbar-brand" href="/hel-page-templates/pages/omahelsinki/index.html">oma.helsinki</a>
+          <a class="navbar-brand" href="/">oma.helsinki</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -81,16 +82,16 @@
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/hel-page-templates/pages/omahelsinki/index.html#oma">Mikä oma.helsinki?</a>
+                <a class="nav-link" href="/#oma">{% trans "What's oma.helsinki?" %}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/hel-page-templates/pages/omahelsinki/index.html#palvelut">Palvelut</a>
+                <a class="nav-link" href="/#palvelut">{% trans "Services" %}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/hel-page-templates/pages/omahelsinki/index.html#apua">Apua</a>
+                <a class="nav-link" href="/#help">{% trans "Help" %}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" href="/hel-page-templates/pages/omahelsinki/oma-admin.html">Omat tiedot</a>
+                <a class="nav-link{% if not request.user.is_authenticated %} disabled{% endif %}" href="{% url 'mydata' %}">{% trans "My data" %}</a>
               </li>
             </ul>
           </div>
@@ -138,7 +139,7 @@
                 </ul>
                 <ul class="small-print-nav list-inline">
                   <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#feedbackModal">Feedback</a></li>
-                  <li class="list-inline-item"><a href="mailto:hri@hel.fi">Contact</a></li>
+                  <li class="list-inline-item"><a href="mailto:dev@hel.fi">Contact</a></li>
                   <li class="list-inline-item">2018 Helsingin kaupunki</li>
                 </ul>
               </div>
@@ -147,11 +148,31 @@
         </div>
       </footer>
 
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
       {# Global javascript #}
+      <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'js/omahelsinki.js' %}"></script>
+
+      <script>
+        CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
+        $('.language-menu .dropdown-item').click(function(ev) {
+          var newLanguage = $(ev.target).data('language');
+          $.ajax({
+            type: "POST",
+            url: "{% url 'set_language' %}",
+            data: {
+              language: newLanguage,
+              csrfmiddlewaretoken: "{{ csrf_token }}",
+            },
+            success: function() {
+              location.reload();
+            }
+          });
+        });
+        $('.nav-link.disabled').click(function(ev) {
+          ev.preventDefault();
+        });
+      </script>
 
       {% block extra_js %}
         {# Override this in templates to add extra javascript #}

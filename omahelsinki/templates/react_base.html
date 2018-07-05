@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% load render_bundle from webpack_loader %}
 
-{% block body_class %}template-mydata{% endblock %}
+{% block extra_head %}
+    <script>
+        window.LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
+    </script>
+{% endblock %}
 
 {% block content %}
     <div id="react-app"></div>

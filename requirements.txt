@@ -7,6 +7,7 @@
 --no-binary psycopg2
 
 -e git+https://github.com/City-of-Helsinki/django-helusers.git#egg=django-helusers
+-e git+https://github.com/infoportugal/wagtail-modeltranslation@django2#egg=wagtail-modeltranslation
 beautifulsoup4==4.6.0     # via wagtail
 certifi==2018.4.16        # via requests
 chardet==3.0.4            # via requests
@@ -14,6 +15,7 @@ defusedxml==0.5.0         # via python3-openid, social-auth-core
 django-appconf==1.0.2     # via django-compressor
 django-compressor==2.2
 django-modelcluster==4.1  # via wagtail
+django-modeltranslation==0.13b1
 django-npm==1.0.0
 django-taggit==0.22.2     # via wagtail
 django-treebeard==4.3     # via wagtail
