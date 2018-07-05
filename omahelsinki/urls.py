@@ -12,13 +12,15 @@ urlpatterns = [
     path('django-admin/', admin.site.urls),
 
     path('admin/', include(wagtailadmin_urls)),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('documents/', include(wagtaildocs_urls)),
 
     path('search/', search_views.search, name='search'),
 
     path('', include('social_django.urls', namespace='social')),
     path('', include('helusers.urls')),
-    path('mydata/', TemplateView.as_view(template_name='mydata/base.html')),
+    path('mydata/', TemplateView.as_view(template_name='react_base.html'), name='mydata'),
+    path('welcome/', TemplateView.as_view(template_name='react_base.html'), name='welcome'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
