@@ -1,0 +1,23 @@
+
+.hel-collapsible-field {
+    background: $hel-white;
+    margin-bottom: 2rem;
+
+    &__link, &__title {
+        color: $hel-coat !important;
+        width: 100%;
+        cursor: pointer;
+        background: rgba(0,0,0,0.03) !important;
+        border: 0 solid rgba(0,0,0,0.125);
+        padding: 1rem 1.25rem !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important; 
+        text-align: left !important;
+        text-transform: capitalize;
+    }
+    
+    &__child {
+        padding: .75rem 1.25rem;
+    }
+}

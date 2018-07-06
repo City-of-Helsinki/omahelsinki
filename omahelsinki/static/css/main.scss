@@ -7,4 +7,6 @@ $brand-light:  $hel-copper; //$hel-fog
 $brand-dark:   $hel-bus; //$hel-tram
 
 @import "omahelsinki";
-@import "components";
+@import "components/HelCheckBox";
+@import "components/HelCollapsibleField";
+@import "components/Main";
