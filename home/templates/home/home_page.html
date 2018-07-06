@@ -4,20 +4,130 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-<div class="omacontainer">
-    <article>
-        <h1>{{ page.heading }}</h1>
-        <p>{{ page.body| richtext }}</p>
-        <a href={{ page.login_link }}><button>{{ page.login_text }}</button></a> 
-        <a href={{ page.register_link }}><p>{{ page.register_text }}</p></a>
-    </article>
+
+<section class="hero-section bg-light" style="background-image: url('https://source.unsplash.com/collection/145103/1600x900')">
+    <div class="container">
+      <div class="row">
+        <div class="col-11 col-md-10 col-lg-8">
+          <div class="hero-content hero-content--inverse">
+            <h1>{{ page.heading }}</h1>
+            <p class="lead">{{ page.body| richtext }} </p>
+            <button type="button" class="btn btn-outline-light"  data-toggle="modal" data-target="#feedbackModal">{{ page.login_text }}</button>
+            <p><small><a href={{ page.register_link }}>Tai rekisteröidy täällä</a></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section section--intro">
+    <div class="container">
+        <a name="oma"></a>
+        <div class="row justify-content-left">
+        <div class="col-md-10 col-lg-8 content">
+            {% for post in page.get_children %}
+            <h1>{{ post.specific.heroHeading }}</h1>
+            <p>{{ post.specific.heroBody| richtext }}</p>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+</section>
+
+<div class="hecontainer"></div>
+    <section class="section section--cards">
+        <div class="container">
+            <a name="palvelut"></a>
+            <h1 class="section-header">oma.helsinki toimii täällä</h1>
+            <div class="row">
+            <div class="col-sm-4">
+                <div class="card service-card">
+                <a href="/hel-page-templates/pages/cattax/index.html" class="service-link"><img class="card-img-top" src="https://source.unsplash.com/collection/139386/380x244" alt="Card image cap"></a>
+                <div class="card-body">
+                    <h4 class="card-title">Kissavero</h4>
+                    <p class="card-text">Laske ja maksa kissaverosi määrä.</p>
+                    <a href="/hel-page-templates/pages/cattax/index.html" class="service-link">kissavero.hel.fi</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card service-card">
+                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">My Helsinki</h4>
+                    <p class="card-text">Löydä oma Helsinkisi. Tutustu kaupungin tapahtumatarjontaan ja tee ja jaa omat Helsinki löytösi ja klassikkosi.</p>
+                    <a href="index.html" class="service-link">myhelsinki.fi</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card service-card">
+                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Varaamo</h4>
+                    <p class="card-text">Tiloja ja laitteita kaikenlaiseen tekemiseen Helsingissä</p>
+                    <a href="#" class="service-link">varaamo.hel.fi</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card service-card">
+                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Kerro kantasi</h4>
+                    <p class="card-text">Osallistu kaupungin kehittämiseen keskustelemalla ja vastaamalla kyselyihin.</p>
+                    <a href="#" class="service-link">kerrokantasi.hel.fi</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card service-card">
+                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Osallistuva budjetointi</h4>
+                    <p class="card-text">Ehdota projekteja ja tekoja Helsingin kehittämiseksi. Äänestä sinulle tärkeiden projektien rahoituksesta.</p>
+                    <a href="#" class="service-link">osallistu.hel.fi</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card service-card">
+                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Helsinki-sovellus</h4>
+                    <p class="card-text">Alati kehittyvä mobiilisovellus. Löydä uusimpia tapahtumia kaupungissa ja käytä puhelintasi kirjastokorttina. Voit myös lähettää palautetta kaupungille mistä tahansa aiheesta.</p>
+                    <a href="#" class="service-link">digi.hel.fi/sovellus</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
 </div>
-{% for post in page.get_children %}
-<div class="herocontainer">
-    <article>
-        <h1>{{ post.specific.heroHeading }}</h1>
-        <p>{{ post.specific.heroBody| richtext }}</p>
-    </article>
-</div>
-{% endfor %}
+
+<section class="section section--faq">
+    <div class="container">
+        <a name="apua"></a>
+            <h1>Apua</h1>
+            <p class="lead">Usein kysytyt kysymyksen oma.helsinki -tilistä</p>
+            <div id="accordion" class="oma-faq">
+                {% for faq in page.get_children %}
+                <div class="card">
+                    <div class="card-header" id={{ faq.specific.aria_labelledby }}>
+                        <h4 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target={{ faq.specific.data_target }} aria-expanded="true" aria-controls={{ faq.specific.aria_controls }}>
+                            {{ faq.specific.faq_question }}
+                            </button>
+                        </h4>
+                    </div>
+                    <div id={{ faq.specific.aria_controls }} class="collapse" aria-labelledby={{ faq.specific.aria_labelledby }} data-parent="#accordion">
+                        <div class="card-body">
+                            {{ faq.specific.faq_answer| richtext }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    </div>
+</section>
 {% endblock %}

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'helusers',
     'home',
     'hero',
+    'faq',
     'search',
     'users',
     'mydata',
