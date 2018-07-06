@@ -6,4 +6,5 @@
 $brand-light:  $hel-copper; //$hel-fog
 $brand-dark:   $hel-bus; //$hel-tram
 
-@import "omahelsinki.scss";
+@import "omahelsinki";
+@import "components";

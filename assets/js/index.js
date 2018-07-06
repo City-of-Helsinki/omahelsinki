@@ -11,7 +11,6 @@ import App from './components/App/App';
 import configureStore from './root/store';
 
 import MainPage from './components/Main';
-import NotFound from './components/NotFound';
 import UserOnboarding from './onboarding';
 
 const intlLocaleData = getIntlLocaleData();

@@ -8,4 +8,4 @@ const Notfound = props => {
     );
 }
 
-export default Notfound;
+export default NotFound;
