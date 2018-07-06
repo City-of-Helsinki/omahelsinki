@@ -154,7 +154,9 @@
       <script type="text/javascript" src="{% static 'js/omahelsinki.js' %}"></script>
 
       <script>
-        CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
+        window.CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
+        window.TUNNISTAMO_BASE_URL = "{{ TUNNISTAMO_BASE_URL }}";
+
         $('.language-menu .dropdown-item').click(function(ev) {
           var newLanguage = $(ev.target).data('language');
           $.ajax({

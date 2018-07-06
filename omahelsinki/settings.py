@@ -93,6 +93,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
                 'wagtail.contrib.settings.context_processors.settings',
+                'helusers.context_processors.settings'
             ],
         },
     },
@@ -188,6 +189,9 @@ WAGTAIL_SITE_NAME = "omahelsinki"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# You should override this in your local_settings.py
+TUNNISTAMO_BASE_URL = 'https://api.hel.fi/sso'
 
 
 # local_settings.py can be used to override environment-specific settings
