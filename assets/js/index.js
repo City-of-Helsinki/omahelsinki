@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {addLocaleData} from 'react-intl';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {hot} from 'react-hot-loader'
 
 import ConnectedIntlProvider from './intl/ConnectedIntlProvider';
 import getIntlLocaleData from './intl/getIntlLocaleData';
@@ -11,7 +12,6 @@ import App from './components/App/App';
 import configureStore from './root/store';
 
 import MainPage from './components/Main';
-import NotFound from './components/NotFound';
 import UserOnboarding from './onboarding';
 
 const intlLocaleData = getIntlLocaleData();

@@ -37,13 +37,13 @@ class MainPage extends Component {
         const {activeTab} = this.state
 
         return (
-            <div className>
-                <Nav tabs>
+            <div className="oma-main">
+                <Nav tabs className="oma-tabs">
                     {Object.values(TABS).map((tab, index) => {
                         return (
                             <NavItem key={index}>
                                 <NavLink
-                                    className={{active: activeTab === tab}}
+                                    className={activeTab === tab ? "active" : ""}
                                     onClick={() => this.toggleTab(tab)}
                                 >
                                     <FormattedMessage id={`app.${tab}`} /> 
@@ -52,7 +52,7 @@ class MainPage extends Component {
                         )
                     })}
                 </Nav>
-                <div>
+                <div className="oma-tab-container">
                     <Container >
                         <Col xs={12} sm={{size: 8, offset:2}}>
                             <TabContent activeTab={this.state.activeTab}>
