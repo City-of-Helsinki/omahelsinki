@@ -25,6 +25,4 @@ perf*csv
 /webpack.config.js
 /yarn-error.log
 /webpack-stats.json
-/.vscode
-/*.vscode
-.vscode
+.vscode/*
