@@ -1,3 +1,4 @@
+{% load static wagtailuserbar %}
 {% load static wagtailuserbar compress i18n %}
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
                 {% endwith %}
             {% endblock %}
         </title>
-
+        
         {# Global stylesheets #}
 
         {% block extra_css %}
@@ -74,7 +75,7 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-light service-navbar">
-          <a class="navbar-brand" href="/">oma.helsinki</a>
+          <a class="navbar-brand" href="http://localhost:8000/homepage/">oma.helsinki</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -89,6 +90,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/#help">{% trans "Help" %}</a>
+
               </li>
               <li class="nav-item">
                 <a class="nav-link{% if not request.user.is_authenticated %} disabled{% endif %}" href="{% url 'mydata' %}">{% trans "My data" %}</a>
@@ -177,6 +179,10 @@
       </script>
 
       {% block extra_js %}
+      <script id="feedback-script" data-app="" type="text/javascript" src="https://dev.hel.fi/~tituomin/feedback-widget/widget.js" ></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
         {# Override this in templates to add extra javascript #}
       {% endblock %}
     </body>
