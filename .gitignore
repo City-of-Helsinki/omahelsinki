@@ -27,3 +27,4 @@ perf*csv
 /webpack-stats.json
 /.vscode
 /*.vscode
+.vscode
