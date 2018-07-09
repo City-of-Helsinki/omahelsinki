@@ -122,7 +122,7 @@ from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'fi'
 
 TIME_ZONE = 'Europe/Helsinki'
 
