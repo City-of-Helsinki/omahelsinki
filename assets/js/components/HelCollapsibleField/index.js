@@ -21,7 +21,7 @@ export default class HelCollapsibleField extends Component {
         return (
             <div className="hel-collapsible-field">
                 {collapsible ? <Button className="hel-collapsible-field__link" onClick={this.toggle}>{title}</Button> :
-                    <p>{title}</p>
+                    <p className="hel-collapsible-field__title">{title}</p>
                 }
                 <Collapse className="hel-collapsible-field__child" isOpen={collapsible ? this.state.collapse : true}>
                     {children}

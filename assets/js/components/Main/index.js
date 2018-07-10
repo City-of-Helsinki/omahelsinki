@@ -43,7 +43,7 @@ class MainPage extends Component {
                         return (
                             <NavItem key={index}>
                                 <NavLink
-                                    className={activeTab === tab ? "active" : ""}
+                                    className={classNames({active: activeTab === tab})}
                                     onClick={() => this.toggleTab(tab)}
                                 >
                                     <FormattedMessage id={`app.${tab}`} /> 
@@ -55,7 +55,7 @@ class MainPage extends Component {
                 <div className="oma-tab-container">
                     <Container >
                         <Col xs={12} sm={{size: 8, offset:2}}>
-                            <TabContent activeTab={this.state.activeTab}>
+                            <TabContent activeTab={this.state.activeTab} className="oma-tab-content">
                                 <TabPane tabId={TABS.PROFILE}>
                                     <Profile /> 
                                 </TabPane>

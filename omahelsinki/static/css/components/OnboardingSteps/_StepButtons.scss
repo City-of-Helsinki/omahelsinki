@@ -1,0 +1,29 @@
+.step-btn {
+    margin: 2rem 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
+    .btn-primary {
+        background-color: $hel-bus;
+        color: $hel-white;
+        border: none ;
+        padding: 16px 24px;
+        svg {
+            margin-left: 10px;
+        }
+    }
+
+    .btn-link {
+        border: none ;
+        padding: 16px 24px;
+        padding-left: 0;
+        svg {
+            margin-right: 10px;
+        }
+    }
+
+    &.btn-center {
+        justify-content: center;
+    }
+}

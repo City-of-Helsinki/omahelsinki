@@ -3,7 +3,7 @@ import {injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 import {Form, FormGroup, Input, Label} from 'reactstrap';
 
-import If from '../components/If';
+import If from '../If';
 
 const toBool = (str) => str === 'true';
 

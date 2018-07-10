@@ -3,6 +3,9 @@ import {compose} from 'redux';
 import {withWizard} from 'react-albus';
 import {injectIntl} from 'react-intl';
 import {Button} from 'reactstrap';
+import classNames from 'classnames'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faArrowRight, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 const StepButtons = ({wizard, intl, onFinish}) => {
     const {steps, step, next, previous} = wizard;
@@ -17,14 +20,16 @@ const StepButtons = ({wizard, intl, onFinish}) => {
         : 'onboarding.navigation.next');
 
     return (
-        <div>
+        <div className={classNames('step-btn', {'btn-center': isFirst})}>
             {!isFirst &&
-        <Button color='link' onClick={previous}>
-            {intl.formatMessage({id: 'onboarding.navigation.previous'})}
-        </Button>
+                <Button color='link' onClick={previous}>
+                    <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+                    {intl.formatMessage({id: 'onboarding.navigation.previous'})}
+                </Button>
             }
             <Button color='primary' onClick={nextClickHandler}>
                 {intl.formatMessage({id: nextTextId})}
+                <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
             </Button>
         </div>
     );
