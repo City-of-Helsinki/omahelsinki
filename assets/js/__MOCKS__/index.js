@@ -43,3 +43,14 @@ export const mockDecisions = [
         label: 'action teaching',
     },
 ]
+
+export const regionMocks = [
+    {
+        label: 'Eira',
+        value: 'Eira',
+    },
+    {
+        label: 'Arabiaranta',
+        value: 'Arabiaranta',
+    },
+]

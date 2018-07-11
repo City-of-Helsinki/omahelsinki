@@ -92,7 +92,7 @@
   "app.subjects": "Aiheet",
   "app.subject.interest" : "Millaisia aiheita olet kiinnostunut?",
   "app.regions": "Alueet",
-  "app.regions.interst": "Mitkä alueet kiinnostavat sinua eniten",
+  "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten",
   "app.decision.making": "Päätöksenteko",
   "app.decision.interest" : "Millaista aiheesta olet kiinnostunut?"
 }
