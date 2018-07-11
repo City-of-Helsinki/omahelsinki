@@ -7,12 +7,11 @@ import {
     PersonalInformation, 
     CreatePassword, 
     Settings,
+    Interest,
 } from '../OnboardingSteps';
 
 import {Container} from 'reactstrap'
 import HelIcon from '../HelIcon'
-
-import {Interest} from '../Tab';
 
 class Onboarding extends React.Component {
 
