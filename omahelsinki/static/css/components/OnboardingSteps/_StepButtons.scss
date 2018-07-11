@@ -28,6 +28,13 @@
         }
     }
 
+    .btn {
+        &:hover, &:focus {
+            box-shadow: none !important;
+            outline: none;
+        }
+    }
+
     &.btn-center {
         justify-content: center;
     }

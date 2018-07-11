@@ -1,0 +1,21 @@
+.oma-interest {
+    &__subjects,
+    &__regions,
+    &__decision {
+        padding: 2rem 1rem;
+        background: $hel-light;
+        margin-bottom: 2rem;
+        h4 {
+            span {
+                color: $hel-bus;
+            }
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+    }
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+}

@@ -3,7 +3,7 @@ import {FormattedMessage} from 'react-intl'
 import HelCheckbox from '../HelCheckbox'
 import HelSelect from '../HelSelect'
 
-import {mockTopics, regionMocks} from '../../__MOCKS__'
+import {mockTopics, regionMocks, mockDecisions} from '../../__MOCKS__'
 
 export default class Interest extends Component {
     render() {
@@ -27,6 +27,15 @@ export default class Interest extends Component {
                         options={regionMocks}
                         multi={true}
                         searchable={true}
+                    />
+                </div>
+
+                <div className="oma-interest__decision">
+                    <h4><FormattedMessage id="app.decision" /></h4>
+                    <p><FormattedMessage id="app.decision.interest" /></p>
+                    <HelCheckbox 
+                        data={mockDecisions}
+                        direction="horizontal"
                     />
                 </div>
             </div>

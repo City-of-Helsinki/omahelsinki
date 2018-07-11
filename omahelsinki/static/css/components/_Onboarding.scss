@@ -1,6 +1,8 @@
 @import 'OnboardingSteps/Welcome';
 @import 'OnboardingSteps/StepButtons';
 @import 'OnboardingSteps/PersonalInformation';
+@import 'OnboardingSteps/Interest';
+@import 'OnboardingSteps/Settings';
 
 .oma-onboarding {
     &-container {
@@ -44,9 +46,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        h3 {
+            margin: 0;
+        }
         strong {
             margin-left: 10px;
         }
+        margin-bottom: 3rem;
     }
 
     display: flex;

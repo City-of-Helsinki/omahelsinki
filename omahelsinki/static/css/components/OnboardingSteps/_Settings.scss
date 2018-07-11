@@ -1,0 +1,28 @@
+.oma-settings {
+    &__messages,
+    &__notifications {
+        padding: 2rem 1rem;
+        background: $hel-light;
+        margin-bottom: 2rem;
+        h4 {
+            color: $hel-bus;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+    }
+    form {
+        .form-check {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .check-group {
+        label {
+            display: block;
+            margin-left: 1.25em;
+            margin-bottom: 1em;
+            font-weight: 400;
+        }
+    }
+}
