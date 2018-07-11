@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {hot} from 'react-hot-loader';	
 import {connect} from 'react-redux';
 
 class App extends Component {
@@ -12,5 +13,10 @@ class App extends Component {
         );
     }
 }
+let thisApp = connect()(App);	
 
-export default connect()(App);
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    thisApp = hot(module)(App);
+}
+
+export default thisApp;

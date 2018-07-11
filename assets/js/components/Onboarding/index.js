@@ -10,9 +10,7 @@ import {
 } from '../OnboardingSteps';
 
 import {Container} from 'reactstrap'
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUser} from '@fortawesome/free-solid-svg-icons'
+import HelIcon from '../HelIcon'
 
 import {Interest} from '../Tab';
 
@@ -57,7 +55,7 @@ class Onboarding extends React.Component {
                     <div className="oma-onboarding-container">
                         <div className="oma-onboarding">
                             <div className="user-icon">
-                                <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+                                <HelIcon iconName="user-o"></HelIcon>
                             </div>
                             <Wizard>
                                 <div className="oma-onboarding-steps">

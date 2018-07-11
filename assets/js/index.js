@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {addLocaleData} from 'react-intl';
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
-import {hot} from 'react-hot-loader'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import ConnectedIntlProvider from './intl/ConnectedIntlProvider';
 import getIntlLocaleData from './intl/getIntlLocaleData';
