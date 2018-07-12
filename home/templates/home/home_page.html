@@ -26,8 +26,8 @@
         <div class="row justify-content-left">
         <div class="col-md-10 col-lg-8 content">
             {% for post in page.get_children %}
-            <h1>{{ post.specific.heroHeading }}</h1>
-            <p>{{ post.specific.heroBody| richtext }}</p>
+            <h1>{{ post.specific.hero_heading }}</h1>
+            <p>{{ post.specific.hero_body| richtext }}</p>
             {% endfor %}
         </div>
         </div>
