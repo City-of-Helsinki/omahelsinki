@@ -7,15 +7,15 @@ from wagtail.search import index
 
 
 class Hero(Page):
-    heroHeading = models.CharField(max_length=100, blank=True)
-    heroBody = RichTextField(blank=True)
+    hero_heading = models.CharField(max_length=100, blank=True)
+    hero_body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + [
-        index.SearchField('heroHeading'),
-        index.SearchField('heroBody'),
+        index.SearchField('hero_heading'),
+        index.SearchField('hero_body'),
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('heroHeading'),
-        FieldPanel('heroBody', classname="full"),
+        FieldPanel('hero_heading'),
+        FieldPanel('hero_body', classname="full"),
     ]
