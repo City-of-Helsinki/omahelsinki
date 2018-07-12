@@ -2,6 +2,7 @@ import React from 'react';
 import {injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 import {Form, FormGroup, Input, Label, Col, Row} from 'reactstrap';
+import HelTextInput from '../HelTextInput'
 
 const PersonalInformation = ({intl, data: {firstname, lastname, email, ofAge}, onChange}) => {
     const onChangeHandler = (event) => {
@@ -19,30 +20,31 @@ const PersonalInformation = ({intl, data: {firstname, lastname, email, ofAge}, o
             <Form onChange={onChangeHandler}>
                 <Row>
                     <Col xs={6}>
-                        <FormGroup>
-                            <Label for='firstName'>
-                                {intl.formatMessage({id: 'onboarding.label.firstname'})}
-                            </Label>
-                            <Input id='firstname' name='firstname' defaultValue={firstname} />
-                        </FormGroup>
+                        <HelTextInput
+                            label={intl.formatMessage({id: 'onboarding.label.firstname'})}
+                            id='firstName'
+                            name='firstName'
+                            defaultValue={firstname}
+                        />
                     </Col>
                     <Col xs={6}>
-                        <FormGroup>
-                            <Label for='lastname'>
-                                {intl.formatMessage({id: 'onboarding.label.lastname'})}
-                            </Label>
-                            <Input id='lastname' name='lastname' defaultValue={lastname} />
-                        </FormGroup>
+                        <HelTextInput
+                            label={intl.formatMessage({id: 'onboarding.label.lastname'})}
+                            id='lastname'
+                            name='lastname'
+                            defaultValue={lastname}
+                        />
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={6}>
-                        <FormGroup>
-                            <Label for='email'>
-                                {intl.formatMessage({id: 'onboarding.label.email'})}
-                            </Label>
-                            <Input id='email' name='email' type='email' defaultValue={email} />
-                        </FormGroup>
+                        <HelTextInput
+                            label={intl.formatMessage({id: 'onboarding.label.email'})}
+                            id='email'
+                            name='email'
+                            type='email'
+                            defaultValue={email}
+                        />
                     </Col>
                     <Col xs={6}>
                         <FormGroup check>

@@ -1,8 +1,8 @@
 import React from 'react';
 import {injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
-import {Form, FormGroup, Label, Input, Row, Col} from 'reactstrap';
-
+import {Form, Row, Col} from 'reactstrap';
+import HelTextInput from '../HelTextInput'
 
 const CreatePassword = ({intl, onChange, data: {password, passwordRepeat}}) => {
 
@@ -23,21 +23,23 @@ const CreatePassword = ({intl, onChange, data: {password, passwordRepeat}}) => {
             <Form onChange={onChangeHandler}>
                 <Row>
                     <Col sm={6}>
-                        <FormGroup>
-                            <Label for='password'>
-                                {intl.formatMessage({id: 'onboarding.label.password'})}
-                            </Label>
-                            <Input id='password' name='password' type='password' defaultValue={password} />
-                        </FormGroup>
+                        <HelTextInput
+                            label={intl.formatMessage({id: 'onboarding.label.password'})}
+                            id='password'
+                            name='password'
+                            type='password' 
+                            defaultValue={password}
+                        />
                     </Col>
                     
                     <Col sm={6}>
-                        <FormGroup>
-                            <Label for='passwordRepeat'>
-                                {intl.formatMessage({id: 'onboarding.label.passwordRepeat'})}
-                            </Label>
-                            <Input id='passwordRepeat' name='passwordRepeat' type='password' defaultValue={passwordRepeat} />
-                        </FormGroup>
+                        <HelTextInput
+                            label={intl.formatMessage({id: 'onboarding.label.passwordRepeat'})}
+                            id='passwordRepeat'
+                            name='passwordRepeat'
+                            type='password' 
+                            defaultValue={passwordRepeat}
+                        />
                     </Col>
                 </Row>
             </Form>
