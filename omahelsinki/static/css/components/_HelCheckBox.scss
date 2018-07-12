@@ -1,0 +1,33 @@
+
+.hel-checkbox {
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+
+        .btn {
+            width: 50%;
+            border-radius: 0;
+            background: $hel-white;
+            color: $hel-dark;
+            padding: .75rem 1.25rem;
+            text-align: left;
+            margin-left: 0 !important;
+            text-transform: capitalize;
+            border: none;
+    
+            &:not(:last-child) {
+                border-bottom: 1px solid $hel-gray;
+            }
+            &:focus, &:hover {
+                outline: 0 !important;
+                box-shadow: none !important;
+            }
+
+            &:hover, 
+            &.active {
+                background-color: $hel-coat !important;
+                color: $hel-white;
+            }
+        }
+    }
+}

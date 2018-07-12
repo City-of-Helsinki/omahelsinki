@@ -26,3 +26,5 @@ perf*csv
 /yarn-error.log
 /webpack-stats.json
 .vscode/*
+/.pytest_cache
+
