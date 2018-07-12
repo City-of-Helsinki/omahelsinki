@@ -94,6 +94,11 @@
     "app.regions": "Regions",
     "app.regions.interest": "What regions interest you the most",
     "app.decision.making": "Decision making",
-    "app.decision.interest" : "What kind of subject you are interested in?"
+    "app.decision.interest" : "What kind of subject you are interested in?",
+    
+    "password.cantBeEmpty": "Password can't be empty",
+    "password.notStrongEnough": "Password is not strong enough",
+    "password.ok": "Password is ok",
+    "password.strong": "Password is strong"
   }
   

@@ -1,51 +1,71 @@
-import React from 'react';
 import {injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 import {Form, Row, Col} from 'reactstrap';
 import HelTextInput from '../HelTextInput'
+import PasswordStrength from '../PasswordStrength'
+import React, {Component} from 'react';
 
-const CreatePassword = ({intl, onChange, data: {password, passwordRepeat}}) => {
-
+class CreatePassword extends Component {
+    state = {
+        currentPassword: '',
+    }
     // TODO: (if passwords are used) password validation.
 
-    const onChangeHandler = (event) => {
+    onChangeHandler = (event) => {
         const target = event.target;
         const data = {[target.name]: target.value};
-        onChange(data);
+        this.props.onChange(data);
     };
 
-    return (
-        <div className="onboarding-create-password">
-            <div className="title">
-                <h3>{intl.formatMessage({id: 'onboarding.createPassword.heading'})}</h3>
-                <small><strong>{intl.formatMessage({id: 'onboarding.hint.required'})}</strong></small>
+    passwordOnChange = (e) => {
+        this.setState({
+            currentPassword: e.target.value,
+        })
+    }
+    render() {
+        const {intl, data: {password, passwordRepeat}} = this.props
+        
+        return (
+            <div className="onboarding-create-password">
+                <div className="title">
+                    <h3>{intl.formatMessage({id: 'onboarding.createPassword.heading'})}</h3>
+                    <small><strong>{intl.formatMessage({id: 'onboarding.hint.required'})}</strong></small>
+                </div>
+                <Form onChange={this.onChangeHandler}>
+                    <Row>
+                        <Col sm={6}>
+                            <HelTextInput
+                                label={intl.formatMessage({id: 'onboarding.label.password'})}
+                                id='password'
+                                name='password'
+                                type='password' 
+                                defaultValue={password}
+                                onChange={this.passwordOnChange}
+                            />
+                        </Col>
+                        
+                        <Col sm={6}>
+                            <HelTextInput
+                                label={intl.formatMessage({id: 'onboarding.label.passwordRepeat'})}
+                                id='passwordRepeat'
+                                name='passwordRepeat'
+                                type='password' 
+                                defaultValue={passwordRepeat}
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            <PasswordStrength 
+                                inputText={this.state.currentPassword}
+                            />
+                        </Col>
+                    </Row>
+                </Form>
             </div>
-            <Form onChange={onChangeHandler}>
-                <Row>
-                    <Col sm={6}>
-                        <HelTextInput
-                            label={intl.formatMessage({id: 'onboarding.label.password'})}
-                            id='password'
-                            name='password'
-                            type='password' 
-                            defaultValue={password}
-                        />
-                    </Col>
-                    
-                    <Col sm={6}>
-                        <HelTextInput
-                            label={intl.formatMessage({id: 'onboarding.label.passwordRepeat'})}
-                            id='passwordRepeat'
-                            name='passwordRepeat'
-                            type='password' 
-                            defaultValue={passwordRepeat}
-                        />
-                    </Col>
-                </Row>
-            </Form>
-        </div>
-    );
-};
+        );
+    }
+}
 
 CreatePassword.propTypes = {
     data: PropTypes.shape({

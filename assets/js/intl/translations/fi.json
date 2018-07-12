@@ -94,5 +94,10 @@
   "app.regions": "Alueet",
   "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten",
   "app.decision.making": "Päätöksenteko",
-  "app.decision.interest" : "Millaista aiheesta olet kiinnostunut?"
+  "app.decision.interest" : "Millaista aiheesta olet kiinnostunut?",
+
+  "password.cantBeEmpty": "Salasana ei voi olla tyhjä",
+  "password.notStrongEnough": "Salasana ei ole tarpeeksi vahva",
+  "password.ok": "Salasana on ok",
+  "password.strong": "Salasana on vahva"
 }
