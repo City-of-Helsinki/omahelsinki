@@ -10,10 +10,11 @@ const changeLocaleHandler = (state, {payload}) => {
         messages: getMessages(payload),
     };
 };
+const defaultLanguage = window.LANGUAGE_CODE || 'en'
 
 const defaultState = {
-    locale: 'en',
-    messages: getMessages('en'),
+    locale: defaultLanguage,
+    messages: getMessages(defaultLanguage),
 };
 
 export const reducer = handleActions(
