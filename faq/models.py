@@ -35,3 +35,5 @@ class faq(Page):
         FieldPanel('aria_controls'),
         FieldPanel('aria_labelledby'),
     ]
+
+    

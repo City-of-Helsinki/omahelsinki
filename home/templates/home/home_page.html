@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
 {% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
@@ -42,66 +42,21 @@
             <a name="palvelut"></a>
             <h1 class="section-header">oma.helsinki toimii täällä</h1>
             <div class="row">
+            {% for post in page.get_children %}
+            {% if post.specific.image %}
+            {% image post.specific.image max-320x320 as tmp_photo %}
             <div class="col-sm-4">
                 <div class="card service-card">
-                <a href="/hel-page-templates/pages/cattax/index.html" class="service-link"><img class="card-img-top" src="https://source.unsplash.com/collection/139386/380x244" alt="Card image cap"></a>
+                <a href="/hel-page-templates/pages/cattax/index.html" class="service-link"><img class="card-img-top" src="{{ tmp_photo.url }}" alt="Card image cap"></a>
                 <div class="card-body">
-                    <h4 class="card-title">Kissavero</h4>
-                    <p class="card-text">Laske ja maksa kissaverosi määrä.</p>
-                    <a href="/hel-page-templates/pages/cattax/index.html" class="service-link">kissavero.hel.fi</a>
+                    <h4 class="card-title">{{ post.specific.caption_head }}</h4>
+                    <p class="card-text">{{ post.specific.caption }}</p>
+                    <a href="/hel-page-templates/pages/cattax/index.html" class="service-link">{{ post.specific.service_link }}</a>
                 </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="card service-card">
-                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">My Helsinki</h4>
-                    <p class="card-text">Löydä oma Helsinkisi. Tutustu kaupungin tapahtumatarjontaan ja tee ja jaa omat Helsinki löytösi ja klassikkosi.</p>
-                    <a href="index.html" class="service-link">myhelsinki.fi</a>
-                </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card service-card">
-                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Varaamo</h4>
-                    <p class="card-text">Tiloja ja laitteita kaikenlaiseen tekemiseen Helsingissä</p>
-                    <a href="#" class="service-link">varaamo.hel.fi</a>
-                </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card service-card">
-                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Kerro kantasi</h4>
-                    <p class="card-text">Osallistu kaupungin kehittämiseen keskustelemalla ja vastaamalla kyselyihin.</p>
-                    <a href="#" class="service-link">kerrokantasi.hel.fi</a>
-                </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card service-card">
-                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Osallistuva budjetointi</h4>
-                    <p class="card-text">Ehdota projekteja ja tekoja Helsingin kehittämiseksi. Äänestä sinulle tärkeiden projektien rahoituksesta.</p>
-                    <a href="#" class="service-link">osallistu.hel.fi</a>
-                </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card service-card">
-                <img class="card-img-top" src="https://source.unsplash.com/collection/1103088/380x244" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Helsinki-sovellus</h4>
-                    <p class="card-text">Alati kehittyvä mobiilisovellus. Löydä uusimpia tapahtumia kaupungissa ja käytä puhelintasi kirjastokorttina. Voit myös lähettää palautetta kaupungille mistä tahansa aiheesta.</p>
-                    <a href="#" class="service-link">digi.hel.fi/sovellus</a>
-                </div>
-                </div>
-            </div>
+            {% endif %}
+            {% endfor %}
             </div>
         </div>
     </section>

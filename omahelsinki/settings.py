@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'hero',
     'faq',
     'search',
+    'services',
     'users',
     'mydata',
 
