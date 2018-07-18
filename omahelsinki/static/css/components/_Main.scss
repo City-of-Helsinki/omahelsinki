@@ -1,0 +1,35 @@
+.oma-tabs {
+    padding-top: 100px;
+    padding-bottom: 20px;
+    background: $hel-fog;
+    display: flex;
+    justify-content: center;
+    .nav-link { 
+        border: none;
+        span {
+            color: $hel-coat;
+        }
+        &:hover {
+            cursor: pointer;
+            span {
+                color: darken($color: $hel-coat, $amount: 10%);
+            }
+        }
+        &.active {
+            span {
+                color: $hel-white;
+            }
+            background: $hel-coat;
+            border-radius: 0;
+        }
+    }
+    
+}
+
+.oma-tab-content {
+    padding: 4rem 0 8rem;
+}
+
+.oma-tab-container {
+    background: $hel-silver;
+}

@@ -6,4 +6,5 @@ social-auth-app-django
 django-npm
 django-webpack-loader
 django_compressor
-django-libsass
+-e git+https://github.com/infoportugal/wagtail-modeltranslation@django2#egg=wagtail-modeltranslation
+

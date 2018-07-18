@@ -24,6 +24,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtail_modeltranslation',
+    'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
+
     'helusers',
     'home',
     'hero',
@@ -35,6 +39,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.modeladmin',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -62,6 +67,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -89,6 +95,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
+                'wagtail.contrib.settings.context_processors.settings',
+                'helusers.context_processors.settings'
             ],
         },
     },
@@ -125,6 +133,15 @@ from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
 
 LANGUAGE_CODE = 'fi'
 
+from django.utils.translation import gettext_lazy as _  # noqa isort:skip
+
+LANGUAGES = (
+    ('fi', _('Finnish')),
+    ('sv', _('Swedish')),
+    ('en', _('English')),
+)
+
+
 TIME_ZONE = 'Europe/Helsinki'
 
 USE_I18N = True
@@ -157,7 +174,7 @@ WEBPACK_LOADER = {
 }
 
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss','%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),
+    ('text/x-scss', '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),  # noqa
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -174,6 +191,9 @@ WAGTAIL_SITE_NAME = "omahelsinki"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# You should override this in your local_settings.py
+TUNNISTAMO_BASE_URL = 'https://api.hel.fi/sso'
 
 
 # local_settings.py can be used to override environment-specific settings
