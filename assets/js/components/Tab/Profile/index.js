@@ -2,8 +2,16 @@ import React, {Component} from 'react';
 import {Col, Row, Form, Button} from 'reactstrap'
 import {FormattedMessage, injectIntl} from 'react-intl'
 import HelTextInput from '../../HelTextInput'
+import {connect} from 'react-redux'
+
+import {fetchUserData} from '../../../user/redux'
 
 class Profile extends Component {
+
+    UNSAFE_componentWillMount() {
+        this.props.dispatch(fetchUserData())
+    } 
+
     render() {
         const {intl} = this.props
         return (
@@ -134,4 +142,4 @@ class Profile extends Component {
     }
 }
 
-export default injectIntl(Profile)
+export default connect()(injectIntl(Profile))
