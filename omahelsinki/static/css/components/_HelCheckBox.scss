@@ -1,33 +1,58 @@
 
 .hel-checkbox {
-    .btn-group {
-        display: flex;
-        flex-direction: column;
-
-        .btn {
-            width: 50%;
-            border-radius: 0;
-            background: $hel-white;
-            color: $hel-dark;
-            padding: .75rem 1.25rem;
-            text-align: left;
-            margin-left: 0 !important;
-            text-transform: capitalize;
-            border: none;
+    &.vertical {
+        .btn-group {
+            display: flex;
+            flex-direction: column;
     
-            &:not(:last-child) {
-                border-bottom: 1px solid $hel-gray;
+            .btn {
+                width: 50%;
+                border-radius: 0;
+                background: $hel-white;
+                color: $hel-dark;
+                padding: .75rem 1.25rem;
+                text-align: left;
+                margin-left: 0 !important;
+                text-transform: capitalize;
+                border: none;
+        
+                &:not(:last-child) {
+                    border-bottom: 1px solid $hel-gray;
+                }
+                &:focus, &:hover {
+                    outline: 0 !important;
+                    box-shadow: none !important;
+                }
+    
+                &:hover, 
+                &.active {
+                    background-color: $hel-coat !important;
+                    color: $hel-white;
+                }
             }
-            &:focus, &:hover {
-                outline: 0 !important;
+        }
+    }
+
+    &.horizontal {
+        .btn {
+            padding: .75rem 1.25rem;
+            background: transparent;
+            border: 2px solid $hel-black;
+            color: $hel-black;
+            text-transform: capitalize;
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+            &:hover, &.active {
+                background-color: $hel-bus;
+                border: 2px solid $hel-bus;
+                color: $hel-white;
+            } 
+            &:hover, &:focus {
+                outline: none;
                 box-shadow: none !important;
             }
-
-            &:hover, 
-            &.active {
-                background-color: $hel-coat !important;
-                color: $hel-white;
-            }
+            
         }
     }
 }

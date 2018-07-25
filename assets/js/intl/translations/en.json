@@ -86,6 +86,19 @@
     "app.services.related.text": "You can use multiple Helsinki City services and certain third party services in your Helsinki account.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
 
-    "app.history.text": "Historical data about the use of services when you are logged in with your Helsinki account."
+    "app.history.text": "Historical data about the use of services when you are logged in with your Helsinki account.",
+
+    "app.interests.your" : "Your interests",
+    "app.subjects": "Subjects",
+    "app.subject.interest" : "What kind of subjects you are interested in?",
+    "app.regions": "Regions",
+    "app.regions.interest": "What regions interest you the most",
+    "app.decision.making": "Decision making",
+    "app.decision.interest" : "What kind of subject you are interested in?",
+    
+    "password.cantBeEmpty": "Password can't be empty",
+    "password.notStrongEnough": "Password is not strong enough",
+    "password.ok": "Password is ok",
+    "password.strong": "Password is strong"
   }
   

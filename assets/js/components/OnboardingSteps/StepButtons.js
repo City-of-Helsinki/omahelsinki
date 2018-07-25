@@ -3,6 +3,8 @@ import {compose} from 'redux';
 import {withWizard} from 'react-albus';
 import {injectIntl} from 'react-intl';
 import {Button} from 'reactstrap';
+import classNames from 'classnames'
+import HelIcon from '../HelIcon'
 
 const StepButtons = ({wizard, intl, onFinish}) => {
     const {steps, step, next, previous} = wizard;
@@ -17,14 +19,16 @@ const StepButtons = ({wizard, intl, onFinish}) => {
         : 'onboarding.navigation.next');
 
     return (
-        <div>
+        <div className={classNames('step-btn', {'btn-center': isFirst})}>
             {!isFirst &&
-        <Button color='link' onClick={previous}>
-            {intl.formatMessage({id: 'onboarding.navigation.previous'})}
-        </Button>
+                <Button color='link' onClick={previous}>
+                    <HelIcon iconName="arrow-left"></HelIcon>
+                    {intl.formatMessage({id: 'onboarding.navigation.previous'})}
+                </Button>
             }
             <Button color='primary' onClick={nextClickHandler}>
                 {intl.formatMessage({id: nextTextId})}
+                <HelIcon iconName="arrow-right"></HelIcon>
             </Button>
         </div>
     );

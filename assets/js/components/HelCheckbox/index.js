@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {ButtonGroup, Button} from 'reactstrap'
+import classnames from 'classnames'
 
-export default class HelCheckbox extends Component {
+class HelCheckbox extends Component {
     constructor(props) {
         super(props)
 
@@ -23,11 +24,11 @@ export default class HelCheckbox extends Component {
     }
 
     render() {
-        const {data} = this.props
+        const {data, direction} = this.props
         const {selectedFields} = this.state
 
         return (
-            <div className="hel-checkbox">
+            <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
                 <ButtonGroup>
                     {data.map((d, index) => {
                         return (
@@ -44,3 +45,9 @@ export default class HelCheckbox extends Component {
         );
     }
 }
+
+HelCheckbox.defaultProps = {
+    direction: 'vertical',
+}
+
+export default HelCheckbox

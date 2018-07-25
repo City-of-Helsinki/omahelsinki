@@ -1,0 +1,62 @@
+@import 'OnboardingSteps/Welcome';
+@import 'OnboardingSteps/StepButtons';
+@import 'OnboardingSteps/PersonalInformation';
+@import 'OnboardingSteps/Interest';
+@import 'OnboardingSteps/Settings';
+
+.oma-onboarding {
+    &-container {
+        display: flex;
+        padding: $omaWrapperPadding;
+        justify-content: center;
+    }
+
+    &-wrapper {
+        height: inherit;
+        width: inherit;
+        background-color: $hel-fog;
+        display: flex;
+    }
+
+    .user-icon {
+        position: absolute;
+        padding: 20px;
+        top: -35px;
+        width: 70px;
+        height: 70px;
+        left: calc(50% - 25px);
+        border-radius: 50%;
+        background-color: $hel-bus;
+        svg {
+            height: 30px !important;
+            width: 30px !important;
+            color: $hel-white;
+        }
+    }
+
+    &-steps {
+        padding: 3rem;
+        background-color: $hel-white;
+        h3 {
+            margin-bottom: 2rem;
+        }
+    }
+    
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h3 {
+            margin: 0;
+        }
+        strong {
+            margin-left: 10px;
+        }
+        margin-bottom: 3rem;
+    }
+
+    display: flex;
+    flex: 1;
+    position: relative;
+    flex-direction: column;
+}

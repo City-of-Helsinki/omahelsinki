@@ -2,12 +2,35 @@
 
 @import "ocd-bootstrap";
 
+// import react-select styling
+
+$select-input-border-color: $hel-black;
+$select-input-border-width: 2px;
+$select-input-height: 50px;
+$select-input-border-radius: 0;
+
+$select-item-border-radius:         0;
+$select-item-gutter:                4px;
+$select-item-padding-vertical:      5px;
+$select-item-padding-horizontal:    10px;
+$select-item-font-size:             1em;
+$select-item-color:                 $hel-white; 
+$select-item-bg:                    $hel-bus;
+$select-item-border-color:          $hel-bus;
+
+@import "~react-select/scss/default";
 // Service specific color overrides
 $brand-light:  $hel-copper; //$hel-fog
 $brand-dark:   $hel-bus; //$hel-tram
 
 @import "omahelsinki";
-@import "components/HelCheckBox";
-@import "components/HelCollapsibleField";
-@import "components/Main";
+
+/* Components */
+
+@import 'components/HelCheckBox';
+@import 'components/HelCollapsibleField';
+@import 'components/Main';
+@import 'components/Onboarding';
+@import 'components/HelIcon';
+@import 'components/PasswordStrength'
 
