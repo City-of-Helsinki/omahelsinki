@@ -4,7 +4,7 @@ import {FormattedMessage, injectIntl} from 'react-intl'
 import HelTextInput from '../../HelTextInput'
 import {connect} from 'react-redux'
 
-import {fetchUserData} from '../../../user/redux'
+import {fetchUserData, updateUserData} from '../../../user/redux'
 
 class Profile extends Component {
 
@@ -12,7 +12,7 @@ class Profile extends Component {
         super(props)
 
         this.state = {
-            firstname: '',
+            firstName: '',
             lastName: '',
             email: '',
             password: '',
@@ -31,6 +31,30 @@ class Profile extends Component {
             [name]: value,
         })
     }
+
+    submitBasicInfo = (e) => {
+        e.preventDefault()
+
+        const {firstName, lastName, email, password} = this.state
+
+        this.props.dispatch(updateUserData({
+            firstName,
+            lastName,
+            email,
+            password,
+        }))
+    }
+
+    submitProfileInfo = (e) => {
+        e.preventDefault()
+
+        const {nickname} = this.state
+
+        this.props.dispatch(updateUserData({
+            nickname,
+        }))
+    }
+
     render() {
         const {intl} = this.props
         return (
@@ -51,7 +75,7 @@ class Profile extends Component {
                             <p className="lead text-muted"><FormattedMessage id="app.not.public" /></p>
                         </Col>
                     </Row>
-                    <Form className="form-basic-information">
+                    <Form className="form-basic-information" onSubmit={this.submitBasicInfo}>
                         <Row>
                             <Col xs={12} sm={6}>
                                 <HelTextInput 
@@ -121,7 +145,7 @@ class Profile extends Component {
                             <p className="lead text-muted"><FormattedMessage id="app.profileInformation.text" /></p>
                         </Col>
                     </Row>
-                    <Form className="form-profile-information">
+                    <Form className="form-profile-information" onSubmit={this.submitProfileInfo}>
                         <Row>
                             <Col xs={12} sm={6}>
                                 <div className="profile-picture">
