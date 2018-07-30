@@ -12,7 +12,12 @@ import configureStore from './root/store';
 
 import MainPage from './components/Main';
 import UserOnboarding from './components/Onboarding';
+import axios from 'axios'
+import {get as lodashGet} from 'lodash'
 
+const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
+
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}` ;
 const intlLocaleData = getIntlLocaleData();
 addLocaleData(intlLocaleData);
 

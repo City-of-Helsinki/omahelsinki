@@ -17,9 +17,7 @@ const defaultState = {
     messages: getMessages(defaultLanguage),
 };
 
-export const reducer = handleActions(
-    {
-        [changeLocale]: changeLocaleHandler,
-    },
-    defaultState
-);
+
+export const localeReducer = handleActions({
+    changeLocale, changeLocaleHandler,
+}, defaultState)

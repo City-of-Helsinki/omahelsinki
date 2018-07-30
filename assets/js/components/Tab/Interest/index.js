@@ -2,10 +2,19 @@ import React, {Component} from 'react';
 import {FormattedMessage} from 'react-intl'
 import {Row, Col} from 'reactstrap'
 import HelCheckbox from '../../HelCheckbox'
+import {getUserInterest} from '../../../user/redux'
+import {isEmpty} from 'lodash'
 
-import {mockTopics, mockDecisions} from '../../../__MOCKS__'
+import {connect} from 'react-redux'
+
+import {mockDecisions, mockTopics} from '../../../__MOCKS__'
 
 class Interest extends Component {
+
+    UNSAFE_componentWillMount() {
+        this.props.dispatch(getUserInterest())
+    } 
+
     render() {
         return (
             <div className="interests-view">
@@ -24,7 +33,7 @@ class Interest extends Component {
                             <h3><FormattedMessage id="app.topics"/></h3>
                             <p className="lead text-muted"><FormattedMessage id="app.topics.text" /></p>
                             <HelCheckbox 
-                                data={mockTopics}
+                                data={this.props.interests}
                             />
                         </Col>
                     </Row>
@@ -55,4 +64,23 @@ class Interest extends Component {
     }
 }
 
-export default Interest
+const mapStateToProps = ({intl, userReducer}) => {
+    let interests
+    const language = intl.locale
+    if(userReducer && !isEmpty(userReducer.interests)) {
+        interests = userReducer.interests.map(interest => ({
+            id: interest.code,
+            label: interest.label[language],
+        }))
+    } else {
+        interests = mockTopics
+    }
+
+    return {
+        language,
+        interests,
+    }
+}
+
+export default connect(mapStateToProps)(Interest)
+

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/City-of-Helsinki/omahelsinki#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-eslint": "7.2.3",
     "babel-runtime": "^6.23.0",
     "bootstrap": "^4.1.1",
@@ -41,6 +42,7 @@
     "reactstrap": "^6.2.0",
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
+    "redux-thunk": "^2.3.0",
     "zxcvbn": "^4.4.2"
   },
   "eslintConfig": {
