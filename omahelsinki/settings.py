@@ -123,8 +123,11 @@ AUTHENTICATION_BACKENDS = (
 AUTH_USER_MODEL = 'users.User'
 LOGOUT_REDIRECT_URL = '/'
 
-from helusers.defaults import SOCIAL_AUTH_PIPELINE  # noqa isort:skip
-
+from helusers.defaults import SOCIAL_AUTH_PIPELINE as HELUSERS_PIPELINE  # noqa isort:skip
+SOCIAL_AUTH_PIPELINE = HELUSERS_PIPELINE + (
+    'users.pipeline.set_session_expiration_from_api_token',
+)
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
