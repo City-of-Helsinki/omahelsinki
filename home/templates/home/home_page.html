@@ -1,11 +1,92 @@
 {% extends "base.html" %}
-
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
 
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).</p>
+<section class="hero-section bg-light" style="background-image: url('https://source.unsplash.com/collection/145103/1600x900')">
+    <div class="container">
+      <div class="row">
+        <div class="col-11 col-md-10 col-lg-8">
+          <div class="hero-content hero-content--inverse">
+            <h1>{{ page.heading }}</h1>
+            <p class="lead">{{ page.body| richtext }} </p>
+            <button type="button" class="btn btn-outline-light"  data-toggle="modal" data-target="#feedbackModal">{{ page.login_text }}</button>
+            <p><small><a href={{ page.register_link }}>Tai rekisteröidy täällä</a></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 
-    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+<section class="section section--intro">
+    <div class="container">
+        <a name="oma"></a>
+        <div class="row justify-content-left">
+        <div class="col-md-10 col-lg-8 content">
+            {% for post in page.get_children %}
+            {% if post.specific.hero_heading %}
+            <h1>{{ post.specific.hero_heading }}</h1>
+            <p>{{ post.specific.hero_body| richtext }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+</section>
+
+<div class="hecontainer"></div>
+    <section class="section section--cards">
+        <div class="container">
+            <a name="palvelut"></a>
+            <h1 class="section-header">oma.helsinki toimii täällä</h1>
+            <div class="row">
+            {% for post in page.get_children %}
+            {% if post.specific.image %}
+            {% image post.specific.image max-320x320 as tmp_photo %}
+            <div class="col-sm-4">
+                <div class="card service-card">
+                <a href="/hel-page-templates/pages/cattax/index.html" class="service-link"><img class="card-img-top" src="{{ tmp_photo.url }}" alt="Card image cap"></a>
+                <div class="card-body">
+                    <h4 class="card-title">{{ post.specific.caption_head }}</h4>
+                    <p class="card-text">{{ post.specific.caption }}</p>
+                    <a href="/hel-page-templates/pages/cattax/index.html" class="service-link">{{ post.specific.service_link }}</a>
+                </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="section section--faq">
+    <div class="container">
+        <a name="apua"></a>
+            <h1>Apua</h1>
+            <p class="lead">Usein kysytyt kysymyksen oma.helsinki -tilistä</p>
+            <div id="accordion" class="oma-faq">
+                {% for faq in page.get_children %}
+                {% if faq.specific.faq_question %}
+                <div class="card">
+                    <div class="card-header" id={{ faq.specific.aria_labelledby }}>
+                        <h4 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target={{ faq.specific.data_target }} aria-expanded="true" aria-controls={{ faq.specific.aria_controls }}>
+                            {{ faq.specific.faq_question }}
+                            </button>
+                        </h4>
+                    </div>
+                    <div id={{ faq.specific.aria_controls }} class="collapse" aria-labelledby={{ faq.specific.aria_labelledby }} data-parent="#accordion">
+                        <div class="card-body">
+                            {{ faq.specific.faq_answer| richtext }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+</section>
 {% endblock %}

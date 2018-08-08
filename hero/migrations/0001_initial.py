@@ -15,15 +15,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='HomePage',
+            name='Hero',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('heading', models.CharField(blank=True, max_length=100)),
-                ('body', wagtail.core.fields.RichTextField(blank=True)),
-                ('login_link', models.CharField(blank=True, max_length=500)),
-                ('login_text', models.CharField(blank=True, max_length=500)),
-                ('register_link', models.CharField(blank=True, max_length=500)),
-                ('register_text', models.CharField(blank=True, max_length=500)),
+                ('hero_heading', models.CharField(blank=True, max_length=100)),
+                ('hero_body', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,

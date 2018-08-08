@@ -30,7 +30,10 @@ INSTALLED_APPS = [
 
     'helusers',
     'home',
+    'hero',
+    'faq',
     'search',
+    'services',
     'users',
     'mydata',
 
@@ -47,12 +50,12 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
 
+    'compressor',
     'modelcluster',
     'taggit',
 
     'social_django',
     'webpack_loader',
-    'compressor',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -111,7 +114,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 #
 # Authentication
