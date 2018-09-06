@@ -1,11 +1,39 @@
 {% extends "base.html" %}
+{% load i18n wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
+<section class="hero-section bg-light" style="background-image: url('https://source.unsplash.com/collection/145103/1600x900')">
+  <div class="container">
+    <div class="row">
+      <div class="col-11 col-md-10 col-lg-8">
+        <div class="hero-content hero-content--inverse">
+          <h1>{{ page.title }}</h1>
+          <p class="lead">{{ page.call_to_action }}</p>
+          {% if not request.user.is_authenticated %}
+          <a href="{% url 'helusers:auth_login' %}"><button type="button" class="btn btn-outline-light">{% trans "Log in" %}</button></a>
+          <p><small><a href="{% url 'helusers:auth_login' %}">Tai rekisteröidy täällä</a></small></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).</p>
-
-    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+<section class="section section--intro">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8 content">
+        {% for block in page.hero %}
+        {% if block.block_type == 'heading' %}
+        <h1>{{ block.value }}</h1>
+        {% else %}
+        {% include_block block %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
