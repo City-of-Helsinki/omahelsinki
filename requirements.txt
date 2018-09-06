@@ -9,42 +9,41 @@
 -e git+https://github.com/City-of-Helsinki/django-helusers.git#egg=django-helusers
 -e git+https://github.com/infoportugal/wagtail-modeltranslation@django2#egg=wagtail-modeltranslation
 beautifulsoup4==4.6.0     # via wagtail
-certifi==2018.4.16        # via requests
+certifi==2018.8.24        # via requests
 chardet==3.0.4            # via requests
 defusedxml==0.5.0         # via python3-openid, social-auth-core
 django-appconf==1.0.2     # via django-compressor
 django-compressor==2.2
-django-modelcluster==4.1  # via wagtail
+django-modelcluster==4.2  # via wagtail
 django-modeltranslation==0.13b1
 django-npm==1.0.0
-django-taggit==0.22.2     # via wagtail
+django-taggit==0.23.0     # via wagtail
 django-treebeard==4.3     # via wagtail
 django-webpack-loader==0.6.0
-django==2.0.7
+django==2.0.8
 djangorestframework==3.8.2  # via drf-oidc-auth, wagtail
 draftjs-exporter==2.1.2   # via wagtail
 drf-oidc-auth==0.9
 future==0.16.0            # via pyjwkest
 html5lib==1.0.1           # via wagtail
 idna==2.7                 # via requests
-l18n==2016.6.4            # via wagtail
 oauthlib==2.1.0           # via requests-oauthlib, social-auth-core
 pillow==5.2.0             # via wagtail
 psycopg2==2.7.5
-pycryptodomex==3.6.3      # via pyjwkest
+pycryptodomex==3.6.6      # via pyjwkest
 pyjwkest==1.4.0           # via drf-oidc-auth
 pyjwt==1.6.4              # via social-auth-core
 python3-openid==3.1.0     # via social-auth-core
-pytz==2018.5              # via django, django-modelcluster, l18n
+pytz==2018.5              # via django, django-modelcluster, wagtail
 rcssmin==1.0.6            # via django-compressor
 requests-oauthlib==1.0.0  # via social-auth-core
 requests==2.19.1          # via pyjwkest, requests-oauthlib, social-auth-core, wagtail
 rjsmin==1.0.12            # via django-compressor
-six==1.11.0               # via html5lib, l18n, pyjwkest, social-auth-app-django, social-auth-core
+six==1.11.0               # via html5lib, pyjwkest, social-auth-app-django, social-auth-core, wagtail
 social-auth-app-django==2.1.0
 social-auth-core==1.7.0   # via social-auth-app-django
-unidecode==0.4.21         # via wagtail
+unidecode==1.0.22         # via wagtail
 urllib3==1.23             # via requests
-wagtail==2.1
+wagtail==2.2.2
 webencodings==0.5.1       # via html5lib
 willow==1.1               # via wagtail
