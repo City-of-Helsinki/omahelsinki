@@ -27,9 +27,9 @@ yarn build
 - `touch local_settings.py`
 - Inside `local_setting.py`, have `DEBUG = True`
 
-If you experience missing locale, try add locale to your shell script
+If you experience a missing locale error, you can try configuring the locale:
 
-#### Init Db (if doesnt exist)
+#### Initialize Database (if doesnt exist)
 - Check if db service is running
 - Create database 
 
