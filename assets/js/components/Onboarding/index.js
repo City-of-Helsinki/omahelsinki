@@ -4,8 +4,6 @@ import {Wizard, Steps, Step} from 'react-albus';
 import {
     StepButtons, 
     Welcome, 
-    PersonalInformation, 
-    CreatePassword, 
     Settings,
     Interest,
 } from '../OnboardingSteps';
@@ -19,19 +17,27 @@ class Onboarding extends React.Component {
         super(props);
 
         this.state = {
-            firstname: '',
-            lastname: '',
-            email: '',
-            ofAge: false,
             password: '',
             passwordRepeat: '',
             enableNotifications: '',
             enabledMessages: [],
             enabledNotifications: [],
+            selectedFields: [],
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.wizardFinished = this.wizardFinished.bind(this);
+    }
+    onSelect = (selected) => {
+        const {selectedFields} = this.state
+
+        const index = selectedFields.indexOf(selected);
+        if (index < 0) {
+            selectedFields.push(selected);
+        } else {
+            selectedFields.splice(index, 1);
+        }
+        this.setState({selectedFields: [...selectedFields]});
     }
 
     handleChange(data) {
@@ -42,15 +48,15 @@ class Onboarding extends React.Component {
     }
 
     render() {
-        const {firstname, lastname, email, ofAge} = this.state;
-        const personalInformation = {firstname, lastname, email, ofAge};
-        const {password, passwordRepeat} = this.state;
-        const passwordData = {password, passwordRepeat};
         const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
         const settings = {enabledNotifications, enabledMessages, enableNotifications};
+        const selectedFields = this.state.selectedFields.map((selectedField, i)=>(
+            <li key={i}>{selectedField.label.en}</li>
+        ))
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
+                    <div>{selectedFields}</div>
                     <div className="oma-onboarding-container">
                         <div className="oma-onboarding">
                             <div className="user-icon">
@@ -62,20 +68,10 @@ class Onboarding extends React.Component {
                                         <Step id='welcome'>
                                             <Welcome />
                                         </Step>
-                                        <Step id='personalInformation'>
-                                            <PersonalInformation
-                                                data={personalInformation}
-                                                onChange={this.handleChange}
-                                            />
-                                        </Step>
-                                        <Step id='createPassword'>
-                                            <CreatePassword
-                                                data={passwordData}
-                                                onChange={this.handleChange}
-                                            />
-                                        </Step>
                                         <Step id='interests'>
-                                            <Interest />
+                                            <Interest 
+                                                onSelect={this.onSelect}
+                                                selectedFields={this.state.selectedFields} />
                                         </Step>
                                         <Step id='settings'>
                                             <Settings
@@ -88,6 +84,7 @@ class Onboarding extends React.Component {
                                 
                                 <StepButtons onFinish={this.wizardFinished} />
                             </Wizard>
+                            
                         </div>
                     </div>
                 </Container>
