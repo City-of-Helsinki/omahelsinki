@@ -5,6 +5,7 @@ import HelTextInput from '../../HelTextInput'
 import {connect} from 'react-redux'
 
 import {fetchUserData, updateUserData} from '../../../user/redux'
+import ImgDropAndCrop from '../../ImgDropAndCrop'
 
 class Profile extends Component {
 
@@ -162,6 +163,7 @@ class Profile extends Component {
                                     <p><FormattedMessage id="app.profile.picture.select.new" /></p>
                                     <div className="profile-image-upload__picture">
                                         <input type="file" />
+                                        <ImgDropAndCrop />
                                     </div>
                                     <div className="profile-image-upload__help">
                                         <small className="text-muted"><FormattedMessage id="app.profile.picture.limit" /></small>
