@@ -64,7 +64,7 @@ $omaWrapperPadding: 4rem 0 8rem;
     left: 0;
     right: 0;
     display: block;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: $hel-copper;
   }
 
   .container {
@@ -90,27 +90,29 @@ $omaWrapperPadding: 4rem 0 8rem;
 
 .hero-content {
   padding: ($spacer * 2) 0;
-  text-shadow: 1px 1px 4px rgba(#000, 0.2);
+  text-shadow: 1px 1px 4px rgba(#000, 0.1);
   position: relative;
   z-index: 1;
 
   @include media-breakpoint-up(md) {
     h1 {
-      font-size: 5rem;
+      font-size: 3rem;
+      line-height: 1;
     }
   }
 
   @include media-breakpoint-up(lg) {
     padding: ($spacer * 5) 0;
     h1 {
-      font-size: 6rem;
+      font-size: 4rem;
+      line-height: 1;
     }
   }
 
   &.hero-content--inverse {
-    color: #FFFFFF;
-    h1, h2, h3, h4 , h5 ,h6, .lead {
-      color: #FFFFFF;
+    color: $black;
+    h1, h2, h3, h4 , h5 ,h6 {
+      color: $hel-bus;
     }
   }
 }
@@ -187,12 +189,12 @@ $omaWrapperPadding: 4rem 0 8rem;
 
 .section--intro {
   position: relative;
-  background-color: $brand-light;
+  background-color: $white;
   padding: ($spacer * 5) 0 ($spacer * 8);
 
   &::before {
     content: " ";
-    @include koro("beat", $brand-light, 500);
+    @include koro("beat", $white, 500);
     width: 100%;
     height: $spacer * 4.5;
     position: absolute;
