@@ -1,5 +1,6 @@
-import jwt
 from datetime import datetime, timezone
+
+import jwt
 
 
 def set_session_expiration_from_api_token(details, backend, response, request, user=None, *args, **kwargs):  # noqa

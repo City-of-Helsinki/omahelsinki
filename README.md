@@ -21,11 +21,17 @@
 
 ```bash
 yarn install
-NODE_ENV=development node_modules/.bin/webpack-cli --mode development
+yarn build
 ```
 #### Enable debug mode
 - `touch local_settings.py`
 - Inside `local_setting.py`, have `DEBUG = True`
+
+If you experience a missing locale error, you can try configuring the locale:
+
+#### Initialize Database (if doesnt exist)
+- Check if db service is running
+- Create database 
 
 #### Serve build
 
