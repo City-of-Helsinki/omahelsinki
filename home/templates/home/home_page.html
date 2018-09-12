@@ -1,13 +1,14 @@
 {% extends "base.html" %}
-{% load i18n wagtailcore_tags %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-<section class="hero-section hero-section--oma" style="background-image: url('https://source.unsplash.com/collection/145103/1600x900')">
+
+<section class="hero-section hero-section--oma">
   <div class="container">
     <div class="row">
-      <div class="col-11 col-md-10 col-lg-8">
+      <div class="col-11 col-md-7">
         <div class="hero-content hero-content--inverse">
           <h1>{{ page.title }}</h1>
           <p class="lead">{{ page.call_to_action }}</p>
@@ -15,6 +16,12 @@
           <a href="{% url 'helusers:auth_login' %}"><button type="button" class="btn btn-outline-light">{% trans "Log in" %}</button></a>
           <p><small><a href="{% url 'helusers:auth_login' %}">Tai rekisteröidy täällä</a></small></p>
           {% endif %}
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="hero-image-wrapper">
+          {% image page.background_image width-720 as floating_image %}
+          <img src="{{ floating_image.url }}" class="hero-image--floating">
         </div>
       </div>
     </div>

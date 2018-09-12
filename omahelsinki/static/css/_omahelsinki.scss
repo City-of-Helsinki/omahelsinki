@@ -54,18 +54,8 @@ $omaWrapperPadding: 4rem 0 8rem;
   min-height: 20rem;
   background-position: center;
   background-size: cover;
+  background-color: $hel-copper;
   padding: ($spacer * 3) 0 ($spacer * 8);
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: block;
-    background-color: $hel-copper;
-  }
 
   .container {
     z-index: 2;
@@ -89,7 +79,7 @@ $omaWrapperPadding: 4rem 0 8rem;
 }
 
 .hero-content {
-  padding: ($spacer * 2) 0;
+  padding: ($spacer * 2) 0 0;
   text-shadow: 1px 1px 4px rgba(#000, 0.1);
   position: relative;
   z-index: 1;
@@ -102,7 +92,7 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 
   @include media-breakpoint-up(lg) {
-    padding: ($spacer * 5) 0;
+    padding: ($spacer * 3) 0 0;
     h1 {
       font-size: 4rem;
       line-height: 1;
@@ -114,6 +104,38 @@ $omaWrapperPadding: 4rem 0 8rem;
     h1, h2, h3, h4 , h5 ,h6 {
       color: $hel-bus;
     }
+  }
+}
+
+.hero-image-wrapper{
+  position: relative;
+  height: 100%;
+  margin-bottom: $spacer * -12;
+  margin-top: $spacer *2;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    min-height: $spacer * 22;
+  }
+}
+
+.hero-image--floating {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  max-height: $spacer * 22;
+
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    right: 0;
+    bottom: $spacer * -12;
+    max-width: 280px;
+    max-height: $spacer * 30;
+  }
+
+  @include media-breakpoint-up(lg) {
+    max-width: 360px;
+    max-height: $spacer * 36;
   }
 }
 
@@ -190,7 +212,7 @@ $omaWrapperPadding: 4rem 0 8rem;
 .section--intro {
   position: relative;
   background-color: $white;
-  padding: ($spacer * 5) 0 ($spacer * 8);
+  padding: ($spacer * 8) 0;
 
   &::before {
     content: " ";
