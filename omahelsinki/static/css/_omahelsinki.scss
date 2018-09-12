@@ -80,9 +80,14 @@ $omaWrapperPadding: 4rem 0 8rem;
 
 .hero-content {
   padding: ($spacer * 2) 0 0;
-  text-shadow: 1px 1px 4px rgba(#000, 0.1);
+  //text-shadow: 1px 1px 4px rgba(#000, 0.1);
   position: relative;
   z-index: 1;
+  color: $black;
+
+  h1, h2, h3, h4 , h5 ,h6 {
+    color: $hel-bus;
+  }
 
   @include media-breakpoint-up(md) {
     h1 {
@@ -96,13 +101,6 @@ $omaWrapperPadding: 4rem 0 8rem;
     h1 {
       font-size: 4rem;
       line-height: 1;
-    }
-  }
-
-  &.hero-content--inverse {
-    color: $black;
-    h1, h2, h3, h4 , h5 ,h6 {
-      color: $hel-bus;
     }
   }
 }
