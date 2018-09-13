@@ -26,7 +26,6 @@ class HelCheckbox extends Component {
     render() {
         const {data, direction} = this.props
         const {selectedFields} = this.state
-
         return (
             <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
                 <ButtonGroup>

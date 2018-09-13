@@ -10,12 +10,34 @@ import {connect} from 'react-redux'
 import {mockDecisions, mockTopics} from '../../../__MOCKS__'
 
 class Interest extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            interestTopics: [],
+        }
+    }
 
     UNSAFE_componentWillMount() {
         this.props.dispatch(getUserInterest())
     } 
+    componentDidMount(){
+        fetch('https://profile-api.test.hel.ninja/profile-test/v1/interest-concept/')
+            .then(response=>response.json())
+            .then(response=>{
+                this.setState({
+                    interestTopics:response.results,
+                })
+            })
+            .catch(error=>console.log(error))
+    }
 
     render() {
+        const interestTopics = this.state.interestTopics.filter(interestTopic => interestTopic.label.en !== this.props.interests.label)
+        console.log('interestTopics',this.state.interestTopics)
+        console.log('interests',this.props.interests)
+        const filteredInterests = interestTopics.map((interestTopic, i)=>(
+            <li key={i}>{interestTopic.label.en}</li>
+        ))
         return (
             <div className="interests-view">
                 <section>
@@ -35,6 +57,7 @@ class Interest extends Component {
                             <HelCheckbox 
                                 data={this.props.interests}
                             />
+                            <div>{filteredInterests}</div>
                         </Col>
                     </Row>
                 </section>
