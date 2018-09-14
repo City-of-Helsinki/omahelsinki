@@ -4,7 +4,6 @@ import jwt
 
 
 def set_session_expiration_from_api_token(details, backend, response, request, user=None, *args, **kwargs):  # noqa
-    print("set session exp")
     if not user:
         return
     api_tokens = request.session.get('api_tokens')
