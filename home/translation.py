@@ -1,7 +1,7 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from .models import HomePage, HelpPage, ServicePage, PageFAQ
+from .models import HelpPage, HomePage, PageFAQ, ServicePage
 
 
 @register(HomePage)
