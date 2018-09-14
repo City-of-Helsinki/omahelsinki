@@ -193,7 +193,7 @@ WAGTAIL_SITE_NAME = "omahelsinki"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
-SOCIAL_AUTH_TUNNISTAMO_SCOPE = ['https://api.hel.fi/auth/profiles', 'login_entries', 'user_consents']
+SOCIAL_AUTH_TUNNISTAMO_SCOPE = ['https://api.hel.fi/auth/profiles', 'login_entries', 'consents']
 
 # You should override this in your local_settings.py
 TUNNISTAMO_BASE_URL = 'https://api.hel.fi/sso'
