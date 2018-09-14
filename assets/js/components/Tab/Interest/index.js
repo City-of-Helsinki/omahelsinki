@@ -4,40 +4,16 @@ import {Row, Col} from 'reactstrap'
 import HelCheckbox from '../../HelCheckbox'
 import {getUserInterest} from '../../../user/redux'
 import {isEmpty} from 'lodash'
-
 import {connect} from 'react-redux'
+import {mockTopics} from '../../../__MOCKS__'
 
-import {mockDecisions, mockTopics} from '../../../__MOCKS__'
-
-class Interest extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            interestTopics: [],
-        }
-    }
+class Interest extends Component { 
 
     UNSAFE_componentWillMount() {
         this.props.dispatch(getUserInterest())
     } 
-    componentDidMount(){
-        fetch('https://profile-api.test.hel.ninja/profile-test/v1/interest-concept/')
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({
-                    interestTopics:response.results,
-                })
-            })
-            .catch(error=>console.log(error))
-    }
-
     render() {
-        const interestTopics = this.state.interestTopics.filter(interestTopic => interestTopic.label.en !== this.props.interests.label)
-        console.log('interestTopics',this.state.interestTopics)
-        console.log('interests',this.props.interests)
-        const filteredInterests = interestTopics.map((interestTopic, i)=>(
-            <li key={i}>{interestTopic.label.en}</li>
-        ))
+        
         return (
             <div className="interests-view">
                 <section>
@@ -57,7 +33,6 @@ class Interest extends Component {
                             <HelCheckbox 
                                 data={this.props.interests}
                             />
-                            <div>{filteredInterests}</div>
                         </Col>
                     </Row>
                 </section>
@@ -67,18 +42,6 @@ class Interest extends Component {
                         <Col xs={12}>
                             <h3><FormattedMessage id="app.areas"/></h3>
                             <p className="lead text-muted"><FormattedMessage id="app.areas.text" /></p>
-                        </Col>
-                    </Row>
-                </section>
-
-                <section>
-                    <Row>
-                        <Col xs={12}>
-                            <h3><FormattedMessage id="app.decision"/></h3>
-                            <p className="lead text-muted"><FormattedMessage id="app.decision.text" /></p>
-                            <HelCheckbox 
-                                data={mockDecisions}
-                            />
                         </Col>
                     </Row>
                 </section>
