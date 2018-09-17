@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
 import Dropzone from 'react-dropzone'
+/*eslint-disable */
+import ReactCrop from 'react-image-crop'
+/*eslint-enable */
+
+import '../../../../node_modules/react-image-crop/dist/ReactCrop.css';
 
 const imageMaxSize = 100000000
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
@@ -7,8 +12,12 @@ const acceptedFileTypesArray = acceptedFileTypes.split(',').map((item) => {retur
 class ImgDropAndCrop extends Component {
     constructor(props){
         super(props)
+        this.imagePreviewCanvasRef = React.createRef()
         this.state = {
             imgSrc: null,
+            crop: {
+                aspect: 1 / 1,
+            },
         }
     }
 
@@ -51,17 +60,35 @@ class ImgDropAndCrop extends Component {
         }
     }
 
+    handleImageLoaded = (image) => {
+        console.log(Image)
+    }
+
+    handleOnCropChange = (crop) => {
+        this.setState({crop:crop})
+    }
+
+    handleOnCropComplete = (crop, pixelCrop) => {
+        console.log(crop, pixelCrop)
+    }
 
     render() {
         const {imgSrc} = this.state
         return(
             <div>
-                <h1>Drag and Crop</h1>
                 {imgSrc !== null ?
-                    <div>
-                        {imgSrc}
-                        <img src={imgSrc} alt='some text here' /> 
-                    </div> : 
+                    <div>    
+                        <ReactCrop 
+                            src={imgSrc} 
+                            crop={this.state.crop}
+                            onImageLoaded={this.handleImageLoaded}
+                            onComplete={this.handleOnCropComplete} 
+                            onChange={this.handleOnCropChange}/>
+                        <br />
+                        <p>Preview Canvas Crop</p>
+                        <canvas ref={this.image}></canvas>
+                    </div> 
+                    : 
                     <Dropzone
                         onDrop={this.handleOnDrop}
                         multiple={false}
