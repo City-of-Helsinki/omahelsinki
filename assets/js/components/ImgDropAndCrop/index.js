@@ -5,7 +5,7 @@ import ReactCrop from 'react-image-crop'
 /*eslint-enable */
 
 import '../../../../node_modules/react-image-crop/dist/ReactCrop.css';
-import {image64toCanvasRef} from './ReusableUtils';
+import {image64toCanvasRef, extractImageFileExtensionFromBase64, base64StringtoFile, downloadBase64File} from './ReusableUtils';
 
 const imageMaxSize = 100000000
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
@@ -76,39 +76,18 @@ class ImgDropAndCrop extends Component {
         image64toCanvasRef(canvasRef, imgSrc, pixelCrop)
     }
 
-    getCroppedImg = (imgSrc, pixelCrop, fileName) => {
-        console.log('imgSrc', imgSrc);
-        console.log('pixelCrop', pixelCrop)
-        console.log('fileName', fileName)
-        const canvas = document.createElement('canvas');
-        canvas.width = pixelCrop.width;
-        canvas.height = pixelCrop.height;
-        const ctx = canvas.getContext('2d');
-      
-        ctx.drawImage(
-            imgSrc,
-            pixelCrop.x,
-            pixelCrop.y,
-            pixelCrop.width,
-            pixelCrop.height,
-            0,
-            0,
-            pixelCrop.width,
-            pixelCrop.height
-        );
-      
-        // As Base64 string
-        // const base64Image = canvas.toDataURL('image/jpeg');
-      
-        // As a blob
-        return new Promise((resolve, reject) => {
-            canvas.toBlob(file => {
-                file.name = fileName;
-                resolve(file);
-            }, 'image/jpeg');
-        });
+    handleOnCropUpload = (event) => {
+        event.preventDefault()
+        const {imgSrc} = this.state
+        const canvasRef = this.imagePreviewCanvasRef.current
+        const fileExtension = extractImageFileExtensionFromBase64(imgSrc)
+        const imageData64 = canvasRef.toDataURL('/image' + fileExtension)
+        const myFilename = 'User1' + fileExtension
+        console.log(myFilename)
+        const myNewCroppedFile = base64StringtoFile(imageData64, myFilename)
+        console.log(myNewCroppedFile)
+        downloadBase64File(imageData64, myFilename);
     }
-
 
 
     render() {
@@ -135,6 +114,7 @@ class ImgDropAndCrop extends Component {
                         accept={acceptedFileTypes} 
                     >Drop image here / Click to upload</Dropzone>
                 }
+                <button onClick={this.handleOnCropUpload}>Save Cropped Image</button>
             </div>
         )
     }
