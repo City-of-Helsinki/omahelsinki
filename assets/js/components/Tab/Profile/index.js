@@ -162,7 +162,6 @@ class Profile extends Component {
                                 <div className="profile-image-upload">
                                     <p><FormattedMessage id="app.profile.picture.select.new" /></p>
                                     <div className="profile-image-upload__picture">
-                                        <input type="file" />
                                         <ImgDropAndCrop />
                                     </div>
                                     <div className="profile-image-upload__help">

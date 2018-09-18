@@ -15,10 +15,10 @@ export function downloadBase64File(base64Data, filename) {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-  }
+}
 
 export  function extractImageFileExtensionFromBase64(base64Data){
-    return base64Data.substring("data:image/".length, base64Data.indexOf(";base64"))
+    return base64Data.substring('data:image/'.length, base64Data.indexOf(';base64'))
 }
 
 export function image64toCanvasRef(canvasRef, image64, pixelCrop){
@@ -30,15 +30,15 @@ export function image64toCanvasRef(canvasRef, image64, pixelCrop){
     image.src = image64
     image.onload = function() {
         ctx.drawImage(
-          image,
-          pixelCrop.x,
-          pixelCrop.y,
-          pixelCrop.width,
-          pixelCrop.height,
-          0,
-          0,
-          pixelCrop.width,
-          pixelCrop.height
+            image,
+            pixelCrop.x,
+            pixelCrop.y,
+            pixelCrop.width,
+            pixelCrop.height,
+            0,
+            0,
+            pixelCrop.width,
+            pixelCrop.height
         )
-      }
-  }
+    }
+}

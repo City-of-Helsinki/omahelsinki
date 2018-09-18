@@ -5,6 +5,7 @@ import ReactCrop from 'react-image-crop'
 /*eslint-enable */
 
 import '../../../../node_modules/react-image-crop/dist/ReactCrop.css';
+import {image64toCanvasRef} from './ReusableUtils';
 
 const imageMaxSize = 100000000
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
@@ -49,7 +50,7 @@ class ImgDropAndCrop extends Component {
                 const currentFile = files[0]
                 const myFileItemReader = new FileReader()
                 myFileItemReader.addEventListener('load', () => {
-                    console.log(myFileItemReader.result)
+                    //console.log(myFileItemReader.result)
                     this.setState({
                         imgSrc: myFileItemReader.result,
                     })
@@ -61,7 +62,7 @@ class ImgDropAndCrop extends Component {
     }
 
     handleImageLoaded = (image) => {
-        console.log(Image)
+        //console.log(Image)
     }
 
     handleOnCropChange = (crop) => {
@@ -70,7 +71,45 @@ class ImgDropAndCrop extends Component {
 
     handleOnCropComplete = (crop, pixelCrop) => {
         console.log(crop, pixelCrop)
+        const canvasRef = this.imagePreviewCanvasRef.current
+        const {imgSrc} = this.state
+        image64toCanvasRef(canvasRef, imgSrc, pixelCrop)
     }
+
+    getCroppedImg = (imgSrc, pixelCrop, fileName) => {
+        console.log('imgSrc', imgSrc);
+        console.log('pixelCrop', pixelCrop)
+        console.log('fileName', fileName)
+        const canvas = document.createElement('canvas');
+        canvas.width = pixelCrop.width;
+        canvas.height = pixelCrop.height;
+        const ctx = canvas.getContext('2d');
+      
+        ctx.drawImage(
+            imgSrc,
+            pixelCrop.x,
+            pixelCrop.y,
+            pixelCrop.width,
+            pixelCrop.height,
+            0,
+            0,
+            pixelCrop.width,
+            pixelCrop.height
+        );
+      
+        // As Base64 string
+        // const base64Image = canvas.toDataURL('image/jpeg');
+      
+        // As a blob
+        return new Promise((resolve, reject) => {
+            canvas.toBlob(file => {
+                file.name = fileName;
+                resolve(file);
+            }, 'image/jpeg');
+        });
+    }
+
+
 
     render() {
         const {imgSrc} = this.state
@@ -79,14 +118,14 @@ class ImgDropAndCrop extends Component {
                 {imgSrc !== null ?
                     <div>    
                         <ReactCrop 
-                            src={imgSrc} 
+                            src={imgSrc}
                             crop={this.state.crop}
                             onImageLoaded={this.handleImageLoaded}
                             onComplete={this.handleOnCropComplete} 
                             onChange={this.handleOnCropChange}/>
                         <br />
                         <p>Preview Canvas Crop</p>
-                        <canvas ref={this.image}></canvas>
+                        <canvas ref={this.imagePreviewCanvasRef}></canvas>
                     </div> 
                     : 
                     <Dropzone
