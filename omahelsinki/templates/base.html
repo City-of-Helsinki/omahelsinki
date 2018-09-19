@@ -27,6 +27,17 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
         {% block extra_head %}{% endblock %}
+        <script>
+        window.CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
+        window.LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
+        window.TUNNISTAMO_BASE_URL = "{{ TUNNISTAMO_BASE_URL }}";
+        window.PROFILE_API_URL = "{{ PROFILE_API_URL }}";
+        window.API_TOKENS = {
+          {% if request.session.api_tokens %}{% for api, token in request.session.api_tokens.items %}
+            "{{ api }}": "{{ token }}"{% if not forloop.last %},{% endif %}
+          {% endfor %}{% endif %}
+        };
+        </script>
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -154,14 +165,6 @@
       <script type="text/javascript" src="{% static 'js/omahelsinki.js' %}"></script>
 
       <script>
-        window.CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
-        window.TUNNISTAMO_BASE_URL = "{{ TUNNISTAMO_BASE_URL }}";
-        window.API_TOKENS = {
-        {% if request.session.api_tokens %}{% for api, token in request.session.api_tokens.items %}
-          "{{ api }}": "{{ token }}"{% if not forloop.last %},{% endif %}
-        {% endfor %}{% endif %}
-        };
-
         $('.language-menu .dropdown-item').click(function(ev) {
           var newLanguage = $(ev.target).data('language');
           $.ajax({

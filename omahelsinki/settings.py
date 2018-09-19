@@ -196,6 +196,10 @@ BASE_URL = 'http://example.com'
 # You should override this in your local_settings.py
 TUNNISTAMO_BASE_URL = 'https://api.hel.fi/sso'
 
+# TODO: should probably not point to a test instance.
+PROFILE_API_URL = 'https://profile-api.test.hel.ninja/profile-test/v1'
+
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

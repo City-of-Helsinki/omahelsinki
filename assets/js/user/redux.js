@@ -1,7 +1,7 @@
 import {createActions, handleActions} from 'redux-actions';
 import axios from 'axios'
 
-const rootURL = 'https://profile-api.test.hel.ninja/profile-test/v1' 
+import {profileApiUrl as rootURL} from '../settings'
 
 // TODO: Replace this with env setting?
 
