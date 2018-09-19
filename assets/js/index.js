@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {addLocaleData} from 'react-intl';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import axios from 'axios'
+import {get as lodashGet} from 'lodash'
 
 import ConnectedIntlProvider from './intl/ConnectedIntlProvider';
 import getIntlLocaleData from './intl/getIntlLocaleData';
@@ -12,8 +14,7 @@ import configureStore from './root/store';
 
 import MainPage from './components/Main';
 import UserOnboarding from './components/Onboarding';
-import axios from 'axios'
-import {get as lodashGet} from 'lodash'
+import AllServices from './services/AllServices';
 
 const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
 
@@ -31,6 +32,7 @@ ReactDOM.render(
                     <Switch>
                         <Route exact path='/mydata/' component={MainPage} />
                         <Route exact path='/welcome/' component={UserOnboarding} />
+                        <Route exact path='/services/' component={AllServices} />
                     </Switch>
                 </BrowserRouter>
             </App>
