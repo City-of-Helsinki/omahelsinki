@@ -7,7 +7,7 @@ import {fetchAllServices} from './redux'
 
 import Loading from '../components/Loading'
 import Error from '../components/Error'
-import ServicesGrid from '../components/ServicesGrid'
+import ServiceList from '../components/ServiceList'
 import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
@@ -54,8 +54,8 @@ class AllServices extends React.Component {
                             <div className="services-amount">
                                 <FormattedMessage id="app.services.all.amountOfServices" values={{amount: servicesCount}} />
                             </div>
-                            <div className="services-row-1">
-                                <ServicesGrid services={servicesForFirstRow} />
+                            <div className="service-list">
+                                <ServiceList services={servicesForFirstRow} />
                             </div>
                             <div className="cta-register">
                                 <div className="left-icon">
@@ -66,8 +66,8 @@ class AllServices extends React.Component {
                                     <HelIcon iconName="arrow-right" />
                                 </a>
                             </div>
-                            <div className="services-rest">
-                                <ServicesGrid services={services} />
+                            <div className="service-list">
+                                <ServiceList services={services} />
                             </div>
                         </Col>
                     </Row>
