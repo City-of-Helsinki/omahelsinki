@@ -1,6 +1,9 @@
 {
     "app.welcome": "Welcome!",
 
+    "app.loading": "Loading...",
+    "app.error": "An error occurred.",
+
     "app.profile": "Profile",
     "app.interests": "Interests",
     "app.services": "Services",
@@ -85,6 +88,8 @@
     "app.services.related": "Related Services",
     "app.services.related.text": "You can use multiple Helsinki City services and certain third party services in your Helsinki account.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
+    "app.services.all.amountOfServices": "We have {amount} services.",
+    "app.services.all.cta": "Not a user? Start by creating an account",
 
     "app.history.text": "Historical data about the use of services when you are logged in with your Helsinki account.",
 
@@ -101,4 +106,3 @@
     "password.ok": "Password is ok",
     "password.strong": "Password is strong"
   }
-  
