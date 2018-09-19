@@ -58,7 +58,7 @@ class AllServices extends React.Component {
                                 <ServiceList services={servicesForFirstRow} />
                             </div>
                             <div className="cta-register">
-                                <div className="left-icon">
+                                <div className="left-icon d-none d-md-block">
                                     <HelIcon iconName="user-o" />
                                 </div>
                                 <a href="/login">
