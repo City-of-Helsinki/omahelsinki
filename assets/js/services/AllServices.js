@@ -44,7 +44,7 @@ class AllServices extends React.Component {
         } else if (!services) {
             return null
         }
-        const servicesCount = services.length
+        const amountOfServices = services.length
         const servicesForFirstRow = services.splice(0, 3)
         return (
             <section className="section section--services">
@@ -52,7 +52,7 @@ class AllServices extends React.Component {
                     <Row>
                         <Col xs={12}>
                             <div className="services-amount">
-                                <FormattedMessage id="app.services.all.amountOfServices" values={{amount: servicesCount}} />
+                                <FormattedMessage id="app.services.all.amountOfServices" values={{amount: amountOfServices}} />
                             </div>
                             <div className="service-list">
                                 <ServiceList services={servicesForFirstRow} />
