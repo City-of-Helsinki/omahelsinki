@@ -29,14 +29,14 @@ export default class History extends Component {
     sortIcon = (column, colIndex)=>(
         <div style={ {display: 'flex'}}>
             { column.text }
-            <span>
+            <div className="arrow-icon">
                 <HelIcon iconName="arrow-up" />
-                <HelIcon iconName="arrow-down" />
-            </span>
+                <span className="arrow-down"><HelIcon iconName="arrow-down" /></span>
+            </div>
         </div>
     )
     dateIcon = (cell, row)=>(
-        <div><HelIcon iconName="calendar" /> { moment(cell).format('lll') }</div>    
+        <div><HelIcon iconName="calendar" />{' '}{ moment(cell).format('lll') }</div>    
     )
 
     render() {
@@ -70,7 +70,6 @@ export default class History extends Component {
                             <BootstrapTable 
                                 striped
                                 bordered = {false}
-                                rowStyle={ {height: '75px'} }
                                 keyField='timestamp' 
                                 data={ this.state.historyData } 
                                 columns={ columns }
