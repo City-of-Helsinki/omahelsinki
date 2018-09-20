@@ -1,10 +1,59 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap'
 import {FormattedMessage} from 'react-intl'
-import HelCollapsibleField from '../../HelCollapsibleField'
-
+import axios from 'axios';
+import HelIcon from '../../HelIcon'
+import moment from 'moment'
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 export default class History extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            historyData : [],            
+            
+        }
+    }
+
+    componentDidMount(){
+        const token = window.TUNNISTAMO_ACCESS_TOKEN
+        const config = {
+            headers: {'Authorization': 'Bearer ' + token},
+        }
+        axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config)
+            .then(res=>this.setState({
+                historyData: res.data.results,
+            }))
+    }
+
+    sortIcon = (column, colIndex)=>(
+        <div style={ {display: 'flex'}}>
+            { column.text }
+            <span>
+                <HelIcon iconName="arrow-up" />
+                <HelIcon iconName="arrow-down" />
+            </span>
+        </div>
+    )
+    dateIcon = (cell, row)=>(
+        <div><HelIcon iconName="calendar" /> { moment(cell).format('lll') }</div>    
+    )
+
     render() {
+        const columns = [{
+            dataField: 'timestamp', 
+            text: 'Date',
+            sort: true,
+            headerFormatter: this.sortIcon,
+            formatter: this.dateIcon,
+
+        },
+        {
+            dataField: 'service',
+            text: 'Name',
+            sort: true,
+            headerFormatter: this.sortIcon,
+        }]
         return (
             <div className="history-view">
                 <section>
@@ -18,25 +67,14 @@ export default class History extends Component {
                 <section>
                     <Row>
                         <Col xs={12}>
-                            <HelCollapsibleField
-                                title="Example"
-                            >
-                                <div className="example-collapse-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                </div>
-                            </HelCollapsibleField>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col xs={12}>
-                            <HelCollapsibleField
-                                title="Example"
-                            >
-                                <div className="example-collapse-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                </div>
-                            </HelCollapsibleField>
+                            <BootstrapTable 
+                                striped
+                                bordered = {false}
+                                rowStyle={ {height: '75px'} }
+                                keyField='timestamp' 
+                                data={ this.state.historyData } 
+                                columns={ columns }
+                                pagination={ paginationFactory() }/>
                         </Col>
                     </Row>
                 </section>

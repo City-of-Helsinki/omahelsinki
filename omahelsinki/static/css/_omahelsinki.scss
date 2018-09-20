@@ -483,3 +483,17 @@ $omaWrapperPadding: 4rem 0 8rem;
   border-top: 1px solid $brand-dark;
   padding-top: 1em;
 }
+
+//History tab
+
+.history-view{
+  table thead th{
+    border-bottom: none;
+  }
+  table td{
+    border-top: none;
+  }
+  table th{
+    border-top: none;
+  }
+}
