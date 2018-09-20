@@ -2,13 +2,13 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Card, CardImg, CardBody, CardLink, CardText, CardTitle} from 'reactstrap'
 
-const Service = ({service, type, locale}) => {
-    const image = service.image || 'https://via.placeholder.com/360x240'
+const Service = ({service, locale}) => {
+    const image = service.image
     const name = service.name[locale]
     const url = service.url[locale]
     const description = service.description[locale]
     return (
-        <Card>
+        <Card className="service">
             <CardImg top src={image} />
             <CardBody>
                 <CardTitle><CardLink href={url}>{name}</CardLink></CardTitle>
