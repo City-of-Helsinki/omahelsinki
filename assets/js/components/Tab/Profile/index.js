@@ -18,6 +18,7 @@ class Profile extends Component {
             email: '',
             password: '',
             nickname: '',
+            
         }
     }
     UNSAFE_componentWillMount() {
@@ -162,7 +163,7 @@ class Profile extends Component {
                                 <div className="profile-image-upload">
                                     <p><FormattedMessage id="app.profile.picture.select.new" /></p>
                                     <div className="profile-image-upload__picture">
-                                        <ImgDropAndCrop />
+                                        <ImgDropAndCrop getCroppedImage={(img) => console.log('croppped', img)} />
                                     </div>
                                     <div className="profile-image-upload__help">
                                         <small className="text-muted"><FormattedMessage id="app.profile.picture.limit" /></small>

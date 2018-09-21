@@ -85,7 +85,8 @@ class ImgDropAndCrop extends Component {
         const myFilename = 'User1' + fileExtension
         console.log(myFilename)
         const myNewCroppedFile = base64StringtoFile(imageData64, myFilename)
-        console.log(myNewCroppedFile)
+        this.props.getCroppedImage(myNewCroppedFile)
+        
         downloadBase64File(imageData64, myFilename);
     }
 
