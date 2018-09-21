@@ -13,7 +13,6 @@ class HelSelect extends React.Component {
     render() {
         const {selectedOption} = this.state
         const {options, ...rest} = this.props
-
         return (
             <Select
                 name="hel-select"
