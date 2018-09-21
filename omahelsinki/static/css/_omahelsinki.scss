@@ -472,6 +472,7 @@ $omaWrapperPadding: 4rem 0 8rem;
 
 .cta-register {
   background: $hel-copper;
+  margin-bottom: 40px;
   padding-bottom: 30px;
   padding-top: 30px;
   .left-icon {
@@ -502,5 +503,10 @@ $omaWrapperPadding: 4rem 0 8rem;
 }
 
 .service-list {
-  margin-bottom: 40px;
+  .service-wrapper {
+    margin-bottom: 30px;
+  }
+  .card {
+    height: 100%;
+  }
 }

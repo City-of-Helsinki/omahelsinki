@@ -2,5 +2,6 @@
   img {
     height: 250px;
     background: $hel-bus; // Fallback in case there is no image
+    object-fit: cover;
   }
 }

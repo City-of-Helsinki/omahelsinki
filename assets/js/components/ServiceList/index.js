@@ -1,12 +1,20 @@
 import React from 'react'
-import {CardDeck} from 'reactstrap'
+import {Container, Col, Row} from 'reactstrap'
 import Service from '../Service'
 
 const ServiceList = ({services}) => {
     return (
-        <CardDeck>
-            {services.map((service) => <Service service={service} key={service.id}/>)}
-        </CardDeck>
+        <Container>
+            <Row>
+                {services.map((service, index) => {
+                    return (
+                        <Col key={index} xs={12} md={6} lg={4} className="service-wrapper">
+                            <Service service={service} />
+                        </Col>
+                    )
+                })}
+            </Row>
+        </Container>
     )
 }
 
