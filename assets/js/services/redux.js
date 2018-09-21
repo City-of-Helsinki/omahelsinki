@@ -27,39 +27,41 @@ export const {
 
 const servicesDefaultState = {
     allServices: [],
+    allServicesError: null,
+    allServicesLoading: false,
     userServices: [],
-    error: null,
-    loading: false,
+    userServicesError: null,
+    userServicesLoading: false,
 }
 export const servicesReducer = handleActions(new Map([
     [
         getAllServices, (state, action) => {
-            return {...state, error: servicesDefaultState.error, loading: true}
+            return {...state, allServicesError: null, allServicesLoading: true}
         },
     ],
     [
         getAllServicesSuccess, (state, action) => {
-            return {...state, error: servicesDefaultState.error, loading: false, allServices: action.payload.results}
+            return {...state, allServicesError: null, allServicesLoading: false, allServices: action.payload.results}
         },
     ],
     [
         getAllServicesError, (state, action) => {
-            return {...state, error: action.error, loading: false}
+            return {...state, allServicesError: action.error, allServicesLoading: false}
         },
     ],
     [
         getUserServices, (state, action) => {
-            return {...state, error: servicesDefaultState.error, loading: true}
+            return {...state, userServicesError: null, userServicesLoading: true}
         },
     ],
     [
         getUserServicesSuccess, (state, action) => {
-            return {...state, error: servicesDefaultState.error, loading: false, userServices: action.payload.results}
+            return {...state, userServicesError: null, userServicesLoading: false, userServices: action.payload.results}
         },
     ],
     [
         getUserServicesError, (state, action) => {
-            return {...state, error: action.error, loading: false}
+            return {...state, userServicesError: action.error, userServicesLoading: false}
         },
     ],
 ]), servicesDefaultState);

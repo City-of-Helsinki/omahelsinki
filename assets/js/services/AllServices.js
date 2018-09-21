@@ -80,8 +80,8 @@ class AllServices extends React.Component {
 const mapStateToProps = state => {
     return {
         services: state.services.allServices,
-        isLoading: state.services.loading,
-        isError: state.services.error,
+        isLoading: state.services.allServicesLoading,
+        isError: state.services.allServicesError,
     }
 }
 export default connect(mapStateToProps)(AllServices)
