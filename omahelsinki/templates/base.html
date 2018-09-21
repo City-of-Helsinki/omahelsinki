@@ -32,6 +32,11 @@
         window.LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
         window.TUNNISTAMO_BASE_URL = "{{ TUNNISTAMO_BASE_URL }}";
         window.PROFILE_API_URL = "{{ PROFILE_API_URL }}";
+        {% if request.session.access_token %}
+        // {{ request.session.access_token_scope|safe }}
+        window.TUNNISTAMO_ACCESS_TOKEN = "{{ request.session.access_token }}";
+        window.TUNNISTAMO_ACCESS_TOKEN_EXPIRES_AT = new Date({{ request.session.access_token_expires_at_ts }});
+        {% endif %}
         window.API_TOKENS = {
           {% if request.session.api_tokens %}{% for api, token in request.session.api_tokens.items %}
             "{{ api }}": "{{ token }}"{% if not forloop.last %},{% endif %}
@@ -84,13 +89,13 @@
         </nav>
 
 
-        <nav class="navbar navbar-expand-lg navbar-light service-navbar">
+        <nav class="navbar navbar-expand-md navbar-light service-navbar">
           <a class="navbar-brand" href="/">oma.helsinki</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#js-service-navbar" aria-controls="js-service-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse">
+          <div class="collapse navbar-collapse" id="js-service-navbar">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <a class="nav-link" href="/">{% trans "What's oma.helsinki?" %}</a>

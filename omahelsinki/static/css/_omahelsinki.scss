@@ -54,25 +54,15 @@ $omaWrapperPadding: 4rem 0 8rem;
   min-height: 20rem;
   background-position: center;
   background-size: cover;
+  background-color: $hel-copper;
   padding: ($spacer * 3) 0 ($spacer * 8);
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: block;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
 
   .container {
     z-index: 2;
   }
 
   a {
-    color: $white;
+    color: $hel-bus;
   }
 
   @include media-breakpoint-up(sm) {
@@ -89,29 +79,61 @@ $omaWrapperPadding: 4rem 0 8rem;
 }
 
 .hero-content {
-  padding: ($spacer * 2) 0;
-  text-shadow: 1px 1px 4px rgba(#000, 0.2);
+  padding: ($spacer * 2) 0 0;
+  //text-shadow: 1px 1px 4px rgba(#000, 0.1);
   position: relative;
   z-index: 1;
+  color: $black;
+
+  h1, h2, h3, h4 , h5 ,h6 {
+    color: $hel-bus;
+  }
 
   @include media-breakpoint-up(md) {
     h1 {
-      font-size: 5rem;
+      font-size: 3rem;
+      line-height: 1;
     }
   }
 
   @include media-breakpoint-up(lg) {
-    padding: ($spacer * 5) 0;
+    padding: ($spacer * 3) 0 0;
     h1 {
-      font-size: 6rem;
+      font-size: 4rem;
+      line-height: 1;
     }
   }
+}
 
-  &.hero-content--inverse {
-    color: #FFFFFF;
-    h1, h2, h3, h4 , h5 ,h6, .lead {
-      color: #FFFFFF;
-    }
+.hero-image-wrapper{
+  position: relative;
+  height: 100%;
+  margin-bottom: $spacer * -12;
+  margin-top: $spacer *2;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    min-height: $spacer * 22;
+  }
+}
+
+.hero-image--floating {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  max-height: $spacer * 22;
+
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    right: 0;
+    bottom: $spacer * -12;
+    max-width: 280px;
+    max-height: $spacer * 30;
+  }
+
+  @include media-breakpoint-up(lg) {
+    max-width: 360px;
+    max-height: $spacer * 36;
   }
 }
 
@@ -187,12 +209,12 @@ $omaWrapperPadding: 4rem 0 8rem;
 
 .section--intro {
   position: relative;
-  background-color: $brand-light;
-  padding: ($spacer * 5) 0 ($spacer * 8);
+  background-color: $white;
+  padding: ($spacer * 8) 0;
 
   &::before {
     content: " ";
-    @include koro("beat", $brand-light, 500);
+    @include koro("beat", $white, 500);
     width: 100%;
     height: $spacer * 4.5;
     position: absolute;
@@ -398,19 +420,33 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 }
 
+.accordion-btn {
+  font-weight: inherit;
+  text-align: left;
+  white-space: normal;
 
-.panel-heading .accordion-toggle:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
-    color: grey;         /* adjust as needed */
-}
-.panel-heading .accordion-toggle.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+  &:before {
+    content: "";
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    float: right;
+    background-size: 100% auto;
+    background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'%3E%3Cpath d='M256 285l-88.4-88.4-30.4 30.4 88.4 88.4 30.4 30.4 30.4-30.4 88.4-88.4-30.4-30.4z'/%3E%3C/svg%3E");
+  }
+
+  &:hover {
+    &:before {
+      text-decoration: none;
+    }
+  }
 }
 
+.accordion-btn.collapsed {
+  &:before {
+    background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'%3E%3Cpath d='M289 251l-88.4 88.4 30.4 30.4 88.4-88.4 30.4-30.4-30.4-30.4-88.4-88.4-30.4 30.4z'/%3E%3C/svg%3E");
+  }
+}
 
 // Tunnistamo styles
 
