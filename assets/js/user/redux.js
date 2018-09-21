@@ -1,9 +1,18 @@
-import {createActions, handleActions} from 'redux-actions';
+import {createActions, handleActions} from 'redux-actions'
 import axios from 'axios'
+import lodashGet from 'lodash/get'
 
-const rootURL = 'https://profile-api.test.hel.ninja/profile-test/v1' 
+import {profileApiUrl} from '../settings'
 
-// TODO: Replace this with env setting?
+const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
+
+const axiosConfig = {
+    baseURL: profileApiUrl,
+    headers: {
+        'Authorization': `Bearer ${token}`,
+    },
+}
+const axiosInstance = axios.create(axiosConfig)
 
 export const {
     getInterest,
@@ -107,7 +116,7 @@ export const fetchUserData = () => {
         dispatch(getProfile())
 
         try {
-            const response = await axios.get(`${rootURL}/profile/`)
+            const response = await axiosInstance.get(`/profile/`)
             dispatch(getProfileSuccess())
             dispatch(setUserProfile(response))
         } catch (error) {
@@ -122,7 +131,7 @@ export const updateUserData = (payload) => {
         dispatch(updateProfile())
 
         try {
-            const response = await axios.post(`${rootURL}/profile/`, payload)
+            const response = await axiosInstance.post(`/profile/`, payload)
             dispatch(updateProfileSuccess())
             dispatch(setUserProfile(response.data))
         } catch (error) {
@@ -136,7 +145,7 @@ export const getUserInterest = (payload) => {
         dispatch(getInterest())
 
         try {
-            const response = await axios.get(`${rootURL}/interest-concept/`)
+            const response = await axiosInstance.get(`/interest-concept/`)
             dispatch(getInterestSuccess())
             dispatch(setInterest(response.data.results))
         } catch (error) {
