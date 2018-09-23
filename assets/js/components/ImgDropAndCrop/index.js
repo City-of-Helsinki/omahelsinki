@@ -5,7 +5,7 @@ import ReactCrop from 'react-image-crop'
 /*eslint-enable */
 
 import '../../../../node_modules/react-image-crop/dist/ReactCrop.css';
-import {image64toCanvasRef, extractImageFileExtensionFromBase64, base64StringtoFile, downloadBase64File} from './ReusableUtils';
+import {image64toCanvasRef, extractImageFileExtensionFromBase64, downloadBase64File} from './ReusableUtils';
 
 const imageMaxSize = 100000000
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
@@ -84,8 +84,8 @@ class ImgDropAndCrop extends Component {
         const imageData64 = canvasRef.toDataURL('/image' + fileExtension)
         const myFilename = 'User1' + fileExtension
         console.log(myFilename)
-        const myNewCroppedFile = base64StringtoFile(imageData64, myFilename)
-        this.props.getCroppedImage(myNewCroppedFile)
+        //const myNewCroppedFile = base64StringtoFile(imageData64, myFilename)
+        this.props.getCroppedImage(imageData64);
         
         downloadBase64File(imageData64, myFilename);
     }
@@ -105,7 +105,7 @@ class ImgDropAndCrop extends Component {
                             onChange={this.handleOnCropChange}/>
                         <br />
                         <p>Preview Canvas Crop</p>
-                        <canvas ref={this.imagePreviewCanvasRef}></canvas>
+                        <canvas ref={this.imagePreviewCanvasRef} style={{maxWidth: '135px'}}></canvas>
                     </div> 
                     : 
                     <Dropzone

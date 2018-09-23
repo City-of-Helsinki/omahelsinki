@@ -18,7 +18,7 @@ class Profile extends Component {
             email: '',
             password: '',
             nickname: '',
-            
+            img: null,
         }
     }
     UNSAFE_componentWillMount() {
@@ -44,6 +44,7 @@ class Profile extends Component {
             lastName,
             email,
             password,
+            
         }))
     }
 
@@ -152,24 +153,25 @@ class Profile extends Component {
                             <Col xs={12} sm={6}>
                                 <div className="profile-picture">
                                     <h5><FormattedMessage id="app.profile.picture" /></h5>
-                                    <div className="profile-picture__picture">
+                                    <div className="profile-picture__picture" style={{marginBottom: '20px'}}>
                                         {/* reserve for later */}
+                                        {this.state.img && <img src={this.state.img} style={{maxWidth: '135px'}}/>}
                                     </div>
                                     <Button color="danger"><FormattedMessage id="app.profile.picture.delete"/></Button>
                                 </div>
                             </Col>
 
-                            <Col xs={12} sm={6}>
+                            {!this.state.img && <Col xs={12} sm={6}>
                                 <div className="profile-image-upload">
                                     <p><FormattedMessage id="app.profile.picture.select.new" /></p>
                                     <div className="profile-image-upload__picture">
-                                        <ImgDropAndCrop getCroppedImage={(img) => console.log('croppped', img)} />
+                                        {<ImgDropAndCrop getCroppedImage={(img) => this.setState({img: img})} />}
                                     </div>
                                     <div className="profile-image-upload__help">
                                         <small className="text-muted"><FormattedMessage id="app.profile.picture.limit" /></small>
                                     </div>
                                 </div>
-                            </Col>
+                            </Col>}
                         </Row>
                         <Row>
                             <Col xs={12}>
