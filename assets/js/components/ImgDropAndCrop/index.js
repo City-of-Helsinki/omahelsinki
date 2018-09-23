@@ -103,7 +103,7 @@ class ImgDropAndCrop extends Component {
                             onChange={this.handleOnCropChange}/>
                         <br />
                         <p>Preview Canvas Crop</p>
-                        <canvas ref={this.imagePreviewCanvasRef} style={{maxWidth: '135px'}}></canvas>
+                        <canvas ref={this.imagePreviewCanvasRef} style={{maxWidth: '135px', display: 'none'}}></canvas>
                     </div> 
                     : 
                     <Dropzone
