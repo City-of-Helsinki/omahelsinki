@@ -1,4 +1,4 @@
-from django.conf import settings
+from django.conf import settings as _settings
 
-def js_settings(request):
-    return {'PROFILE_API_URL': settings.PROFILE_API_URL}
+def settings(request):
+    return {'PROFILE_API_URL': _settings.PROFILE_API_URL}
