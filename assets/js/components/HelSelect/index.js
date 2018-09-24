@@ -1,5 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
+import {connect} from 'react-redux'
+import {addRegion} from '../../user/redux'
 
 class HelSelect extends React.Component {
     state = {
@@ -7,7 +9,9 @@ class HelSelect extends React.Component {
     }
 
     handleChange = (selectedOption) => {
-        this.setState({selectedOption});
+        this.setState({selectedOption}, ()=>{
+            this.props.addRegion(this.state.selectedOption)
+        });
     }
 
     render() {
@@ -31,4 +35,4 @@ HelSelect.defaultProps = {
     options: {},
 }
 
-export default HelSelect
+export default connect(null, {addRegion})(HelSelect)

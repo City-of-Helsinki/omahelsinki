@@ -1,5 +1,7 @@
 import React from 'react';
 import {Wizard, Steps, Step} from 'react-albus';
+import {connect} from 'react-redux';
+import {addInterest} from '../../user/redux'
 
 import {
     StepButtons, 
@@ -38,6 +40,7 @@ class Onboarding extends React.Component {
             selectedFields.splice(index, 1);
         }
         this.setState({selectedFields: [...selectedFields]});
+        this.props.addInterest(this.state.selectedFields)
     }
 
     handleChange(data) {
@@ -50,13 +53,10 @@ class Onboarding extends React.Component {
     render() {
         const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
         const settings = {enabledNotifications, enabledMessages, enableNotifications};
-        const selectedFields = this.state.selectedFields.map((selectedField, i)=>(
-            <li key={i}>{selectedField.label.en}</li>
-        ))
+        
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
-                    <div>{selectedFields}</div>
                     <div className="oma-onboarding-container">
                         <div className="oma-onboarding">
                             <div className="user-icon">
@@ -93,4 +93,4 @@ class Onboarding extends React.Component {
     }
 }
 
-export default Onboarding;
+export default connect(null, {addInterest})(Onboarding);

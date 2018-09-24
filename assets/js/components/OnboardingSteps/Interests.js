@@ -6,13 +6,7 @@ import HelCheckbox from '../HelCheckbox'
 import HelSelect from '../HelSelect'
 
 class Interest extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            subjectData: [],
-            regionData: [],
-        }
-    }
+  
 
     UNSAFE_componentWillMount(){
         [this.props.fetchAllInterests(),
