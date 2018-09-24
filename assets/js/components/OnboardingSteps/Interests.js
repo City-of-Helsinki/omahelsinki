@@ -27,7 +27,7 @@ class Interest extends Component {
     render() {
         const {subjectData} = this.state;
         const region = this.state.regionData.map(data=>{ 
-            return {label: data.name[this.props.locale], value: data.origin_id}
+            return {label: data.name[this.props.locale] || data.name['fi'], value: data.origin_id}
         })
 
         return (
