@@ -2,15 +2,20 @@ import React, {Component} from 'react';
 import {FormattedMessage} from 'react-intl'
 import {Row, Col} from 'reactstrap'
 import HelCheckbox from '../../HelCheckbox'
-import {getUserInterest} from '../../../user/redux'
+import {getUserInterest, fetchAllInterests, fetchAllRegions} from '../../../user/redux'
 import {isEmpty} from 'lodash'
 import {connect} from 'react-redux'
+import HelSelect from '../../HelSelect'
 import {mockTopics} from '../../../__MOCKS__'
 
 class Interest extends Component { 
 
     UNSAFE_componentWillMount() {
-        this.props.dispatch(getUserInterest())
+        [
+            this.props.getUserInterest(),
+            this.props.fetchAllInterests(),
+            this.props.fetchAllRegions(),
+        ]
     } 
     render() {
         
@@ -42,6 +47,11 @@ class Interest extends Component {
                         <Col xs={12}>
                             <h3><FormattedMessage id="app.areas"/></h3>
                             <p className="lead text-muted"><FormattedMessage id="app.areas.text" /></p>
+                            <HelSelect 
+                                options={null}
+                                multi={true}
+                                searchable={true}
+                            />
                         </Col>
                     </Row>
                 </section>
@@ -68,5 +78,5 @@ const mapStateToProps = ({intl, userReducer}) => {
     }
 }
 
-export default connect(mapStateToProps)(Interest)
+export default connect(mapStateToProps, {getUserInterest, fetchAllInterests, fetchAllRegions})(Interest)
 
