@@ -2,6 +2,10 @@ import {createActions, handleActions} from 'redux-actions';
 import axios from 'axios'
 
 const rootURL = 'https://profile-api.test.hel.ninja/profile-test/v1' 
+const token = window.TUNNISTAMO_ACCESS_TOKEN
+const config = {
+    headers: {'Authorization': 'Bearer ' + token},
+}
 
 // TODO: Replace this with env setting?
 
@@ -16,6 +20,9 @@ export const {
     getAllRegions,
     getAllRegionsSuccess,
     getAllRegionsError,
+    getAllHistoryData,
+    getAllHistoryDataSuccess,
+    getAllHistoryDataError,
 } = createActions({
     GET_ALL_INTERESTS: undefined,
     GET_ALL_INTERESTS_SUCCESS: undefined,
@@ -27,6 +34,9 @@ export const {
     GET_ALL_REGIONS: undefined,
     GET_ALL_REGIONS_SUCCESS: undefined,
     GET_ALL_REGIONS_ERROR: (error) => ({error}),
+    GET_ALL_HISTORYDATA: undefined,
+    GET_ALL_HISTORYDATA_SUCCESS: undefined,
+    GET_ALL_HISTORYDATA_ERROR: (error) => ({error}),
 })
 
 export const {
@@ -50,6 +60,9 @@ const userDefaultState = {
     allRegions: [],
     allRegionsError: null,
     allRegionsLoading:false,
+    allHistoryData: [],
+    allHistoryDataError: null,
+    allHistoryDataLoading:false,
     user: {},
     error: null,
     interests: {},
@@ -85,6 +98,21 @@ export const userReducer = handleActions(
         [
             getAllRegionsError, (state, action) => {
                 return {...state, allRegionsError: action.error, allRegionsLoading: false}
+            },
+        ],
+        [
+            getAllHistoryData, (state, action) => {
+                return {...state, allHistoryDataError: null, allHistoryDataLoading: true}
+            },
+        ],
+        [
+            getAllHistoryDataSuccess, (state, action) => {
+                return {...state, allHistoryDataError: null, allHistoryDataLoading: false, allHistoryData: action.payload.results}
+            },
+        ],
+        [
+            getAllHistoryDataError, (state, action) => {
+                return {...state, allHistoryDataError: action.error, allHistoryDataLoading: false}
             },
         ],
         [
@@ -192,19 +220,19 @@ export const fetchAllInterests = () => {
     }
 }
 
-export const getUserInterest = (payload) => {
-    return async (dispatch) => {
-        dispatch(getInterest())
+// export const getUserInterest = (payload) => {
+//     return async (dispatch) => {
+//         dispatch(getInterest())
 
-        try {
-            const response = await axios.get(`${rootURL}/interest-concept/`)
-            dispatch(getInterestSuccess())
-            dispatch(setInterest(response.data.results))
-        } catch (error) {
-            dispatch(getInterestError(error))
-        }
-    }
-}
+//         try {
+//             const response = await axios.get(`${rootURL}/interest-concept/`)
+//             dispatch(getInterestSuccess())
+//             dispatch(setInterest(response.data.results))
+//         } catch (error) {
+//             dispatch(getInterestError(error))
+//         }
+//     }
+// }
 
 export const fetchAllRegions = () => {
     return async (dispatch) => {
@@ -214,6 +242,19 @@ export const fetchAllRegions = () => {
             dispatch(getAllRegionsSuccess(response.data))
         } catch (error) {
             dispatch(getAllRegionsError(error))
+        }
+    }
+}
+
+export const fetchAllHistoryData = () => {
+   
+    return async (dispatch) => {
+        dispatch(getAllHistoryData())
+        try {
+            const response = await axios.get(`${rootURL}/user_login_entry/`, config)
+            dispatch(getAllHistoryDataSuccess(response.data))
+        } catch (error) {
+            dispatch(getAllHistoryDataError(error))
         }
     }
 }

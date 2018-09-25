@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap'
 import {FormattedMessage} from 'react-intl'
-import axios from 'axios';
+// import axios from 'axios';
+import {connect} from 'react-redux'
+import {fetchAllHistoryData} from '../../../user/redux'
 import HelIcon from '../../HelIcon'
 import moment from 'moment'
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-export default class History extends Component {
+class History extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -15,15 +17,16 @@ export default class History extends Component {
         }
     }
 
-    componentDidMount(){
-        const token = window.TUNNISTAMO_ACCESS_TOKEN
-        const config = {
-            headers: {'Authorization': 'Bearer ' + token},
-        }
-        axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config)
-            .then(res=>this.setState({
-                historyData: res.data.results,
-            }))
+    UNSAFE_componentWillMount(){
+        // const token = window.TUNNISTAMO_ACCESS_TOKEN
+        // const config = {
+        //     headers: {'Authorization': 'Bearer ' + token},
+        // }
+        // axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config)
+        //     .then(res=>this.setState({
+        //         historyData: res.data.results,
+        //     }))
+        this.props.fetchAllHistoryData()
     }
 
     sortIcon = (column, colIndex)=>(
@@ -81,3 +84,11 @@ export default class History extends Component {
         );
     }
 }
+
+const mapStateToProps = state =>{
+    return{
+        historyData: state.userReducer.allHistoryData,
+    }
+}
+
+export default connect(mapStateToProps, {fetchAllHistoryData} )(History)
