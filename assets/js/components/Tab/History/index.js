@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap'
 import {FormattedMessage} from 'react-intl'
-// import axios from 'axios';
+import axios from 'axios';
 import {connect} from 'react-redux'
 import {fetchAllHistoryData} from '../../../user/redux'
 import HelIcon from '../../HelIcon'
@@ -18,15 +18,15 @@ class History extends Component {
     }
 
     UNSAFE_componentWillMount(){
-        // const token = window.TUNNISTAMO_ACCESS_TOKEN
-        // const config = {
-        //     headers: {'Authorization': 'Bearer ' + token},
-        // }
-        // axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config)
-        //     .then(res=>this.setState({
-        //         historyData: res.data.results,
-        //     }))
-        this.props.fetchAllHistoryData()
+        const token = window.TUNNISTAMO_ACCESS_TOKEN
+        const config = {
+            headers: {'Authorization': 'Bearer ' + token},
+        }
+        axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config)
+            .then(res=>this.setState({
+                historyData: res.data.results,
+            }))
+        //this.props.fetchAllHistoryData()
     }
 
     sortIcon = (column, colIndex)=>(
@@ -43,6 +43,7 @@ class History extends Component {
     )
 
     render() {
+        console.log('history data', this.props.historyData)
         const columns = [{
             dataField: 'timestamp', 
             text: 'Date',
@@ -91,4 +92,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps, {fetchAllHistoryData} )(History)
+export default connect(mapStateToProps, {fetchAllHistoryData})(History)

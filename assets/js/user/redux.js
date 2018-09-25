@@ -66,6 +66,7 @@ const userDefaultState = {
     user: {},
     error: null,
     interests: {},
+    userRegion: {},
 }
 export const userReducer = handleActions(
     new Map([
@@ -246,11 +247,10 @@ export const fetchAllRegions = () => {
     }
 }
 
-export const fetchAllHistoryData = () => {
-   
-    return async (dispatch) => {
+export const fetchAllHistoryData = () => {    
+    return async (dispatch) => {        
         dispatch(getAllHistoryData())
-        try {
+        try {            
             const response = await axios.get(`${rootURL}/user_login_entry/`, config)
             dispatch(getAllHistoryDataSuccess(response.data))
         } catch (error) {

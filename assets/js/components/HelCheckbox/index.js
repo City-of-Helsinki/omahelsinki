@@ -13,17 +13,6 @@ class HelCheckbox extends Component {
         }
     }
 
-    // componentDidMount(){
-    //     fetch('https://profile-api.test.hel.ninja/profile-test/v1/interest-concept/')
-    //         .then(response=>response.json())
-    //         .then(response=>{
-    //             this.setState({
-    //                 interestTopics:response.results,
-    //             })
-    //         })
-    //         .catch(error=>console.log(error))
-    // }
-
     onSelect = (selected) => {
         const {selectedFields} = this.state
 
@@ -39,10 +28,6 @@ class HelCheckbox extends Component {
     render() {
         const {data, direction} = this.props
         const {selectedFields} = this.state
-        // const interestTopics = this.state.interestTopics.map((interestTopic, i)=>interestTopic.label[this.props.locale])
-        // const interests = data.map(interest=>interest.label)
-        // const preIntrests = new Set(interests)
-        // const diff = [...new Set([...interestTopics].filter(interest=>!preIntrests.has(interest)))]
         return (
             <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
                 <ButtonGroup>
@@ -57,17 +42,6 @@ class HelCheckbox extends Component {
                         )
                     })}
                 </ButtonGroup>
-                {/* <ButtonGroup>
-                    {diff.map((d, index) => {
-                        return (
-                            <Button 
-                                onClick={() => this.onSelect(d)}
-                                key={index}
-                                active={selectedFields.includes(d)}
-                            >{d}</Button>
-                        )
-                    })}
-                </ButtonGroup> */}
             </div>
         );
     }

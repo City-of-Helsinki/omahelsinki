@@ -6,7 +6,6 @@ import {fetchAllInterests, fetchAllRegions} from '../../../user/redux'
 import {isEmpty} from 'lodash'
 import {connect} from 'react-redux'
 import HelSelect from '../../HelSelect'
-// import {mockTopics} from '../../../__MOCKS__'
 
 class Interest extends Component { 
 
@@ -18,26 +17,35 @@ class Interest extends Component {
         ]
     } 
     render() {
-        const {interests, allInterest, language, allRegions} = this.props
-        let interest
+        const {interests, allInterest, language, allRegions, userRegion} = this.props
+        const formatedallInterest = allInterest.map(interest=>({
+            id: interest.code,
+            label: interest.label[language],
+        }))
+        const formatedinterests = interests && interests.map(interest=>({
+            id: interest.code,
+            label: interest.label[language],
+        }))
+        let interest, region
         if(isEmpty(interests)) {
-            interest = allInterest.map(interest=>({
-                id: interest.code,
-                label: interest.label[language],
-            }))
+            interest = formatedallInterest
         } else {
             interest = allInterest.map(interest=>({
                 id: interest.code,
                 label: interest.label[language],
-            })).filter(val => !interests.includes(val))
+            })).filter(val => !formatedinterests.includes(val))
         }
-        // if(isEmpty(allRegions)){
-        //     region = allRegions.map(region=>({
-        //         value: region.origin_id,
-        //         label: region.name[language] || region.name['fi'],
-        //     }))
-        // }
-        console.log('allregion', allRegions)
+        if(isEmpty(userRegion)){
+            region = allRegions.map(region=>({
+                value: region.origin_id,
+                label: region.name[language] || region.name['fi'],
+            }))
+        } else{
+            region = region = allRegions.map(region=>({
+                value: region.origin_id,
+                label: region.name[language] || region.name['fi'],
+            })).filter(val => !userRegion.includes(val))
+        }
         return (
             <div className="interests-view">
                 <section>
@@ -67,7 +75,7 @@ class Interest extends Component {
                             <h3><FormattedMessage id="app.areas"/></h3>
                             <p className="lead text-muted"><FormattedMessage id="app.areas.text" /></p>
                             <HelSelect 
-                                options={null}
+                                options={region}
                                 multi={true}
                                 searchable={true}
                             />
@@ -82,9 +90,10 @@ class Interest extends Component {
 const mapStateToProps = (state) => {
     return {
         allInterest: state.userReducer.allInterests,
-        interests: state.userReducer.interests,
+        interests: state.userReducer.interests.interest,
         language: state.intl.locale,
         allRegions: state.userReducer.allRegions,
+        userRegion: state.userReducer.userRegion,
     }    
 }
 
