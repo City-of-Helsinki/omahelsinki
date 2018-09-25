@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {addLocaleData} from 'react-intl';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import axios from 'axios'
-import {get as lodashGet} from 'lodash'
 
 import ConnectedIntlProvider from './intl/ConnectedIntlProvider';
 import getIntlLocaleData from './intl/getIntlLocaleData';
