@@ -5,9 +5,11 @@ import ReactCrop from 'react-image-crop'
 /*eslint-enable */
 
 import 'react-image-crop/dist/ReactCrop.css';
+import {connect} from 'react-redux'
+import {FormattedMessage, injectIntl} from 'react-intl'
 import {image64toCanvasRef, extractImageFileExtensionFromBase64} from './ReusableUtils';
 
-const imageMaxSize = 100000000
+const imageMaxSize = 1000000000000000
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
 const acceptedFileTypesArray = acceptedFileTypes.split(',').map((item) => {return item.trim()})
 class ImgDropAndCrop extends Component {
@@ -28,7 +30,7 @@ class ImgDropAndCrop extends Component {
             const currentFileType = currentFile.type
             const currentFileSize = currentFile.size
             if(currentFileSize > imageMaxSize) {
-                alert('This file is not allowed.' + currentFileSize + 'bytes is too large')
+                alert(<FormattedMessage id="profile.fileSize.error" /> + currentFileSize + <FormattedMessage id="byte.size.error" />)
                 return false
             }
             if (!acceptedFileTypesArray.includes(currentFileType)){
@@ -119,4 +121,6 @@ class ImgDropAndCrop extends Component {
     }
 }
 
-export default ImgDropAndCrop
+//export default ImgDropAndCrop
+
+export default connect()(injectIntl(ImgDropAndCrop))

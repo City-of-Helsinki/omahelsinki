@@ -99,6 +99,9 @@
     "password.cantBeEmpty": "Password can't be empty",
     "password.notStrongEnough": "Password is not strong enough",
     "password.ok": "Password is ok",
-    "password.strong": "Password is strong"
+    "password.strong": "Password is strong",
+
+    "profile.fileSize.error": "This file is not allowed.",
+    "byte.size.error": "bytes is too large"
   }
   
