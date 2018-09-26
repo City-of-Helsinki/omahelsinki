@@ -4,7 +4,7 @@ import Dropzone from 'react-dropzone'
 import ReactCrop from 'react-image-crop'
 /*eslint-enable */
 
-import '../../../../node_modules/react-image-crop/dist/ReactCrop.css';
+import 'react-image-crop/dist/ReactCrop.css';
 import {image64toCanvasRef, extractImageFileExtensionFromBase64} from './ReusableUtils';
 
 const imageMaxSize = 100000000
