@@ -19,6 +19,7 @@ $select-item-bg:                    $hel-bus;
 $select-item-border-color:          $hel-bus;
 
 @import "~react-select/scss/default";
+@import "~react-image-crop/lib/ReactCrop";
 // Service specific color overrides
 $brand-light:  $hel-copper; //$hel-fog
 $brand-dark:   $hel-bus; //$hel-tram

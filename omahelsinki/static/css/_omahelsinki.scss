@@ -447,3 +447,12 @@ $omaWrapperPadding: 4rem 0 8rem;
   border-top: 1px solid $brand-dark;
   padding-top: 1em;
 }
+
+.form-profile-information {
+  .profile-picture__picture {
+    margin-bottom: 20px;
+    img {
+      max-width: 135px;
+    }
+  }
+}

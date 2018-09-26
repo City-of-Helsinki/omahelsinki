@@ -4,7 +4,6 @@ import Dropzone from 'react-dropzone'
 import ReactCrop from 'react-image-crop'
 /*eslint-enable */
 
-import 'react-image-crop/dist/ReactCrop.css';
 import {connect} from 'react-redux'
 import {FormattedMessage, injectIntl} from 'react-intl'
 import {image64toCanvasRef, extractImageFileExtensionFromBase64} from './ReusableUtils';

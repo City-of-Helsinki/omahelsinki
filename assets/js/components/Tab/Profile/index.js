@@ -153,9 +153,8 @@ class Profile extends Component {
                             <Col xs={12} sm={6}>
                                 <div className="profile-picture">
                                     <h5><FormattedMessage id="app.profile.picture" /></h5>
-                                    <div className="profile-picture__picture" style={{marginBottom: '20px'}}>
-                                        {/* reserve for later */}
-                                        {this.state.img && <img src={this.state.img} style={{maxWidth: '135px'}}/>}
+                                    <div className="profile-picture__picture" >
+                                        {this.state.img && <img src={this.state.img} />}
                                     </div>
                                     <Button color="danger"><FormattedMessage id="app.profile.picture.delete"/></Button>
                                 </div>
