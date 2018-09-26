@@ -27,3 +27,4 @@ perf*csv
 /webpack-stats.json
 /.pytest_cache
 /omahelsinki-datadump.json
+/package-lock.json
