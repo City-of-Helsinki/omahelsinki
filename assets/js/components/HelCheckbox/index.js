@@ -7,8 +7,7 @@ import {connect} from 'react-redux';
 class HelCheckbox extends Component {
 
     render() {
-        const {data, direction} = this.props
-        const {selectedFields} = this.props
+        const {data, direction, selectedFields, language} = this.props
         return (
             <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
                 <ButtonGroup>
@@ -18,7 +17,7 @@ class HelCheckbox extends Component {
                                 onClick={() => this.props.onSelect(d)}
                                 key={index}
                                 active={selectedFields && selectedFields.includes(d)}
-                            >{d.label[this.props.locale]}</Button>
+                            >{d.label[language]}</Button>
                         )
                     })}
                 </ButtonGroup>
@@ -34,7 +33,7 @@ HelCheckbox.defaultProps = {
 
 const mapStateToProps = state =>{
     return{
-        locale: state.intl.locale,
+        language: state.intl.locale,
     }
 }
 
