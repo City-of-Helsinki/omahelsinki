@@ -16,7 +16,7 @@ class Interest extends Component {
 
     render() {
         const region = this.props.regions.map(data=>{ 
-            return {label: data.name[this.props.locale] || data.name['fi'], value: data.origin_id}
+            return {label: data.name[this.props.language] || data.name['fi'], value: data.origin_id}
         })
 
         return (
@@ -51,7 +51,7 @@ class Interest extends Component {
 
 const mapStateToProps = state =>{
     return{
-        locale: state.intl.locale,
+        language: state.intl.locale,
         interests: state.userReducer.allInterests,
         regions: state.userReducer.allRegions,
     }

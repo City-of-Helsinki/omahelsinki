@@ -16,7 +16,6 @@ export const {
     getAllRegions,
     getAllRegionsSuccess,
     getAllRegionsError,
-    addInterest,
     addRegion,
 } = createActions({
     GET_ALL_INTERESTS: undefined,
@@ -29,7 +28,6 @@ export const {
     GET_ALL_REGIONS: undefined,
     GET_ALL_REGIONS_SUCCESS: undefined,
     GET_ALL_REGIONS_ERROR: (error) => ({error}),
-    ADD_INTEREST: interest => ({interest}),
     ADD_REGION: region =>({region}),
 })
 
@@ -57,7 +55,6 @@ const userDefaultState = {
     user: {},
     error: null,
     interests: {},
-    userRegion: {},
 }
 export const userReducer = handleActions(
     new Map([
@@ -152,18 +149,7 @@ export const userReducer = handleActions(
                 interests: action.payload.interest,  
             }),
         ],
-        [
-            addInterest, (state, action) => ({
-                ...state,
-                interests: action.payload,                  
-            }),
-        ],
-        [
-            addRegion, (state, action) => ({
-                ...state,
-                userRegion: action.payload,                  
-            }),
-        ],
+        
     ]),
     userDefaultState
 );
