@@ -57,7 +57,10 @@ class History extends Component {
             text: 'Name',
             sort: true,
             headerFormatter: this.sortIcon,
-        }]
+        }];
+        const options = {
+            paginationSize: 4,
+        }
         return (
             <div className="history-view">
                 <section>
@@ -77,7 +80,7 @@ class History extends Component {
                                 keyField='timestamp' 
                                 data={ this.state.historyData } 
                                 columns={ columns }
-                                pagination={ paginationFactory() }/>
+                                pagination={ paginationFactory(options) }/>
                         </Col>
                     </Row>
                 </section>
