@@ -99,5 +99,10 @@
   "password.cantBeEmpty": "Salasana ei voi olla tyhjä",
   "password.notStrongEnough": "Salasana ei ole tarpeeksi vahva",
   "password.ok": "Salasana on ok",
-  "password.strong": "Salasana on vahva"
+  "password.strong": "Salasana on vahva",
+
+  "profile.fileSize.error": "This file is not allowed.",
+  "byte.size.error": "bytes is too large",
+
+  "app.button.saveCroppedImage": "Save Cropped Image"
 }

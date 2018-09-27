@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Button} from 'reactstrap'
 import Dropzone from 'react-dropzone'
 /*eslint-disable */
 import ReactCrop from 'react-image-crop'
@@ -113,7 +114,12 @@ class ImgDropAndCrop extends Component {
                         accept={acceptedFileTypes} 
                     >Drop image here / Click to upload</Dropzone>
                 }
-                <button onClick={this.handleOnCropUpload}>Save Cropped Image</button>
+                <Button
+                    color="primary"
+                    onClick={this.handleOnCropUpload}
+                >
+                    <FormattedMessage id="app.button.saveCroppedImage" />
+                </Button>
             </div>
         )
     }
