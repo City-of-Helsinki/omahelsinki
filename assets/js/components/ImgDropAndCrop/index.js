@@ -115,6 +115,7 @@ class ImgDropAndCrop extends Component {
                     >Drop image here / Click to upload</Dropzone>
                 }
                 <Button
+                    className="cropButton"
                     color="primary"
                     onClick={this.handleOnCropUpload}
                 >
