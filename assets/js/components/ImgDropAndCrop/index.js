@@ -98,7 +98,8 @@ class ImgDropAndCrop extends Component {
         return(
             <div>
                 {imgSrc !== null ?
-                    <div>    
+                    <div>
+                        <p><FormattedMessage id="app.profile.picture.cropImage" /></p>
                         <ReactCrop 
                             src={imgSrc}
                             crop={this.state.crop}
@@ -109,12 +110,15 @@ class ImgDropAndCrop extends Component {
                         <canvas ref={this.imagePreviewCanvasRef} style={{display: 'none'}}></canvas>
                     </div> 
                     : 
-                    <Dropzone
-                        onDrop={this.handleOnDrop}
-                        multiple={false}
-                        maxSize={imageMaxSize}
-                        accept={acceptedFileTypes} 
-                    >Drop image here / Click to upload</Dropzone>
+                    <div>
+                        <p><FormattedMessage id="app.profile.picture.select.new" /></p>
+                        <Dropzone
+                            onDrop={this.handleOnDrop}
+                            multiple={false}
+                            maxSize={imageMaxSize}
+                            accept={acceptedFileTypes} 
+                        >Drop image here / Click to upload</Dropzone>
+                    </div>
                 }
                 { this.state.pixelCrop &&
                     <Button

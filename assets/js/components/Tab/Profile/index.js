@@ -162,7 +162,6 @@ class Profile extends Component {
 
                             {!this.state.img && <Col xs={12} sm={6}>
                                 <div className="profile-image-upload">
-                                    <p><FormattedMessage id="app.profile.picture.select.new" /></p>
                                     <div className="profile-image-upload__picture">
                                         {<ImgDropAndCrop getCroppedImage={(img) => this.setState({img: img})} />}
                                     </div>
