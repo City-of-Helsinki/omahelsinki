@@ -453,6 +453,8 @@ $omaWrapperPadding: 4rem 0 8rem;
     margin-bottom: 20px;
     img {
       max-width: 135px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
   }
 }
