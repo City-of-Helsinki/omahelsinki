@@ -21,6 +21,7 @@ class ImgDropAndCrop extends Component {
             crop: {
                 aspect: 1 / 1,
             },
+            pixelCrop: null,
         }
     }
 
@@ -76,6 +77,7 @@ class ImgDropAndCrop extends Component {
         const canvasRef = this.imagePreviewCanvasRef.current
         const {imgSrc} = this.state
         image64toCanvasRef(canvasRef, imgSrc, pixelCrop)
+        this.setState({pixelCrop:pixelCrop})
     }
 
     handleOnCropUpload = (event) => {
@@ -114,13 +116,15 @@ class ImgDropAndCrop extends Component {
                         accept={acceptedFileTypes} 
                     >Drop image here / Click to upload</Dropzone>
                 }
-                <Button
-                    className="cropButton"
-                    color="primary"
-                    onClick={this.handleOnCropUpload}
-                >
-                    <FormattedMessage id="app.button.saveCroppedImage" />
-                </Button>
+                { this.state.pixelCrop &&
+                    <Button
+                        className="cropButton"
+                        color="primary"
+                        onClick={this.handleOnCropUpload}
+                    >
+                        <FormattedMessage id="app.button.saveCroppedImage" />
+                    </Button>
+                }
             </div>
         )
     }
