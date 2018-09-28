@@ -26,3 +26,5 @@ perf*csv
 /yarn-error.log
 /webpack-stats.json
 /.pytest_cache
+/omahelsinki-datadump.json
+/package-lock.json

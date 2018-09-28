@@ -483,3 +483,18 @@ $omaWrapperPadding: 4rem 0 8rem;
   border-top: 1px solid $brand-dark;
   padding-top: 1em;
 }
+
+.form-profile-information {
+  .profile-picture__picture {
+    margin-bottom: 20px;
+    img {
+      max-width: 135px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  }
+}
+
+.cropButton {
+  margin-top: 10px;
+}

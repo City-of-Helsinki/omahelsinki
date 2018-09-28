@@ -25,6 +25,7 @@
   "app.profile.picture": "Profiilikuva",
   "app.profile.picture.select": "Valitse kuvatiedosto",
   "app.profile.picture.select.new": "Valitse uuusi profiilikuva",
+  "app.profile.picture.cropImage": "Click and drag to crop image",
   "app.profile.picture.limit": "Kuvan sivun pituus vähintään 200px ja enintään 1200px. Tiedostomuoto jpg tai png.",
   "app.profile.picture.browse": "Selailla",
   "app.profile.picture.delete": "Poista kuva",
@@ -99,5 +100,10 @@
   "password.cantBeEmpty": "Salasana ei voi olla tyhjä",
   "password.notStrongEnough": "Salasana ei ole tarpeeksi vahva",
   "password.ok": "Salasana on ok",
-  "password.strong": "Salasana on vahva"
+  "password.strong": "Salasana on vahva",
+
+  "profile.fileSize.error": "The file size should not exceed 1 MB",
+  "profile.fileType.error": "File type other than images are not allowed",
+
+  "app.button.saveCroppedImage": "Save Cropped Image"
 }
