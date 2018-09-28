@@ -52,7 +52,6 @@ class ImgDropAndCrop extends Component {
                 const currentFile = files[0]
                 const myFileItemReader = new FileReader()
                 myFileItemReader.addEventListener('load', () => {
-                    //console.log(myFileItemReader.result)
                     this.setState({
                         imgSrc: myFileItemReader.result,
                     })
@@ -63,16 +62,11 @@ class ImgDropAndCrop extends Component {
         }
     }
 
-    handleImageLoaded = (image) => {
-        //console.log(Image)
-    }
-
     handleOnCropChange = (crop) => {
         this.setState({crop:crop})
     }
 
     handleOnCropComplete = (crop, pixelCrop) => {
-        console.log(crop, pixelCrop)
         const canvasRef = this.imagePreviewCanvasRef.current
         const {imgSrc} = this.state
         image64toCanvasRef(canvasRef, imgSrc, pixelCrop)
@@ -85,9 +79,6 @@ class ImgDropAndCrop extends Component {
         const canvasRef = this.imagePreviewCanvasRef.current
         const fileExtension = extractImageFileExtensionFromBase64(imgSrc)
         const imageData64 = canvasRef.toDataURL('/image' + fileExtension)
-        const myFilename = 'User1' + fileExtension
-        console.log(myFilename)
-        //const myNewCroppedFile = base64StringtoFile(imageData64, myFilename)
         this.props.getCroppedImage(imageData64);
     }
 
@@ -102,7 +93,6 @@ class ImgDropAndCrop extends Component {
                         <ReactCrop 
                             src={imgSrc}
                             crop={this.state.crop}
-                            onImageLoaded={this.handleImageLoaded}
                             onComplete={this.handleOnCropComplete} 
                             onChange={this.handleOnCropChange}/>
                         <br />
@@ -132,7 +122,5 @@ class ImgDropAndCrop extends Component {
         )
     }
 }
-
-//export default ImgDropAndCrop
 
 export default (injectIntl(ImgDropAndCrop))
