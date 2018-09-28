@@ -136,4 +136,4 @@ class ImgDropAndCrop extends Component {
 
 //export default ImgDropAndCrop
 
-export default connect()(injectIntl(ImgDropAndCrop))
+export default (injectIntl(ImgDropAndCrop))
