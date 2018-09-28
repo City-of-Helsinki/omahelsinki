@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 import {FormattedMessage, injectIntl} from 'react-intl'
 import {image64toCanvasRef, extractImageFileExtensionFromBase64} from './ReusableUtils';
 
-const imageMaxSize = 1000000000000000
+const imageMaxSize = 1000000 // 1 mb
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
 const acceptedFileTypesArray = acceptedFileTypes.split(',').map((item) => {return item.trim()})
 class ImgDropAndCrop extends Component {
