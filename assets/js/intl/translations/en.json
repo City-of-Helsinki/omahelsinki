@@ -102,8 +102,7 @@
     "password.ok": "Password is ok",
     "password.strong": "Password is strong",
 
-    "profile.fileSize.error": "This file is not allowed.",
-    "byte.size.error": "bytes is too large",
+    "profile.fileSize.error": "The file size should not exceed 1 MB",
 
     "app.button.saveCroppedImage": "Save Cropped Image"
   }

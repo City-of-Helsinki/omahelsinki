@@ -102,8 +102,8 @@
   "password.ok": "Salasana on ok",
   "password.strong": "Salasana on vahva",
 
-  "profile.fileSize.error": "This file is not allowed.",
-  "byte.size.error": "bytes is too large",
+  "profile.fileSize.error": "The file size should not exceed 1 MB",
+  "profile.fileType.error": "File type other than images are not allowed",
 
   "app.button.saveCroppedImage": "Save Cropped Image"
 }
