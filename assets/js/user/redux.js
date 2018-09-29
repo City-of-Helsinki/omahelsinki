@@ -221,19 +221,19 @@ export const fetchAllInterests = () => {
     }
 }
 
-// export const getUserInterest = (payload) => {
-//     return async (dispatch) => {
-//         dispatch(getInterest())
+export const getUserInterest = (payload) => {
+    return async (dispatch) => {
+        dispatch(getInterest())
 
-//         try {
-//             const response = await axios.get(`${rootURL}/interest-concept/`)
-//             dispatch(getInterestSuccess())
-//             dispatch(setInterest(response.data.results))
-//         } catch (error) {
-//             dispatch(getInterestError(error))
-//         }
-//     }
-// }
+        try {
+            const response = await axios.get(`${rootURL}/interest-concept/`)
+            dispatch(getInterestSuccess())
+            dispatch(setInterest(response.data.results))
+        } catch (error) {
+            dispatch(getInterestError(error))
+        }
+    }
+}
 
 export const fetchAllRegions = () => {
     return async (dispatch) => {

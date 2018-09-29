@@ -2,50 +2,38 @@ import React, {Component} from 'react';
 import {FormattedMessage} from 'react-intl'
 import {Row, Col} from 'reactstrap'
 import HelCheckbox from '../../HelCheckbox'
-import {fetchAllInterests, fetchAllRegions} from '../../../user/redux'
+import {fetchAllInterests, getUserInterest} from '../../../user/redux'
 import {isEmpty} from 'lodash'
 import {connect} from 'react-redux'
-import HelSelect from '../../HelSelect'
 
-class Interest extends Component { 
+
+
+class Interest extends Component {
 
     UNSAFE_componentWillMount() {
         [
-            // this.props.getUserInterest(),
-            this.props.fetchAllInterests(),
-            this.props.fetchAllRegions(),
+            this.props.dispatch(getUserInterest()),
+            this.props.dispatch(fetchAllInterests()),
         ]
     } 
+
     render() {
-        const {interests, allInterest, language, allRegions, userRegion} = this.props
-        const formatedallInterest = allInterest.map(interest=>({
+        const {userInterests, allInterests, language} = this.props
+        const mappedAllInterests = allInterests.map(interest => ({
             id: interest.code,
             label: interest.label[language],
         }))
-        const formatedinterests = interests && interests.map(interest=>({
-            id: interest.code,
-            label: interest.label[language],
-        }))
-        let interest, region
-        if(isEmpty(interests)) {
-            interest = formatedallInterest
-        } else {
-            interest = allInterest.map(interest=>({
+        let interests
+        if(!isEmpty(userInterests)) {
+            interests = userInterests.map(interest => ({
                 id: interest.code,
                 label: interest.label[language],
-            })).filter(val => !formatedinterests.includes(val))
-        }
-        if(isEmpty(userRegion)){
-            region = allRegions.map(region=>({
-                value: region.origin_id,
-                label: region.name[language] || region.name['fi'],
             }))
-        } else{
-            region = region = allRegions.map(region=>({
-                value: region.origin_id,
-                label: region.name[language] || region.name['fi'],
-            })).filter(val => !userRegion.includes(val))
+        } else {
+            interests = allInterests
         }
+        const unSelectedInterests = mappedAllInterests.filter(item => !interests.find(item2 => item.id === item2.id))
+        
         return (
             <div className="interests-view">
                 <section>
@@ -63,7 +51,11 @@ class Interest extends Component {
                             <h3><FormattedMessage id="app.topics"/></h3>
                             <p className="lead text-muted"><FormattedMessage id="app.topics.text" /></p>
                             <HelCheckbox 
-                                data={interest}
+                                data={interests}
+                            />
+                            {unSelectedInterests ? '' : <h5>Not selected</h5>}
+                            <HelCheckbox 
+                                data={ userInterests ? unSelectedInterests : ''}
                             />
                         </Col>
                     </Row>
@@ -74,11 +66,6 @@ class Interest extends Component {
                         <Col xs={12}>
                             <h3><FormattedMessage id="app.areas"/></h3>
                             <p className="lead text-muted"><FormattedMessage id="app.areas.text" /></p>
-                            <HelSelect 
-                                options={region}
-                                multi={true}
-                                searchable={true}
-                            />
                         </Col>
                     </Row>
                 </section>
@@ -88,14 +75,11 @@ class Interest extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        allInterest: state.userReducer.allInterests,
-        interests: state.userReducer.interests.interest,
+    return{
+        userInterests: state.userReducer.interests,
+        allInterests: state.userReducer.allInterests,
         language: state.intl.locale,
-        allRegions: state.userReducer.allRegions,
-        userRegion: state.userReducer.userRegion,
-    }    
+    }
 }
 
-export default connect(mapStateToProps, {fetchAllInterests, fetchAllRegions})(Interest)
-
+export default connect(mapStateToProps)(Interest)
