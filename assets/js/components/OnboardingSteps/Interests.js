@@ -41,6 +41,8 @@ class Interest extends Component {
                         options={region}
                         multi={true}
                         searchable={true}
+                        selectedOption={this.props.selectedOption}
+                        handleChange={this.props.handleChange}
                     />
                 </div>
 

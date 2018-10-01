@@ -1,6 +1,7 @@
 import React from 'react';
 import {Wizard, Steps, Step} from 'react-albus';
-
+import {connect} from 'react-redux'
+import {updateUserData} from '../../user/redux'
 import {
     StepButtons, 
     Welcome, 
@@ -28,17 +29,39 @@ class Onboarding extends React.Component {
             // enableNotifications: '',
             // enabledMessages: [],
             // enabledNotifications: [],
+            selectedFields: [],
+            selectedOption: '',
         };
 
         //this.handleChange = this.handleChange.bind(this);
         this.wizardFinished = this.wizardFinished.bind(this);
     }
+    onSelect = (selected) => {
+        const {selectedFields} = this.state
 
-    handleChange(data) {
-        this.setState(data);
+        const index = selectedFields.indexOf(selected);
+        if (index < 0) {
+            selectedFields.push(selected);
+        } else {
+            selectedFields.splice(index, 1);
+        }
+        this.setState({selectedFields: [...selectedFields]});
+    }
+
+    // handleChange(data) {
+    //     this.setState(data);
+    // }
+    handleChange = (selectedOption) => {
+        this.setState({selectedOption});
     }
 
     wizardFinished() {
+        const userInterest = {
+            interest: this.state.selectedFields,
+            region: this.state.selectedOption,
+        }
+        this.props.updateUserData(userInterest)
+        
     }
 
     render() {
@@ -75,7 +98,12 @@ class Onboarding extends React.Component {
                                             />
                                         </Step> */}
                                         <Step id='interests'>
-                                            <Interest />
+                                            <Interest 
+                                                onSelect={this.onSelect}
+                                                selectedFields={this.state.selectedFields}
+                                                selectedOption={this.state.selectedOption}
+                                                handleChange={this.handleChange}
+                                            />
                                         </Step>
                                         {/* <Step id='settings'>
                                             <Settings
@@ -96,4 +124,4 @@ class Onboarding extends React.Component {
     }
 }
 
-export default Onboarding;
+export default connect(null, {updateUserData})(Onboarding);
