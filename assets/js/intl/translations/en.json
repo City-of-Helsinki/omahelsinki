@@ -28,6 +28,7 @@
     "app.profile.picture": "Profile picture",
     "app.profile.picture.select": "Select photo",
     "app.profile.picture.select.new": "Select new photo",
+    "app.profile.picture.cropImage": "Click and drag to crop image",
     "app.profile.picture.limit": "The page length of the image is at least 200px and up to 1200px. File format jpg or png.",
     "app.profile.picture.browse": "Browse",
     "app.profile.picture.delete": "Delete picture",
@@ -104,5 +105,9 @@
     "password.cantBeEmpty": "Password can't be empty",
     "password.notStrongEnough": "Password is not strong enough",
     "password.ok": "Password is ok",
-    "password.strong": "Password is strong"
+    "password.strong": "Password is strong",
+
+    "profile.fileSize.error": "The file size should not exceed 1 MB",
+
+    "app.button.saveCroppedImage": "Save Cropped Image"
   }

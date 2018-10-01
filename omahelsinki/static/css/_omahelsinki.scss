@@ -546,3 +546,18 @@ $omaWrapperPadding: 4rem 0 8rem;
     height: 100%;
   }
 }
+
+.form-profile-information {
+  .profile-picture__picture {
+    margin-bottom: 20px;
+    img {
+      max-width: 135px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  }
+}
+
+.cropButton {
+  margin-top: 10px;
+}
