@@ -4,7 +4,9 @@ import {Wizard, Steps, Step} from 'react-albus';
 import {
     StepButtons, 
     Welcome, 
-    Settings,
+    //PersonalInformation, 
+    //CreatePassword, 
+    //Settings,
     Interest,
 } from '../OnboardingSteps';
 
@@ -17,44 +19,35 @@ class Onboarding extends React.Component {
         super(props);
 
         this.state = {
-            enableNotifications: '',
-            enabledMessages: [],
-            enabledNotifications: [],
-            selectedFields: [],
+            // firstname: '',
+            // lastname: '',
+            // email: '',
+            // ofAge: false,
+            // password: '',
+            // passwordRepeat: '',
+            // enableNotifications: '',
+            // enabledMessages: [],
+            // enabledNotifications: [],
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        //this.handleChange = this.handleChange.bind(this);
         this.wizardFinished = this.wizardFinished.bind(this);
-    }
-    onSelect = (selected) => {
-        const {selectedFields} = this.state
-
-        const index = selectedFields.indexOf(selected);
-        if (index < 0) {
-            selectedFields.push(selected);
-        } else {
-            selectedFields.splice(index, 1);
-        }
-        this.setState({selectedFields: [...selectedFields]});
     }
 
     handleChange(data) {
         this.setState(data);
     }
 
-    wizardFinished() {    
-        const newUserData = {
-            enabledMessages : this.state.enabledMessages,
-            enableNotifications : this.state.enableNotifications,
-            enabledNotifications : this.state.enabledNotifications,
-            selectedFields : this.state.selectedFields,
-        }
-        this.props.updateUserData(newUserData)
+    wizardFinished() {
     }
 
     render() {
-        const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
-        const settings = {enabledNotifications, enabledMessages, enableNotifications};
+        // const {firstname, lastname, email, ofAge} = this.state;
+        //const personalInformation = {firstname, lastname, email, ofAge};
+        //const {password, passwordRepeat} = this.state;
+        //const passwordData = {password, passwordRepeat};
+        //const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
+        //const settings = {enabledNotifications, enabledMessages, enableNotifications};
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
@@ -69,23 +62,32 @@ class Onboarding extends React.Component {
                                         <Step id='welcome'>
                                             <Welcome />
                                         </Step>
+                                        {/* <Step id='personalInformation'>
+                                            <PersonalInformation
+                                                data={personalInformation}
+                                                onChange={this.handleChange}
+                                            />
+                                        </Step> */}
+                                        {/* <Step id='createPassword'>
+                                            <CreatePassword
+                                                data={passwordData}
+                                                onChange={this.handleChange}
+                                            />
+                                        </Step> */}
                                         <Step id='interests'>
-                                            <Interest 
-                                                onSelect={this.onSelect}
-                                                selectedFields={this.state.selectedFields} />
+                                            <Interest />
                                         </Step>
-                                        <Step id='settings'>
+                                        {/* <Step id='settings'>
                                             <Settings
                                                 data={settings}
                                                 onChange={this.handleChange}
                                             />
-                                        </Step>
+                                        </Step> */}
                                     </Steps>
                                 </div>
                                 
                                 <StepButtons onFinish={this.wizardFinished} />
                             </Wizard>
-                            
                         </div>
                     </div>
                 </Container>
