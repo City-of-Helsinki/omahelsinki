@@ -9,7 +9,6 @@ class HelCheckbox extends Component {
 
         this.state = {
             selectedFields: [],
-            interestTopics: [],
         }
     }
 
@@ -28,6 +27,8 @@ class HelCheckbox extends Component {
     render() {
         const {data, direction} = this.props
         const {selectedFields} = this.state
+        console.log('selectedFields', selectedFields);
+        
         return (
             <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
                 <ButtonGroup>

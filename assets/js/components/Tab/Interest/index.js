@@ -23,16 +23,19 @@ class Interest extends Component {
             id: interest.code,
             label: interest.label[language],
         }))
+        
         let interests
-        if(!isEmpty(userInterests)) {
-            interests = userInterests.map(interest => ({
+        if(!isEmpty(userInterests)) {            
+            const userMappedInterests = userInterests.map(interest => ({
                 id: interest.code,
                 label: interest.label[language],
             }))
+            const unSelectedInterests = mappedAllInterests.filter(item => !userMappedInterests.find(item2 => item.id === item2.id))
+            interests = userMappedInterests.concat(unSelectedInterests)
         } else {
-            interests = allInterests
+            interests = mappedAllInterests
         }
-        const unSelectedInterests = mappedAllInterests.filter(item => !interests.find(item2 => item.id === item2.id))
+        
         
         return (
             <div className="interests-view">
@@ -52,10 +55,6 @@ class Interest extends Component {
                             <p className="lead text-muted"><FormattedMessage id="app.topics.text" /></p>
                             <HelCheckbox 
                                 data={interests}
-                            />
-                            {unSelectedInterests ? '' : <h5>Not selected</h5>}
-                            <HelCheckbox 
-                                data={ userInterests ? unSelectedInterests : ''}
                             />
                         </Col>
                     </Row>
