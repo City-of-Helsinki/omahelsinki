@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 
 import {fetchUserData, updateUserData} from '../../../user/redux'
 import ImgDropAndCrop from '../../ImgDropAndCrop'
+import DownloadOwnData from '../../DownloadOwnData'
 
 class Profile extends Component {
 
@@ -190,6 +191,7 @@ class Profile extends Component {
                         >
                             <FormattedMessage id="app.button.saveChanges" />
                         </Button>
+                        <DownloadOwnData />
                     </Form>
                 </section>
             </div>
