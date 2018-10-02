@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import {Button} from 'reactstrap'
 import axios from 'axios'
+import lodashGet from 'lodash/get'
 
+import {profileApiUrl} from '../../settings'
 class DownloadOwnData extends Component {
     constructor(props) {
         super(props)
@@ -11,14 +13,20 @@ class DownloadOwnData extends Component {
     }
 
     componentDidMount() {
-        const token = window.TUNNISTAMO_ACCESS_TOKEN
+        const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
+        console.log('This is our token ',token)
+        console.log('  Token ends here')
         const config = {
-            headers: {'Authorization': 'Bearer' + token},
+            baseURL: profileApiUrl,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
         }
+        console.log('Config is here ', config)
 
         axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config)
             .then(res => {
-                console.log(res)
+                console.log(res.data.results)
                 this.setState({
                     profileData: res.data.results,
                 })
