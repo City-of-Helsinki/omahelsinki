@@ -3,7 +3,7 @@ import {Button} from 'reactstrap'
 import axios from 'axios'
 import lodashGet from 'lodash/get'
 
-import {profileApiUrl} from '../../settings'
+//import {profileApiUrl} from '../../settings'
 class DownloadOwnData extends Component {
     constructor(props) {
         super(props)
@@ -17,7 +17,7 @@ class DownloadOwnData extends Component {
         console.log('This is our token ',token)
         console.log('  Token ends here')
         const config = {
-            baseURL: profileApiUrl,
+            baseURL: 'https://profile-api.test.hel.ninja/profile-test/v1',
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
