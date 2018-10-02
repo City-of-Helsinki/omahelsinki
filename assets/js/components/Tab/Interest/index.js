@@ -2,20 +2,41 @@ import React, {Component} from 'react';
 import {FormattedMessage} from 'react-intl'
 import {Row, Col} from 'reactstrap'
 import HelCheckbox from '../../HelCheckbox'
-import {getUserInterest} from '../../../user/redux'
+import {fetchAllInterests, getUserInterest} from '../../../user/redux'
 import {isEmpty} from 'lodash'
-
 import {connect} from 'react-redux'
 
-import {mockDecisions, mockTopics} from '../../../__MOCKS__'
+
 
 class Interest extends Component {
 
     UNSAFE_componentWillMount() {
-        this.props.dispatch(getUserInterest())
+        [
+            this.props.dispatch(getUserInterest()),
+            this.props.dispatch(fetchAllInterests()),
+        ]
     } 
 
     render() {
+        const {userInterests, allInterests, language} = this.props
+        const mappedAllInterests = allInterests.map(interest => ({
+            id: interest.code,
+            label: interest.label[language],
+        }))
+        
+        let interests
+        if(!isEmpty(userInterests)) {            
+            const userMappedInterests = userInterests.map(interest => ({
+                id: interest.code,
+                label: interest.label[language],
+            }))
+            const unSelectedInterests = mappedAllInterests.filter(item => !userMappedInterests.find(item2 => item.id === item2.id))
+            interests = userMappedInterests.concat(unSelectedInterests)
+        } else {
+            interests = mappedAllInterests
+        }
+        
+        
         return (
             <div className="interests-view">
                 <section>
@@ -33,7 +54,7 @@ class Interest extends Component {
                             <h3><FormattedMessage id="app.topics"/></h3>
                             <p className="lead text-muted"><FormattedMessage id="app.topics.text" /></p>
                             <HelCheckbox 
-                                data={this.props.interests}
+                                data={interests}
                             />
                         </Col>
                     </Row>
@@ -47,40 +68,17 @@ class Interest extends Component {
                         </Col>
                     </Row>
                 </section>
-
-                <section>
-                    <Row>
-                        <Col xs={12}>
-                            <h3><FormattedMessage id="app.decision"/></h3>
-                            <p className="lead text-muted"><FormattedMessage id="app.decision.text" /></p>
-                            <HelCheckbox 
-                                data={mockDecisions}
-                            />
-                        </Col>
-                    </Row>
-                </section>
             </div>
         );
     }
 }
 
-const mapStateToProps = ({intl, userReducer}) => {
-    let interests
-    const language = intl.locale
-    if(userReducer && !isEmpty(userReducer.interests)) {
-        interests = userReducer.interests.map(interest => ({
-            id: interest.code,
-            label: interest.label[language],
-        }))
-    } else {
-        interests = mockTopics
-    }
-
-    return {
-        language,
-        interests,
+const mapStateToProps = (state) => {
+    return{
+        userInterests: state.userReducer.interests,
+        allInterests: state.userReducer.allInterests,
+        language: state.intl.locale,
     }
 }
 
 export default connect(mapStateToProps)(Interest)
-

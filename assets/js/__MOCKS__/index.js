@@ -1,7 +1,7 @@
 export const mockTopics = [
     {
         id: 1,
-        label: 'culture',
+        label: 'Elderly',
     },
     {
         id: 2,

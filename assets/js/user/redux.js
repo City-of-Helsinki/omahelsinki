@@ -25,6 +25,9 @@ export const {
     getAllRegions,
     getAllRegionsSuccess,
     getAllRegionsError,
+    getAllHistoryData,
+    getAllHistoryDataSuccess,
+    getAllHistoryDataError,
     addRegion,
 } = createActions({
     GET_ALL_INTERESTS: undefined,
@@ -38,6 +41,9 @@ export const {
     GET_ALL_REGIONS_SUCCESS: undefined,
     GET_ALL_REGIONS_ERROR: (error) => ({error}),
     ADD_REGION: region =>({region}),
+    GET_ALL_HISTORYDATA: undefined,
+    GET_ALL_HISTORYDATA_SUCCESS: undefined,
+    GET_ALL_HISTORYDATA_ERROR: (error) => ({error}),
 })
 
 export const {
@@ -61,9 +67,13 @@ const userDefaultState = {
     allRegions: [],
     allRegionsError: null,
     allRegionsLoading:false,
+    allHistoryData: [],
+    allHistoryDataError: null,
+    allHistoryDataLoading:false,
     user: {},
     error: null,
     interests: {},
+    userRegion: {},
 }
 export const userReducer = handleActions(
     new Map([
@@ -96,6 +106,21 @@ export const userReducer = handleActions(
         [
             getAllRegionsError, (state, action) => {
                 return {...state, allRegionsError: action.error, allRegionsLoading: false}
+            },
+        ],
+        [
+            getAllHistoryData, (state, action) => {
+                return {...state, allHistoryDataError: null, allHistoryDataLoading: true}
+            },
+        ],
+        [
+            getAllHistoryDataSuccess, (state, action) => {
+                return {...state, allHistoryDataError: null, allHistoryDataLoading: false, allHistoryData: action.payload.results}
+            },
+        ],
+        [
+            getAllHistoryDataError, (state, action) => {
+                return {...state, allHistoryDataError: action.error, allHistoryDataLoading: false}
             },
         ],
         [
@@ -230,3 +255,14 @@ export const fetchAllRegions = () => {
     }
 }
 
+export const fetchAllHistoryData = () => {    
+    return async (dispatch) => {        
+        dispatch(getAllHistoryData())
+        try {            
+            const response = await axios.get(`${rootURL}/user_login_entry/`, config)
+            dispatch(getAllHistoryDataSuccess(response.data))
+        } catch (error) {
+            dispatch(getAllHistoryDataError(error))
+        }
+    }
+}

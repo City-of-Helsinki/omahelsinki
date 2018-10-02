@@ -36,6 +36,21 @@
         };
         </script>
 
+        <script>
+        window.CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
+        window.TUNNISTAMO_BASE_URL = "{{ TUNNISTAMO_BASE_URL }}";
+        {% if request.session.access_token %}
+        // {{ request.session.access_token_scope|safe }}
+        window.TUNNISTAMO_ACCESS_TOKEN = "{{ request.session.access_token }}";
+        window.TUNNISTAMO_ACCESS_TOKEN_EXPIRES_AT = new Date({{ request.session.access_token_expires_at_ts }});
+        {% endif %}
+        window.API_TOKENS = {
+        {% if request.session.api_tokens %}{% for api, token in request.session.api_tokens.items %}
+          "{{ api }}": "{{ token }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}{% endif %}
+        };
+        </script>
+
         {# Global stylesheets #}
 
         {% block extra_css %}

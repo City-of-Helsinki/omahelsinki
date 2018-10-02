@@ -13,10 +13,9 @@ class Profile extends Component {
         super(props)
 
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
+            firstName: 'firstName',
+            lastName: 'lastName',
+            email: 'email',
             nickname: '',
             img: null,
         }
@@ -34,19 +33,6 @@ class Profile extends Component {
         })
     }
 
-    submitBasicInfo = (e) => {
-        e.preventDefault()
-
-        const {firstName, lastName, email, password} = this.state
-
-        this.props.dispatch(updateUserData({
-            firstName,
-            lastName,
-            email,
-            password,
-            
-        }))
-    }
 
     submitProfileInfo = (e) => {
         e.preventDefault()
@@ -78,66 +64,21 @@ class Profile extends Component {
                             <p className="lead text-muted"><FormattedMessage id="app.not.public" /></p>
                         </Col>
                     </Row>
-                    <Form className="form-basic-information" onSubmit={this.submitBasicInfo}>
+                    <Form className="form-basic-information">
                         <Row>
                             <Col xs={12} sm={6}>
-                                <HelTextInput 
-                                    id="firstName"
-                                    type="text"
-                                    required={true}
-                                    value={this.state.firstName}
-                                    onChange={this.handleInputChange}
-                                    label={intl.formatMessage({id: 'app.input.firstname'})}
-                                    placeHolder={intl.formatMessage({id: 'app.input.firstname'})}
-                                />
+                                {this.state.firstName}
                             </Col>
-
+                            
                             <Col xs={12} sm={6}>
-                                <HelTextInput 
-                                    id="lastName"
-                                    type="text"
-                                    value={this.state.lastName}
-                                    onChange={this.handleInputChange}
-                                    required={true}
-                                    label={intl.formatMessage({id: 'app.input.lastname'})}
-                                    placeHolder={intl.formatMessage({id: 'app.input.lastname'})}
-                                />
+                                {this.state.lastName}
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                <HelTextInput 
-                                    id="email"
-                                    type="email"
-                                    value={this.state.email}
-                                    onChange={this.handleInputChange}
-                                    required={true}
-                                    label={intl.formatMessage({id: 'app.input.email'})}
-                                    placeHolder={intl.formatMessage({id: 'app.input.email'})}
-                                    helpText={intl.formatMessage({id:'app.input.email.helpBlock.notShare'})}
-                                />
+                                {this.state.email}
                             </Col>
                         </Row>
-
-                        <Row>
-                            <Col xs={12}>
-                                <HelTextInput 
-                                    id="password"
-                                    type="password"
-                                    value={this.state.password}
-                                    onChange={this.handleInputChange}
-                                    required={true}
-                                    label={intl.formatMessage({id: 'app.input.password'})}
-                                />
-                            </Col>
-                        </Row>
-
-                        <Button
-                            type="submit"
-                            color="primary"
-                        >
-                            <FormattedMessage id="app.button.saveChanges" />
-                        </Button>
                     </Form>
                 </section>
 
@@ -173,7 +114,7 @@ class Profile extends Component {
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                <HelTextInput 
+                                {<HelTextInput 
                                     id="nickname"
                                     value={this.state.nickname}
                                     type="text"
@@ -181,7 +122,7 @@ class Profile extends Component {
                                     onChange={this.handleInputChange}
                                     label={intl.formatMessage({id: 'app.profile.nickname'})}
                                     helpText={intl.formatMessage({id:'app.profile.nickname.text'})}
-                                />
+                                />}
                             </Col>
                         </Row>
                         <Button
