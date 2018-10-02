@@ -2,6 +2,9 @@
   "app.welcome": "Tervetuloa!",
   "app.profile": "Profiili",
 
+  "app.loading": "Ladataan...",
+  "app.error": "Tapahtui virhe.",
+
   "app.interests": "Kiinnostukset",
   "app.services": "Palvelut",
   "app.history": "Historia",
@@ -86,6 +89,8 @@
   "app.services.related": "Liittyvät palvelut",
   "app.services.related.text": "Voit käyttää useita Helsingin kaupungin palveluita ja tiettyjä kolmansien osapuolten palveluita Helsinki-tililläsi.",
   "app.services.notLinked": "Palvelut, joita et ole vielä liittänyt tiliisi",
+  "app.services.all.amountOfServices": "Meillä on {amount} palvelua.",
+  "app.services.all.cta": "Et vielä käyttäjä? Luo tili",
 
   "app.history.text": "Historiaan kertyvät tiedot palvelujen käytöstä, kun olet kirjautuneena sisään Helsinki-tililläsi.",
 

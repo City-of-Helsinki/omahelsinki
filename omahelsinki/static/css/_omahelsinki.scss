@@ -260,6 +260,21 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 }
 
+.section--services {
+  position: relative;
+  background-color: $white;
+  padding: ($spacer * 5) 0 ($spacer * 8);
+
+  &::before {
+    content: " ";
+    @include koro("beat", $white, 400);
+    width: 100%;
+    height: $spacer * 4;
+    position: absolute;
+    top: $spacer * -4;
+  }
+}
+
 .map-section {
   position: relative;
   background-color: $brand-dark;
@@ -482,6 +497,54 @@ $omaWrapperPadding: 4rem 0 8rem;
   border-bottom: 1px solid $brand-dark;
   border-top: 1px solid $brand-dark;
   padding-top: 1em;
+}
+
+.services-amount {
+  color: $hel-bus;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.cta-register {
+  background: $hel-copper;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  .left-icon {
+    position: absolute;
+    transform: translateX(-50%);
+    .hel-icon {
+      background: $hel-bus;
+      border-radius: 50%;
+      border: 2px solid $white;
+      color: $white;
+      display: inline-block;
+      font-size: 3rem;
+      padding: 13px;
+    }
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 2.75rem;
+    font-weight: bold;
+    span {
+      display: inline-block;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+}
+
+.service-list {
+  .service-wrapper {
+    margin-bottom: 30px;
+  }
+  .card {
+    height: 100%;
+  }
 }
 
 .form-profile-information {
