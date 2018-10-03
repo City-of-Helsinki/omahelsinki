@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
 import {FormattedMessage} from 'react-intl'
 import {Row, Col} from 'reactstrap'
-import HelCheckbox from '../../HelCheckbox'
-import {fetchAllInterests, getUserInterest} from '../../../user/redux'
 import {isEmpty} from 'lodash'
 import {connect} from 'react-redux'
+
+import HelCheckbox from '../../HelCheckbox'
+import {fetchAllInterests, getUserInterest} from '../../../user/redux'
 
 
 
 class Interest extends Component {
 
-    UNSAFE_componentWillMount() {
-        [
-            this.props.dispatch(getUserInterest()),
-            this.props.dispatch(fetchAllInterests()),
-        ]
+    componentDidMount() {
+        this.props.dispatch(getUserInterest())
+        this.props.dispatch(fetchAllInterests())
     } 
 
     render() {
