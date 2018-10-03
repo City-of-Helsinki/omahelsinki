@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {ButtonGroup, Button} from 'reactstrap'
 import {connect} from 'react-redux'
 import classnames from 'classnames'
-import {connect} from 'react-redux';
 
 
 class HelCheckbox extends Component {
