@@ -13,16 +13,14 @@ class Profile extends Component {
         super(props)
 
         this.state = {
-            firstName: 'firstName',
-            lastName: 'lastName',
-            email: 'email',
             nickname: '',
             img: null,
         }
     }
-    UNSAFE_componentWillMount() {
+
+    componentDidMount() {
         this.props.dispatch(fetchUserData())
-    } 
+    }
 
     handleInputChange = (e) => {
         const target = e.target
@@ -33,19 +31,26 @@ class Profile extends Component {
         })
     }
 
-
     submitProfileInfo = (e) => {
         e.preventDefault()
 
-        const {nickname} = this.state
-
-        this.props.dispatch(updateUserData({
+        const {nickname, img} = this.state
+        const data = {
             nickname,
-        }))
+            image: img,
+        }
+
+        this.props.dispatch(updateUserData(data))
+    }
+
+    unselectImage = (e) => {
+        e.preventDefault()
+        this.setState({img: null})
     }
 
     render() {
-        const {intl} = this.props
+        const {intl, tunnistamoUser} = this.props
+        const hasImage = Boolean(this.state.img)
         return (
             <div className="profile-view">
                 <section>
@@ -66,17 +71,16 @@ class Profile extends Component {
                     </Row>
                     <Form className="form-basic-information">
                         <Row>
-                            <Col xs={12} sm={6}>
-                                {this.state.firstName}
+                            <Col xs={12}>
+                                <strong>{intl.formatMessage({id: 'profile.firstName'})}</strong> <span>{tunnistamoUser.first_name}</span>
                             </Col>
-                            
-                            <Col xs={12} sm={6}>
-                                {this.state.lastName}
+                            <Col xs={12}>
+                                <strong>{intl.formatMessage({id: 'profile.lastName'})}</strong> <span>{tunnistamoUser.last_name}</span>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                {this.state.email}
+                                <strong>{intl.formatMessage({id: 'profile.email'})}</strong> <span>{tunnistamoUser.email}</span>
                             </Col>
                         </Row>
                     </Form>
@@ -94,23 +98,27 @@ class Profile extends Component {
                             <Col xs={12} sm={6}>
                                 <div className="profile-picture">
                                     <h5><FormattedMessage id="app.profile.picture" /></h5>
-                                    <div className="profile-picture__picture" >
-                                        {this.state.img && <img src={this.state.img} />}
-                                    </div>
-                                    <Button color="danger"><FormattedMessage id="app.profile.picture.delete"/></Button>
+                                    {
+                                        hasImage ? (
+                                            <div>
+                                                <div className="profile-picture__picture" >
+                                                    {this.state.img && <img src={this.state.img} alt="profile" />}
+                                                </div>
+                                                <Button color="danger" onClick={this.unselectImage}><FormattedMessage id="app.profile.picture.delete"/></Button>
+                                            </div>
+                                        ) : (
+                                            <div className="profile-image-upload">
+                                                <div className="profile-image-upload__picture">
+                                                    {<ImgDropAndCrop getCroppedImage={(img) => this.setState({img: img})} />}
+                                                </div>
+                                                <div className="profile-image-upload__help">
+                                                    <small className="text-muted"><FormattedMessage id="app.profile.picture.limit" /></small>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </Col>
-
-                            {!this.state.img && <Col xs={12} sm={6}>
-                                <div className="profile-image-upload">
-                                    <div className="profile-image-upload__picture">
-                                        {<ImgDropAndCrop getCroppedImage={(img) => this.setState({img: img})} />}
-                                    </div>
-                                    <div className="profile-image-upload__help">
-                                        <small className="text-muted"><FormattedMessage id="app.profile.picture.limit" /></small>
-                                    </div>
-                                </div>
-                            </Col>}
                         </Row>
                         <Row>
                             <Col xs={12}>
@@ -138,4 +146,9 @@ class Profile extends Component {
     }
 }
 
-export default connect()(injectIntl(Profile))
+const mapStateToProps = state => ({
+    user: state.userReducer.user,
+    tunnistamoUser: state.userReducer.tunnistamoUser,
+})
+
+export default connect(mapStateToProps)(injectIntl(Profile))

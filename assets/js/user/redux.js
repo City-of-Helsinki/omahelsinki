@@ -1,49 +1,61 @@
 import {createActions, handleActions} from 'redux-actions'
 import axios from 'axios'
 import lodashGet from 'lodash/get'
+import {profileApiUrl, tunnistamoUrl, tunnistamoToken, profileToken, tunnistamoUser} from '../settings'
 
-import {profileApiUrl} from '../settings'
+const userUuid = tunnistamoUser.uuid
 
-const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
 
-const axiosConfig = {
+const profileRequest = axios.create({
     baseURL: profileApiUrl,
     headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${profileToken}`,
     },
-}
-const axiosInstance = axios.create(axiosConfig)
+})
+
+const tunnistamoRequest = axios.create({
+    baseURL: tunnistamoUrl,
+    headers: {
+        'Authorization': `Bearer ${tunnistamoToken}`,
+    },
+})
 
 export const {
     getAllInterests,
     getAllInterestsSuccess,
     getAllInterestsError,
+
     getInterest,
     getInterestSuccess,
     getInterestError,
     setInterest,
+
     getAllRegions,
     getAllRegionsSuccess,
     getAllRegionsError,
+    addRegion,
+
     getAllHistoryData,
     getAllHistoryDataSuccess,
     getAllHistoryDataError,
-    addRegion,
 } = createActions({
     GET_ALL_INTERESTS: undefined,
     GET_ALL_INTERESTS_SUCCESS: undefined,
     GET_ALL_INTERESTS_ERROR: (error) => ({error}),
+
     GET_INTEREST: undefined,
     GET_INTEREST_SUCCESS: undefined,
     GET_INTEREST_ERROR: error => ({error}),
     SET_INTEREST: interest => ({interest}),
+
     GET_ALL_REGIONS: undefined,
     GET_ALL_REGIONS_SUCCESS: undefined,
     GET_ALL_REGIONS_ERROR: (error) => ({error}),
-    ADD_REGION: region =>({region}),
-    GET_ALL_HISTORYDATA: undefined,
-    GET_ALL_HISTORYDATA_SUCCESS: undefined,
-    GET_ALL_HISTORYDATA_ERROR: (error) => ({error}),
+    ADD_REGION: region => ({region}),
+
+    GET_ALL_HISTORY_DATA: undefined,
+    GET_ALL_HISTORY_DATA_SUCCESS: undefined,
+    GET_ALL_HISTORY_DATA_ERROR: (error) => ({error}),
 })
 
 export const {
@@ -74,6 +86,7 @@ const userDefaultState = {
     error: null,
     interests: {},
     userRegion: {},
+    tunnistamoUser: tunnistamoUser,
 }
 export const userReducer = handleActions(
     new Map([
@@ -115,7 +128,7 @@ export const userReducer = handleActions(
         ],
         [
             getAllHistoryDataSuccess, (state, action) => {
-                return {...state, allHistoryDataError: null, allHistoryDataLoading: false, allHistoryData: action.payload.results}
+                return {...state, allHistoryDataError: null, allHistoryDataLoading: false, allHistoryData: action.payload}
             },
         ],
         [
@@ -193,9 +206,9 @@ export const fetchUserData = () => {
         dispatch(getProfile())
 
         try {
-            const response = await axiosInstance.get(`/profile/`)
+            const response = await profileRequest.get(`/profile/${userUuid}/`)
             dispatch(getProfileSuccess())
-            dispatch(setUserProfile(response))
+            dispatch(setUserProfile(response.data))
         } catch (error) {
             dispatch(getProfileError(error))
         }
@@ -208,7 +221,7 @@ export const updateUserData = (payload) => {
         dispatch(updateProfile())
 
         try {
-            const response = await axiosInstance.post(`/profile/`, payload)
+            const response = await profileRequest.patch(`/profile/${userUuid}/`, payload)
             dispatch(updateProfileSuccess())
             dispatch(setUserProfile(response.data))
         } catch (error) {
@@ -221,7 +234,7 @@ export const fetchAllInterests = () => {
     return async (dispatch) => {
         dispatch(getAllInterests())
         try {
-            const response = await axios.get(`${rootURL}/interest-concept/`)
+            const response = await profileRequest.get(`/interest-concept/`)
             dispatch(getAllInterestsSuccess(response.data))
         } catch (error) {
             dispatch(getAllInterestsError(error))
@@ -234,7 +247,7 @@ export const getUserInterest = (payload) => {
         dispatch(getInterest())
 
         try {
-            const response = await axiosInstance.get(`/interest-concept/`)
+            const response = await profileRequest.get(`/interest-concept/`)
             dispatch(getInterestSuccess())
             dispatch(setInterest(response.data.results))
         } catch (error) {
@@ -247,7 +260,7 @@ export const fetchAllRegions = () => {
     return async (dispatch) => {
         dispatch(getAllRegions())
         try {
-            const response = await axios.get(`${rootURL}/geo-division/?limit=200/`)
+            const response = await profileRequest.get(`/geo-division/?limit=200/`)
             dispatch(getAllRegionsSuccess(response.data))
         } catch (error) {
             dispatch(getAllRegionsError(error))

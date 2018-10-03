@@ -21,7 +21,14 @@
             {% endblock %}
         </title>
         <script>
-        window.USER_UUID = "{{ request.user.uuid }}"
+        {% if request.user.uuid %}
+        window.TUNNISTAMO_USER = {
+            uuid: "{{ request.user.uuid }}",
+            first_name: "{{ request.user.first_name }}",
+            last_name: "{{ request.user.last_name }}",
+            email: "{{ request.user.email }}"
+        };
+        {% endif %}
         window.PROFILE_API_URL = "{{ PROFILE_API_URL }}";
         window.CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
         window.LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
