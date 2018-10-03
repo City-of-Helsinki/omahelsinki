@@ -24,6 +24,9 @@
 
   "app.profileInformation": "Profiilitiedot",
   "app.profileInformation.text": "Näytetään palveluissa joissa kommunikoit muiden käyttäjien kanssa",
+  "profile.email": "Sähköposti",
+  "profile.firstName": "Etunimi",
+  "profile.lastName": "Sukunimi",
 
   "app.profile.picture": "Profiilikuva",
   "app.profile.picture.select": "Valitse kuvatiedosto",
@@ -108,7 +111,6 @@
   "password.strong": "Salasana on vahva",
 
   "profile.fileSize.error": "The file size should not exceed 1 MB",
-  "profile.fileType.error": "File type other than images are not allowed",
 
   "app.button.saveCroppedImage": "Save Cropped Image"
 }

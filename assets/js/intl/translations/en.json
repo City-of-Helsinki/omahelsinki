@@ -24,6 +24,9 @@
   
     "app.profileInformation": "Profile information",
     "app.profileInformation.text": "Shown in services that communicate with other users",
+    "profile.email": "Email",
+    "profile.firstName": "First name",
+    "profile.lastName": "Last name",
   
     "app.profile.picture": "Profile picture",
     "app.profile.picture.select": "Select photo",
