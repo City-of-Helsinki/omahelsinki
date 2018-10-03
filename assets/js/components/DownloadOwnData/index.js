@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-//import {Button} from 'reactstrap'
 import axios from 'axios'
 import lodashGet from 'lodash/get'
 
@@ -12,29 +11,7 @@ class DownloadOwnData extends Component {
         }
     }
 
-    componentDidMount() {
-        const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
-        console.log('This is our token ',token)
-        const config = {
-            baseURL: 'https://profile-api.test.hel.ninja/profile-test/v1',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
-        }
-        console.log('Config is here ', config)
-
-        const profile = axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config)
-            .then(res => {
-                console.log(res.data.results)
-                this.setState({
-                    profileData: res.data.results,
-                })
-            })
-
-        const obj = {
-            profile: profile,
-        }
-
+    downloadData = (obj) => {
         const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(obj))
 
         var a = document.createElement('a');
@@ -46,20 +23,29 @@ class DownloadOwnData extends Component {
         container.appendChild(a);
     }
 
-    handleDownloadData = (event) => {
-        event.preventDefault()
+    componentDidMount() {
+        const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
+
+        const config = {
+            baseURL: 'https://profile-api.test.hel.ninja/profile-test/v1',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        }
+
+        axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config)
+            .then(res => {
+                console.log(res.data.results)
+                this.downloadData(res.data.results)
+                this.setState({
+                    profileData: res.data.results,
+                })
+            })
     }
 
     render() {
         return(
             <div id="container">
-                {/*<Button
-                    color="primary"
-                    className="downloadButton"
-                    onClick={this.handleDownloadData}
-                >
-                Download Profile Data
-                </Button>*/}
             </div>
         );
     }
