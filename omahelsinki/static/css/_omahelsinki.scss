@@ -498,3 +498,15 @@ $omaWrapperPadding: 4rem 0 8rem;
 .cropButton, .downloadButton {
   margin-top: 10px;
 }
+
+#container a {
+  color: #fff;
+  background-color: #000;
+  padding: 8px 11px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+#container a:hover {
+  text-decoration: none;
+}

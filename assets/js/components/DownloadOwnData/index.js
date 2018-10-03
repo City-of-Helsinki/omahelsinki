@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button} from 'reactstrap'
+//import {Button} from 'reactstrap'
 import axios from 'axios'
 import lodashGet from 'lodash/get'
 
@@ -15,7 +15,6 @@ class DownloadOwnData extends Component {
     componentDidMount() {
         const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
         console.log('This is our token ',token)
-        console.log('  Token ends here')
         const config = {
             baseURL: 'https://profile-api.test.hel.ninja/profile-test/v1',
             headers: {
@@ -24,13 +23,27 @@ class DownloadOwnData extends Component {
         }
         console.log('Config is here ', config)
 
-        axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config)
+        const profile = axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config)
             .then(res => {
                 console.log(res.data.results)
                 this.setState({
                     profileData: res.data.results,
                 })
             })
+
+        const obj = {
+            profile: profile,
+        }
+
+        const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(obj))
+
+        var a = document.createElement('a');
+        a.href = 'data:' + data;
+        a.download = 'data.json';
+        a.innerHTML = 'Download Data';
+
+        var container = document.getElementById('container');
+        container.appendChild(a);
     }
 
     handleDownloadData = (event) => {
@@ -39,14 +52,14 @@ class DownloadOwnData extends Component {
 
     render() {
         return(
-            <div>
-                <Button
+            <div id="container">
+                {/*<Button
                     color="primary"
                     className="downloadButton"
                     onClick={this.handleDownloadData}
                 >
                 Download Profile Data
-                </Button>
+                </Button>*/}
             </div>
         );
     }
