@@ -21,6 +21,7 @@
             {% endblock %}
         </title>
         <script>
+        window.USER_UUID = "{{ request.user.uuid }}"
         window.PROFILE_API_URL = "{{ PROFILE_API_URL }}";
         window.CURRENT_LANGUAGE = "{{ LANGUAGE_CODE }}";
         window.LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
