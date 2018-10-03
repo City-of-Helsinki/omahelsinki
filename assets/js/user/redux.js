@@ -1,6 +1,6 @@
 import {createActions, handleActions} from 'redux-actions'
 import axios from 'axios'
-import lodashGet from 'lodash/get'
+import find from 'lodash/find'
 import {profileApiUrl, tunnistamoUrl, tunnistamoToken, profileToken, tunnistamoUser} from '../settings'
 
 const userUuid = tunnistamoUser.uuid
@@ -269,11 +269,20 @@ export const fetchAllRegions = () => {
 }
 
 export const fetchAllHistoryData = () => {    
-    return async (dispatch) => {        
+    return async (dispatch) => {
         dispatch(getAllHistoryData())
-        try {            
-            const response = await axios.get(`${rootURL}/user_login_entry/`, config)
-            dispatch(getAllHistoryDataSuccess(response.data))
+        try {
+            const [r1, r2] = await Promise.all([
+                tunnistamoRequest.get(`/v1/user_login_entry/`),
+                tunnistamoRequest.get(`/v1/service/`),
+            ])
+            const entries = r1.data.results
+            const services = r2.data.results
+            const data = entries.map(historyEntry => {
+                const service = find(services, {id: historyEntry.service})
+                return {...historyEntry, service}
+            })
+            dispatch(getAllHistoryDataSuccess(data))
         } catch (error) {
             dispatch(getAllHistoryDataError(error))
         }
