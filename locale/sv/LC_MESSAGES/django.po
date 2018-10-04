@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-04 09:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: home/models.py:54
+msgid "FAQs"
+msgstr ""
+
+#: home/templates/home/home_page.html:16 omahelsinki/templates/base.html:89
+msgid "Log in"
+msgstr "Logga in"
+
+#: omahelsinki/settings.py:141
+msgid "Finnish"
+msgstr ""
+
+#: omahelsinki/settings.py:142
+msgid "Swedish"
+msgstr ""
+
+#: omahelsinki/settings.py:143
+msgid "English"
+msgstr ""
+
+#: omahelsinki/templates/base.html:80
+msgid "Edit profile"
+msgstr "Ändra din profil"
+
+#: omahelsinki/templates/base.html:81 omahelsinki/templates/base.html:98
+msgid "Oma.helsinki"
+msgstr ""
+
+#: omahelsinki/templates/base.html:83
+msgid "Log out"
+msgstr "Logga ut"
+
+#: omahelsinki/templates/base.html:106
+msgid "What's oma.helsinki?"
+msgstr "Vad är oma.helsinki?"
+
+#: omahelsinki/templates/base.html:109
+msgid "Services"
+msgstr "Tjänster"
+
+#: omahelsinki/templates/base.html:112
+msgid "Help"
+msgstr "Hjälp"
+
+#: omahelsinki/templates/base.html:115
+msgid "My data"
+msgstr "Dina uppgifter"
+
+#: omahelsinki/templates/base.html:133
+msgid "Give feedback"
+msgstr "Ge feedback"
+
+#: omahelsinki/templates/base.html:134
+msgid "Contact us"
+msgstr "Ta kontakt"
+
+#: omahelsinki/templates/base.html:152
+msgid "Data use statement"
+msgstr "Dataskyddsbeskrivning"
+
+#: omahelsinki/templates/base.html:153
+msgid "Read more about data protection"
+msgstr "Läs mer om dataskyddet"
+
+#: omahelsinki/templates/base.html:154
+msgid "Privacy policy"
+msgstr "Registerutdrag"
+
+#: omahelsinki/templates/base.html:155
+msgid "Privacy"
+msgstr "Sekretess"
+
+#: omahelsinki/templates/base.html:164
+msgid "Creative Commons"
+msgstr ""
+
+#: omahelsinki/templates/base.html:165
+msgid "2018 City of Helsinki"
+msgstr "2018 Helsingfors stad"
+
+#: src/django-helusers/helusers/admin.py:36
+msgid "Django admin"
+msgstr ""
+
+#: src/django-helusers/helusers/admin.py:37
+#, python-format
+msgid "%(site_name)s admin"
+msgstr ""
+
+#: src/django-helusers/helusers/apps.py:7
+msgid "Helsinki Users"
+msgstr ""
+
+#: src/django-helusers/helusers/models.py:37
+msgid "AD Group Mapping"
+msgstr ""
+
+#: src/django-helusers/helusers/oidc.py:49
+#, python-brace-format
+msgid "Not authorized for API scope \"{api_scope}\""
+msgstr ""
+
+#: src/django-helusers/helusers/oidc.py:62
+msgid "Invalid Authorization header. No credentials provided"
+msgstr ""
+
+#: src/django-helusers/helusers/oidc.py:65
+msgid ""
+"Invalid Authorization header. Credentials string should not contain spaces."
+msgstr ""
+
+#: src/django-helusers/helusers/templates/admin/base_site_default.html:3
+msgid "Django site admin"
+msgstr ""
+
+#: src/django-helusers/helusers/templates/admin/base_site_default.html:32
+msgid "Django administration"
+msgstr ""
+
+#: src/django-helusers/helusers/user_utils.py:74
+msgid "Invalid payload."
+msgstr ""
+
+#: src/django-helusers/helusers/views.py:19
+msgid "You have been successfully logged out."
+msgstr ""
+
+#: src/wagtail-modeltranslation/wagtail_modeltranslation/patch_wagtailadmin.py:348
+msgid "This slug is already in use"
+msgstr ""
+
+#: users/apps.py:7
+msgid "Users"
+msgstr ""
