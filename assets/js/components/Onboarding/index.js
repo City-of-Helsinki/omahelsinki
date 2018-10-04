@@ -5,7 +5,7 @@ import {updateUserData} from '../../user/redux'
 import {
     StepButtons, 
     Welcome,
-    CreateProfile, 
+    ProfileImage, 
     //PersonalInformation, 
     //CreatePassword, 
     //Settings,
@@ -57,7 +57,7 @@ class Onboarding extends React.Component {
     handleChange = (selectedOption) => {
         this.setState({selectedOption});
     }
-    handleInputChange = (e) => {
+    handleInputNickName = (e) => {
         const target = e.target
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.id
@@ -72,7 +72,7 @@ class Onboarding extends React.Component {
         this.setState({img: null})
     }
 
-    croppedImage = (img)=>{
+    onImageCrop = (img)=>{
         this.setState({img: img})
     }
 
@@ -106,13 +106,13 @@ class Onboarding extends React.Component {
                                         <Step id='welcome'>
                                             <Welcome />
                                         </Step>
-                                        <Step id='createProfile'>
-                                            <CreateProfile
+                                        <Step id='profileImage'>
+                                            <ProfileImage
                                                 nickname = {this.state.nickname}
                                                 img = {this.state.img}
-                                                handleInputChange = {this.handleInputChange}
+                                                handleInputNickName = {this.handleInputNickName}
                                                 unselectImage = {this.unselectImage}
-                                                croppedImage = {this.croppedImage}
+                                                onImageCrop = {this.onImageCrop}
                                             />
                                         </Step>
                                         {/* <Step id='personalInformation'>

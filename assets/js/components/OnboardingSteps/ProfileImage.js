@@ -4,7 +4,7 @@ import {FormattedMessage, injectIntl} from 'react-intl'
 import HelTextInput from '../HelTextInput'
 import ImgDropAndCrop from '../ImgDropAndCrop'
 
-class CreateProfile extends Component {
+class ProfileImage extends Component {
 
 
     render() {
@@ -16,7 +16,7 @@ class CreateProfile extends Component {
                     <Row>
                         <Col xs={12}>
                             <h1><FormattedMessage id="app.profile" /></h1>
-                            <p className="lead"><FormattedMessage id="app.profile.create" /></p>
+                            <p className="lead"><FormattedMessage id="app.profile.addImageAndNickName" /></p>
                         </Col>
                     </Row>
                 </section>
@@ -41,7 +41,7 @@ class CreateProfile extends Component {
                                         ) : (
                                             <div className="profile-image-upload">
                                                 <div className="profile-image-upload__picture">
-                                                    <ImgDropAndCrop getCroppedImage={this.props.croppedImage} />
+                                                    <ImgDropAndCrop getCroppedImage={this.props.onImageCrop} />
                                                 </div>
                                                 <div className="profile-image-upload__help">
                                                     <small className="text-muted"><FormattedMessage id="app.profile.picture.limit" /></small>
@@ -54,15 +54,15 @@ class CreateProfile extends Component {
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                {<HelTextInput 
+                                <HelTextInput 
                                     id="nickname"
                                     value={this.props.nickname}
                                     type="text"
                                     required={true}
-                                    onChange={this.props.handleInputChange}
+                                    onChange={this.props.handleInputNickName}
                                     label={intl.formatMessage({id: 'app.profile.nickname'})}
                                     helpText={intl.formatMessage({id:'app.profile.nickname.text'})}
-                                />}
+                                />
                             </Col>
                         </Row>
                     </Form>
@@ -73,4 +73,4 @@ class CreateProfile extends Component {
 }
 
 
-export default injectIntl(CreateProfile)
+export default injectIntl(ProfileImage)
