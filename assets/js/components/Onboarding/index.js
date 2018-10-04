@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import {updateUserData} from '../../user/redux'
 import {
     StepButtons, 
-    Welcome, 
+    Welcome,
+    CreateProfile, 
     //PersonalInformation, 
     //CreatePassword, 
     //Settings,
@@ -31,6 +32,8 @@ class Onboarding extends React.Component {
             // enabledNotifications: [],
             selectedFields: [],
             selectedOption: '',
+            nickname: '',
+            img: null,
         };
 
         //this.handleChange = this.handleChange.bind(this);
@@ -53,6 +56,24 @@ class Onboarding extends React.Component {
     // }
     handleChange = (selectedOption) => {
         this.setState({selectedOption});
+    }
+    handleInputChange = (e) => {
+        const target = e.target
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.id
+        this.setState( {
+            [name]: value,
+        })
+    }
+
+
+    unselectImage = (e) => {
+        e.preventDefault()
+        this.setState({img: null})
+    }
+
+    croppedImage = (img)=>{
+        this.setState({img: img})
     }
 
     wizardFinished() {
@@ -84,6 +105,15 @@ class Onboarding extends React.Component {
                                     <Steps >
                                         <Step id='welcome'>
                                             <Welcome />
+                                        </Step>
+                                        <Step id='createProfile'>
+                                            <CreateProfile
+                                                nickname = {this.state.nickname}
+                                                img = {this.state.img}
+                                                handleInputChange = {this.handleInputChange}
+                                                unselectImage = {this.unselectImage}
+                                                croppedImage = {this.croppedImage}
+                                            />
                                         </Step>
                                         {/* <Step id='personalInformation'>
                                             <PersonalInformation

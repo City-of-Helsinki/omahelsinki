@@ -11,6 +11,7 @@
   "app.settings": "Asetukset",
 
   "app.profile.edit": "Muokkaa oma.helsinki -profiilisi tietoja.",
+  "app.profile.create": "Luoda oma.helsinki -profiilisi tietoja.",
   "app.basicInfo": "Tilin perustiedot",
   "app.not.public": "Se ei näy julkisesti",
 

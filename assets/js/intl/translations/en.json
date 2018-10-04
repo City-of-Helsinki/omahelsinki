@@ -10,7 +10,8 @@
     "app.history": "History",
     "app.settings": "Settings",
 
-    "app.profile.edit": "Edit your own .helsinki profile information.",
+    "app.profile.edit": "Edit your own.helsinki profile information.",
+    "app.profile.create": "Create your own.helsinki profile information.",
     "app.basicInfo": "Basic information",
     "app.not.public": "It does not appear publicly",
   
