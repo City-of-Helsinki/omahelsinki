@@ -29,6 +29,7 @@
     "app.profile.picture": "Profil bild",
     "app.profile.picture.select": "Välj fil",
     "app.profile.picture.select.new": "Välj nytt foto",
+    "app.profile.picture.select.infoText": "Släpp bild / Klicka här",
     "app.profile.picture.cropImage": "Click and drag to crop image",
     "app.profile.picture.limit": "Sidans längd för bilden är minst 200px och upp till 1200px. Filformat jpg eller png.",
     "app.profile.picture.browse": "Browse",

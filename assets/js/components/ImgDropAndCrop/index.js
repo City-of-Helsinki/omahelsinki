@@ -106,7 +106,7 @@ class ImgDropAndCrop extends Component {
                             multiple={false}
                             maxSize={imageMaxSize}
                             accept={acceptedFileTypes} 
-                        >Drop image here / Click to upload</Dropzone>
+                        ><FormattedMessage id="app.profile.picture.select.infoText" /></Dropzone>
                     </div>
                 }
                 { this.state.pixelCrop &&
