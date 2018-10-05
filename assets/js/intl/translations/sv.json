@@ -21,7 +21,11 @@
   
     "app.profileInformation": "Profil information",
     "app.profileInformation.text": "Den här information visas när du kommunicerar med andra användare",
-  
+    
+    "profile.email": "E-post",
+    "profile.firstName": "Förnamn",
+    "profile.lastName": "Efternamn",
+
     "app.profile.picture": "Profil bild",
     "app.profile.picture.select": "Välj fil",
     "app.profile.picture.select.new": "Välj nytt foto",

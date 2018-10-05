@@ -1,12 +1,13 @@
 import React from 'react';
 import {Wizard, Steps, Step} from 'react-albus';
-
+import {connect} from 'react-redux'
+import {updateUserData} from '../../user/redux'
 import {
     StepButtons, 
     Welcome, 
-    PersonalInformation, 
-    CreatePassword, 
-    Settings,
+    //PersonalInformation, 
+    //CreatePassword, 
+    //Settings,
     Interest,
 } from '../OnboardingSteps';
 
@@ -19,35 +20,57 @@ class Onboarding extends React.Component {
         super(props);
 
         this.state = {
-            firstname: '',
-            lastname: '',
-            email: '',
-            ofAge: false,
-            password: '',
-            passwordRepeat: '',
-            enableNotifications: '',
-            enabledMessages: [],
-            enabledNotifications: [],
+            // firstname: '',
+            // lastname: '',
+            // email: '',
+            // ofAge: false,
+            // password: '',
+            // passwordRepeat: '',
+            // enableNotifications: '',
+            // enabledMessages: [],
+            // enabledNotifications: [],
+            selectedFields: [],
+            selectedOption: '',
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        //this.handleChange = this.handleChange.bind(this);
         this.wizardFinished = this.wizardFinished.bind(this);
     }
+    onSelect = (selected) => {
+        const {selectedFields} = this.state
 
-    handleChange(data) {
-        this.setState(data);
+        const index = selectedFields.indexOf(selected);
+        if (index < 0) {
+            selectedFields.push(selected);
+        } else {
+            selectedFields.splice(index, 1);
+        }
+        this.setState({selectedFields: [...selectedFields]});
+    }
+
+    // handleChange(data) {
+    //     this.setState(data);
+    // }
+    handleChange = (selectedOption) => {
+        this.setState({selectedOption});
     }
 
     wizardFinished() {
+        const userInterest = {
+            interest: this.state.selectedFields,
+            region: this.state.selectedOption,
+        }
+        this.props.updateUserData(userInterest)
+        
     }
 
     render() {
-        const {firstname, lastname, email, ofAge} = this.state;
-        const personalInformation = {firstname, lastname, email, ofAge};
-        const {password, passwordRepeat} = this.state;
-        const passwordData = {password, passwordRepeat};
-        const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
-        const settings = {enabledNotifications, enabledMessages, enableNotifications};
+        // const {firstname, lastname, email, ofAge} = this.state;
+        //const personalInformation = {firstname, lastname, email, ofAge};
+        //const {password, passwordRepeat} = this.state;
+        //const passwordData = {password, passwordRepeat};
+        //const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
+        //const settings = {enabledNotifications, enabledMessages, enableNotifications};
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
@@ -62,27 +85,32 @@ class Onboarding extends React.Component {
                                         <Step id='welcome'>
                                             <Welcome />
                                         </Step>
-                                        <Step id='personalInformation'>
+                                        {/* <Step id='personalInformation'>
                                             <PersonalInformation
                                                 data={personalInformation}
                                                 onChange={this.handleChange}
                                             />
-                                        </Step>
-                                        <Step id='createPassword'>
+                                        </Step> */}
+                                        {/* <Step id='createPassword'>
                                             <CreatePassword
                                                 data={passwordData}
                                                 onChange={this.handleChange}
                                             />
-                                        </Step>
+                                        </Step> */}
                                         <Step id='interests'>
-                                            <Interest />
+                                            <Interest 
+                                                onSelect={this.onSelect}
+                                                selectedFields={this.state.selectedFields}
+                                                selectedOption={this.state.selectedOption}
+                                                handleChange={this.handleChange}
+                                            />
                                         </Step>
-                                        <Step id='settings'>
+                                        {/* <Step id='settings'>
                                             <Settings
                                                 data={settings}
                                                 onChange={this.handleChange}
                                             />
-                                        </Step>
+                                        </Step> */}
                                     </Steps>
                                 </div>
                                 
@@ -96,4 +124,4 @@ class Onboarding extends React.Component {
     }
 }
 
-export default Onboarding;
+export default connect(null, {updateUserData})(Onboarding);
