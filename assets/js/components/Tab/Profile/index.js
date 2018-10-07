@@ -41,6 +41,7 @@ class Profile extends Component {
         }
 
         this.props.dispatch(updateUserData(data))
+        
     }
 
     unselectImage = (e) => {

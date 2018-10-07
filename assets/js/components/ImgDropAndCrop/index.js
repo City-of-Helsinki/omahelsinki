@@ -79,7 +79,7 @@ class ImgDropAndCrop extends Component {
         const canvasRef = this.imagePreviewCanvasRef.current
         const fileExtension = extractImageFileExtensionFromBase64(imgSrc)
         const imageData64 = canvasRef.toDataURL('/image' + fileExtension)
-        this.props.getCroppedImage(imageData64);
+        this.props.getCroppedImage(imageData64);        
     }
 
 

@@ -16,9 +16,9 @@ class Interest extends Component {
 
     render() {
         const region = this.props.regions.map(data=>{ 
-            return {label: data.name[this.props.language] || data.name['fi'], value: data.origin_id}
+            return {label: data.name[this.props.language] || data.name['fi'], value: data.origin_id, ocd_id: data.ocd_id}
         })
-
+        
         return (
             <div className="oma-interest">
                 <h2><FormattedMessage id="app.interests.your" /></h2>

@@ -1,7 +1,8 @@
 import React from 'react';
 import {Wizard, Steps, Step} from 'react-albus';
 import {connect} from 'react-redux'
-import {updateUserData} from '../../user/redux'
+import {createNewUser} from '../../user/redux'
+import {dataURLtoFile} from '../ImgDropAndCrop/ReusableUtils'
 import {
     StepButtons, 
     Welcome,
@@ -19,7 +20,6 @@ class Onboarding extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             // firstname: '',
             // lastname: '',
@@ -39,6 +39,9 @@ class Onboarding extends React.Component {
         //this.handleChange = this.handleChange.bind(this);
         this.wizardFinished = this.wizardFinished.bind(this);
     }
+
+    
+
     onSelect = (selected) => {
         const {selectedFields} = this.state
 
@@ -77,15 +80,22 @@ class Onboarding extends React.Component {
     }
 
     wizardFinished() {
-        const userInterest = {
-            interest: this.state.selectedFields,
-            region: this.state.selectedOption,
+        const imageFile = this.state.img && dataURLtoFile(this.state.img, 'image.png')
+        const newUserData = {
+            nickname: this.state.nickname,
+            concepts_of_interest: this.state.selectedFields.map(item=>{
+                let result = [item.vocabulary, item.code].join(':')
+                return result
+            }),
+            divisions_of_interest: this.state.selectedOption.map(item=>item.ocd_id),
         }
-        this.props.updateUserData(userInterest)
-        
+        const formData = new FormData()
+        {imageFile ? formData.append('image', imageFile) : null }     
+        formData.append('data', newUserData)
+        this.props.createNewUser(formData)      
     }
 
-    render() {
+    render() { 
         // const {firstname, lastname, email, ofAge} = this.state;
         //const personalInformation = {firstname, lastname, email, ofAge};
         //const {password, passwordRepeat} = this.state;
@@ -154,4 +164,4 @@ class Onboarding extends React.Component {
     }
 }
 
-export default connect(null, {updateUserData})(Onboarding);
+export default connect(null, {createNewUser})(Onboarding);
