@@ -1,41 +1,34 @@
 import React, {Component} from 'react';
 import {FormattedMessage} from 'react-intl'
 import {Row, Col} from 'reactstrap'
-import {isEmpty} from 'lodash'
 import {connect} from 'react-redux'
 
 import HelCheckbox from '../../HelCheckbox'
-import {fetchAllInterests, getUserInterest} from '../../../user/redux'
-
+import {fetchAllInterests, updateUserData} from '../../../user/redux'
 
 
 class Interest extends Component {
 
     componentDidMount() {
-        this.props.dispatch(getUserInterest())
-        this.props.dispatch(fetchAllInterests())
-    } 
+        this.props.fetchAllInterests()
+    }
+
+    interestChange = (selectedValues) => {
+        const ids = selectedValues.map(item => item.id)
+        this.props.updateUserData({concepts_of_interest: ids})
+    }
 
     render() {
         const {userInterests, allInterests, language} = this.props
-        const mappedAllInterests = allInterests.map(interest => ({
-            id: interest.code,
-            label: interest.label[language],
-        }))
-        
-        let interests
-        if(!isEmpty(userInterests)) {            
-            const userMappedInterests = userInterests.map(interest => ({
-                id: interest.code,
+        const interests = allInterests.map(interest => {
+            const id = `${interest.vocabulary}:${interest.code}`
+            return {
+                id,
                 label: interest.label[language],
-            }))
-            const unSelectedInterests = mappedAllInterests.filter(item => !userMappedInterests.find(item2 => item.id === item2.id))
-            interests = userMappedInterests.concat(unSelectedInterests)
-        } else {
-            interests = mappedAllInterests
-        }
-        
-        
+                selected: userInterests.includes(id),
+            }
+        })
+
         return (
             <div className="interests-view">
                 <section>
@@ -46,7 +39,6 @@ class Interest extends Component {
                         </Col>
                     </Row>
                 </section>
-
                 <section>
                     <Row>
                         <Col xs={12}>
@@ -54,11 +46,11 @@ class Interest extends Component {
                             <p className="lead text-muted"><FormattedMessage id="app.topics.text" /></p>
                             <HelCheckbox 
                                 data={interests}
+                                onChange={this.interestChange}
                             />
                         </Col>
                     </Row>
                 </section>
-
                 <section>
                     <Row>
                         <Col xs={12}>
@@ -73,11 +65,11 @@ class Interest extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return{
-        userInterests: state.userReducer.interests,
+    return {
+        userInterests: state.userReducer.user.concepts_of_interest,
         allInterests: state.userReducer.allInterests,
         language: state.intl.locale,
     }
 }
 
-export default connect(mapStateToProps)(Interest)
+export default connect(mapStateToProps, {fetchAllInterests, updateUserData})(Interest)
