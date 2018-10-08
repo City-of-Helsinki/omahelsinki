@@ -26,20 +26,20 @@ class History extends Component {
         </div>
     )
     dateIcon = (cell, row) => (
-        <div><HelIcon iconName="calendar" />{' '}{ moment(cell).format('lll') }</div>    
+        <div><HelIcon iconName="calendar" />{' '}{ moment(cell).locale(this.props.locale).format('l') }</div>    
     )
 
     render() {
         const columns = [{
             dataField: 'timestamp', 
-            text: 'Date',
+            text: <FormattedMessage id="app.history.date"/>,
             sort: true,
             headerFormatter: this.sortIcon,
             formatter: this.dateIcon,
         },
         {
             dataField: `service.name.${this.props.locale}`,
-            text: 'Name',
+            text: <FormattedMessage id="app.history.name"/>,
             sort: true,
             headerFormatter: this.sortIcon,
         }];
