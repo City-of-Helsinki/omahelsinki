@@ -10,7 +10,7 @@ class HelCheckbox extends Component {
         const {data, direction, selectedFields, language} = this.props
         return (
             <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
-                <ButtonGroup>
+                <ButtonGroup className="onboarding-interests">
                     {data.map((d, index) => {
                         return (
                             <Button 
