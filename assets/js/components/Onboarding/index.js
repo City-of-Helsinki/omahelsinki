@@ -81,17 +81,21 @@ class Onboarding extends React.Component {
 
     wizardFinished() {
         const imageFile = this.state.img && dataURLtoFile(this.state.img, 'image.png')
-        const newUserData = {
-            nickname: this.state.nickname,
-            concepts_of_interest: this.state.selectedFields.map(item=>{
-                let result = [item.vocabulary, item.code].join(':')
-                return result
-            }),
-            divisions_of_interest: this.state.selectedOption.map(item=>item.ocd_id),
-        }
+        const nickname = this.state.nickname
+        const concepts_of_interest = this.state.selectedFields.map(item=>{
+            let result = [item.vocabulary, item.code].join(':')
+            return result
+        })
+        const divisions_of_interest = this.state.selectedOption.map(item=>item.ocd_id)
         const formData = new FormData()
         {imageFile ? formData.append('image', imageFile) : null }     
-        formData.append('data', newUserData)
+        formData.append('nickname', nickname)
+        for(let i = 0; i < concepts_of_interest.length; i++){
+            formData.append('concepts_of_interest', concepts_of_interest[i])
+        }
+        for(let j = 0; j < divisions_of_interest.length; j++){
+            formData.append('divisions_of_interest', divisions_of_interest[j])
+        }
         this.props.createNewUser(formData)      
     }
 
