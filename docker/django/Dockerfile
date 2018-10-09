@@ -11,11 +11,6 @@ RUN apt-get install --yes curl \
     && apt-get install --yes nodejs \
     && apt-get install --yes build-essential
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update \
-    && apt-get install --yes yarn
-
 COPY ./requirements.txt /code/requirements.txt
 RUN pip install -r /code/requirements.txt \
     && pip install gunicorn
@@ -23,14 +18,9 @@ RUN pip install -r /code/requirements.txt \
 COPY . /code/
 WORKDIR /code/
 
-RUN yarn install \
-    && yarn build
-
 RUN yes | python manage.py migrate
+RUN python manage.py compilemessages
 
 RUN useradd wagtail
 RUN chown -R wagtail /code
 USER wagtail
-
-EXPOSE 8000
-CMD exec gunicorn omahelsinki.wsgi:application --bind 0.0.0.0:8000 --workers 3

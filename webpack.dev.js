@@ -6,11 +6,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = merge(common, {
   mode: 'development',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
   ],
   output: {
-      publicPath: 'http://localhost:3000/assets/bundles/',
+      publicPath: 'http://0.0.0.0:3000/assets/bundles/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -36,6 +36,7 @@ module.exports = merge(common, {
 
   devServer: {
     port: 3000,
+    host: "0.0.0.0",
     hot: true,
     inline: true,
     headers: {

@@ -1,0 +1,46 @@
+version: '3'
+services:
+    postgres:
+        image: postgres:9.6
+        environment:
+            POSTGRES_USER: omahelsinki
+            POSTGRES_PASSWORD: omahelsinki
+            POSTGRES_DB: omahelsinki
+        ports:
+            - "5432:5432"
+        volumes:
+            - omahelsinki-postgres-data-volume:/var/lib/postgres/data
+        container_name: omahelsinki-db
+
+    django:
+        build:
+            context: ./
+            dockerfile: ./docker/django/Dockerfile
+        command: gunicorn omahelsinki.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        environment:
+            DATABASE_URL: postgres://omahelsinki:omahelsinki@omahelsinki-db/omahelsinki
+        volumes:
+            - .:/code
+            - omahelsinki-media-volume:/var/media/
+            - /code/node_modules
+        ports:
+            - "8000:8000"
+        depends_on:
+            - postgres
+        container_name: omahelsinki
+
+    react:
+        build:
+            context: ./
+            dockerfile: ./docker/react/Dockerfile
+        container_name: omahelsinki-react
+        volumes:
+            - .:/code
+            - /code/node_modules
+        ports:
+            - "3000:3000"
+        command: yarn start
+
+volumes:
+        omahelsinki-postgres-data-volume:
+        omahelsinki-media-volume:
