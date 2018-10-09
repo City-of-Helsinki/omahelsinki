@@ -6,7 +6,7 @@ import ReactCrop from 'react-image-crop'
 /*eslint-enable */
 
 import {FormattedMessage, injectIntl} from 'react-intl'
-import {image64toCanvasRef, extractImageFileExtensionFromBase64} from './ReusableUtils';
+import {image64toCanvasRef} from './ReusableUtils';
 
 const imageMaxSize = 1000000 // 1 mb
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
@@ -73,13 +73,10 @@ class ImgDropAndCrop extends Component {
         this.setState({pixelCrop:pixelCrop})
     }
 
-    handleOnCropUpload = (event) => {
+    onReady = (event) => {
         event.preventDefault()
-        const {imgSrc} = this.state
         const canvasRef = this.imagePreviewCanvasRef.current
-        const fileExtension = extractImageFileExtensionFromBase64(imgSrc)
-        const imageData64 = canvasRef.toDataURL('/image' + fileExtension)
-        this.props.getCroppedImage(imageData64);
+        canvasRef.toBlob(blob => this.props.getCroppedImage(blob))
     }
 
 
@@ -113,7 +110,7 @@ class ImgDropAndCrop extends Component {
                     <Button
                         className="cropButton"
                         color="primary"
-                        onClick={this.handleOnCropUpload}
+                        onClick={this.onReady}
                     >
                         <FormattedMessage id="app.button.saveCroppedImage" />
                     </Button>
