@@ -30,7 +30,11 @@ would be through Wagtail admin interface.
 
 ### Development with Docker
 
-Start docker containers: `docker-compose up`
+1. Start docker containers: `docker-compose up`
+
+2. When you run your containers for the first time, apply Django migrations:
+- `docker exec -it omahelsinki python manage.py migrate`
+- answer yes to all questions
 
 Now your project is live at [localhost:8000](http://localhost:8000)
 
