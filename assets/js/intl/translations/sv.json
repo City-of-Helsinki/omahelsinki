@@ -1,4 +1,24 @@
 {
+    "app.profile": "Profil",
+    "app.profile.addImageAndNickName": "Lägg till din Oma.helsinki profil information.",
+    "app.profile.picture": "Profil bild",
+    "app.profile.picture.select.new": "Välj nytt foto",
+    "app.profile.picture.limit": "Sidans längd för bilden är minst 200px och upp till 1200px. Filformat jpg eller png.",
+    "app.profile.nickname": "Användarnamn",
+    "app.profile.nickname.text":"Användarnamnet används till exempel när du publicerar kommentarer till offentliga samtal",
+   
+    "onboarding.navigation.previous": "Bak",
+    "onboarding.navigation.next": "Fortgå",
+    "onboarding.navigation.finish": "Redo",
+    "onboarding.welcome.heading": "Hej ny användare!",
+    "onboarding.welcome.text": "Välkommen till Oma.helsinki. Et par steg och du är redo att go!",
+
     "app.history.date": "Datum",
-    "app.history.name": "Namn"
+    "app.history.name": "Namn",
+
+    "app.interests.your" : "Dina intressen",
+    "app.subjects": "Ämnen",
+    "app.subject.interest": "Vilka ämnen är du intresserad av?",
+    "app.regions": "Områden",
+    "app.regions.interest": "Vilka områden är du intresserade av?"
 }
