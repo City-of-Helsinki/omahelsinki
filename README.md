@@ -6,7 +6,7 @@
 
 ### General prerequisites
 
-For any type local development setup the following is recommended:
+For any type of local development setup the following is recommended:
 
 1. Create local settings: `touch local_settings.py`
  
@@ -92,7 +92,7 @@ You can load some test content for the Wagtail part:
 
 ```bash
 curl "https://omahelsinki.test.hel.ninja/media/omahelsinki-datadump.json" > omahelsinki-datadump.json
-docker exec omahelsinki python manage.py loaddata omahelsinki-datadump.json
+python manage.py loaddata omahelsinki-datadump.json
 ```
 
 ## Views
