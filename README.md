@@ -54,6 +54,7 @@ page to reload.
 - PostgreSQL
 - Python >3
 - Virtualenv
+- gettext (to compile translations)
 
 #### Setting up
  
@@ -80,6 +81,7 @@ yarn build
 
 ```
 python manage.py migrate
+python manage.py compilemessages
 python manage.py createsuperuser
 python manage.py runserver
 ```
