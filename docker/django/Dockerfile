@@ -13,12 +13,12 @@ RUN apt-get install --yes curl \
 
 COPY ./requirements.txt /code/requirements.txt
 RUN pip install -r /code/requirements.txt \
-    && pip install gunicorn
+    && pip install gunicorn \
+    && pip install pip-tools
 
 COPY . /code/
 WORKDIR /code/
 
-RUN yes | python manage.py migrate
 RUN python manage.py compilemessages
 
 RUN useradd wagtail
