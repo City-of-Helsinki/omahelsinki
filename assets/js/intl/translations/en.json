@@ -10,7 +10,8 @@
     "app.history": "History",
     "app.settings": "Settings",
 
-    "app.profile.edit": "Edit your own .helsinki profile information.",
+    "app.profile.edit": "Edit your own.helsinki profile information.",
+    "app.profile.addImageAndNickName": "Add your own.helsinki profile information.",
     "app.basicInfo": "Basic information",
     "app.not.public": "It does not appear publicly",
   
@@ -96,6 +97,8 @@
     "app.services.all.amountOfServices": "We have {amount} services.",
     "app.services.all.cta": "Not a user? Start by creating an account",
 
+    "app.history.date": "Date",
+    "app.history.name": "Name",
     "app.history.text": "Historical data about the use of services when you are logged in with your Helsinki account.",
 
     "app.interests.your" : "Your interests",

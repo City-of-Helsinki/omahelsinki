@@ -1,5 +1,25 @@
 {
-    "app.welcome": "Welcome!",
+    "app.profile.addImageAndNickName": "Lägg till din Oma.helsinki profil information.",
+    "app.profile.picture": "Profil bild",
+    "app.profile.picture.select.new": "Välj nytt foto",
+    "app.profile.picture.limit": "Sidans längd för bilden är minst 200px och upp till 1200px. Filformat jpg eller png.",
+    "app.profile.nickname": "Användarnamn",
+    "app.profile.nickname.text":"Användarnamnet används till exempel när du publicerar kommentarer till offentliga samtal",
+   
+    "onboarding.navigation.previous": "Bak",
+    "onboarding.navigation.next": "Fortgå",
+    "onboarding.navigation.finish": "Redo",
+    "onboarding.welcome.heading": "Hej ny användare!",
+    "onboarding.welcome.text": "Välkommen till Oma.helsinki. Et par steg och du är redo att go!",
+
+    "app.history.date": "Datum",
+    "app.history.name": "Namn",
+
+    "app.interests.your" : "Dina intressen",
+    "app.subjects": "Ämnen",
+    "app.subject.interest": "Vilka ämnen är du intresserad av?",
+    "app.regions": "Områden",
+    "app.regions.interest": "Vilka områden är du intresserade av?",
 
     "app.profile": "Profil",
     "app.interests": "Intressen",
@@ -26,16 +46,11 @@
     "profile.firstName": "Förnamn",
     "profile.lastName": "Efternamn",
 
-    "app.profile.picture": "Profil bild",
     "app.profile.picture.select": "Välj fil",
-    "app.profile.picture.select.new": "Välj nytt foto",
     "app.profile.picture.select.infoText": "Släpp bild / Klicka här",
     "app.profile.picture.cropImage": "Click and drag to crop image",
-    "app.profile.picture.limit": "Sidans längd för bilden är minst 200px och upp till 1200px. Filformat jpg eller png.",
     "app.profile.picture.browse": "Browse",
     "app.profile.picture.delete": "Radera bild",
-    "app.profile.nickname": "Användarnamn",
-    "app.profile.nickname.text": "Användarnamnet används till exempel när du publicerar kommentarer till offentliga samtal",
 
     "app.interests.text": "Välj ämnen som är av intresse för dig.",
     "app.topics": "Ämnen",
@@ -57,11 +72,6 @@
     "app.decision.social": "Social",
     "app.decision.actionTeaching": "Action Teaching",
     
-    "onboarding.navigation.previous": "Back",
-    "onboarding.navigation.next": "Continue",
-    "onboarding.navigation.finish": "Ready",
-    "onboarding.welcome.heading": "Hello new user!",
-    "onboarding.welcome.text": "Welcome to test oma.helsinki service. Couple of steps to fill and you are ready to go!",
     "onboarding.personalInformation.heading": "Personal information",
     "onboarding.createPassword.heading": "Create password",
     "onboarding.settings.heading": "Settings",
@@ -94,11 +104,6 @@
 
     "app.history.text": "Historikdata om användningen av våra tjänster med ditt oma.helsinki-konto",
 
-    "app.interests.your" : "Your interests",
-    "app.subjects": "Subjects",
-    "app.subject.interest" : "What kind of subjects you are interested in?",
-    "app.regions": "Regions",
-    "app.regions.interest": "What regions interest you the most",
     "app.decision.making": "Decision making",
     "app.decision.interest" : "What kind of subject you are interested in?",
     

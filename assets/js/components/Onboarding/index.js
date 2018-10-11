@@ -3,13 +3,12 @@ import {Wizard, Steps, Step} from 'react-albus'
 import {connect} from 'react-redux'
 import {Container} from 'reactstrap'
 
-import {updateUserData} from '../../user/redux'
+import {createNewUser} from '../../user/redux'
+
 import {
     StepButtons, 
-    Welcome, 
-    //PersonalInformation, 
-    //CreatePassword, 
-    //Settings,
+    Welcome,
+    ProfileImage, 
     Interest,
 } from '../OnboardingSteps'
 
@@ -23,6 +22,8 @@ class Onboarding extends React.Component {
         this.state = {
             interests: [],
             regions: [],
+            nickname: '',
+            img: null,
         }
 
         this.wizardFinished = this.wizardFinished.bind(this)
@@ -38,16 +39,40 @@ class Onboarding extends React.Component {
         this.setState({regions})
     }
 
+    handleInputNickName = (e) => {
+        const value = e.target.value;
+        this.setState({nickname: value})
+    }
+
+    unselectImage = (e) => {
+        e.preventDefault()
+        this.setState({img: null})
+    }
+
+    onImageCrop = (img)=>{
+        this.setState({img: img})
+    }
+
     wizardFinished() {
-        const userInterest = {
-            interest: this.state.selectedFields,
-            region: this.state.selectedOption,
+        const nickname = this.state.nickname
+        const concepts_of_interest = this.state.interests
+        const divisions_of_interest = this.state.regions
+        const formData = new FormData()
+        if (this.state.img) {
+            formData.append('image', this.state.img, 'image.png')
         }
-        this.props.updateUserData(userInterest)
+        formData.append('nickname', nickname)
+        for(let i = 0; i < concepts_of_interest.length; i++){
+            formData.append('concepts_of_interest', concepts_of_interest[i])
+        }
+        for(let j = 0; j < divisions_of_interest.length; j++){
+            formData.append('divisions_of_interest', divisions_of_interest[j])
+        }
+        this.props.createNewUser(formData)
     }
 
     render() {
-        const {interests, regions} = this.state
+        const {interests, regions, nickname, img} = this.state
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
@@ -61,6 +86,15 @@ class Onboarding extends React.Component {
                                     <Steps >
                                         <Step id='welcome'>
                                             <Welcome />
+                                        </Step>
+                                        <Step id='profileImage'>
+                                            <ProfileImage
+                                                nickname={nickname}
+                                                img={img}
+                                                handleInputNickName={this.handleInputNickName}
+                                                unselectImage={this.unselectImage}
+                                                onImageCrop={this.onImageCrop}
+                                            />
                                         </Step>
                                         <Step id='interests'>
                                             <Interest
@@ -82,4 +116,4 @@ class Onboarding extends React.Component {
     }
 }
 
-export default connect(null, {updateUserData})(Onboarding)
+export default connect(null, {createNewUser})(Onboarding);

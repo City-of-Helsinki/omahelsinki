@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap'
-import {FormattedMessage} from 'react-intl'
+import {injectIntl, FormattedMessage} from 'react-intl'
 import {connect} from 'react-redux'
 import moment from 'moment'
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -26,20 +26,21 @@ class History extends Component {
         </div>
     )
     dateIcon = (cell, row) => (
-        <div><HelIcon iconName="calendar" />{' '}{ moment(cell).format('lll') }</div>    
+        <div><HelIcon iconName="calendar" />{' '}{ moment(cell).locale(this.props.locale).format('l') }</div>    
     )
 
     render() {
+        const {intl} = this.props
         const columns = [{
-            dataField: 'timestamp', 
-            text: 'Date',
+            dataField: 'timestamp',
+            text: intl.formatMessage({id: 'app.history.date'}),
             sort: true,
             headerFormatter: this.sortIcon,
             formatter: this.dateIcon,
         },
         {
             dataField: `service.name.${this.props.locale}`,
-            text: 'Name',
+            text: intl.formatMessage({id: 'app.history.name'}),
             sort: true,
             headerFormatter: this.sortIcon,
         }];
@@ -78,4 +79,4 @@ const mapStateToProps = state => ({
     locale: state.intl.locale,
     historyData: state.userReducer.allHistoryData,
 })
-export default connect(mapStateToProps)(History)
+export default connect(mapStateToProps)(injectIntl(History))

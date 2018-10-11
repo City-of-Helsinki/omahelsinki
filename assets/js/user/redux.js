@@ -59,13 +59,27 @@ export const {
 })
 
 export const {
-    getProfile, getProfileSuccess, getProfileError,
-    updateProfile, updateProfileSuccess, updateProfileError,
+    newUser,
+    newUserSuccess,
+    newUserError,
+
+    getProfile,
+    getProfileSuccess,
+    getProfileError,
+
+    updateProfile, 
+    updateProfileSuccess, 
+    updateProfileError,
     setUserProfile,
 } = createActions({
+    NEW_USER: undefined,
+    NEW_USER_SUCCESS: undefined,
+    NEW_USER_ERROR: error => ({error}),
+
     GET_PROFILE: undefined,
     GET_PROFILE_SUCCESS: undefined,
     GET_PROFILE_ERROR: error => ({error}),
+
     UPDATE_PROFILE: payload => ({payload}),
     UPDATE_PROFILE_SUCCESS: undefined,
     UPDATE_PROFILE_ERROR: error => ({error}),
@@ -76,12 +90,19 @@ const userDefaultState = {
     allInterests: [],
     allInterestsError: null,
     allInterestsLoading:false,
+
     allRegions: [],
     allRegionsError: null,
     allRegionsLoading:false,
+
     allHistoryData: [],
     allHistoryDataError: null,
     allHistoryDataLoading:false,
+
+    newUser: [],
+    newUserError: null,
+    newUserLoading:false,
+
     user: {},
     error: null,
     interests: {},
@@ -196,6 +217,21 @@ export const userReducer = handleActions(
                 interests: action.payload.interest,  
             }),
         ],
+        [
+            newUser, (state, action) => {
+                return {...state, newUserError: null, newUserLoading: true}
+            },
+        ],
+        [
+            newUserSuccess, (state, action) => {
+                return {...state, newUserError: null, newUserLoading: false, newUser: action.payload}
+            },
+        ],
+        [
+            newUserError, (state, action) => {
+                return {...state, newUserError: action.error, newUserLoading: false}
+            },
+        ],
         
     ]),
     userDefaultState
@@ -215,6 +251,19 @@ export const fetchUserData = () => {
 
     }
 }
+
+//creating new user onboarding
+export const createNewUser = (payload) => {
+    return async (dispatch) => {
+        try {
+            const response = await profileRequest.post(`/profile/`, payload)
+            dispatch(newUserSuccess(response.data))
+        } catch (error) {
+            dispatch(newUserError(error))
+        }
+    }
+}
+
 
 export const updateUserData = (payload) => {
     return async (dispatch) => {

@@ -11,6 +11,7 @@
   "app.settings": "Asetukset",
 
   "app.profile.edit": "Muokkaa oma.helsinki -profiilisi tietoja.",
+  "app.profile.addImageAndNickName": "Lisätä oma.helsinki -profiilisi tietoja.",
   "app.basicInfo": "Tilin perustiedot",
   "app.not.public": "Se ei näy julkisesti",
 
@@ -96,6 +97,8 @@
   "app.services.all.amountOfServices": "Meillä on {amount} palvelua.",
   "app.services.all.cta": "Et vielä käyttäjä? Luo tili",
 
+  "app.history.date": "Päivä",
+  "app.history.name": "Nimi",
   "app.history.text": "Historiaan kertyvät tiedot palvelujen käytöstä, kun olet kirjautuneena sisään Helsinki-tililläsi.",
 
   "app.interests.your" : "Sinun etusi",
