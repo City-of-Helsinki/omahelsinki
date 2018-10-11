@@ -79,7 +79,6 @@ class ImgDropAndCrop extends Component {
         canvasRef.toBlob(blob => this.props.getCroppedImage(blob))
     }
 
-
     render() {
         const {imgSrc} = this.state
         return(

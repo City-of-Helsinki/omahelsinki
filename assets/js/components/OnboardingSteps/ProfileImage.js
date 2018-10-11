@@ -6,6 +6,11 @@ import ImgDropAndCrop from '../ImgDropAndCrop'
 
 class ProfileImage extends Component {
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.img && prevProps.img !== this.props.img) {
+            URL.revokeObjectURL(prevProps.img)
+        }
+    }
 
     render() {
         const {intl} = this.props
@@ -20,10 +25,6 @@ class ProfileImage extends Component {
                         </Col>
                     </Row>
                 </section>
-
-                <section>
-                </section>
-
                 <section>
                     <Form className="form-profile-information" onSubmit={this.submitProfileInfo}>
                         <Row>
@@ -34,7 +35,7 @@ class ProfileImage extends Component {
                                         hasImage ? (
                                             <div>
                                                 <div className="profile-picture__picture" >
-                                                    {this.props.img && <img src={this.props.img} alt="profile" />}
+                                                    <img src={URL.createObjectURL(this.props.img)} alt="profile" />
                                                 </div>
                                                 <Button color="danger" onClick={this.props.unselectImage}><FormattedMessage id="app.profile.picture.delete"/></Button>
                                             </div>

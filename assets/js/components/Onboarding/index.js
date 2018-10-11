@@ -1,17 +1,14 @@
 import React from 'react'
 import {Wizard, Steps, Step} from 'react-albus'
 import {connect} from 'react-redux'
-import {createNewUser} from '../../user/redux'
-import {dataURLtoFile} from '../ImgDropAndCrop/ReusableUtils'
 import {Container} from 'reactstrap'
+
+import {createNewUser} from '../../user/redux'
 
 import {
     StepButtons, 
     Welcome,
     ProfileImage, 
-    //PersonalInformation, 
-    //CreatePassword, 
-    //Settings,
     Interest,
 } from '../OnboardingSteps'
 
@@ -41,15 +38,11 @@ class Onboarding extends React.Component {
     regionsChanged(regions) {
         this.setState({regions})
     }
-    handleInputNickName = (e) => {
-        const target = e.target
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.id
-        this.setState( {
-            [name]: value,
-        })
-    }
 
+    handleInputNickName = (e) => {
+        const value = e.target.value;
+        this.setState({nickname: value})
+    }
 
     unselectImage = (e) => {
         e.preventDefault()
@@ -61,15 +54,13 @@ class Onboarding extends React.Component {
     }
 
     wizardFinished() {
-        const imageFile = this.state.img && dataURLtoFile(this.state.img, 'image.png')
         const nickname = this.state.nickname
-        const concepts_of_interest = this.state.selectedFields.map(item=>{
-            let result = [item.vocabulary, item.code].join(':')
-            return result
-        })
-        const divisions_of_interest = this.state.selectedOption.map(item=>item.ocd_id)
+        const concepts_of_interest = this.state.interests
+        const divisions_of_interest = this.state.regions
         const formData = new FormData()
-        {imageFile ? formData.append('image', imageFile) : null }     
+        if (this.state.img) {
+            formData.append('image', this.state.img, 'image.png')
+        }
         formData.append('nickname', nickname)
         for(let i = 0; i < concepts_of_interest.length; i++){
             formData.append('concepts_of_interest', concepts_of_interest[i])
@@ -77,16 +68,11 @@ class Onboarding extends React.Component {
         for(let j = 0; j < divisions_of_interest.length; j++){
             formData.append('divisions_of_interest', divisions_of_interest[j])
         }
-        this.props.createNewUser(formData)      
+        this.props.createNewUser(formData)
     }
 
-    render() { 
-        // const {firstname, lastname, email, ofAge} = this.state;
-        //const personalInformation = {firstname, lastname, email, ofAge};
-        //const {password, passwordRepeat} = this.state;
-        //const passwordData = {password, passwordRepeat};
-        //const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
-        //const settings = {enabledNotifications, enabledMessages, enableNotifications};
+    render() {
+        const {interests, regions, nickname, img} = this.state
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
@@ -103,25 +89,13 @@ class Onboarding extends React.Component {
                                         </Step>
                                         <Step id='profileImage'>
                                             <ProfileImage
-                                                nickname = {this.state.nickname}
-                                                img = {this.state.img}
-                                                handleInputNickName = {this.handleInputNickName}
-                                                unselectImage = {this.unselectImage}
-                                                onImageCrop = {this.onImageCrop}
+                                                nickname={nickname}
+                                                img={img}
+                                                handleInputNickName={this.handleInputNickName}
+                                                unselectImage={this.unselectImage}
+                                                onImageCrop={this.onImageCrop}
                                             />
                                         </Step>
-                                        {/* <Step id='personalInformation'>
-                                            <PersonalInformation
-                                                data={personalInformation}
-                                                onChange={this.handleChange}
-                                            />
-                                        </Step> */}
-                                        {/* <Step id='createPassword'>
-                                            <CreatePassword
-                                                data={passwordData}
-                                                onChange={this.handleChange}
-                                            />
-                                        </Step> */}
                                         <Step id='interests'>
                                             <Interest
                                                 selectedInterests={interests}
