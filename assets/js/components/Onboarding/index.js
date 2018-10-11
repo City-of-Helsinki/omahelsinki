@@ -1,8 +1,10 @@
-import React from 'react';
-import {Wizard, Steps, Step} from 'react-albus';
+import React from 'react'
+import {Wizard, Steps, Step} from 'react-albus'
 import {connect} from 'react-redux'
 import {createNewUser} from '../../user/redux'
 import {dataURLtoFile} from '../ImgDropAndCrop/ReusableUtils'
+import {Container} from 'reactstrap'
+
 import {
     StepButtons, 
     Welcome,
@@ -11,54 +13,33 @@ import {
     //CreatePassword, 
     //Settings,
     Interest,
-} from '../OnboardingSteps';
+} from '../OnboardingSteps'
 
-import {Container} from 'reactstrap'
 import HelIcon from '../HelIcon'
 
 class Onboarding extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
+
         this.state = {
-            // firstname: '',
-            // lastname: '',
-            // email: '',
-            // ofAge: false,
-            // password: '',
-            // passwordRepeat: '',
-            // enableNotifications: '',
-            // enabledMessages: [],
-            // enabledNotifications: [],
-            selectedFields: [],
-            selectedOption: '',
+            interests: [],
+            regions: [],
             nickname: '',
             img: null,
-        };
-
-        //this.handleChange = this.handleChange.bind(this);
-        this.wizardFinished = this.wizardFinished.bind(this);
-    }
-
-    
-
-    onSelect = (selected) => {
-        const {selectedFields} = this.state
-
-        const index = selectedFields.indexOf(selected);
-        if (index < 0) {
-            selectedFields.push(selected);
-        } else {
-            selectedFields.splice(index, 1);
         }
-        this.setState({selectedFields: [...selectedFields]});
+
+        this.wizardFinished = this.wizardFinished.bind(this)
+        this.interestsChanged = this.interestsChanged.bind(this)
+        this.regionsChanged = this.regionsChanged.bind(this)
     }
 
-    // handleChange(data) {
-    //     this.setState(data);
-    // }
-    handleChange = (selectedOption) => {
-        this.setState({selectedOption});
+    interestsChanged(interests) {
+        this.setState({interests})
+    }
+
+    regionsChanged(regions) {
+        this.setState({regions})
     }
     handleInputNickName = (e) => {
         const target = e.target
@@ -142,29 +123,22 @@ class Onboarding extends React.Component {
                                             />
                                         </Step> */}
                                         <Step id='interests'>
-                                            <Interest 
-                                                onSelect={this.onSelect}
-                                                selectedFields={this.state.selectedFields}
-                                                selectedOption={this.state.selectedOption}
-                                                handleChange={this.handleChange}
+                                            <Interest
+                                                selectedInterests={interests}
+                                                onInterestsChanged={this.interestsChanged}
+                                                selectedRegions={regions}
+                                                onRegionsChanged={this.regionsChanged}
                                             />
                                         </Step>
-                                        {/* <Step id='settings'>
-                                            <Settings
-                                                data={settings}
-                                                onChange={this.handleChange}
-                                            />
-                                        </Step> */}
                                     </Steps>
                                 </div>
-                                
                                 <StepButtons onFinish={this.wizardFinished} />
                             </Wizard>
                         </div>
                     </div>
                 </Container>
             </div>
-        );
+        )
     }
 }
 

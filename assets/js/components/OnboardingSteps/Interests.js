@@ -6,34 +6,56 @@ import HelCheckbox from '../HelCheckbox'
 import HelSelect from '../HelSelect'
 
 class Interest extends Component {
-  
 
-    UNSAFE_componentWillMount(){
-        [this.props.fetchAllInterests(),
-            this.props.fetchAllRegions()]
+    componentDidMount() {
+        this.props.fetchAllInterests()
+        this.props.fetchAllRegions()
     }
 
+    interestChangeHandler = (selectedValues) => {
+        const ids = selectedValues.map(item => item.id)
+        this.props.onInterestsChanged(ids)
+    }
+
+    regionsChangedHandler = (selectedValues) => {
+        const ids = selectedValues.map(item => item.value)
+        this.props.onRegionsChanged(ids)
+    }
 
     render() {
-        const region = this.props.regions.map(data=>{ 
-            return {label: data.name[this.props.language] || data.name['fi'], value: data.origin_id, ocd_id: data.ocd_id}
+        const {
+            language,
+            allInterests,
+            selectedInterests,
+            allRegions,
+            selectedRegions,
+        } = this.props
+
+        const region = allRegions.map(data => { 
+            return {label: data.name[language] || data.name['fi'], value: data.ocd_id}
         })
-        
+
+        const interests = allInterests.map(item => {
+            const id = `${item.vocabulary}:${item.code}`
+            return {
+                id,
+                label: item.label[language],
+                selected: selectedInterests.includes(id),
+            }
+        })
+
         return (
             <div className="oma-interest">
                 <h2><FormattedMessage id="app.interests.your" /></h2>
-
                 <div className="oma-interest__subjects">
                     <h4><FormattedMessage id="app.subjects" /></h4>
                     <p><FormattedMessage id="app.subject.interest" /></p>
                     <HelCheckbox 
-                        data={this.props.interests}
+                        data={interests}
                         direction="horizontal"
-                        onSelect={this.props.onSelect}
-                        selectedFields={this.props.selectedFields}
+                        onChange={this.interestChangeHandler}
                     />
                 </div>
-
                 <div className="oma-interest__regions">
                     <h4><FormattedMessage id="app.regions" /></h4>
                     <p><FormattedMessage id="app.regions.interest" /></p>
@@ -41,21 +63,20 @@ class Interest extends Component {
                         options={region}
                         multi={true}
                         searchable={true}
-                        selectedOption={this.props.selectedOption}
-                        handleChange={this.props.handleChange}
+                        selectedOption={selectedRegions}
+                        handleChange={this.regionsChangedHandler}
                     />
                 </div>
-
             </div>
         );
     }
 }
 
 const mapStateToProps = state =>{
-    return{
+    return {
         language: state.intl.locale,
-        interests: state.userReducer.allInterests,
-        regions: state.userReducer.allRegions,
+        allInterests: state.userReducer.allInterests,
+        allRegions: state.userReducer.allRegions,
     }
 }
 

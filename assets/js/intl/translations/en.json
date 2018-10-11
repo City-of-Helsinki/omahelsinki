@@ -32,6 +32,7 @@
     "app.profile.picture": "Profile picture",
     "app.profile.picture.select": "Select photo",
     "app.profile.picture.select.new": "Select new photo",
+    "app.profile.picture.select.infoText": "Drop image here / Click to upload",
     "app.profile.picture.cropImage": "Click and drag to crop image",
     "app.profile.picture.limit": "The page length of the image is at least 200px and up to 1200px. File format jpg or png.",
     "app.profile.picture.browse": "Browse",
