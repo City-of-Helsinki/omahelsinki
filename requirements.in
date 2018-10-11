@@ -7,3 +7,4 @@ django-npm
 django-webpack-loader
 django_compressor
 -e git+https://github.com/infoportugal/wagtail-modeltranslation@django2#egg=wagtail-modeltranslation
+django-environ
