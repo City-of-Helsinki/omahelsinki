@@ -44,7 +44,7 @@ class Interest extends Component {
                 return {
                     id,
                     label: interest.label[language] || interest.label['fi'],
-                    selected: userInterests.includes(id),
+                    selected: userInterests && userInterests.includes(id),
                 }
             })
 
