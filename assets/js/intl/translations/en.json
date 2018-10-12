@@ -96,7 +96,7 @@
     "app.services.related": "Related Services",
     "app.services.related.text": "You can use multiple Helsinki City services and certain third party services with your Oma.helsinki profile.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
-    "app.services.all.amountOfServices": "We have {amount} services.",
+    "app.services.all.amountOfServices": "We have {amount} services",
     "app.services.all.cta": "Not a user? Start by creating an account",
 
     "app.history.date": "Date",
