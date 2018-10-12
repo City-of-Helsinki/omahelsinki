@@ -71,7 +71,6 @@ class DownloadOwnData extends Component {
             })
         */
         
-        /*
         axios.get('https://api.hel.fi/sso-test/v1/user_consent/', config)
             .then(res => {
                 console.log(res.data.results)
@@ -80,8 +79,7 @@ class DownloadOwnData extends Component {
                     userConsentData: res.data.results,
                 })
             })
-        */
-
+        /*
         axios.get('https://api.hel.fi/sso-test/v1/service/', config)
             .then(res => {
                 console.log(res.data.results)
@@ -90,6 +88,7 @@ class DownloadOwnData extends Component {
                     serviceData: res.data.results,
                 })
             })
+        */
     }
     
 
