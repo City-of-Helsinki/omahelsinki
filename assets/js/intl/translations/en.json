@@ -10,10 +10,10 @@
     "app.history": "History",
     "app.settings": "Settings",
 
-    "app.profile.edit": "Edit your own.helsinki profile information.",
+    "app.profile.edit": "Edit your Oma.helsinki profile information.",
     "app.profile.addImageAndNickName": "Add your own.helsinki profile information.",
     "app.basicInfo": "Basic information",
-    "app.not.public": "It does not appear publicly",
+    "app.not.public": "This information will not be displayed publicly",
   
     "app.input.firstname": "Firstname",
     "app.input.lastname": "Lastname",
@@ -24,7 +24,7 @@
     "app.button.saveChanges": "Save changes",
   
     "app.profileInformation": "Profile information",
-    "app.profileInformation.text": "Shown in services that communicate with other users",
+    "app.profileInformation.text": "Shown in services where you communicate with other users",
     "profile.email": "Email",
     "profile.firstName": "First name",
     "profile.lastName": "Last name",
@@ -32,7 +32,7 @@
     "app.profile.picture": "Profile picture",
     "app.profile.picture.select": "Select photo",
     "app.profile.picture.select.new": "Select new photo",
-    "app.profile.picture.select.infoText": "Drop image here / Click to upload",
+    "app.profile.picture.select.infoText": "Drag and drop image / Click to upload",
     "app.profile.picture.cropImage": "Click and drag to crop image",
     "app.profile.picture.limit": "The page length of the image is at least 200px and up to 1200px. File format jpg or png.",
     "app.profile.picture.browse": "Browse",
@@ -51,7 +51,7 @@
     "app.topics.politics": "Politics",
 
     "app.areas": "Areas",
-    "app.areas.text": "What do you want to follow about the areas in Helsinki?",
+    "app.areas.text": "What areas are you interested in?",
 
     "app.decision": "Decision",
     "app.decision.text": "Do you want to know about matters related to the decision making process?",
@@ -94,7 +94,7 @@
     "onboarding.hint.required": "Required field",
 
     "app.services.related": "Related Services",
-    "app.services.related.text": "You can use multiple Helsinki City services and certain third party services in your Helsinki account.",
+    "app.services.related.text": "You can use multiple Helsinki City services and certain third party services with your Oma.helsinki profile.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
     "app.services.all.amountOfServices": "We have {amount} services.",
     "app.services.all.cta": "Not a user? Start by creating an account",
