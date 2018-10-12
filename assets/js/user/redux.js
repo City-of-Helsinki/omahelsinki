@@ -71,6 +71,10 @@ export const {
     updateProfileSuccess, 
     updateProfileError,
     setUserProfile,
+
+    deleteProfile,
+    deleteProfileSuccess,
+    deleteProfileError,
 } = createActions({
     NEW_USER: undefined,
     NEW_USER_SUCCESS: undefined,
@@ -84,6 +88,10 @@ export const {
     UPDATE_PROFILE_SUCCESS: undefined,
     UPDATE_PROFILE_ERROR: error => ({error}),
     SET_USER_PROFILE: user => ({user}),
+
+    DELETE_PROFILE: undefined,
+    DELETE_PROFILE_SUCCESS: undefined,
+    DELETE_PROFILE_ERROR: error => ({error}),
 })
 
 const userDefaultState = {
@@ -102,6 +110,9 @@ const userDefaultState = {
     newUser: [],
     newUserError: null,
     newUserLoading:false,
+
+    deleteProfileLoading: false,
+    deleteProfileError: null,
 
     user: {},
     error: null,
@@ -232,7 +243,21 @@ export const userReducer = handleActions(
                 return {...state, newUserError: action.error, newUserLoading: false}
             },
         ],
-        
+        [
+            deleteProfile, (state, action) => {
+                return {...state, deleteProfileLoading: true, deleteProfileError: null}
+            },
+        ],
+        [
+            deleteProfileError, (state, action) => {
+                return {...state, deleteProfileLoading: false, deleteProfileError: action.error}
+            },
+        ],
+        [
+            deleteProfileSuccess, (state, action) => {
+                return {...state, deleteProfileLoading: false, deleteProfileError: null}
+            },
+        ],
     ]),
     userDefaultState
 );
@@ -334,6 +359,19 @@ export const fetchAllHistoryData = () => {
             dispatch(getAllHistoryDataSuccess(data))
         } catch (error) {
             dispatch(getAllHistoryDataError(error))
+        }
+    }
+}
+
+export const deleteUserProfile = () => {
+    return async (dispatch) => {
+        dispatch(deleteProfile())
+        try {
+            await profileRequest.delete(`/profile/${userUuid}/`)
+            dispatch(deleteProfileSuccess())
+            window.location.href = '/logout'
+        } catch (error) {
+            dispatch(deleteProfileError(error))
         }
     }
 }

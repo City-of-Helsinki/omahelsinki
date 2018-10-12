@@ -5,6 +5,8 @@
     "app.profile.picture.limit": "Sidans längd för bilden är minst 200px och upp till 1200px. Filformat jpg eller png.",
     "app.profile.nickname": "Användarnamn",
     "app.profile.nickname.text":"Användarnamnet används till exempel när du publicerar kommentarer till offentliga samtal",
+    "app.profile.delete": "Radera profil",
+    "app.profile.delete.confirm": "Är du säker att du vill radera din profil?",
    
     "onboarding.navigation.previous": "Bak",
     "onboarding.navigation.next": "Fortgå",
@@ -36,7 +38,7 @@
     "app.input.email": "E-post",
     "app.input.email.placeHolder": "Enter email",
     "app.input.email.helpBlock.notShare": "Vi ger inte information on dig till utomståande utan ditt tillstånd.",
-    "app.input.password": "Lösenoed",
+    "app.input.password": "Lösenord",
     "app.button.saveChanges": "Spara ändringar",
   
     "app.profileInformation": "Profil information",

@@ -5,7 +5,7 @@ import HelTextInput from '../../HelTextInput'
 import {connect} from 'react-redux'
 import debounce from 'lodash/debounce'
 
-import {fetchUserData, updateUserData} from '../../../user/redux'
+import {fetchUserData, updateUserData, deleteUserProfile} from '../../../user/redux'
 import ImgDropAndCrop from '../../ImgDropAndCrop'
 
 class Profile extends Component {
@@ -26,6 +26,13 @@ class Profile extends Component {
 
     unselectImage() {
         this.props.updateUserData({image: null})
+    }
+
+    deleteProfile = () => {
+        const msg = this.props.intl.formatMessage({id: 'app.profile.delete.confirm'})
+        if (confirm(msg)) {
+            this.props.deleteUserProfile()
+        }
     }
 
     render() {
@@ -81,7 +88,7 @@ class Profile extends Component {
                                             <div className="profile-picture__picture" >
                                                 <img src={user.image} alt="profile" />
                                             </div>
-                                            <Button color="danger" onClick={() => this.unselectImage()}><FormattedMessage id="app.profile.picture.delete"/></Button>
+                                            <Button onClick={() => this.unselectImage()}><FormattedMessage id="app.profile.picture.delete"/></Button>
                                         </div>
                                     ) : (
                                         <div className="profile-image-upload">
@@ -111,6 +118,9 @@ class Profile extends Component {
                         </Col>
                     </Row>
                 </section>
+                <section>
+                    <Button color="danger" onClick={() => this.deleteProfile()}><FormattedMessage id="app.profile.delete"/></Button>
+                </section>
             </div>
         );
     }
@@ -120,4 +130,4 @@ const mapStateToProps = state => ({
     user: state.userReducer.user,
     tunnistamoUser: state.userReducer.tunnistamoUser,
 })
-export default connect(mapStateToProps, {fetchUserData, updateUserData})(injectIntl(Profile))
+export default connect(mapStateToProps, {fetchUserData, updateUserData, deleteUserProfile})(injectIntl(Profile))
