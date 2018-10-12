@@ -2,8 +2,9 @@ import React from 'react'
 import {Wizard, Steps, Step} from 'react-albus'
 import {connect} from 'react-redux'
 import {Container} from 'reactstrap'
+import {Redirect} from 'react-router-dom'
 
-import {createNewUser} from '../../user/redux'
+import {createNewUser, fetchUserData} from '../../user/redux'
 
 import {
     StepButtons, 
@@ -29,6 +30,10 @@ class Onboarding extends React.Component {
         this.wizardFinished = this.wizardFinished.bind(this)
         this.interestsChanged = this.interestsChanged.bind(this)
         this.regionsChanged = this.regionsChanged.bind(this)
+    }
+
+    componentDidMount() {
+        this.props.fetchUserData()
     }
 
     interestsChanged(interests) {
@@ -72,7 +77,11 @@ class Onboarding extends React.Component {
     }
 
     render() {
+        const {profileFound} = this.props
         const {interests, regions, nickname, img} = this.state
+        if (profileFound) {
+            return <Redirect to='/mydata/' />
+        }
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
@@ -116,4 +125,9 @@ class Onboarding extends React.Component {
     }
 }
 
-export default connect(null, {createNewUser})(Onboarding);
+const mapStateToProps = state => {
+    return {
+        profileFound: Object.keys(state.userReducer.user).length > 0,
+    }
+}
+export default connect(mapStateToProps, {createNewUser, fetchUserData})(Onboarding);
