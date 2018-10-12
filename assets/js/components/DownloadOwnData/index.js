@@ -8,7 +8,9 @@ class DownloadOwnData extends Component {
         super(props)
         this.state = {
             //profileData: [],
-            historyData: [],
+            //historyData: [],
+            //userConsentData: [],
+            serviceData: [],
         }
     }
 
@@ -58,7 +60,7 @@ class DownloadOwnData extends Component {
             })
             */
         
-        
+        /*
         axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config)
             .then(res => {
                 console.log(res.data.results)
@@ -67,7 +69,27 @@ class DownloadOwnData extends Component {
                     historyData: res.data.results,
                 })
             })
+        */
         
+        /*
+        axios.get('https://api.hel.fi/sso-test/v1/user_consent/', config)
+            .then(res => {
+                console.log(res.data.results)
+                this.downloadData(res.data.results)
+                this.setState({
+                    userConsentData: res.data.results,
+                })
+            })
+        */
+
+        axios.get('https://api.hel.fi/sso-test/v1/service/', config)
+            .then(res => {
+                console.log(res.data.results)
+                this.downloadData(res.data.results)
+                this.setState({
+                    serviceData: res.data.results,
+                })
+            })
     }
     
 
