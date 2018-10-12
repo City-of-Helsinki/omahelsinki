@@ -121,7 +121,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = '/'
+
+LOGIN_REDIRECT_URL = '/welcome'
 LOGOUT_REDIRECT_URL = '/'
 
 from helusers.defaults import SOCIAL_AUTH_PIPELINE as HELUSERS_PIPELINE  # noqa isort:skip

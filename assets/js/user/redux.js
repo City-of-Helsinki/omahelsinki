@@ -235,7 +235,7 @@ export const userReducer = handleActions(
         ],
         [
             newUserSuccess, (state, action) => {
-                return {...state, newUserError: null, newUserLoading: false, newUser: action.payload}
+                return {...state, newUserError: null, newUserLoading: false, user: action.payload}
             },
         ],
         [
