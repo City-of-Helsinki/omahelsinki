@@ -1,18 +1,10 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-//import lodashGet from 'lodash/get'
+import lodashGet from 'lodash/get'
+import {Button} from 'reactstrap'
 
 //import {profileApiUrl} from '../../settings'
 class DownloadOwnData extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            //profileData: [],
-            //historyData: [],
-            //userConsentData: [],
-            serviceData: [],
-        }
-    }
 
     downloadData = (obj) => {
         const data = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(obj))
@@ -20,82 +12,56 @@ class DownloadOwnData extends Component {
         var a = document.createElement('a');
         a.href = 'data:' + data;
         a.download = 'data.json';
-        a.innerHTML = 'Download Data';
-
-        var container = document.getElementById('container');
-        container.appendChild(a);
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     }
-
-    /*
-    componentDidMount() {
-        const token = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
-
-        const config = {
-            baseURL: 'https://profile-api.test.hel.ninja/profile-test/v1',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
-        }
-    */
         
-    componentDidMount() {
-    
+    getDataAndDownload() {
+        const profileToken = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
         const token = window.TUNNISTAMO_ACCESS_TOKEN
 
-        const config = {
+        let config = {
             baseURL: 'https://profile-api.test.hel.ninja/profile-test/v1',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${profileToken}`,
             },
-        }
-    
-        /*
-        axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config)
-            .then(res => {
-                //console.log(res.data.results)
-                this.downloadData(res.data.results)
-                this.setState({
-                    profileData: res.data.results,
-                })
-            })
-            */
+        };
+
+        const data = {
+            userProfileData: {},
+            userServiceData: {},
+            userLoginEntryData: {},
+            userConsentData: {},
+        };
+
+        let userProfileData = axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config).then(res => {
+            data.userProfileData = res.data.results;
+        });
+
+        config = {...(config), headers: {'Authorization': `Bearer ${token}`}};
         
-        /*
-        axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config)
-            .then(res => {
-                console.log(res.data.results)
-                this.downloadData(res.data.results)
-                this.setState({
-                    historyData: res.data.results,
-                })
-            })
-        */
+        let userServiceData =  axios.get('https://api.hel.fi/sso-test/v1/service/', config).then(res => {
+            data.userServiceData = res.data.results;
+        });
+
+        let userLoginEntryData = axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config).then(res => {
+            data.userLoginEntryData = res.data.results;
+        });
+
+        let userConsentData = axios.get('https://api.hel.fi/sso-test/v1/user_consent/', config).then(res => {
+            data.userConsentData = res.data.results;
+        });
         
-        axios.get('https://api.hel.fi/sso-test/v1/user_consent/', config)
-            .then(res => {
-                console.log(res.data.results)
-                this.downloadData(res.data.results)
-                this.setState({
-                    userConsentData: res.data.results,
-                })
-            })
-        /*
-        axios.get('https://api.hel.fi/sso-test/v1/service/', config)
-            .then(res => {
-                console.log(res.data.results)
-                this.downloadData(res.data.results)
-                this.setState({
-                    serviceData: res.data.results,
-                })
-            })
-        */
+        Promise.all( [userProfileData, userServiceData, userLoginEntryData, userConsentData]).then( values => {
+            console.log('DATA--',data);
+            this.downloadData(data);
+        });
     }
     
-
     render() {
         return(
-            <div id="container">
-            </div>
+            <Button onClick={() => this.getDataAndDownload()}>Download Data</Button>
         );
     }
 
