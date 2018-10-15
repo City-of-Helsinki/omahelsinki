@@ -102,6 +102,7 @@
     "app.history.date": "Date",
     "app.history.name": "Name",
     "app.history.text": "Historical data about the use of services when you are logged in with your Helsinki account.",
+    "app.history.youSignedIn": "You signed in",
 
     "app.interests.your" : "Your interests",
     "app.subjects": "Subjects",
