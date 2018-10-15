@@ -33,6 +33,8 @@ services:
         build:
             context: ./
             dockerfile: ./docker/react/Dockerfile
+        environment:
+            SERVER_URL: 0.0.0.0
         container_name: omahelsinki-react
         volumes:
             - .:/code
