@@ -61,7 +61,14 @@ class DownloadOwnData extends Component {
     
     render() {
         return(
-            <Button onClick={() => this.getDataAndDownload()}>Download Data</Button>
+            <Button
+                className="downloadButton"
+                type="submit"
+                color="primary"
+                onClick={() => this.getDataAndDownload()}
+            >
+                Download Data
+            </Button>
         );
     }
 
