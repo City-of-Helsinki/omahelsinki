@@ -51,8 +51,8 @@ msgid "Log out"
 msgstr "Kirjaudu ulos"
 
 #: omahelsinki/templates/base.html:106
-msgid "What's oma.helsinki?"
-msgstr "Mikä oma.helsinki?"
+msgid "What is Oma.helsinki?"
+msgstr "Mikä Oma.helsinki?"
 
 #: omahelsinki/templates/base.html:109
 msgid "Services"
