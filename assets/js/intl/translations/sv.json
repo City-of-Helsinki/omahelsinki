@@ -1,4 +1,6 @@
 {
+    "app.loading": "Laddning...",
+
     "app.profile.addImageAndNickName": "Lägg till din Oma.helsinki profil information.",
     "app.profile.picture": "Profil bild",
     "app.profile.picture.select.new": "Välj nytt foto",
@@ -13,9 +15,11 @@
     "onboarding.navigation.finish": "Redo",
     "onboarding.welcome.heading": "Hej ny användare!",
     "onboarding.welcome.text": "Välkommen till Oma.helsinki. Et par steg och du är redo att go!",
-
+    
     "app.history.date": "Datum",
     "app.history.name": "Namn",
+    "app.history.text": "Historikdata om användningen av våra tjänster med ditt oma.helsinki-konto",
+    "app.history.yousigned.in": "Du loggade in",
 
     "app.interests.your" : "Dina intressen",
     "app.subjects": "Ämnen",
@@ -104,7 +108,6 @@
     "app.services.related.text": "Du kan använda flera Helsinfors stadstjänster och vissa tredjepartstjänster med ditt Oma.helsinki-konto.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
 
-    "app.history.text": "Historikdata om användningen av våra tjänster med ditt oma.helsinki-konto",
 
     "app.decision.making": "Decision making",
     "app.decision.interest" : "What kind of subject you are interested in?",
