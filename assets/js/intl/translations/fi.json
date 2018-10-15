@@ -105,5 +105,7 @@
   "profile.fileSize.error": "The file size should not exceed 1 MB",
   "profile.fileType.error": "File type other than images are not allowed",
 
-  "app.button.saveCroppedImage": "Save Cropped Image"
+  "app.button.saveCroppedImage": "Save Cropped Image",
+
+  "app.button.downloadData": "Ladata Tietoja"
 }

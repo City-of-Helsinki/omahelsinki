@@ -104,6 +104,8 @@
 
     "profile.fileSize.error": "The file size should not exceed 1 MB",
 
-    "app.button.saveCroppedImage": "Save Cropped Image"
+    "app.button.saveCroppedImage": "Save Cropped Image",
+
+    "app.button.downloadData": "Download Data"
   }
   

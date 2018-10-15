@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import lodashGet from 'lodash/get'
 import {Button} from 'reactstrap'
+import {FormattedMessage, injectIntl} from 'react-intl'
 
 //import {profileApiUrl} from '../../settings'
 class DownloadOwnData extends Component {
@@ -67,11 +68,11 @@ class DownloadOwnData extends Component {
                 color="primary"
                 onClick={() => this.getDataAndDownload()}
             >
-                Download Data
+                <FormattedMessage id="app.button.downloadData" />
             </Button>
         );
     }
 
 }
 
-export default DownloadOwnData
+export default (injectIntl(DownloadOwnData))
