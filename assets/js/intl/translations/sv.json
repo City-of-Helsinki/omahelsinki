@@ -19,7 +19,7 @@
     "app.history.date": "Datum",
     "app.history.name": "Namn",
     "app.history.text": "Historikdata om användningen av våra tjänster med ditt oma.helsinki-konto",
-    "app.history.yousigned.in": "Du loggade in",
+    "app.history.youSignedIn": "Du loggade in",
 
     "app.interests.your" : "Dina intressen",
     "app.subjects": "Ämnen",

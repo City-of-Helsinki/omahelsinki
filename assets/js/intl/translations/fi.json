@@ -102,7 +102,7 @@
   "app.history.date": "Päivä",
   "app.history.name": "Nimi",
   "app.history.text": "Historiaan kertyvät tiedot palvelujen käytöstä, kun olet kirjautuneena sisään Helsinki-tililläsi.",
-  "app.history.yousigned.in": "Kirjauduit sisään",
+  "app.history.youSignedIn": "Kirjauduit sisään",
 
   "app.interests.your" : "Sinun etusi",
   "app.subjects": "Aiheet",

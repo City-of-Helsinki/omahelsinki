@@ -31,7 +31,7 @@ class History extends Component {
 
     dummyText = ()=>{
         return (
-            <p>{this.props.intl.formatMessage({id:'app.history.yousigned.in'})}</p>
+            <p>{this.props.intl.formatMessage({id:'app.history.youSignedIn'})}</p>
         )
     }
 
