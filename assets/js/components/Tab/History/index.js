@@ -47,6 +47,10 @@ class History extends Component {
         const options = {
             paginationSize: 4,
         }
+        const defaultSorted = [{
+            dataField: 'timestamp',
+            order: 'desc',
+        }];
         return (
             <div className="history-view">
                 <section>
@@ -66,6 +70,7 @@ class History extends Component {
                                 keyField='timestamp' 
                                 data={ this.props.historyData } 
                                 columns={ columns }
+                                defaultSorted={ defaultSorted }
                                 pagination={ paginationFactory(options) }/>
                         </Col>
                     </Row>
