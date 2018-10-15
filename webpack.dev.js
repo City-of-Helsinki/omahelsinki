@@ -3,19 +3,21 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const serverUrl = process.env.SERVER_URL || 'localhost';
+
 module.exports = merge(common, {
     mode: 'development',
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
+        'webpack-dev-server/client?http://' + serverUrl + ':3000',
         'webpack/hot/only-dev-server',
     ],
     output: {
-        publicPath: 'http://localhost:3000/assets/bundles/',
+        publicPath: 'http://' + serverUrl + ':3000/assets/bundles/',
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(), // don't reload if there is an error
-    // new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
     ],
     module: {
         rules: [
@@ -36,7 +38,7 @@ module.exports = merge(common, {
 
     devServer: {
         port: 3000,
-        //host: "localhost",
+        host: serverUrl,
         hot: true,
         inline: true,
         headers: {
