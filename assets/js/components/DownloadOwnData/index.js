@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import lodashGet from 'lodash/get'
 import {Button} from 'reactstrap'
-import {FormattedMessage, injectIntl} from 'react-intl'
-
-//import {profileApiUrl} from '../../settings'
+import {FormattedMessage} from 'react-intl'
+import {profileApiUrl, tunnistamoUrl, profileToken, tunnistamoToken} from '../../settings'
 class DownloadOwnData extends Component {
 
     downloadData = (obj) => {
@@ -19,11 +17,9 @@ class DownloadOwnData extends Component {
     }
         
     getDataAndDownload() {
-        const profileToken = lodashGet(window, `API_TOKENS['https://api.hel.fi/auth/profiles']`)
-        const token = window.TUNNISTAMO_ACCESS_TOKEN
+        
 
-        let config = {
-            baseURL: 'https://profile-api.test.hel.ninja/profile-test/v1',
+        const profileConfig = {
             headers: {
                 'Authorization': `Bearer ${profileToken}`,
             },
@@ -36,21 +32,21 @@ class DownloadOwnData extends Component {
             userConsentData: {},
         };
 
-        let userProfileData = axios.get('https://profile-api.test.hel.ninja/profile-test/v1/profile/', config).then(res => {
+        let userProfileData = axios.get(`${profileApiUrl}/profile/`, profileConfig).then(res => {
             data.userProfileData = res.data.results;
         });
 
-        config = {...(config), headers: {'Authorization': `Bearer ${token}`}};
+        const tunnistamoConfig = {headers: {'Authorization': `Bearer ${tunnistamoToken}`}};
         
-        let userServiceData =  axios.get('https://api.hel.fi/sso-test/v1/service/', config).then(res => {
+        let userServiceData =  axios.get(`${tunnistamoUrl}/v1/service/`, tunnistamoConfig).then(res => {
             data.userServiceData = res.data.results;
         });
 
-        let userLoginEntryData = axios.get('https://api.hel.fi/sso-test/v1/user_login_entry/', config).then(res => {
+        let userLoginEntryData = axios.get(`${tunnistamoUrl}/v1/user_login_entry/`, tunnistamoConfig).then(res => {
             data.userLoginEntryData = res.data.results;
         });
 
-        let userConsentData = axios.get('https://api.hel.fi/sso-test/v1/user_consent/', config).then(res => {
+        let userConsentData = axios.get(`${tunnistamoUrl}/v1/user_consent/`, tunnistamoConfig).then(res => {
             data.userConsentData = res.data.results;
         });
         
@@ -75,4 +71,4 @@ class DownloadOwnData extends Component {
 
 }
 
-export default (injectIntl(DownloadOwnData))
+export default DownloadOwnData;
