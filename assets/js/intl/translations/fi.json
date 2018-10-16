@@ -11,7 +11,7 @@
   "app.settings": "Asetukset",
 
   "app.profile.edit": "Muokkaa oma.helsinki-profiilisi tietoja.",
-  "app.profile.addImageAndNickName": "Lisätä oma.helsinki -profiilisi tietoja.",
+  "app.profile.addImageAndNickName": "Lisää Oma.helsinki-profiiliisi tietoja.",
   "app.basicInfo": "Tilin perustiedot",
   "app.not.public": "Nämä tiedot näkyvät vain sinulle",
 
@@ -66,7 +66,7 @@
   "onboarding.navigation.next": "Jatka",
   "onboarding.navigation.finish": "Valmis",
   "onboarding.welcome.heading": "Hei uusi käyttäjä!",
-  "onboarding.welcome.text": "Tervetuloa testata oma.helsinki -palvelua. Parin vaiheet täyttää ja olet valmis menemään!",
+  "onboarding.welcome.text": "Tervetuloa Oma.helsinki-palveluun. Muutama vaihe ja olet valmis!",
   "onboarding.personalInformation.heading": "Henkilökohtaiset tiedot",
   "onboarding.createPassword.heading": "Luo salasana",
   "onboarding.settings.heading": "Asetukset",
@@ -103,11 +103,11 @@
   "app.history.name": "Nimi",
   "app.history.text": "Historiaan kertyvät tiedot palvelujen käytöstä, kun olet kirjautuneena sisään Helsinki-tililläsi.",
 
-  "app.interests.your" : "Sinun etusi",
+  "app.interests.your" : "Kiinnostukset",
   "app.subjects": "Aiheet",
   "app.subject.interest" : "Mistä aiheista olet kiinnostunut?",
   "app.regions": "Alueet",
-  "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten",
+  "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten?",
   "app.decision.making": "Päätöksenteko",
   "app.decision.interest" : "Millaista aiheesta olet kiinnostunut?",
 
