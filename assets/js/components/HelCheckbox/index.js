@@ -1,49 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {ButtonGroup, Button} from 'reactstrap'
 import classnames from 'classnames'
 
-class HelCheckbox extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            selectedFields: [],
-        }
+const HelCheckbox = ({data, direction, onChange}) => {
+    const onItemUncheck = (itemId) => {
+        const selectedValues = data.filter(x => x.selected && x.id !== itemId)
+        onChange(selectedValues)
+    }
+    const onItemCheck = (itemId) => {
+        const selectedValues = data.filter(x => x.selected || x.id === itemId)
+        onChange(selectedValues)
     }
 
-    onSelect = (selected) => {
-        const {selectedFields} = this.state
-
-        const index = selectedFields.indexOf(selected);
-        if (index < 0) {
-            selectedFields.push(selected);
-        } else {
-            selectedFields.splice(index, 1);
-        }
-        this.setState({selectedFields: [...selectedFields]});
-    }
-
-    render() {
-        const {data, direction} = this.props
-        const {selectedFields} = this.state
-
-        return (
-            <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
-                <ButtonGroup>
-                    {data.map((d, index) => {
-                        return (
-                            <Button 
-                                onClick={() => this.onSelect(d)}
-                                key={index}
-                                active={selectedFields.includes(d)}
-                            >{d.label}</Button>
-                            // TODO: use translation in label
-                        )
-                    })}
-                </ButtonGroup>
-            </div>
-        );
-    }
+    return (
+        <div className={classnames('hel-checkbox', {'horizontal': direction === 'horizontal', 'vertical': direction === 'vertical'})}>
+            <ButtonGroup>
+                {data.map((d, index) => {
+                    return (
+                        <Button 
+                            onClick={() => d.selected ? onItemUncheck(d.id) : onItemCheck(d.id)}
+                            key={d.id}
+                            active={d.selected}
+                        >{d.label}</Button>
+                    )
+                })}
+            </ButtonGroup>
+        </div>
+    );
 }
 
 HelCheckbox.defaultProps = {

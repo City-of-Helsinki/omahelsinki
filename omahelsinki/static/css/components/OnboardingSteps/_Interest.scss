@@ -18,4 +18,16 @@
     h2 {
         margin-bottom: 2rem;
     }
+
+    .onboarding-interests{
+        @media screen and (max-width:768px){
+          display: flex;
+          flex-direction: column;
+      
+          .btn{
+            width: 100%;
+            margin-bottom: 5px;
+          }
+        }
+    }
 }

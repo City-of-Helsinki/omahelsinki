@@ -2,14 +2,18 @@
   "app.welcome": "Tervetuloa!",
   "app.profile": "Profiili",
 
+  "app.loading": "Ladataan...",
+  "app.error": "Tapahtui virhe.",
+
   "app.interests": "Kiinnostukset",
   "app.services": "Palvelut",
   "app.history": "Historia",
   "app.settings": "Asetukset",
 
-  "app.profile.edit": "Muokkaa oma.helsinki -profiilisi tietoja.",
+  "app.profile.edit": "Muokkaa oma.helsinki-profiilisi tietoja.",
+  "app.profile.addImageAndNickName": "Lisätä oma.helsinki -profiilisi tietoja.",
   "app.basicInfo": "Tilin perustiedot",
-  "app.not.public": "Se ei näy julkisesti",
+  "app.not.public": "Nämä tiedot näkyvät vain sinulle",
 
   "app.input.firstname": "Etunimi",
   "app.input.lastname": "Sukunimi",
@@ -20,18 +24,24 @@
   "app.button.saveChanges": "Tallenna muutokset",
 
   "app.profileInformation": "Profiilitiedot",
-  "app.profileInformation.text": "Näytetään palveluissa joissa kommunikoit muiden käyttäjien kanssa",
+  "app.profileInformation.text": "Näytetään palveluissa, joissa kommunikoit muiden käyttäjien kanssa",
+  "profile.email": "Sähköposti",
+  "profile.firstName": "Etunimi",
+  "profile.lastName": "Sukunimi",
 
   "app.profile.picture": "Profiilikuva",
   "app.profile.picture.select": "Valitse kuvatiedosto",
-  "app.profile.picture.select.new": "Valitse uuusi profiilikuva",
+  "app.profile.picture.select.new": "Valitse uusi profiilikuva",
+  "app.profile.picture.select.infoText": "Vedä kuva tähän / Klikkaa valitaksesi kuva",
   "app.profile.picture.cropImage": "Click and drag to crop image",
   "app.profile.picture.limit": "Kuvan sivun pituus vähintään 200px ja enintään 1200px. Tiedostomuoto jpg tai png.",
   "app.profile.picture.browse": "Selailla",
   "app.profile.picture.delete": "Poista kuva",
   "app.profile.nickname": "Nimimerkki",
   "app.profile.nickname.text": "Nimimerkkiä käytetään esimerkiksi kun julkaiset kommentteja julkisiin keskusteluihin",
-  
+  "app.profile.delete": "Poista profiili",
+  "app.profile.delete.confirm": "Haluatko varmasti poistaa profiilisi?",
+
   "app.interests.text": "Valitse aiheet, jotka kiinnostavat sinua, joiden avulla voit suositella sisältöä eri palveluissa tai lähettää ilmoituksia omien valintojesi mukaan.",
   "app.topics": "Aiheet",
   "app.topics.text": "Millaisia aiheita olet kiinnostunut?",
@@ -41,7 +51,7 @@
   "app.topics.politics": "Politiikka",
 
   "app.areas": "Alueet",
-  "app.areas.text": "Mitä haluat seurata Helsingin alueilla?",
+  "app.areas.text": "Mistä alueista olet kiinnostunut?",
 
   "app.decision": "päätös",
   "app.decision.text": "Haluatko tietää päätöksentekoprosessiin liittyvistä asioista?",
@@ -83,15 +93,19 @@
   "onboarding.hint.ofAge": "Jotkut Helsingin kaupungin palveluista vaativat yli 18-vuotiaita.",
   "onboarding.hint.required": "Pakollinen kenttä",
 
-  "app.services.related": "Liittyvät palvelut",
-  "app.services.related.text": "Voit käyttää useita Helsingin kaupungin palveluita ja tiettyjä kolmansien osapuolten palveluita Helsinki-tililläsi.",
+  "app.services.related": "Liitetyt palvelut",
+  "app.services.related.text": "Voit käyttää Oma.helsinki-profiilillasi useita Helsingin kaupungin palveluita ja tiettyjä kolmansien osapuolten palveluita.",
   "app.services.notLinked": "Palvelut, joita et ole vielä liittänyt tiliisi",
+  "app.services.all.amountOfServices": "Meillä on {amount} palvelua",
+  "app.services.all.cta": "Et vielä käyttäjä? Luo tili",
 
+  "app.history.date": "Päivä",
+  "app.history.name": "Nimi",
   "app.history.text": "Historiaan kertyvät tiedot palvelujen käytöstä, kun olet kirjautuneena sisään Helsinki-tililläsi.",
 
   "app.interests.your" : "Sinun etusi",
   "app.subjects": "Aiheet",
-  "app.subject.interest" : "Millaisia aiheita olet kiinnostunut?",
+  "app.subject.interest" : "Mistä aiheista olet kiinnostunut?",
   "app.regions": "Alueet",
   "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten",
   "app.decision.making": "Päätöksenteko",
@@ -103,7 +117,6 @@
   "password.strong": "Salasana on vahva",
 
   "profile.fileSize.error": "The file size should not exceed 1 MB",
-  "profile.fileType.error": "File type other than images are not allowed",
 
   "app.button.saveCroppedImage": "Save Cropped Image",
 

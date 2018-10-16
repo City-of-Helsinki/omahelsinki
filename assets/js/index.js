@@ -12,6 +12,7 @@ import configureStore from './root/store';
 
 import MainPage from './components/Main';
 import UserOnboarding from './components/Onboarding';
+import AllServices from './services/AllServices';
 
 
 const intlLocaleData = getIntlLocaleData();
@@ -27,6 +28,7 @@ ReactDOM.render(
                     <Switch>
                         <Route exact path='/mydata/' component={MainPage} />
                         <Route exact path='/welcome/' component={UserOnboarding} />
+                        <Route exact path='/services/' component={AllServices} />
                     </Switch>
                 </BrowserRouter>
             </App>

@@ -1,53 +1,87 @@
-import React from 'react';
-import {Wizard, Steps, Step} from 'react-albus';
+import React from 'react'
+import {Wizard, Steps, Step} from 'react-albus'
+import {connect} from 'react-redux'
+import {Container} from 'reactstrap'
+import {Redirect} from 'react-router-dom'
+
+import {createNewUser, fetchUserData} from '../../user/redux'
 
 import {
     StepButtons, 
-    Welcome, 
-    PersonalInformation, 
-    CreatePassword, 
-    Settings,
+    Welcome,
+    ProfileImage, 
     Interest,
-} from '../OnboardingSteps';
+} from '../OnboardingSteps'
 
-import {Container} from 'reactstrap'
 import HelIcon from '../HelIcon'
 
 class Onboarding extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
-            firstname: '',
-            lastname: '',
-            email: '',
-            ofAge: false,
-            password: '',
-            passwordRepeat: '',
-            enableNotifications: '',
-            enabledMessages: [],
-            enabledNotifications: [],
-        };
+            interests: [],
+            regions: [],
+            nickname: '',
+            img: null,
+        }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.wizardFinished = this.wizardFinished.bind(this);
+        this.wizardFinished = this.wizardFinished.bind(this)
+        this.interestsChanged = this.interestsChanged.bind(this)
+        this.regionsChanged = this.regionsChanged.bind(this)
     }
 
-    handleChange(data) {
-        this.setState(data);
+    componentDidMount() {
+        this.props.fetchUserData()
+    }
+
+    interestsChanged(interests) {
+        this.setState({interests})
+    }
+
+    regionsChanged(regions) {
+        this.setState({regions})
+    }
+
+    handleInputNickName = (e) => {
+        const value = e.target.value;
+        this.setState({nickname: value})
+    }
+
+    unselectImage = (e) => {
+        e.preventDefault()
+        this.setState({img: null})
+    }
+
+    onImageCrop = (img)=>{
+        this.setState({img: img})
     }
 
     wizardFinished() {
+        const nickname = this.state.nickname
+        const concepts_of_interest = this.state.interests
+        const divisions_of_interest = this.state.regions
+        const formData = new FormData()
+        if (this.state.img) {
+            formData.append('image', this.state.img, 'image.png')
+        }
+        formData.append('nickname', nickname)
+        for(let i = 0; i < concepts_of_interest.length; i++){
+            formData.append('concepts_of_interest', concepts_of_interest[i])
+        }
+        for(let j = 0; j < divisions_of_interest.length; j++){
+            formData.append('divisions_of_interest', divisions_of_interest[j])
+        }
+        this.props.createNewUser(formData)
     }
 
     render() {
-        const {firstname, lastname, email, ofAge} = this.state;
-        const personalInformation = {firstname, lastname, email, ofAge};
-        const {password, passwordRepeat} = this.state;
-        const passwordData = {password, passwordRepeat};
-        const {enabledNotifications, enabledMessages, enableNotifications} = this.state;
-        const settings = {enabledNotifications, enabledMessages, enableNotifications};
+        const {profileFound} = this.props
+        const {interests, regions, nickname, img} = this.state
+        if (profileFound) {
+            return <Redirect to='/mydata/' />
+        }
         return (
             <div className="oma-onboarding-wrapper">
                 <Container>
@@ -62,38 +96,38 @@ class Onboarding extends React.Component {
                                         <Step id='welcome'>
                                             <Welcome />
                                         </Step>
-                                        <Step id='personalInformation'>
-                                            <PersonalInformation
-                                                data={personalInformation}
-                                                onChange={this.handleChange}
-                                            />
-                                        </Step>
-                                        <Step id='createPassword'>
-                                            <CreatePassword
-                                                data={passwordData}
-                                                onChange={this.handleChange}
+                                        <Step id='profileImage'>
+                                            <ProfileImage
+                                                nickname={nickname}
+                                                img={img}
+                                                handleInputNickName={this.handleInputNickName}
+                                                unselectImage={this.unselectImage}
+                                                onImageCrop={this.onImageCrop}
                                             />
                                         </Step>
                                         <Step id='interests'>
-                                            <Interest />
-                                        </Step>
-                                        <Step id='settings'>
-                                            <Settings
-                                                data={settings}
-                                                onChange={this.handleChange}
+                                            <Interest
+                                                selectedInterests={interests}
+                                                onInterestsChanged={this.interestsChanged}
+                                                selectedRegions={regions}
+                                                onRegionsChanged={this.regionsChanged}
                                             />
                                         </Step>
                                     </Steps>
                                 </div>
-                                
                                 <StepButtons onFinish={this.wizardFinished} />
                             </Wizard>
                         </div>
                     </div>
                 </Container>
             </div>
-        );
+        )
     }
 }
 
-export default Onboarding;
+const mapStateToProps = state => {
+    return {
+        profileFound: Object.keys(state.userReducer.user).length > 0,
+    }
+}
+export default connect(mapStateToProps, {createNewUser, fetchUserData})(Onboarding);

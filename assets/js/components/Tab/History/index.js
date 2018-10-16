@@ -1,10 +1,52 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap'
-import {FormattedMessage} from 'react-intl'
-import HelCollapsibleField from '../../HelCollapsibleField'
+import {injectIntl, FormattedMessage} from 'react-intl'
+import {connect} from 'react-redux'
+import moment from 'moment'
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
-export default class History extends Component {
+import {fetchAllHistoryData} from '../../../user/redux'
+import HelIcon from '../../HelIcon'
+
+
+class History extends Component {
+
+    componentDidMount() {
+        this.props.dispatch(fetchAllHistoryData())
+    }
+
+    sortIcon = (column, colIndex) => (
+        <div style={ {display: 'flex'}}>
+            { column.text }
+            <div className="arrow-icon">
+                <HelIcon iconName="arrow-up" />
+                <span className="arrow-down"><HelIcon iconName="arrow-down" /></span>
+            </div>
+        </div>
+    )
+    dateIcon = (cell, row) => (
+        <div><HelIcon iconName="calendar" />{' '}{ moment(cell).locale(this.props.locale).format('l') }</div>    
+    )
+
     render() {
+        const {intl} = this.props
+        const columns = [{
+            dataField: 'timestamp',
+            text: intl.formatMessage({id: 'app.history.date'}),
+            sort: true,
+            headerFormatter: this.sortIcon,
+            formatter: this.dateIcon,
+        },
+        {
+            dataField: `service.name.${this.props.locale}`,
+            text: intl.formatMessage({id: 'app.history.name'}),
+            sort: true,
+            headerFormatter: this.sortIcon,
+        }];
+        const options = {
+            paginationSize: 4,
+        }
         return (
             <div className="history-view">
                 <section>
@@ -18,25 +60,13 @@ export default class History extends Component {
                 <section>
                     <Row>
                         <Col xs={12}>
-                            <HelCollapsibleField
-                                title="Example"
-                            >
-                                <div className="example-collapse-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                </div>
-                            </HelCollapsibleField>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col xs={12}>
-                            <HelCollapsibleField
-                                title="Example"
-                            >
-                                <div className="example-collapse-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                </div>
-                            </HelCollapsibleField>
+                            <BootstrapTable 
+                                striped
+                                bordered = {false}
+                                keyField='timestamp' 
+                                data={ this.props.historyData } 
+                                columns={ columns }
+                                pagination={ paginationFactory(options) }/>
                         </Col>
                     </Row>
                 </section>
@@ -44,3 +74,9 @@ export default class History extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    locale: state.intl.locale,
+    historyData: state.userReducer.allHistoryData,
+})
+export default connect(mapStateToProps)(injectIntl(History))

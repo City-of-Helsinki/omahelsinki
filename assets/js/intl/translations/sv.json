@@ -1,0 +1,121 @@
+{
+    "app.profile.addImageAndNickName": "Lägg till din Oma.helsinki profil information.",
+    "app.profile.picture": "Profil bild",
+    "app.profile.picture.select.new": "Välj nytt foto",
+    "app.profile.picture.limit": "Sidans längd för bilden är minst 200px och upp till 1200px. Filformat jpg eller png.",
+    "app.profile.nickname": "Användarnamn",
+    "app.profile.nickname.text":"Användarnamnet används till exempel när du publicerar kommentarer till offentliga samtal",
+    "app.profile.delete": "Radera profil",
+    "app.profile.delete.confirm": "Är du säker att du vill radera din profil?",
+   
+    "onboarding.navigation.previous": "Bak",
+    "onboarding.navigation.next": "Fortgå",
+    "onboarding.navigation.finish": "Redo",
+    "onboarding.welcome.heading": "Hej ny användare!",
+    "onboarding.welcome.text": "Välkommen till Oma.helsinki. Et par steg och du är redo att go!",
+
+    "app.history.date": "Datum",
+    "app.history.name": "Namn",
+
+    "app.interests.your" : "Dina intressen",
+    "app.subjects": "Ämnen",
+    "app.subject.interest": "Vilka ämnen är du intresserad av?",
+    "app.regions": "Områden",
+    "app.regions.interest": "Vilka områden är du intresserade av?",
+
+    "app.profile": "Profil",
+    "app.interests": "Intressen",
+    "app.services": "Tjänster",
+    "app.history": "Historia",
+    "app.settings": "Settings",
+
+    "app.profile.edit": "Ändra din Oma.helsinki-profil information.",
+    "app.basicInfo": "Oma.helsinki-kontot",
+    "app.not.public": "Visas inte offentligt",
+  
+    "app.input.firstname": "Förnamn",
+    "app.input.lastname": "Efternamn",
+    "app.input.email": "E-post",
+    "app.input.email.placeHolder": "Enter email",
+    "app.input.email.helpBlock.notShare": "Vi ger inte information on dig till utomståande utan ditt tillstånd.",
+    "app.input.password": "Lösenord",
+    "app.button.saveChanges": "Spara ändringar",
+  
+    "app.profileInformation": "Profil information",
+    "app.profileInformation.text": "Den här information visas när du kommunicerar med andra användare",
+    
+    "profile.email": "E-post",
+    "profile.firstName": "Förnamn",
+    "profile.lastName": "Efternamn",
+
+    "app.profile.picture.select": "Välj fil",
+    "app.profile.picture.select.infoText": "Släpp bild / Klicka här",
+    "app.profile.picture.cropImage": "Click and drag to crop image",
+    "app.profile.picture.browse": "Browse",
+    "app.profile.picture.delete": "Radera bild",
+
+    "app.interests.text": "Välj ämnen som är av intresse för dig.",
+    "app.topics": "Ämnen",
+    "app.topics.text": "Vilka ämnen är du intresserad av?",
+    "app.topics.culture": "Culture",
+    "app.topics.economics": "Economics",
+    "app.topics.technology": "Technology",
+    "app.topics.politics": "Politics",
+
+    "app.areas": "Områden",
+    "app.areas.text": "Vilka områden är du intresserade av i Helsingfors?",
+
+    "app.decision": "Decision",
+    "app.decision.text": "Do you want to know about matters related to the decision making process?",
+    "app.decision.urbanPlanning": "Urban planning",
+    "app.decision.licensing": "Licensing",
+    "app.decision.taxation": "Taxation",
+    "app.decision.environment": "Environment",
+    "app.decision.social": "Social",
+    "app.decision.actionTeaching": "Action Teaching",
+    
+    "onboarding.personalInformation.heading": "Personal information",
+    "onboarding.createPassword.heading": "Create password",
+    "onboarding.settings.heading": "Settings",
+    "onboarding.settings.text": "Define what kind of messages and notifications you want to get from oma.helsinki.",
+    "onboarding.messages.heading": "Messages",
+    "onboarding.messages.text": "I want to get notifications or messages via:",
+    "onboarding.notifications.heading": "Notifications",
+    "onboarding.notifications.text": "You will receicve a message/notification when you have got a message or something interesting is happening in your selected region. When do you want to get the notification?",
+    "onboarding.label.disableNotifications": "No, I don't want notifications",
+    "onboarding.label.enableNotifications": "Yes, I want notifications",
+    "onboarding.label.passwordRepeat": "Re-enter password",
+    "onboarding.label.password": "Password",
+    "onboarding.label.ofAge": "I'm over 18 years",
+    "onboarding.label.email": "Email",
+    "onboarding.label.lastname": "Lastname",
+    "onboarding.label.firstname": "Firstname",
+    "onboarding.label.sms": "Text message",
+    "onboarding.label.app": "Helsinki application",
+    "onboarding.label.notifyEvent": "When there is an event that i'm interested in",
+    "onboarding.label.notifyArea": "When in the area that I selected happens something interesting",
+    "onboarding.label.notifySubject": "When somebody comments on subject that I follow",
+    "onboarding.hint.strongPassword": "Password is strong.",
+    "onboarding.hint.weakPassword": "Password is weak. Try use capital letter and what not.",
+    "onboarding.hint.ofAge": "Some of the Helsinki city services require over 18 years of age.",
+    "onboarding.hint.required": "Required field",
+
+    "app.services.related": "Relaterade tjänster",
+    "app.services.related.text": "Du kan använda flera Helsinfors stadstjänster och vissa tredjepartstjänster med ditt Oma.helsinki-konto.",
+    "app.services.notLinked": "Services that you have not yet linked to your account",
+
+    "app.history.text": "Historikdata om användningen av våra tjänster med ditt oma.helsinki-konto",
+
+    "app.decision.making": "Decision making",
+    "app.decision.interest" : "What kind of subject you are interested in?",
+    
+    "password.cantBeEmpty": "Password can't be empty",
+    "password.notStrongEnough": "Password is not strong enough",
+    "password.ok": "Password is ok",
+    "password.strong": "Password is strong",
+
+    "profile.fileSize.error": "The file size should not exceed 1 MB",
+
+    "app.button.saveCroppedImage": "Save Cropped Image"
+  }
+  
