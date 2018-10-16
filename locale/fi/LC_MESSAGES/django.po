@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-04 09:07+0000\n"
+"POT-Creation-Date: 2018-10-16 09:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,17 +26,25 @@ msgstr ""
 msgid "Log in"
 msgstr "Kirjaudu"
 
-#: omahelsinki/settings.py:141
+#: omahelsinki/settings.py:142
 msgid "Finnish"
 msgstr ""
 
-#: omahelsinki/settings.py:142
+#: omahelsinki/settings.py:143
 msgid "Swedish"
 msgstr ""
 
-#: omahelsinki/settings.py:143
+#: omahelsinki/settings.py:144
 msgid "English"
 msgstr ""
+
+#: omahelsinki/templates/404.html:7
+msgid "Page not found"
+msgstr "Sivua ei löytynyt"
+
+#: omahelsinki/templates/404.html:9
+msgid "Sorry, this page could not be found."
+msgstr "Pahoittelemme, tätä sivua ei löytynyt."
 
 #: omahelsinki/templates/base.html:80
 msgid "Edit profile"
@@ -98,56 +106,21 @@ msgstr ""
 msgid "2018 City of Helsinki"
 msgstr "2018 Helsingin kaupunki"
 
-#: src/django-helusers/helusers/admin.py:36
-msgid "Django admin"
-msgstr ""
+#: search/templates/search/search.html:6 search/templates/search/search.html:9
+msgid "Search"
+msgstr "Etsi"
 
-#: src/django-helusers/helusers/admin.py:37
-#, python-format
-msgid "%(site_name)s admin"
-msgstr ""
+#: search/templates/search/search.html:29
+msgid "Previous"
+msgstr "Edellinen"
 
-#: src/django-helusers/helusers/apps.py:7
-msgid "Helsinki Users"
-msgstr ""
+#: search/templates/search/search.html:33
+msgid "Next"
+msgstr "Seuraava"
 
-#: src/django-helusers/helusers/models.py:37
-msgid "AD Group Mapping"
-msgstr ""
-
-#: src/django-helusers/helusers/oidc.py:49
-#, python-brace-format
-msgid "Not authorized for API scope \"{api_scope}\""
-msgstr ""
-
-#: src/django-helusers/helusers/oidc.py:62
-msgid "Invalid Authorization header. No credentials provided"
-msgstr ""
-
-#: src/django-helusers/helusers/oidc.py:65
-msgid ""
-"Invalid Authorization header. Credentials string should not contain spaces."
-msgstr ""
-
-#: src/django-helusers/helusers/templates/admin/base_site_default.html:3
-msgid "Django site admin"
-msgstr ""
-
-#: src/django-helusers/helusers/templates/admin/base_site_default.html:32
-msgid "Django administration"
-msgstr ""
-
-#: src/django-helusers/helusers/user_utils.py:74
-msgid "Invalid payload."
-msgstr ""
-
-#: src/django-helusers/helusers/views.py:19
-msgid "You have been successfully logged out."
-msgstr ""
-
-#: src/wagtail-modeltranslation/wagtail_modeltranslation/patch_wagtailadmin.py:348
-msgid "This slug is already in use"
-msgstr ""
+#: search/templates/search/search.html:36
+msgid "No results found"
+msgstr "Ei hakutuloksia"
 
 #: users/apps.py:7
 msgid "Users"
