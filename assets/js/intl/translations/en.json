@@ -118,5 +118,9 @@
 
     "profile.fileSize.error": "The file size should not exceed 1 MB",
 
-    "app.button.saveCroppedImage": "Save Cropped Image"
+    "app.button.saveCroppedImage": "Save Cropped Image",
+
+    "service.consent.button.delete": "Delete connection",
+    "service.consent.delete.confirm": "Are you sure you want to delete connection to {service}?",
+    "service.lastUsed": "Last used:"
   }

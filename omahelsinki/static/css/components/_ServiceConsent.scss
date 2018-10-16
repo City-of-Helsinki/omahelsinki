@@ -1,0 +1,12 @@
+
+.service-consent {
+  display: flex;
+  flex-direction: column;
+  .last-used {
+    margin-bottom: 10px;
+  }
+  .actions {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
