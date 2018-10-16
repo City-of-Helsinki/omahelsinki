@@ -37,7 +37,12 @@ class ServiceTab extends Component {
                             {usedServices.map((service, index) => {
                                 return (
                                     <HelCollapsibleField
-                                        title={getServiceName(service, locale)} collapsedLabel={<FormattedMessage id="collapse.isClosedLabel"/>} openLabel={<FormattedMessage id="collapse.isOpenLabel"/>} collapsible key={index}>
+                                        title={getServiceName(service, locale)}
+                                        collapsedLabel={<FormattedMessage id="services.collapsed.isClosedLabel"/>}
+                                        openLabel={<FormattedMessage id="services.collapsed.isOpenLabel"/>}
+                                        collapsible
+                                        key={index}
+                                    >
                                         <ServiceConsent service={service}/>
                                     </HelCollapsibleField>
                                 )
