@@ -7,6 +7,7 @@ import debounce from 'lodash/debounce'
 
 import {fetchUserData, updateUserData, deleteUserProfile} from '../../../user/redux'
 import ImgDropAndCrop from '../../ImgDropAndCrop'
+import DownloadOwnData from '../../DownloadOwnData'
 
 class Profile extends Component {
 
@@ -119,6 +120,7 @@ class Profile extends Component {
                     </Row>
                 </section>
                 <section>
+                    <DownloadOwnData />
                     <Button color="danger" onClick={() => this.deleteProfile()}><FormattedMessage id="app.profile.delete"/></Button>
                 </section>
             </div>
