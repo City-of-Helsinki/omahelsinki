@@ -334,7 +334,7 @@ export const fetchAllRegions = () => {
     return async (dispatch) => {
         dispatch(getAllRegions())
         try {
-            const response = await profileRequest.get(`/geo-division/?limit=200/`)
+            const response = await profileRequest.get(`/geo-division/?limit=200`)
             dispatch(getAllRegionsSuccess(response.data))
         } catch (error) {
             dispatch(getAllRegionsError(error))

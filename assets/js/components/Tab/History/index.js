@@ -29,6 +29,12 @@ class History extends Component {
         <div><HelIcon iconName="calendar" />{' '}{ moment(cell).locale(this.props.locale).format('l') }</div>    
     )
 
+    dummyText = ()=>{
+        return (
+            <p>{this.props.intl.formatMessage({id:'app.history.youSignedIn'})}</p>
+        )
+    }
+
     render() {
         const {intl} = this.props
         const columns = [{
@@ -43,10 +49,21 @@ class History extends Component {
             text: intl.formatMessage({id: 'app.history.name'}),
             sort: true,
             headerFormatter: this.sortIcon,
-        }];
+        },
+        {
+            dataField: '',
+            text: '',
+            isDummyField: true,
+            formatter: this.dummyText,
+        },
+        ];
         const options = {
             paginationSize: 4,
         }
+        const defaultSorted = [{
+            dataField: 'timestamp',
+            order: 'desc',
+        }];
         return (
             <div className="history-view">
                 <section>
@@ -66,6 +83,7 @@ class History extends Component {
                                 keyField='timestamp' 
                                 data={ this.props.historyData } 
                                 columns={ columns }
+                                defaultSorted={ defaultSorted }
                                 pagination={ paginationFactory(options) }/>
                         </Col>
                     </Row>

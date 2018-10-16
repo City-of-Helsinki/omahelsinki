@@ -16,7 +16,7 @@ services:
         build:
             context: ./
             dockerfile: ./docker/django/Dockerfile
-        command: gunicorn omahelsinki.wsgi:application --access-logfile - --bind 0.0.0.0:8000 --workers 3
+        command: gunicorn omahelsinki.wsgi:application --reload --access-logfile - --bind 0.0.0.0:8000 --workers 3
         environment:
             DATABASE_URL: postgres://omahelsinki:omahelsinki@omahelsinki-db/omahelsinki
         volumes:
@@ -33,6 +33,8 @@ services:
         build:
             context: ./
             dockerfile: ./docker/react/Dockerfile
+        environment:
+            SERVER_URL: 0.0.0.0
         container_name: omahelsinki-react
         volumes:
             - .:/code

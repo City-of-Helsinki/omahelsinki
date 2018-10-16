@@ -11,7 +11,7 @@
     "app.settings": "Settings",
 
     "app.profile.edit": "Edit your Oma.helsinki profile information.",
-    "app.profile.addImageAndNickName": "Add your own.helsinki profile information.",
+    "app.profile.addImageAndNickName": "Add your Oma.helsinki profile information.",
     "app.basicInfo": "Basic information",
     "app.not.public": "This information will not be displayed publicly",
   
@@ -66,7 +66,7 @@
     "onboarding.navigation.next": "Continue",
     "onboarding.navigation.finish": "Ready",
     "onboarding.welcome.heading": "Hello new user!",
-    "onboarding.welcome.text": "Welcome to test oma.helsinki service. Couple of steps to fill and you are ready to go!",
+    "onboarding.welcome.text": "Welcome to Oma.helsinki. Couple of steps to fill and you are ready to go!",
     "onboarding.personalInformation.heading": "Personal information",
     "onboarding.createPassword.heading": "Create password",
     "onboarding.settings.heading": "Settings",
@@ -96,18 +96,19 @@
     "app.services.related": "Related Services",
     "app.services.related.text": "You can use multiple Helsinki City services and certain third party services with your Oma.helsinki profile.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
-    "app.services.all.amountOfServices": "We have {amount} services.",
+    "app.services.all.amountOfServices": "We have {amount} services",
     "app.services.all.cta": "Not a user? Start by creating an account",
 
     "app.history.date": "Date",
     "app.history.name": "Name",
     "app.history.text": "Historical data about the use of services when you are logged in with your Helsinki account.",
+    "app.history.youSignedIn": "You signed in",
 
     "app.interests.your" : "Your interests",
     "app.subjects": "Subjects",
     "app.subject.interest" : "What kind of subjects you are interested in?",
     "app.regions": "Regions",
-    "app.regions.interest": "What regions interest you the most",
+    "app.regions.interest": "What regions interest you the most?",
     "app.decision.making": "Decision making",
     "app.decision.interest" : "What kind of subject you are interested in?",
     
@@ -123,4 +124,5 @@
     "service.consent.button.delete": "Delete connection",
     "service.consent.delete.confirm": "Are you sure you want to delete connection to {service}?",
     "service.lastUsed": "Last used:"
+    "app.button.downloadData": "Download Data"
   }
