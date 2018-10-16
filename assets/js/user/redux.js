@@ -3,8 +3,7 @@ import axios from 'axios'
 import find from 'lodash/find'
 import {profileApiUrl, tunnistamoUrl, tunnistamoToken, profileToken, tunnistamoUser} from '../settings'
 
-const userUuid = tunnistamoUser.uuid
-
+const userUuid = tunnistamoUser ? tunnistamoUser.uuid : null
 
 const profileRequest = axios.create({
     baseURL: profileApiUrl,
