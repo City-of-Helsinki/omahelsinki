@@ -1,10 +1,26 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap'
 import {FormattedMessage} from 'react-intl'
-import HelCollapsibleField from '../../HelCollapsibleField'
+import {connect} from 'react-redux';
 
-export default class ServiceTab extends Component {
+import HelCollapsibleField from '../../HelCollapsibleField'
+import ServiceList from '../../ServiceList'
+import ServiceConsent from '../../ServiceConsent'
+
+import {fetchServicesAuth} from '../../../services/redux'
+
+const getServiceName = (service, locale) => {
+    return service.name[locale] || service.name['fi']
+}
+
+class ServiceTab extends Component {
+
+    componentDidMount() {
+        this.props.fetchServicesAuth()
+    }
+
     render() {
+        const {usedServices, unusedServices, locale} = this.props
         return (
             <div className="service-view">
                 <section>
@@ -18,18 +34,33 @@ export default class ServiceTab extends Component {
                 <section>
                     <Row>
                         <Col xs={12}>
-                            <HelCollapsibleField
-                                title="Example"
-                                collapsible
-                            >
-                                <div className="example-collapse-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                </div>
-                            </HelCollapsibleField>
+                            {usedServices.map((service, index) => {
+                                return (
+                                    <HelCollapsibleField
+                                        title={getServiceName(service, locale)} collapsedLabel={<FormattedMessage id="collapse.isClosedLabel"/>} openLabel={<FormattedMessage id="collapse.isOpenLabel"/>} collapsible key={index}>
+                                        <ServiceConsent service={service}/>
+                                    </HelCollapsibleField>
+                                )
+                            })}
                         </Col>
                     </Row>
+                </section>
+                <section>
+                    <ServiceList services={unusedServices} />
                 </section>
             </div>
         );
     }
 }
+
+const mapStateToProps = state => {
+    const usedServices = state.services.servicesAuth.filter(x => x.consent_given)
+    const unusedServices = state.services.servicesAuth.filter(x => !x.consent_given)
+    return {
+        usedServices,
+        unusedServices,
+        locale: state.intl.locale,
+    }
+}
+
+export default connect(mapStateToProps, {fetchServicesAuth})(ServiceTab)
