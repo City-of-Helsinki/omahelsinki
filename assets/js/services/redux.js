@@ -14,34 +14,32 @@ export const {
     getAllServicesSuccess,
     getAllServicesError,
 
-    getServicesAuth,
-    getServicesAuthSuccess,
-    getServicesAuthError,
+    getConsents,
+    getConsentsSuccess,
+    getConsentsError,
 
-    deleteServiceConsent,
-    deleteServiceConsentSuccess,
-    deleteServiceConsentError,
+    deleteConsent,
+    deleteConsentSuccess,
+    deleteConsentError,
 } = createActions({
     GET_ALL_SERVICES: undefined,
     GET_ALL_SERVICES_SUCCESS: undefined,
     GET_ALL_SERVICES_ERROR: (error) => ({error}),
 
-    GET_SERVICES_AUTH: undefined,
-    GET_SERVICES_AUTH_SUCCESS: undefined,
-    GET_SERVICES_AUTH_ERROR: (error) => ({error}),
+    GET_CONSENTS: undefined,
+    GET_CONSENTS_SUCCESS: undefined,
+    GET_CONSENTS_ERROR: (error) => ({error}),
 
-    DELETE_SERVICE_CONSENT: undefined,
-    DELETE_SERVICE_CONSENT_SUCCESS: undefined,
-    DELETE_SERVICE_CONSENT_ERROR: (error) => ({error}),
+    DELETE_CONSENT: undefined,
+    DELETE_CONSENT_SUCCESS: undefined,
+    DELETE_CONSENT_ERROR: (error) => ({error}),
 })
 
 const servicesDefaultState = {
     allServices: [],
     allServicesError: null,
     allServicesLoading: false,
-    servicesAuth: [],
-    servicesAuthError: null,
-    servicesAuthLoading: false,
+    consents: [],
 }
 export const servicesReducer = handleActions(new Map([
     [
@@ -60,30 +58,14 @@ export const servicesReducer = handleActions(new Map([
         },
     ],
     [
-        getServicesAuth, (state, action) => {
-            return {...state, servicesAuthError: null, servicesAuthLoading: true}
+        getConsentsSuccess, (state, action) => {
+            return {...state, consents: action.payload.results}
         },
     ],
     [
-        getServicesAuthSuccess, (state, action) => {
-            return {...state, servicesAuthError: null, servicesAuthLoading: false, servicesAuth: action.payload.results}
-        },
-    ],
-    [
-        getServicesAuthError, (state, action) => {
-            return {...state, servicesAuthError: action.error, servicesAuthLoading: false}
-        },
-    ],
-    [
-        deleteServiceConsentSuccess, (state, action) => {
-            const deletedService = action.payload
-            const services = state.servicesAuth.map(x => {
-                if (x.id === deletedService.id) {
-                    x.consent_given = false
-                }
-                return x
-            })
-            return {...state, servicesAuth: services, servicesAuthLoading: false}
+        deleteConsentSuccess, (state, action) => {
+            const consents = state.consents.filter(x => x.id !== action.payload.id)
+            return {...state, consents}
         },
     ],
 ]), servicesDefaultState)
@@ -101,36 +83,36 @@ export const fetchAllServices = () => {
     }
 }
 
-export const fetchServicesAuth = () => {
+export const fetchConsents = () => {
     return async (dispatch) => {
-        dispatch(getServicesAuth())
+        dispatch(getConsents())
         try {
             const conf = {
                 headers: {
                     'Authorization': `Bearer ${tunnistamoToken}`,
                 },
             }
-            const response = await axiosInstance.get(`/v1/service/`, conf)
-            dispatch(getServicesAuthSuccess(response.data))
+            const response = await axiosInstance.get(`/v1/user_consent/`, conf)
+            dispatch(getConsentsSuccess(response.data))
         } catch (error) {
-            dispatch(getServicesAuth(error))
+            dispatch(getConsentsError(error))
         }
     }
 }
 
-export const deleteConsent = (service) => {
+export const deleteServiceConsent = (consent) => {
     return async (dispatch) => {
-        dispatch(deleteServiceConsent(service))
+        dispatch(deleteConsent(consent))
         try {
             const conf = {
                 headers: {
                     'Authorization': `Bearer ${tunnistamoToken}`,
                 },
             }
-            await axiosInstance.delete(`/v1/user_consent/${service.id}/`, conf)
-            dispatch(deleteServiceConsentSuccess(service))
+            await axiosInstance.delete(`/v1/user_consent/${consent.id}/`, conf)
+            dispatch(deleteConsentSuccess(consent))
         } catch (error) {
-            dispatch(deleteServiceConsentError(error))
+            dispatch(deleteConsentError(error))
         }
     }
 }

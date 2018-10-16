@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'reactstrap'
 import {FormattedMessage} from 'react-intl'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
+import find from 'lodash/find'
 
 import HelCollapsibleField from '../../HelCollapsibleField'
 import ServiceList from '../../ServiceList'
 import ServiceConsent from '../../ServiceConsent'
 
-import {fetchServicesAuth} from '../../../services/redux'
+import {fetchAllServices, fetchConsents} from '../../../services/redux'
 
 const getServiceName = (service, locale) => {
     return service.name[locale] || service.name['fi']
@@ -16,7 +17,8 @@ const getServiceName = (service, locale) => {
 class ServiceTab extends Component {
 
     componentDidMount() {
-        this.props.fetchServicesAuth()
+        this.props.fetchAllServices()
+        this.props.fetchConsents()
     }
 
     render() {
@@ -43,7 +45,7 @@ class ServiceTab extends Component {
                                         collapsible
                                         key={index}
                                     >
-                                        <ServiceConsent service={service}/>
+                                        <ServiceConsent service={service} />
                                     </HelCollapsibleField>
                                 )
                             })}
@@ -59,13 +61,22 @@ class ServiceTab extends Component {
 }
 
 const mapStateToProps = state => {
-    const usedServices = state.services.servicesAuth.filter(x => x.consent_given)
-    const unusedServices = state.services.servicesAuth.filter(x => !x.consent_given)
+    const consents = state.services.consents
+    const consentIds = consents.map(x => x.service)
+    const unusedServices = state.services.allServices.filter(x => !consentIds.includes(x.id))
+
+    const usedServices = consents.map(consent => {
+        const service = find(state.services.allServices, ['id', consent.service])
+        service.consent = consent
+        return service
+    });
+
     return {
         usedServices,
         unusedServices,
+        consents,
         locale: state.intl.locale,
     }
 }
 
-export default connect(mapStateToProps, {fetchServicesAuth})(ServiceTab)
+export default connect(mapStateToProps, {fetchAllServices, fetchConsents})(ServiceTab)

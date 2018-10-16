@@ -5,7 +5,7 @@ import {FormattedMessage, injectIntl} from 'react-intl'
 import max from 'lodash/max'
 import moment from 'moment'
 
-import {deleteConsent as deleteConsentAction} from '../../services/redux'
+import {deleteServiceConsent} from '../../services/redux'
 
 const getLastUsed = (service, history) => {
     const timestamps = history
@@ -22,16 +22,17 @@ class ServiceConsent extends React.Component {
     }
 
     deleteConsentClick() {
-        const {service, locale, intl, deleteConsent} = this.props
+        const {service, locale, intl, deleteServiceConsent} = this.props
         const serviceName = service.name[locale] || service.name['fi']
         const msg = intl.formatMessage({id: 'service.consent.delete.confirm'}, {service: serviceName})
         if (confirm(msg)) {
-            deleteConsent(service)
+            deleteServiceConsent(service.consent)
         }
     }
 
     render() {
         const {service, locale, history} = this.props
+        const consent = service.consent
         const description = service.description[locale] || service.description['fi']
         const lastUsedDate = getLastUsed(service, history)
         return (
@@ -39,7 +40,14 @@ class ServiceConsent extends React.Component {
                 <div className="decription">
                     <p>{description}</p>
                 </div>
-                <div className="grants"></div>
+                <div className="scopes">
+                    <strong><FormattedMessage id="service.consent.scopes"/></strong>
+                    <ul>
+                        {consent.scopes.map((scope, index) => {
+                            return <li key={index}>{scope}</li>
+                        })}
+                    </ul>
+                </div>
                 <div className="last-used">
                     <strong><FormattedMessage id="service.lastUsed"/></strong><br/>
                     <span>{lastUsedDate ? moment(lastUsedDate).locale(locale).format('lll') : '–'}</span>
@@ -61,4 +69,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {deleteConsent: deleteConsentAction})(injectIntl(ServiceConsent))
+export default connect(mapStateToProps, {deleteServiceConsent})(injectIntl(ServiceConsent))
