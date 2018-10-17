@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 import jwt
 
@@ -23,7 +23,7 @@ def set_session_expiration_from_api_token(details, backend, response, request, u
             continue
 
         try:
-            dt = datetime.utcfromtimestamp(exp)
+            dt = datetime.fromtimestamp(exp)
         except Exception:
             continue
         if min_exp is None or dt < min_exp:
@@ -31,6 +31,5 @@ def set_session_expiration_from_api_token(details, backend, response, request, u
 
     if not min_exp:
         return
-    min_exp = min_exp.replace(tzinfo=timezone.utc)
 
     request.session.set_expiry(min_exp)
