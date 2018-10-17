@@ -11,7 +11,7 @@
     "app.settings": "Settings",
 
     "app.profile.edit": "Edit your Oma.helsinki profile information.",
-    "app.profile.addImageAndNickName": "Add your own.helsinki profile information.",
+    "app.profile.addImageAndNickName": "Add your Oma.helsinki profile information.",
     "app.basicInfo": "Basic information",
     "app.not.public": "This information will not be displayed publicly",
   
@@ -66,7 +66,7 @@
     "onboarding.navigation.next": "Continue",
     "onboarding.navigation.finish": "Ready",
     "onboarding.welcome.heading": "Hello new user!",
-    "onboarding.welcome.text": "Welcome to test oma.helsinki service. Couple of steps to fill and you are ready to go!",
+    "onboarding.welcome.text": "Welcome to Oma.helsinki. Couple of steps to fill and you are ready to go!",
     "onboarding.personalInformation.heading": "Personal information",
     "onboarding.createPassword.heading": "Create password",
     "onboarding.settings.heading": "Settings",
@@ -108,9 +108,11 @@
     "app.subjects": "Subjects",
     "app.subject.interest" : "What kind of subjects you are interested in?",
     "app.regions": "Regions",
-    "app.regions.interest": "What regions interest you the most",
+
+    "app.regions.interest": "What regions interest you the most?",
     "app.select.area": "Please select the area",
     "app.no.area": "No areas found",
+
     "app.decision.making": "Decision making",
     "app.decision.interest" : "What kind of subject you are interested in?",
     
@@ -121,5 +123,7 @@
 
     "profile.fileSize.error": "The file size should not exceed 1 MB",
 
-    "app.button.saveCroppedImage": "Save Cropped Image"
+    "app.button.saveCroppedImage": "Save Cropped Image",
+
+    "app.button.downloadData": "Download Data"
   }
