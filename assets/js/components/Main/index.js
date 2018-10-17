@@ -18,11 +18,9 @@ const TABS = {
 class MainPage extends Component {
     constructor(props) {
         super(props)
-        
         this.state = {
             activeTab: TABS.PROFILE,
         }
-
     }
 
     toggleTab = (tab) => {
@@ -54,7 +52,7 @@ class MainPage extends Component {
                 </Nav>
                 <div className="oma-tab-container">
                     <Container >
-                        <Col xs={12} sm={{size: 8, offset:2}}>
+                        <Col xs={12}>
                             <TabContent activeTab={this.state.activeTab} className="oma-tab-content">
                                 <TabPane tabId={TABS.PROFILE}>
                                     <Profile /> 
