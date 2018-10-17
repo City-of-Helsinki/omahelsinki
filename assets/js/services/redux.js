@@ -40,6 +40,8 @@ const servicesDefaultState = {
     allServicesError: null,
     allServicesLoading: false,
     consents: [],
+    consentsError: null,
+    consentsLoading: false,
 }
 export const servicesReducer = handleActions(new Map([
     [
@@ -58,8 +60,18 @@ export const servicesReducer = handleActions(new Map([
         },
     ],
     [
+        getConsents, (state, action) => {
+            return {...state, consentsError: null, consentsLoading: true}
+        },
+    ],
+    [
         getConsentsSuccess, (state, action) => {
-            return {...state, consents: action.payload.results}
+            return {...state, consents: action.payload.results, consentsLoading: false}
+        },
+    ],
+    [
+        getConsentsError, (state, action) => {
+            return {...state, consentsLoading: false, consentsError: action.payload}
         },
     ],
     [

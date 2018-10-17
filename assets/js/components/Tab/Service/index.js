@@ -4,6 +4,7 @@ import {FormattedMessage} from 'react-intl'
 import {connect} from 'react-redux'
 import find from 'lodash/find'
 
+import Loading from '../../Loading'
 import HelCollapsibleField from '../../HelCollapsibleField'
 import ServiceList from '../../ServiceList'
 import ServiceConsent from '../../ServiceConsent'
@@ -22,7 +23,20 @@ class ServiceTab extends Component {
     }
 
     render() {
-        const {usedServices, unusedServices, locale} = this.props
+        const {isLoading, locale, consents, services} = this.props
+
+        if (isLoading) {
+            return <Loading/>
+        }
+
+        const consentIds = consents.map(x => x.service)
+        const unusedServices = services.filter(x => !consentIds.includes(x.id))
+        const usedServices = consents.map(consent => {
+            const service = find(services, ['id', consent.service])
+            service.consent = consent
+            return service
+        });
+
         return (
             <div className="service-view">
                 <section>
@@ -61,20 +75,10 @@ class ServiceTab extends Component {
 }
 
 const mapStateToProps = state => {
-    const consents = state.services.consents
-    const consentIds = consents.map(x => x.service)
-    const unusedServices = state.services.allServices.filter(x => !consentIds.includes(x.id))
-
-    const usedServices = consents.map(consent => {
-        const service = find(state.services.allServices, ['id', consent.service])
-        service.consent = consent
-        return service
-    });
-
     return {
-        usedServices,
-        unusedServices,
-        consents,
+        isLoading: state.services.allServicesLoading || state.services.consentsLoading,
+        consents: state.services.consents,
+        services: state.services.allServices,
         locale: state.intl.locale,
     }
 }
