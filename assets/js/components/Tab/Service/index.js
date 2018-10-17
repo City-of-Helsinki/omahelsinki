@@ -67,6 +67,7 @@ class ServiceTab extends Component {
                     </Row>
                 </section>
                 <section>
+                    <h2><FormattedMessage id="app.services.unconnectedHeading"/></h2>
                     <ServiceList services={unusedServices} />
                 </section>
             </div>
