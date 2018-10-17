@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FormattedMessage} from 'react-intl'
+import {FormattedMessage, injectIntl} from 'react-intl'
 import {connect} from 'react-redux';
 import {fetchAllInterests, fetchAllRegions} from '../../user/redux'
 import HelCheckbox from '../HelCheckbox'
@@ -29,6 +29,7 @@ class Interest extends Component {
             selectedInterests,
             allRegions,
             selectedRegions,
+            intl,
         } = this.props
 
         const region = allRegions.map(data => { 
@@ -65,6 +66,8 @@ class Interest extends Component {
                         searchable={true}
                         selectedOption={selectedRegions}
                         handleChange={this.regionsChangedHandler}
+                        placeholder= {intl.formatMessage({id: 'app.select.area'})}
+                        noResultsText={intl.formatMessage({id: 'app.no.area'})}
                     />
                 </div>
             </div>
@@ -80,4 +83,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps, {fetchAllInterests, fetchAllRegions})(Interest)
+export default connect(mapStateToProps, {fetchAllInterests, fetchAllRegions})(injectIntl(Interest))
