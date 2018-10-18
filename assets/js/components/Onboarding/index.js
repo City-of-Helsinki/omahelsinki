@@ -64,7 +64,7 @@ class Onboarding extends React.Component {
         const divisions_of_interest = this.state.regions
         const formData = new FormData()
         if (this.state.img) {
-            formData.append('image', this.state.img, 'image.png')
+            formData.append('image', this.state.img, `${Date.now()}.png`)
         }
         formData.append('nickname', nickname)
         for(let i = 0; i < concepts_of_interest.length; i++){
