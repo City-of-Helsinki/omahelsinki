@@ -43,14 +43,24 @@ class MainPage extends Component {
 
     render() {
         const {activeTab} = this.state
-        const {intl, tunnistamoUser} = this.props
+        const {intl, tunnistamoUser, user} = this.props
+        const hasImage = Boolean(user.image)
 
         return (
             <div className="oma-main">
                 <div className="greetings-container">
-                    <div className="greetings-icon-container">
-                        <HelIcon iconName="user-o"></HelIcon>
-                    </div>
+                    {
+                        hasImage ? (
+                            <div className="profile-picture__picture" >
+                                <img src={user.image} alt="profile" />
+                            </div>
+                        ) : (
+                            <div className="greetings-icon-container">
+                                <HelIcon iconName="user-o"></HelIcon>
+                            </div>
+                        )
+                    }
+
                     <div className="greetings-text-container">
                         <h2 className="greetings-text"><span>{intl.formatMessage({id: 'app.hello'})} {tunnistamoUser.first_name}</span></h2>
                     </div>
@@ -99,7 +109,7 @@ class MainPage extends Component {
 }
 
 const mapStateToProps = state => ({
-    //user: state.userReducer.user,
+    user: state.userReducer.user,
     tunnistamoUser: state.userReducer.tunnistamoUser,
 })
 
