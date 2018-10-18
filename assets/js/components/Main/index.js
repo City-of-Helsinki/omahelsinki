@@ -3,10 +3,13 @@ import React, {Component} from 'react';
 import {Profile, Service, Interest, History} from '../Tab'
 
 import {Container, TabContent, TabPane, Nav, NavItem, NavLink, Col} from 'reactstrap'
-import {FormattedMessage} from 'react-intl'
+import {FormattedMessage, injectIntl} from 'react-intl'
 import HelIcon from '../HelIcon'
 
 import classNames from 'classnames/bind';
+
+import {connect} from 'react-redux'
+import {fetchUserData} from '../../user/redux'
 
 const TABS = {
     PROFILE: 'profile',
@@ -26,6 +29,10 @@ class MainPage extends Component {
 
     }
 
+    componentDidMount() {
+        this.props.fetchUserData()
+    }
+
     toggleTab = (tab) => {
         if (this.state.activeTab !== tab) {
             this.setState({
@@ -36,6 +43,7 @@ class MainPage extends Component {
 
     render() {
         const {activeTab} = this.state
+        const {intl, tunnistamoUser} = this.props
 
         return (
             <div className="oma-main">
@@ -44,7 +52,7 @@ class MainPage extends Component {
                         <HelIcon iconName="user-o"></HelIcon>
                     </div>
                     <div className="greetings-text-container">
-                        <h2 className="greetings-text">Welcome username</h2>
+                        <h2 className="greetings-text"><span>{intl.formatMessage({id: 'app.hello'})} {tunnistamoUser.first_name}</span></h2>
                     </div>
                 </div>
                 <Nav tabs className="oma-tabs">
@@ -90,4 +98,9 @@ class MainPage extends Component {
     }
 }
 
-export default MainPage;
+const mapStateToProps = state => ({
+    //user: state.userReducer.user,
+    tunnistamoUser: state.userReducer.tunnistamoUser,
+})
+
+export default connect(mapStateToProps, {fetchUserData})(injectIntl(MainPage))

@@ -1,6 +1,8 @@
 {
     "app.loading": "Laddning...",
 
+    "app.hello": "Hello",
+
     "app.profile.addImageAndNickName": "Lägg till din Oma.helsinki profil information.",
     "app.profile.picture": "Profil bild",
     "app.profile.picture.select.new": "Välj nytt foto",
