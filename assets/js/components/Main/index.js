@@ -51,7 +51,7 @@ class MainPage extends Component {
                 <div className="greetings-container">
                     {
                         hasImage ? (
-                            <div className="profile-picture__picture" >
+                            <div className="greetings-user-image" >
                                 <img src={user.image} alt="profile" />
                             </div>
                         ) : (
