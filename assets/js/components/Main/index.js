@@ -4,6 +4,7 @@ import {Profile, Service, Interest, History} from '../Tab'
 
 import {Container, TabContent, TabPane, Nav, NavItem, NavLink, Col} from 'reactstrap'
 import {FormattedMessage} from 'react-intl'
+import HelIcon from '../HelIcon'
 
 import classNames from 'classnames/bind';
 
@@ -38,6 +39,14 @@ class MainPage extends Component {
 
         return (
             <div className="oma-main">
+                <div className="greetings-container">
+                    <div className="greetings-icon-container">
+                        <HelIcon iconName="user-o"></HelIcon>
+                    </div>
+                    <div className="greetings-text-container">
+                        <h2 className="greetings-text">Welcome username</h2>
+                    </div>
+                </div>
                 <Nav tabs className="oma-tabs">
                     {Object.values(TABS).map((tab, index) => {
                         return (
@@ -52,6 +61,7 @@ class MainPage extends Component {
                         )
                     })}
                 </Nav>
+                
                 <div className="oma-tab-container">
                     <Container >
                         <Col xs={12} sm={{size: 8, offset:2}}>
