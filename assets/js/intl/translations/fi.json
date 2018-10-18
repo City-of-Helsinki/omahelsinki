@@ -1,6 +1,6 @@
 {
   "app.welcome": "Tervetuloa!",
-  "app.hello": "Hei",
+  "app.userGreeting": "Hei",
   "app.profile": "Profiili",
 
   "app.loading": "Ladataan...",

@@ -1,7 +1,7 @@
 {
     "app.loading": "Laddning...",
 
-    "app.hello": "Hello",
+    "app.userGreeting": "Hello",
 
     "app.profile.addImageAndNickName": "Lägg till din Oma.helsinki profil information.",
     "app.profile.picture": "Profil bild",

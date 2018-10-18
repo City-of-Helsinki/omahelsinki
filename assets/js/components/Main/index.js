@@ -62,7 +62,7 @@ class MainPage extends Component {
                     }
 
                     <div className="greetings-text-container">
-                        <h2 className="greetings-text">{intl.formatMessage({id: 'app.hello'})} {tunnistamoUser.first_name}</h2>
+                        <h2 className="greetings-text">{intl.formatMessage({id: 'app.userGreeting'})} {tunnistamoUser.first_name}</h2>
                     </div>
                 </div>
                 <Nav tabs className="oma-tabs">

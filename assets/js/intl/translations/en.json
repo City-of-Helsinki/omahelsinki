@@ -1,6 +1,6 @@
 {
     "app.welcome": "Welcome!",
-    "app.hello": "Hello", 
+    "app.userGreeting": "Hello", 
 
     "app.loading": "Loading...",
     "app.error": "An error occurred.",
