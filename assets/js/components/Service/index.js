@@ -4,9 +4,9 @@ import {Card, CardImg, CardBody, CardLink, CardText, CardTitle} from 'reactstrap
 
 const Service = ({service, locale}) => {
     const image = service.image
-    const name = service.name[locale]
-    const url = service.url[locale]
-    const description = service.description[locale]
+    const name = service.name[locale] || service.name['fi']
+    const url = service.url[locale] || service.url['fi']
+    const description = service.description[locale] || service.description['fi']
     return (
         <Card className="service">
             <CardImg top src={image} />

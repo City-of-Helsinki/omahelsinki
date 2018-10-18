@@ -538,23 +538,21 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 }
 
-.service-list {
-  .service-wrapper {
-    margin-bottom: 30px;
-  }
+.service-wrapper {
+  margin-bottom: 30px;
   .card {
     height: 100%;
   }
 }
 
-  .profile-picture__picture {
+.profile-picture__picture {
     margin-bottom: 20px;
     img {
       max-width: 135px;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
-  }
+}
 
 .cropButton {
   margin-top: 10px;
@@ -636,3 +634,10 @@ $omaWrapperPadding: 4rem 0 8rem;
   width: 70px;
   border-radius: 50%;
 }
+
+.service-view {
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
