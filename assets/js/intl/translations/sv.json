@@ -26,6 +26,8 @@
     "app.subject.interest": "Vilka ämnen är du intresserad av?",
     "app.regions": "Områden",
     "app.regions.interest": "Vilka områden är du intresserade av?",
+    "app.select.area": "Välja områden",
+    "app.no.area": "Inga områden hittades",
 
     "app.profile": "Profil",
     "app.interests": "Intressen",

@@ -108,7 +108,11 @@
   "app.subjects": "Aiheet",
   "app.subject.interest" : "Mistä aiheista olet kiinnostunut?",
   "app.regions": "Alueet",
+
   "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten?",
+  "app.select.area": "Valitse alue",
+  "app.no.area": "Ei löytyneitä alueita",
+
   "app.decision.making": "Päätöksenteko",
   "app.decision.interest" : "Millaista aiheesta olet kiinnostunut?",
 
