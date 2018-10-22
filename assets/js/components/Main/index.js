@@ -20,10 +20,6 @@ class MainPage extends Component {
         }
     }
 
-    componentDidMount() {
-        this.props.fetchUserData()
-    }
-
     toggleTab = (tab) => {
         if (this.state.activeTab !== tab) {
             this.setState({
