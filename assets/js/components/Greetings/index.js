@@ -3,7 +3,7 @@ import {injectIntl} from 'react-intl'
 import HelIcon from '../HelIcon'
 import {connect} from 'react-redux'
 import {fetchUserData} from '../../user/redux'
-import RoundedPicture from '../RoundedPicture'
+import ProfilePicture from '../ProfilePicture'
 
 class Greetings extends Component {
 
@@ -19,7 +19,7 @@ class Greetings extends Component {
             <div className="greetings-container">
                 {
                     hasImage ? (
-                        <RoundedPicture />
+                        <ProfilePicture />
                     ) : (
                         <div className="greetings-icon-container">
                             <HelIcon iconName="user-o"></HelIcon>

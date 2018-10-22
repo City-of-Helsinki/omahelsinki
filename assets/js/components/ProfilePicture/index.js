@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchUserData} from '../../user/redux'
 
-class RoundedPicture extends Component {
+class ProfilePicture extends Component {
     componentDidMount() {
         this.props.fetchUserData()
     }
@@ -22,4 +22,4 @@ const mapStateToProps = state => ({
     user: state.userReducer.user,
 })
 
-export default connect(mapStateToProps, {fetchUserData})(RoundedPicture)
+export default connect(mapStateToProps, {fetchUserData})(ProfilePicture)
