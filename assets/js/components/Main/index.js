@@ -1,22 +1,15 @@
 import React, {Component} from 'react';
-
 import {Profile, Service, Interest, History} from '../Tab'
-
 import {Container, TabContent, TabPane, Nav, NavItem, NavLink, Col} from 'reactstrap'
-import {FormattedMessage, injectIntl} from 'react-intl'
-import HelIcon from '../HelIcon'
-
+import {FormattedMessage} from 'react-intl'
 import classNames from 'classnames/bind';
-
-import {connect} from 'react-redux'
-import {fetchUserData} from '../../user/redux'
+import Greetings from '../Greetings'
 
 const TABS = {
     PROFILE: 'profile',
     INTERESTS: 'interests',
     SERVICES: 'services',
     HISTORY: 'history',
-    // SETTINGS: 'settings',
 }
 
 class MainPage extends Component {
@@ -26,11 +19,6 @@ class MainPage extends Component {
         this.state = {
             activeTab: TABS.PROFILE,
         }
-
-    }
-
-    componentDidMount() {
-        this.props.fetchUserData()
     }
 
     toggleTab = (tab) => {
@@ -43,28 +31,12 @@ class MainPage extends Component {
 
     render() {
         const {activeTab} = this.state
-        const {intl, tunnistamoUser, user} = this.props
-        const hasImage = Boolean(user.image)
 
         return (
+            
             <div className="oma-main">
-                <div className="greetings-container">
-                    {
-                        hasImage ? (
-                            <div className="greetings-user-image" >
-                                <img src={user.image} alt="profile" />
-                            </div>
-                        ) : (
-                            <div className="greetings-icon-container">
-                                <HelIcon iconName="user-o"></HelIcon>
-                            </div>
-                        )
-                    }
+                <Greetings />
 
-                    <div className="greetings-text-container">
-                        <h2 className="greetings-text">{intl.formatMessage({id: 'app.userGreeting'})} {tunnistamoUser.first_name}</h2>
-                    </div>
-                </div>
                 <Nav tabs className="oma-tabs">
                     {Object.values(TABS).map((tab, index) => {
                         return (
@@ -108,9 +80,4 @@ class MainPage extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.userReducer.user,
-    tunnistamoUser: state.userReducer.tunnistamoUser,
-})
-
-export default connect(mapStateToProps, {fetchUserData})(injectIntl(MainPage))
+export default MainPage
