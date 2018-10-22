@@ -14,6 +14,7 @@ class Greetings extends Component {
     render() {
         const {intl, tunnistamoUser, user} = this.props
         const hasImage = Boolean(user.image)
+        const name = tunnistamoUser.first_name
 
         return (
             <div className="greetings-container">
@@ -28,7 +29,7 @@ class Greetings extends Component {
                 }
 
                 <div className="greetings-text-container">
-                    <h2 className="greetings-text">{intl.formatMessage({id: 'app.userGreeting'})} {tunnistamoUser.first_name}</h2>
+                    <h2 className="greetings-text">{intl.formatMessage({id: 'app.userGreeting'})} {name}</h2>
                 </div>
             </div>
         );
