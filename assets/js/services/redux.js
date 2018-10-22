@@ -1,7 +1,7 @@
 import {createActions, handleActions} from 'redux-actions'
 import axios from 'axios'
 
-import {tunnistamoUrl} from '../settings'
+import {tunnistamoUrl, tunnistamoToken} from '../settings'
 
 const axiosConfig = {
     baseURL: tunnistamoUrl,
@@ -13,25 +13,35 @@ export const {
     getAllServices,
     getAllServicesSuccess,
     getAllServicesError,
-    getUserServices,
-    getUserServicesSuccess,
-    getUserServicesError,
+
+    getConsents,
+    getConsentsSuccess,
+    getConsentsError,
+
+    deleteConsent,
+    deleteConsentSuccess,
+    deleteConsentError,
 } = createActions({
     GET_ALL_SERVICES: undefined,
     GET_ALL_SERVICES_SUCCESS: undefined,
     GET_ALL_SERVICES_ERROR: (error) => ({error}),
-    GET_USER_SERVICES: undefined,
-    GET_USER_SERVICES_SUCCESS: undefined,
-    GET_USER_SERVICES_ERROR: (error) => ({error}),
+
+    GET_CONSENTS: undefined,
+    GET_CONSENTS_SUCCESS: undefined,
+    GET_CONSENTS_ERROR: (error) => ({error}),
+
+    DELETE_CONSENT: undefined,
+    DELETE_CONSENT_SUCCESS: undefined,
+    DELETE_CONSENT_ERROR: (error) => ({error}),
 })
 
 const servicesDefaultState = {
     allServices: [],
     allServicesError: null,
     allServicesLoading: false,
-    userServices: [],
-    userServicesError: null,
-    userServicesLoading: false,
+    consents: [],
+    consentsError: null,
+    consentsLoading: false,
 }
 export const servicesReducer = handleActions(new Map([
     [
@@ -50,21 +60,27 @@ export const servicesReducer = handleActions(new Map([
         },
     ],
     [
-        getUserServices, (state, action) => {
-            return {...state, userServicesError: null, userServicesLoading: true}
+        getConsents, (state, action) => {
+            return {...state, consentsError: null, consentsLoading: true}
         },
     ],
     [
-        getUserServicesSuccess, (state, action) => {
-            return {...state, userServicesError: null, userServicesLoading: false, userServices: action.payload.results}
+        getConsentsSuccess, (state, action) => {
+            return {...state, consents: action.payload.results, consentsLoading: false}
         },
     ],
     [
-        getUserServicesError, (state, action) => {
-            return {...state, userServicesError: action.error, userServicesLoading: false}
+        getConsentsError, (state, action) => {
+            return {...state, consentsLoading: false, consentsError: action.payload}
         },
     ],
-]), servicesDefaultState);
+    [
+        deleteConsentSuccess, (state, action) => {
+            const consents = state.consents.filter(x => x.id !== action.payload.id)
+            return {...state, consents}
+        },
+    ],
+]), servicesDefaultState)
 
 
 export const fetchAllServices = () => {
@@ -79,14 +95,36 @@ export const fetchAllServices = () => {
     }
 }
 
-export const fetchUserServices = () => {
+export const fetchConsents = () => {
     return async (dispatch) => {
-        dispatch(getUserServices())
+        dispatch(getConsents())
         try {
-            const response = await axiosInstance.get(`/v1/`)
-            dispatch(getUserServicesSuccess(response.data))
+            const conf = {
+                headers: {
+                    'Authorization': `Bearer ${tunnistamoToken}`,
+                },
+            }
+            const response = await axiosInstance.get(`/v1/user_consent/`, conf)
+            dispatch(getConsentsSuccess(response.data))
         } catch (error) {
-            dispatch(getUserServices(error))
+            dispatch(getConsentsError(error))
+        }
+    }
+}
+
+export const deleteServiceConsent = (consent) => {
+    return async (dispatch) => {
+        dispatch(deleteConsent(consent))
+        try {
+            const conf = {
+                headers: {
+                    'Authorization': `Bearer ${tunnistamoToken}`,
+                },
+            }
+            await axiosInstance.delete(`/v1/user_consent/${consent.id}/`, conf)
+            dispatch(deleteConsentSuccess(consent))
+        } catch (error) {
+            dispatch(deleteConsentError(error))
         }
     }
 }

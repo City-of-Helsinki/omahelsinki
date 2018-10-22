@@ -4,7 +4,7 @@
     margin-bottom: 2rem;
 
     &__link, &__title {
-        color: $hel-coat !important;
+        color: $hel-bus !important;
         width: 100%;
         cursor: pointer;
         background: rgba(0,0,0,0.03) !important;
@@ -15,9 +15,21 @@
         border-radius: 0 !important; 
         text-align: left !important;
         text-transform: capitalize;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .help-label {
+        color: #000;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        .hel-icon {
+            vertical-align: text-bottom;
+        }
     }
     
     &__child {
+        background: rgba(0,0,0,0.03);
         padding: .75rem 1.25rem;
     }
 }
