@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchUserData} from '../../user/redux'
+import HelIcon from '../HelIcon'
 
 class ProfilePicture extends Component {
     componentDidMount() {
@@ -9,11 +10,18 @@ class ProfilePicture extends Component {
 
     render() {
         const {user} = this.props
+        const hasImage = Boolean(user.image)
 
         return (
-            <div className="greetings-user-image" >
-                <img src={user.image} alt="profile" />
-            </div>
+            hasImage ? (
+                <div className="greetings-user-image" >
+                    <img src={user.image} alt="profile" />
+                </div>
+            ) : (
+                <div className="greetings-icon-container">
+                    <HelIcon iconName="user-o"></HelIcon>
+                </div>
+            )
         );
     }
 }
