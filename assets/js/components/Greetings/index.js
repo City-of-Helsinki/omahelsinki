@@ -16,9 +16,7 @@ class Greetings extends Component {
 
         return (
             <div className="greetings-container">
-                {
-                    <ProfilePicture />
-                }
+                <ProfilePicture />
 
                 <div className="greetings-text-container">
                     <h2 className="greetings-text">{intl.formatMessage({id: 'app.userGreeting'})} {name}</h2>
