@@ -546,12 +546,12 @@ $omaWrapperPadding: 4rem 0 8rem;
 }
 
 .profile-picture__picture {
-  margin-bottom: 20px;
-  img {
-    max-width: 135px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
+    margin-bottom: 20px;
+    img {
+      max-width: 135px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 }
 
 .cropButton {
@@ -600,8 +600,45 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 }
 
+// Greetings styles
+
+.greetings-container {
+    display: flex;
+    justify-content: center;
+    background-color: #00d7a7;
+    .greetings-icon-container {
+        width: 70px;
+        height: 70px;
+        left: calc(50% - 25px);
+        background: #0000bf;
+        border-radius: 50%;
+        padding: 20px;
+        svg {
+          height: 30px !important;
+          width: 30px !important;
+          color: #ffffff;
+        }
+    }
+    .greetings-text-container {
+        align-items: center;
+        padding-left: 20px;
+        .greetings-text {
+            align-items: center;
+            vertical-align: center;
+            padding-top: 15px;
+            color: #0000bf;
+        }
+    }
+}
+
+.greetings-user-image img {
+  width: 70px;
+  border-radius: 50%;
+}
+
 .service-view {
   h2 {
     margin-bottom: 20px;
   }
 }
+

@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
-
 import {Profile, Service, Interest, History} from '../Tab'
-
 import {Container, TabContent, TabPane, Nav, NavItem, NavLink, Col} from 'reactstrap'
 import {FormattedMessage} from 'react-intl'
-
 import classNames from 'classnames/bind';
+import Greetings from '../Greetings'
 
 const TABS = {
     PROFILE: 'profile',
     INTERESTS: 'interests',
     SERVICES: 'services',
     HISTORY: 'history',
-    // SETTINGS: 'settings',
 }
 
 class MainPage extends Component {
@@ -35,7 +32,10 @@ class MainPage extends Component {
         const {activeTab} = this.state
 
         return (
+            
             <div className="oma-main">
+                <Greetings />
+
                 <Nav tabs className="oma-tabs">
                     {Object.values(TABS).map((tab, index) => {
                         return (
@@ -50,6 +50,7 @@ class MainPage extends Component {
                         )
                     })}
                 </Nav>
+                
                 <div className="oma-tab-container">
                     <Container >
                         <Col xs={12}>
@@ -78,4 +79,4 @@ class MainPage extends Component {
     }
 }
 
-export default MainPage;
+export default MainPage
