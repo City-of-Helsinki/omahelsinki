@@ -2,7 +2,6 @@ import {injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 import {Form, Row, Col} from 'reactstrap';
 import HelTextInput from '../HelTextInput'
-import PasswordStrength from '../PasswordStrength'
 import React, {Component} from 'react';
 
 class CreatePassword extends Component {
@@ -51,13 +50,6 @@ class CreatePassword extends Component {
                                 name='passwordRepeat'
                                 type='password' 
                                 defaultValue={passwordRepeat}
-                            />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12}>
-                            <PasswordStrength 
-                                inputText={this.state.currentPassword}
                             />
                         </Col>
                     </Row>
