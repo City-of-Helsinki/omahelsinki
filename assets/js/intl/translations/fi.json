@@ -11,7 +11,7 @@
   "app.history": "Historia",
   "app.settings": "Asetukset",
 
-  "app.profile.edit": "Muokkaa oma.helsinki-profiilisi tietoja.",
+  "app.profile.edit": "Muokkaa Oma.helsinki-profiilisi tietoja.",
   "app.profile.addImageAndNickName": "Lisää Oma.helsinki-profiiliisi tietoja.",
   "app.basicInfo": "Tilin perustiedot",
   "app.not.public": "Nämä tiedot näkyvät vain sinulle",
@@ -34,7 +34,7 @@
   "app.profile.picture.select": "Valitse kuvatiedosto",
   "app.profile.picture.select.new": "Valitse uusi profiilikuva",
   "app.profile.picture.select.infoText": "Vedä kuva tähän / Klikkaa valitaksesi kuva",
-  "app.profile.picture.cropImage": "Click and drag to crop image",
+  "app.profile.picture.cropImage": "Rajaa kuva",
   "app.profile.picture.limit": "Kuvan sivun pituus vähintään 200px ja enintään 1200px. Tiedostomuoto jpg tai png.",
   "app.profile.picture.browse": "Selailla",
   "app.profile.picture.delete": "Poista kuva",
@@ -45,7 +45,7 @@
 
   "app.interests.text": "Valitse aiheet, jotka kiinnostavat sinua, joiden avulla voit suositella sisältöä eri palveluissa tai lähettää ilmoituksia omien valintojesi mukaan.",
   "app.topics": "Aiheet",
-  "app.topics.text": "Millaisia aiheita olet kiinnostunut?",
+  "app.topics.text": "Mistä aiheista olet kiinnostunut?",
   "app.topics.culture": "Kulttuuri",
   "app.topics.economics": "Economics",
   "app.topics.technology": "Teknologia",
@@ -124,7 +124,7 @@
 
   "profile.fileSize.error": "The file size should not exceed 1 MB",
 
-  "app.button.saveCroppedImage": "Save Cropped Image",
+  "app.button.saveCroppedImage": "Tallenna rajattu kuva",
 
-  "app.button.downloadData": "Ladata Tietoja"
+  "app.button.downloadData": "Lataa tiedot"
 }

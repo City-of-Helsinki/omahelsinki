@@ -58,7 +58,7 @@
 
     "app.profile.picture.select": "Välj fil",
     "app.profile.picture.select.infoText": "Släpp bild / Klicka här",
-    "app.profile.picture.cropImage": "Click and drag to crop image",
+    "app.profile.picture.cropImage": "Beskära bild",
     "app.profile.picture.browse": "Browse",
     "app.profile.picture.delete": "Radera bild",
 
@@ -123,6 +123,8 @@
 
     "profile.fileSize.error": "The file size should not exceed 1 MB",
 
-    "app.button.saveCroppedImage": "Save Cropped Image"
+    "app.button.saveCroppedImage": "Spara beskuren bild",
+
+    "app.button.downloadData": "Ladda ner data"
   }
   
