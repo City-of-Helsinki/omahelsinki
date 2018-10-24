@@ -99,6 +99,7 @@
   "app.services.notLinked": "Palvelut, joita et ole vielä liittänyt tiliisi",
   "app.services.all.amountOfServices": "Meillä on {amount} palvelua",
   "app.services.all.cta": "Et vielä käyttäjä? Luo tili",
+  "app.services.unconnectedHeading": "Palveluita joihin et ole vielä liittänyt profiiliasi",
 
   "app.history.date": "Päivä",
   "app.history.name": "Nimi",
@@ -125,6 +126,13 @@
   "profile.fileSize.error": "The file size should not exceed 1 MB",
 
   "app.button.saveCroppedImage": "Tallenna rajattu kuva",
+  "app.button.downloadData": "Lataa tiedot",
 
-  "app.button.downloadData": "Lataa tiedot"
+  "services.collapsed.isOpenLabel": "Näytä tiedot",
+  "services.collapsed.isClosedLabel": "Piilota tiedot",
+
+  "service.consent.button.delete": "Poista yhteys",
+  "service.consent.delete.confirm": "Oletko varma, että haluat poistaa yhteyden palveluun {service}?",
+  "service.consent.scopes": "Palvelu saa tietää sinusta:",
+  "service.lastUsed": "Käytetty viimeksi:"
 }

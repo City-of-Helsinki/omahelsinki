@@ -111,7 +111,9 @@
     "app.services.related": "Relaterade tjänster",
     "app.services.related.text": "Du kan använda flera Helsinfors stadstjänster och vissa tredjepartstjänster med ditt Oma.helsinki-konto.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
-
+    "app.services.all.amountOfServices": "Vi har {amount} tjänster",
+    "app.services.all.cta": "Inte en användare? Börja med att skapa ett konto",
+    "app.services.unconnectedHeading": "Tjänster som du ännu inte har anslutit till din profil",
 
     "app.decision.making": "Decision making",
     "app.decision.interest" : "What kind of subject you are interested in?",
@@ -124,7 +126,17 @@
     "profile.fileSize.error": "The file size should not exceed 1 MB",
 
     "app.button.saveCroppedImage": "Spara beskuren bild",
+    "app.button.downloadData": "Ladda ner data",
 
-    "app.button.downloadData": "Ladda ner data"
+    "services.collapsed.isOpenLabel": "Visa detaljer",
+    "services.collapsed.isClosedLabel": "Dölj detaljer",
+
+    "service.consent.scopes": "Tjänsten använder denna information om dig:",
+
+    "service.lastUsed": "Senast använd:",
+
+    "service.consent.button.delete": "Radera förbindelse",
+    "service.consent.delete.confirm": "Är du säker på att du vill radera förbindelsen till {service}?"
+
   }
   

@@ -94,7 +94,7 @@
     "onboarding.hint.ofAge": "Some of the Helsinki city services require over 18 years of age.",
     "onboarding.hint.required": "Required field",
 
-    "app.services.related": "Related Services",
+    "app.services.related": "Connected services",
     "app.services.related.text": "You can use multiple Helsinki City services and certain third party services with your Oma.helsinki profile.",
     "app.services.notLinked": "Services that you have not yet linked to your account",
     "app.services.all.amountOfServices": "We have {amount} services",
