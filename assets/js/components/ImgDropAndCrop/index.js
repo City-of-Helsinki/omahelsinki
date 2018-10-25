@@ -18,6 +18,9 @@ class ImgDropAndCrop extends Component {
         this.state = {
             imgSrc: null,
             crop: {
+                x: 10,
+                y: 10,
+                width: 80,
                 aspect: 1 / 1,
             },
             pixelCrop: null,
