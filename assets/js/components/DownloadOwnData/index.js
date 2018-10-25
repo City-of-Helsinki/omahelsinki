@@ -51,7 +51,6 @@ class DownloadOwnData extends Component {
         });
         
         Promise.all( [userProfileData, userServiceData, userLoginEntryData, userConsentData]).then( values => {
-            console.log('DATA--',data);
             this.downloadData(data);
         });
     }
