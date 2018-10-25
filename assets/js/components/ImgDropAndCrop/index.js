@@ -54,6 +54,13 @@ class ImgDropAndCrop extends Component {
                 myFileItemReader.addEventListener('load', () => {
                     this.setState({
                         imgSrc: myFileItemReader.result,
+                        crop: {
+                            x: 20,
+                            y: 5,
+                            aspect: 1,
+                            height: 60,
+                        },
+                        disabled: false,
                     })
                 }, false)
 
