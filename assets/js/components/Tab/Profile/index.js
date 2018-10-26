@@ -89,7 +89,7 @@ class Profile extends Component {
                                             <div className="profile-picture__picture" >
                                                 <img src={user.image} alt="profile" />
                                             </div>
-                                            <Button onClick={() => this.unselectImage()}><FormattedMessage id="app.profile.picture.delete"/></Button>
+                                            <Button color="danger" onClick={() => this.unselectImage()}><FormattedMessage id="app.profile.picture.delete"/></Button>
                                         </div>
                                     ) : (
                                         <div className="profile-image-upload">
