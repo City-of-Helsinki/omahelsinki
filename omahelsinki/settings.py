@@ -122,7 +122,7 @@ AUTHENTICATION_BACKENDS = (
 )
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT_URL = '/welcome'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 from helusers.defaults import SOCIAL_AUTH_PIPELINE as HELUSERS_PIPELINE  # noqa isort:skip
