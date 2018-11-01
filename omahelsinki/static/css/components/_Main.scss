@@ -4,6 +4,12 @@
     background: $hel-copper;
     display: flex;
     justify-content: center;
+    flex-wrap: nowrap;
+    overflow: auto hidden;
+    width: 100vw;
+    max-width: 100%;
+    border: none;
+
     .nav-link {
         border: none;
         span {
