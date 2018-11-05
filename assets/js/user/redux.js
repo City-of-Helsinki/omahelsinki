@@ -118,7 +118,9 @@ const userDefaultState = {
     interests: {},
     userRegion: {},
     tunnistamoUser: tunnistamoUser,
+    userDataUpdated: false,
 }
+
 export const userReducer = handleActions(
     new Map([
         [
@@ -186,18 +188,24 @@ export const userReducer = handleActions(
             }),
         ],
         [
-            updateProfile,
+            updateProfile, (state, action) => ({
+                ...state,
+                error: null,
+                userDataUpdated: false, 
+            }),
         ],
         [
             updateProfileSuccess, (state, action) => ({
                 ...state,
                 error: userDefaultState.error,
+                userDataUpdated: true, 
             }),
         ],
         [
             updateProfileError, (state, action) => ({
                 ...state,
                 error: action.payload.error,
+                userDataUpdated: false, 
             }),
         ],
         [
@@ -288,6 +296,11 @@ export const createNewUser = (payload) => {
     }
 }
 
+export const updateCommenced = () => {
+    return (dispatch) => {
+        dispatch(updateProfile());
+    }
+}
 
 export const updateUserData = (payload) => {
     return async (dispatch) => {

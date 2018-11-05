@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import {Col, Row, Form, Button} from 'reactstrap'
+import {Alert, Col, Row, Form, Button} from 'reactstrap'
 import {FormattedMessage, injectIntl} from 'react-intl'
 import HelTextInput from '../../HelTextInput'
 import {connect} from 'react-redux'
 import debounce from 'lodash/debounce'
-
 import {fetchUserData, updateUserData, deleteUserProfile} from '../../../user/redux'
 import ImgDropAndCrop from '../../ImgDropAndCrop'
 import DownloadOwnData from '../../DownloadOwnData'
+import FadingAlert from '../../FadingAlert';
 
 class Profile extends Component {
-
     componentDidMount() {
         this.props.fetchUserData()
     }
@@ -37,7 +36,7 @@ class Profile extends Component {
     }
 
     render() {
-        const {intl, tunnistamoUser, user} = this.props
+        const {error, intl, tunnistamoUser, user, userDataUpdated} = this.props
         const hasImage = Boolean(user.image)
         return (
             <div className="profile-view">
@@ -112,10 +111,22 @@ class Profile extends Component {
                                 defaultValue={user.nickname}
                                 type="text"
                                 required={true}
-                                onChange={(e) => this.setNickname(e.target.value)}
+                                onChange={(e) => {this.setNickname(e.target.value)}}
                                 label={intl.formatMessage({id: 'app.profile.nickname'})}
                                 helpText={intl.formatMessage({id:'app.profile.nickname.text'})}
                             />
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col xs={12}>
+                            <Button color="success" ><FormattedMessage id="app.button.saveChanges"/></Button>
+                            
+                            <FadingAlert color="success" statusUpdated={userDataUpdated} message="Tallennettu" />
+
+                            {error && (
+                                <Alert color="danger">Tietojen tallennuksen yhteydessä sattui virhe</Alert>
+                            )}
                         </Col>
                     </Row>
                 </section>
@@ -131,5 +142,14 @@ class Profile extends Component {
 const mapStateToProps = state => ({
     user: state.userReducer.user,
     tunnistamoUser: state.userReducer.tunnistamoUser,
+    userDataUpdated: state.userReducer.userDataUpdated,
+    error: state.userReducer.error,
 })
-export default connect(mapStateToProps, {fetchUserData, updateUserData, deleteUserProfile})(injectIntl(Profile))
+export default connect(
+    mapStateToProps, 
+    {
+        fetchUserData, 
+        updateUserData, 
+        deleteUserProfile,
+    },
+)(injectIntl(Profile))
