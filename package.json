@@ -5,7 +5,8 @@
   "description": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "prettier": "prettier"
   },
   "repository": {
     "type": "git",
@@ -58,9 +59,12 @@
     "babel-preset-react-app": "^3.1.2",
     "cross-env": "^5.2.0",
     "eslint": "^4.19.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.9.1",
     "node-sass": "^4.9.0",
     "node-sass-tilde-importer": "^1.0.2",
+    "prettier": "^1.14.3",
     "react-hot-loader": "^4.3.3",
     "svg-sprite-loader": "^3.8.0",
     "webpack": "^4.14.0",
