@@ -1,7 +1,7 @@
 import React from 'react';
 import {Alert,Fade} from 'reactstrap';
 
-class FadingAlert extends React.Component {
+class Toast extends React.Component {
     constructor(props) {
         super(props);
         this.state = {show: false};
@@ -35,4 +35,4 @@ class FadingAlert extends React.Component {
     }
 }
 
-export default FadingAlert;
+export default Toast;

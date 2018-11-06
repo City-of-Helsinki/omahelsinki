@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce'
 import {fetchUserData, updateUserData, deleteUserProfile} from '../../../user/redux'
 import ImgDropAndCrop from '../../ImgDropAndCrop'
 import DownloadOwnData from '../../DownloadOwnData'
-import FadingAlert from '../../FadingAlert';
+import Toast from '../../Messaging/Toast';
 
 class Profile extends Component {
     componentDidMount() {
@@ -122,7 +122,7 @@ class Profile extends Component {
                         <Col xs={12}>
                             <Button color="success" ><FormattedMessage id="app.button.saveChanges"/></Button>
                             
-                            <FadingAlert color="success" statusUpdated={userDataUpdated} message="Tallennettu" />
+                            <Toast color="success" statusUpdated={userDataUpdated} message="Tallennettu" />
 
                             {error && (
                                 <Alert color="danger">Tietojen tallennuksen yhteydessä sattui virhe</Alert>
