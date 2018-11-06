@@ -61,7 +61,7 @@ For example with VSCode you should have the following in your Workspace Settings
 }
 ```
 
-You can also manually prettify everything with
+You can also manually prettify everything with (from project root folder)
 
 ```bash
 yarn prettier  "assets/**/*.js" --write
