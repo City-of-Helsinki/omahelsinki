@@ -25,15 +25,20 @@ class Toast extends React.Component {
   render() {
     const { messages } = this.props
 
+    if (!messages || !messages.size) {
+      return null
+    }
+
     return (
-      <Fade in={this.state.show}>
-        {messages &&
-          messages.map((message, i) => (
+      <div className="toast-messages">
+        <Fade in={this.state.show}>
+          {messages.map((message, i) => (
             <Alert key={i} color={message.color}>
               {message.message}
             </Alert>
           ))}
-      </Fade>
+        </Fade>
+      </div>
     )
   }
 }

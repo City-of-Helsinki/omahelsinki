@@ -7,9 +7,7 @@ export default function MainLayout({ children }) {
     <div>
       {children}
 
-      <div className="toast-messages">
-        <ToastContainer />
-      </div>
+      <ToastContainer />
     </div>
   )
 }
