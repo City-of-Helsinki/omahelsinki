@@ -1,17 +1,15 @@
 {
-    "extends": [
-      "react-app",
-      "eslint:recommended",
-      "plugin:import/errors",
-      "plugin:import/warnings"
-    ],
-    "rules": {
-      "no-console":"warn",
-      "comma-dangle": [2, "always-multiline"],
-      "eol-last": [2, "always"],
-      "indent": [2, 4, {"SwitchCase":1}],
-      "quotes": [2, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
-      "object-curly-spacing": [2, "never"],
-      "space-infix-ops": "error"
-    }
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "space-infix-ops": "error",
+    "prettier/prettier": "error"
+  },
+  "plugins": ["prettier"]
 }

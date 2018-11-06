@@ -1,19 +1,10 @@
-import {createActions, handleActions} from 'redux-actions'
-import {List} from 'immutable';
+import { createActions, handleActions } from 'redux-actions'
+import { List } from 'immutable'
 
-export const {
-  addMessage,
-  removeMessage,
-} = createActions({
-
-});
+export const { addMessage, removeMessage } = createActions({})
 
 const defaultState = {
-  messages: List(),
-};
+  messages: List()
+}
 
-export const messageReducer = handleActions(
-
-);
-
-
+export const messageReducer = handleActions()

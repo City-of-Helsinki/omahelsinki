@@ -9,11 +9,11 @@
 For any type of local development setup the following is recommended:
 
 1. Create local settings: `touch local_settings.py`
- 
+
 2. Set `DEBUG = True`
 
 3. In order to use some [Tunnistamo](https://github.com/City-of-Helsinki/tunnistamo)
-instance to handle user logins, set proper url and keys in `local_settings.py`:
+   instance to handle user logins, set proper url and keys in `local_settings.py`:
 
 ```python
 TUNNISTAMO_BASE_URL = 'http://some.url'
@@ -33,6 +33,7 @@ would be through Wagtail admin interface.
 1. Start docker containers: `docker-compose up`
 
 2. When you run your containers for the first time, apply Django migrations:
+
 - `docker exec -it omahelsinki python manage.py migrate`
 - answer yes to all questions
 
@@ -45,23 +46,44 @@ curl "https://omahelsinki.test.hel.ninja/media/omahelsinki-datadump.json" > omah
 docker exec omahelsinki python manage.py loaddata omahelsinki-datadump.json
 ```
 
-
 To log into django container do `docker exec -it omahelsinki bash`
 
 There is a compiler container for the react app, so any changes to
 react JS files will get built automatically and cause the current Django
 page to reload.
 
+You should have format on save in your editor to comply with prettier/eslint rules.
+For example with VSCode you should have the following in your Workspace Settings:
+
+```
+{
+    "editor.formatOnSave": true
+}
+```
+
+You can also manually prettify everything with (from project root folder)
+
+```bash
+yarn prettier  "assets/**/*.js" --write
+```
+
+Also to verify everything is OK, use
+
+```bash
+yarn lint
+```
+
 ### Development w/o Docker
 
 #### Requirements:
+
 - PostgreSQL
 - Python >3
 - Virtualenv
 - gettext (to compile translations)
 
 #### Setting up
- 
+
 - Create Virtualenv env: `virtualenv -p python3 django`
 - Navigate to env directory, activate env: `cd django && source bin/activate`
 - Clone omahelsinki to env dir: `git clone https://github.com/City-of-Helsinki/omahelsinki.git`
@@ -79,7 +101,7 @@ yarn build
 #### Initialize Database (if doesnt exist)
 
 - Check if db service is running
-- Create database 
+- Create database
 
 #### Serve build
 
@@ -102,6 +124,7 @@ python manage.py loaddata omahelsinki-datadump.json
 ```
 
 ## Views
+
 - Landing page: [localhost:8000](http://localhost:8000)
 - Wagtail admin: [/admin](http://localhost:8000/admin)
 - Profile React UI: [/mydata](http://localhost:8000/mydata)
