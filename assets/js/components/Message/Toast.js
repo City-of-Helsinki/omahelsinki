@@ -8,12 +8,13 @@ class Toast extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { statusUpdated } = this.props
+    const { messages, removeMessages } = this.props
 
-    if (statusUpdated && statusUpdated !== prevProps.statusUpdated) {
+    if (messages && messages !== prevProps.messages) {
       this.setState({ show: true })
 
       setTimeout(() => {
+        removeMessages()
         this.setState({
           show: false
         })
@@ -22,11 +23,16 @@ class Toast extends React.Component {
   }
 
   render() {
-    const { color, message } = this.props
+    const { messages } = this.props
 
     return (
       <Fade in={this.state.show}>
-        <Alert color={color}>{message}</Alert>
+        {messages &&
+          messages.map((message, i) => (
+            <Alert key={i} color={message.color}>
+              {message.message}
+            </Alert>
+          ))}
       </Fade>
     )
   }
