@@ -52,27 +52,6 @@ There is a compiler container for the react app, so any changes to
 react JS files will get built automatically and cause the current Django
 page to reload.
 
-You should have format on save in your editor to comply with prettier/eslint rules.
-For example with VSCode you should have the following in your Workspace Settings:
-
-```
-{
-    "editor.formatOnSave": true
-}
-```
-
-You can also manually prettify everything with (from project root folder)
-
-```bash
-yarn prettier  "assets/**/*.js" --write
-```
-
-Also to verify everything is OK, use
-
-```bash
-yarn lint
-```
-
 ### Development w/o Docker
 
 #### Requirements:
@@ -121,6 +100,29 @@ You can load some test content for the Wagtail part:
 ```bash
 curl "https://omahelsinki.test.hel.ninja/media/omahelsinki-datadump.json" > omahelsinki-datadump.json
 python manage.py loaddata omahelsinki-datadump.json
+```
+
+## Prettier / eslint
+
+It's recommended to have format on save in your editor to automatically comply with prettier/eslint rules.
+For example with VSCode you should have the following in your Workspace Settings:
+
+```
+{
+    "editor.formatOnSave": true
+}
+```
+
+You can also manually prettify everything with (from project root folder)
+
+```bash
+yarn prettier  "assets/**/*.js" --write
+```
+
+Also to verify everything is OK, use
+
+```bash
+yarn lint
 ```
 
 ## Views
