@@ -9,6 +9,7 @@ media/
 /local_settings.py
 /venv*
 /.idea
+/.vscode
 .coverage
 htmlcov
 .cache

@@ -125,6 +125,7 @@ const userDefaultState = {
   userRegion: {},
   tunnistamoUser: tunnistamoUser
 }
+
 export const userReducer = handleActions(
   new Map([
     [

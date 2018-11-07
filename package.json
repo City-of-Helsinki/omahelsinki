@@ -30,6 +30,7 @@
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "hel-icons": "^1.0.0-beta.3",
+    "immutable": "^4.0.0-rc.12",
     "jquery": "^1.9.1",
     "moment": "^2.22.2",
     "open-city-design": "1.0.0-alpha.2",

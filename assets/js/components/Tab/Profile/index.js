@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Col, Row, Form, Button } from 'reactstrap'
+import { Alert, Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import HelTextInput from '../../HelTextInput'
 import { connect } from 'react-redux'
@@ -10,8 +10,12 @@ import {
   updateUserData,
   deleteUserProfile
 } from '../../../user/redux'
+
+import { addMessage } from '../../Message/message-redux'
+
 import ImgDropAndCrop from '../../ImgDropAndCrop'
 import DownloadOwnData from '../../DownloadOwnData'
+import Toast from '../../Message/Toast'
 
 class Profile extends Component {
   componentDidMount() {
@@ -42,7 +46,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { intl, tunnistamoUser, user } = this.props
+    const { error, intl, tunnistamoUser, user, userDataUpdated } = this.props
     const hasImage = Boolean(user.image)
     return (
       <div className="profile-view">
@@ -150,6 +154,33 @@ class Profile extends Component {
               />
             </Col>
           </Row>
+          <Row>
+            <Col xs={12}>
+              <Button
+                color="success"
+                onClick={() =>
+                  this.props.addMessage(
+                    intl.formatMessage({ id: 'app.saved' }),
+                    'success'
+                  )
+                }
+              >
+                <FormattedMessage id="app.button.saveChanges" />
+              </Button>
+
+              <Toast
+                color="success"
+                statusUpdated={userDataUpdated}
+                message="Tallennettu"
+              />
+
+              {error && (
+                <Alert color="danger">
+                  Tietojen tallennuksen yhteydessä sattui virhe
+                </Alert>
+              )}
+            </Col>
+          </Row>
         </section>
         <section>
           <DownloadOwnData />
@@ -168,5 +199,5 @@ const mapStateToProps = state => ({
 })
 export default connect(
   mapStateToProps,
-  { fetchUserData, updateUserData, deleteUserProfile }
+  { fetchUserData, updateUserData, deleteUserProfile, addMessage }
 )(injectIntl(Profile))

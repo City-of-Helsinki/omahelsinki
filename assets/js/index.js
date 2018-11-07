@@ -8,6 +8,9 @@ import ConnectedIntlProvider from './intl/ConnectedIntlProvider'
 import getIntlLocaleData from './intl/getIntlLocaleData'
 import App from './components/App/App'
 
+import MainLayout from './components/containers/MainLayout'
+import ToastContainer from './components/containers/ToastContainer'
+
 import configureStore from './root/store'
 
 import MainPage from './components/Main'
@@ -24,11 +27,17 @@ ReactDOM.render(
     <ConnectedIntlProvider>
       <App>
         <BrowserRouter>
-          <Switch>
-            <Route exact path="/mydata/" component={MainPage} />
-            <Route exact path="/welcome/" component={UserOnboarding} />
-            <Route exact path="/services/" component={AllServices} />
-          </Switch>
+          <MainLayout>
+            <Switch>
+              <Route exact path="/mydata/" component={MainPage} />
+              <Route exact path="/welcome/" component={UserOnboarding} />
+              <Route exact path="/services/" component={AllServices} />
+            </Switch>
+            {ReactDOM.createPortal(
+              <ToastContainer />,
+              document.getElementById('toast-root')
+            )}
+          </MainLayout>
         </BrowserRouter>
       </App>
     </ConnectedIntlProvider>

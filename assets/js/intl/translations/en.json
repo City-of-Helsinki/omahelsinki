@@ -3,6 +3,7 @@
     "app.userGreeting": "Hello",
 
     "app.loading": "Loading...",
+    "app.saved": "Saved",
     "app.error": "An error occurred.",
 
     "app.profile": "Profile",
