@@ -362,12 +362,6 @@ export const createNewUser = payload => {
   }
 }
 
-export const updateCommenced = () => {
-  return dispatch => {
-    dispatch(updateProfile())
-  }
-}
-
 export const updateUserData = payload => {
   return async dispatch => {
     dispatch(updateProfile())
