@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
 import { fetchAllInterests, fetchAllRegions } from '../../user/redux'
-import HelCheckbox from '../HelCheckbox'
 import HelSelect from '../HelSelect'
+
+import InterestsList from '../Interests/InterestsList'
 
 class Interest extends Component {
   componentDidMount() {
@@ -31,19 +32,19 @@ class Interest extends Component {
       intl
     } = this.props
 
-    const region = allRegions.map(data => {
-      return {
-        label: data.name[language] || data.name['fi'],
-        value: data.ocd_id
-      }
-    })
-
     const interests = allInterests.map(item => {
       const id = `${item.vocabulary}:${item.code}`
       return {
         id,
         label: item.label[language],
         selected: selectedInterests.includes(id)
+      }
+    })
+
+    const region = allRegions.map(data => {
+      return {
+        label: data.name[language] || data.name['fi'],
+        value: data.ocd_id
       }
     })
 
@@ -59,9 +60,8 @@ class Interest extends Component {
           <p>
             <FormattedMessage id="app.subject.interest" />
           </p>
-          <HelCheckbox
-            data={interests}
-            direction="horizontal"
+          <InterestsList
+            interests={interests}
             onChange={this.interestChangeHandler}
           />
         </div>

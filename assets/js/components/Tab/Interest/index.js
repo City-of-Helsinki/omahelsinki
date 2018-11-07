@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 
 import Loading from '../../Loading'
-import HelCheckbox from '../../HelCheckbox'
+import InterestsList from '../../Interests/InterestsList'
 import HelSelect from '../../HelSelect'
 import {
   fetchAllInterests,
@@ -85,7 +85,10 @@ class Interest extends Component {
               {isInterestsLoading ? (
                 <Loading />
               ) : (
-                <HelCheckbox data={interests} onChange={this.interestChange} />
+                <InterestsList
+                  interests={interests}
+                  onChange={this.interestChange}
+                />
               )}
             </Col>
           </Row>
