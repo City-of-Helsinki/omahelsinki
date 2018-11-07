@@ -1,9 +1,7 @@
-.toast-messages {
-  position: sticky;
-  bottom: 0px;
+.toast-root {
+  position: fixed;
+  top: 100px;
   left: 5%;
-  background: transparent;
   width: 90%;
-  height: 200px;
   z-index: 9999;
 }

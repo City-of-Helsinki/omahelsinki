@@ -12,7 +12,6 @@ class Toast extends React.Component {
 
     if (messages && messages !== prevProps.messages) {
       this.setState({ show: true })
-
       setTimeout(() => {
         removeMessages()
         this.setState({

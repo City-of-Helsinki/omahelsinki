@@ -9,6 +9,7 @@ import getIntlLocaleData from './intl/getIntlLocaleData'
 import App from './components/App/App'
 
 import MainLayout from './components/containers/MainLayout'
+import ToastContainer from './components/containers/ToastContainer'
 
 import configureStore from './root/store'
 
@@ -32,6 +33,10 @@ ReactDOM.render(
               <Route exact path="/welcome/" component={UserOnboarding} />
               <Route exact path="/services/" component={AllServices} />
             </Switch>
+            {ReactDOM.createPortal(
+              <ToastContainer />,
+              document.getElementById('toast-root')
+            )}
           </MainLayout>
         </BrowserRouter>
       </App>

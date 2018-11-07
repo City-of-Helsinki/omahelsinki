@@ -1,3 +1,11 @@
+html, body {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+}
+
 .oma-tabs {
     padding-top: 30px;
     padding-bottom: $spacer * 2;
