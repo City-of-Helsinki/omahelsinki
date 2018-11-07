@@ -1,33 +1,74 @@
 .oma-interest {
-    &__subjects,
-    &__regions,
-    &__decision {
-        padding: 2rem 1rem;
-        background: $hel-light;
-        margin-bottom: 2rem;
-        h4 {
-            span {
-                color: $hel-bus;
-            }
-        }
-        p {
-            margin-bottom: 1rem;
-        }
+  &__subjects,
+  &__regions,
+  &__decision {
+    padding: 2rem 1rem;
+    background: $hel-light;
+    margin-bottom: 2rem;
+    h4 {
+      span {
+        color: $hel-bus;
+      }
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .onboarding-interests {
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+.interests {
+  &__subject-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .subject {
+      margin-bottom: 1rem;
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      color: black;
+      border: 2px solid black;
+
+      padding: 10px 2rem 10px 2rem;
+
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background: lighten($color: $hel-bus, $amount: 25%);
+      }
+    }
+    .selected {
+      color: white;
+      border: 2px solid transparent;
+      background: $hel-bus;
     }
 
-    h2 {
-        margin-bottom: 2rem;
-    }
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
 
-    .onboarding-interests{
-        @media screen and (max-width:768px){
-          display: flex;
-          flex-direction: column;
-      
-          .btn{
-            width: 100%;
-            margin-bottom: 5px;
-          }
-        }
+      .subject {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
     }
+  }
 }
