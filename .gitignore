@@ -10,6 +10,8 @@ media/
 /venv*
 /.idea
 /.vscode
+/*.sublime-*
+.DS_Store
 .coverage
 htmlcov
 .cache
@@ -22,7 +24,6 @@ perf*csv
 /node_modules
 /components
 /static
-/*.sublime-*
 /assets/bundles
 /webpack.config.js
 /yarn-error.log
