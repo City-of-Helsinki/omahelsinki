@@ -14,18 +14,20 @@ const InterestsList = ({ interests, onChange }) => {
   return (
     <div className="interests">
       <div className="interests__subject-list">
-        {interests.map(d => {
+        {interests.map(interest => {
           return (
             <div
-              key={d.id}
+              key={interest.id}
               className={classNames('subject', {
-                selected: d.selected
+                selected: interest.selected
               })}
               onClick={() =>
-                d.selected ? onItemUncheck(d.id) : onItemCheck(d.id)
+                interest.selected
+                  ? onItemUncheck(interest.id)
+                  : onItemCheck(interest.id)
               }
             >
-              {d.label}
+              {interest.label}
             </div>
           )
         })}
