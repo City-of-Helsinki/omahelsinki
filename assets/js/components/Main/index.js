@@ -15,7 +15,6 @@ import {
 import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames/bind'
 import Greetings from '../Greetings'
-import { addMessage } from '../Message/message-redux'
 
 const TABS = {
   PROFILE: 'profile',
@@ -104,7 +103,5 @@ const mapStateToProps = state => ({
 })
 export default connect(
   mapStateToProps,
-  {
-    addMessage
-  }
+  {}
 )(MainPage)
