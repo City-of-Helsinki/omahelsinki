@@ -9,7 +9,8 @@
   "rules": {
     "no-console": "warn",
     "space-infix-ops": "error",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn"
   },
   "plugins": ["prettier"]
 }
