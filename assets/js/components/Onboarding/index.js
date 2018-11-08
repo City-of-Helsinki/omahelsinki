@@ -78,9 +78,11 @@ class Onboarding extends React.Component {
   render() {
     const { profileFound } = this.props
     const { interests, regions, nickname, img } = this.state
+
     if (profileFound) {
       return <Redirect to="/mydata/" />
     }
+
     return (
       <div className="oma-onboarding-wrapper">
         <Container>
