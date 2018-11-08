@@ -28,7 +28,7 @@ class Profile extends Component {
 
   selectImage(imgBlob) {
     const formData = new FormData()
-    formData.set('image', imgBlob, `${Date.now()}.png`)
+    formData.append('image', imgBlob, `${Date.now()}.png`)
     this.props.updateUserData(formData)
   }
 
