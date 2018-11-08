@@ -1,0 +1,41 @@
+.interests {
+  &__subject-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .subject {
+      margin-bottom: 1rem;
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      color: black;
+      border: 2px solid black;
+
+      padding: 10px 2rem 10px 2rem;
+
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background: lighten($color: $hel-bus, $amount: 25%);
+      }
+    }
+
+    .selected {
+      color: white;
+      border: 2px solid transparent;
+      background: $hel-bus;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+
+      .subject {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
