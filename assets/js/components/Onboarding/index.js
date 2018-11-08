@@ -3,6 +3,7 @@ import { Wizard, Steps, Step } from 'react-albus'
 import { connect } from 'react-redux'
 import { Container } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
+import isEmpty from 'lodash/isEmpty'
 
 import { createNewUser, fetchUserData } from '../../user/redux'
 
@@ -126,7 +127,7 @@ class Onboarding extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    profileFound: Object.keys(state.userReducer.user).length > 0
+    profileFound: !isEmpty(state.userReducer.user)
   }
 }
 export default connect(
