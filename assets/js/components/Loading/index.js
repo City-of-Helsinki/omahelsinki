@@ -1,10 +1,11 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Loading = () => {
   return (
     <div>
-      <FormattedMessage id="app.loading" />
+      <FontAwesomeIcon icon="spinner" size="5x" spin />
     </div>
   )
 }

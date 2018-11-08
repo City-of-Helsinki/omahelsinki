@@ -3,6 +3,7 @@ import { Wizard, Steps, Step } from 'react-albus'
 import { connect } from 'react-redux'
 import { Container } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
+import Loading from '../Loading'
 
 import { createNewUser, fetchUserData } from '../../user/redux'
 
@@ -76,8 +77,21 @@ class Onboarding extends React.Component {
   }
 
   render() {
-    const { profileFound } = this.props
+    const { profileFound, userLoading } = this.props
     const { interests, regions, nickname, img } = this.state
+
+    if (userLoading) {
+      return (
+        <div className="oma-onboarding-wrapper">
+          <Container>
+            <div className="oma-onboarding-container">
+              <Loading />
+            </div>
+          </Container>
+        </div>
+      )
+    }
+
     if (profileFound) {
       return <Redirect to="/mydata/" />
     }
@@ -126,7 +140,8 @@ class Onboarding extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    profileFound: Object.keys(state.userReducer.user).length > 0
+    profileFound: Object.keys(state.userReducer.user).length > 0,
+    userLoading: state.userReducer.userLoading
   }
 }
 export default connect(
