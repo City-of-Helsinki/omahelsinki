@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import isEmpty from 'lodash/isEmpty'
 import { Profile, Service, Interest, History } from '../Tab'
 import {
   Container,
@@ -38,6 +41,11 @@ class MainPage extends Component {
 
   render() {
     const { activeTab } = this.state
+    const { user } = this.props
+
+    if (isEmpty(user)) {
+      return <Redirect to="/welcome/" />
+    }
 
     return (
       <div className="oma-main">
@@ -89,4 +97,11 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage
+const mapStateToProps = state => ({
+  user: state.userReducer.user,
+  tunnistamoUser: state.userReducer.tunnistamoUser
+})
+export default connect(
+  mapStateToProps,
+  {}
+)(MainPage)
