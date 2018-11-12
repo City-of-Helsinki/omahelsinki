@@ -3,8 +3,6 @@ import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Form, FormGroup, Input, Label, Col, Row } from 'reactstrap'
 
-import If from '../If/If'
-
 const toBool = str => str === 'true'
 
 const Settings = ({

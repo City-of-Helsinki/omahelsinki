@@ -49,7 +49,6 @@ class Profile extends Component {
       getProfileError,
       deleteProfileError,
       saveProfileError,
-      error,
       intl,
       tunnistamoUser,
       user
