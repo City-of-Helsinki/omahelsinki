@@ -43,8 +43,12 @@
   "app.profile.nickname.text": "Nimimerkkiä käytetään esimerkiksi kun julkaiset kommentteja julkisiin keskusteluihin",
   "app.profile.delete": "Poista profiili",
   "app.profile.delete.confirm": "Haluatko varmasti poistaa profiilisi?",
+  "app.profile.error.onSave": "Profiiliasi ei voitu tallentaa virheen vuoksi.",
+  "app.profile.error.onDelete": "Profiiliasi ei voitu poistaa virheen vuoksi.",
+  "app.profile.error.onLoad": "Profiiliasi ei voitu hakea virheen vuoksi.",
 
   "app.interests.text": "Valitse aiheet, jotka kiinnostavat sinua, joiden avulla voit suositella sisältöä eri palveluissa tai lähettää ilmoituksia omien valintojesi mukaan.",
+  "app.interest.error.onSave": "Valittuja kiinnostuksia ei voitu tallentaa virheen vuoksi.",
   "app.topics": "Aiheet",
   "app.topics.text": "Mistä aiheista olet kiinnostunut?",
   "app.topics.culture": "Kulttuuri",
@@ -73,7 +77,7 @@
   "onboarding.createPassword.heading": "Luo salasana",
   "onboarding.settings.heading": "Asetukset",
   "onboarding.settings.text": "Määritä millaisia ​​viestejä ja ilmoituksia haluat saada oma.helsinki.",
-  "onboarding.messages.heading": "Messages",
+  "onboarding.messages.heading": "Viestit",
   "onboarding.messages.text": "Haluan saada ilmoituksia tai viestejä:",
   "onboarding.notifications.heading": "Ilmoitukset",
   "onboarding.notifications.text": "Saat viestin / ilmoituksen, kun sinulla on viesti tai jotain mielenkiintoista tapahtuu valitsemallasi alueella. Milloin haluat saada ilmoituksen?",
@@ -113,6 +117,7 @@
   "app.regions": "Alueet",
 
   "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten?",
+  "app.regions.error.onSave": "Valittuja alueita ei voitu tallentaa virheen vuoksi.",
   "app.select.area": "Valitse alue",
   "app.no.area": "Ei löytyneitä alueita",
 

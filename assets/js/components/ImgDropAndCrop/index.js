@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone'
 /*eslint-disable */
 import ReactCrop from 'react-image-crop'
 /*eslint-enable */
+import './canvas-toBlob'
 
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { image64toCanvasRef } from './ReusableUtils'
@@ -77,16 +78,28 @@ class ImgDropAndCrop extends Component {
   }
 
   handleOnCropComplete = (crop, pixelCrop) => {
-    const canvasRef = this.imagePreviewCanvasRef.current
-    const { imgSrc } = this.state
-    image64toCanvasRef(canvasRef, imgSrc, pixelCrop)
-    this.setState({ pixelCrop: pixelCrop })
+    // This timeout gives time for IE to get it's s*it together
+    // Without timeout IE doesn´t get the ref.current right and it crashes
+    // So it's a kludge to get this working with IE11
+    setTimeout(() => {
+      const canvasRef = this.imagePreviewCanvasRef.current
+      const { imgSrc } = this.state
+
+      image64toCanvasRef(canvasRef, imgSrc, pixelCrop)
+      this.setState({ pixelCrop: pixelCrop })
+    }, 200)
   }
 
   onReady = event => {
     event.preventDefault()
-    const canvasRef = this.imagePreviewCanvasRef.current
-    canvasRef.toBlob(blob => this.props.getCroppedImage(blob))
+
+    // This timeout gives time for IE to get it's s*it together
+    // Without timeout IE doesn´t get the ref.current right and it crashes
+    // So it's a kludge to get this working with IE11
+    setTimeout(() => {
+      const canvasRef = this.imagePreviewCanvasRef.current
+      canvasRef.toBlob(blob => this.props.getCroppedImage(blob))
+    }, 200)
   }
 
   render() {
