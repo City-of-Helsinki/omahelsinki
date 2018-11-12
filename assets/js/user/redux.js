@@ -126,7 +126,8 @@ const userDefaultState = {
   user: {},
   interests: {},
   userRegion: {},
-  tunnistamoUser: tunnistamoUser
+  tunnistamoUser: tunnistamoUser,
+  userLoading: true
 }
 
 export const userReducer = handleActions(
@@ -228,14 +229,16 @@ export const userReducer = handleActions(
       getProfileSuccess,
       (state, action) => ({
         ...state,
-        getProfileError: userDefaultState.error
+        getProfileError: userDefaultState.error,
+        userLoading: false
       })
     ],
     [
       getProfileError,
       (state, action) => ({
         ...state,
-        getProfileError: action.payload
+        getProfileError: action.payload,
+        userLoading: false
       })
     ],
     [
