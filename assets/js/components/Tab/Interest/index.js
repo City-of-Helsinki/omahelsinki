@@ -41,6 +41,7 @@ class Interest extends Component {
       language,
       allInterestsError,
       allRegionsError,
+      saveProfileError,
       intl
     } = this.props
 
@@ -150,6 +151,14 @@ class Interest extends Component {
                   </span>
                 </Alert>
               )}
+
+              {saveProfileError && (
+                <Alert className="mt-2" color="danger">
+                  <span>
+                    {intl.formatMessage({ id: 'app.profile.error.onSave' })}
+                  </span>
+                </Alert>
+              )}
             </Col>
           </Row>
         </section>
@@ -168,7 +177,8 @@ const mapStateToProps = state => {
     allInterests: state.userReducer.allInterests,
     language: state.intl.locale,
     allInterestsError: state.userReducer.allInterestsError,
-    allRegionsError: state.userReducer.allRegionsError
+    allRegionsError: state.userReducer.allRegionsError,
+    saveProfileError: state.userReducer.saveProfileError
   }
 }
 
