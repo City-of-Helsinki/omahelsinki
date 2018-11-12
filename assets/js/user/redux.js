@@ -1,6 +1,8 @@
 import { createActions, handleActions } from 'redux-actions'
 import axios from 'axios'
 import find from 'lodash/find'
+import isEmpty from 'lodash/isEmpty'
+
 import {
   profileApiUrl,
   tunnistamoUrl,
@@ -119,8 +121,9 @@ const userDefaultState = {
   deleteProfileLoading: false,
   deleteProfileError: null,
 
+  getProfileError: null,
+  saveProfileError: null,
   user: {},
-  error: null,
   interests: {},
   userRegion: {},
   tunnistamoUser: tunnistamoUser,
@@ -132,7 +135,7 @@ export const userReducer = handleActions(
     [
       getAllInterests,
       (state, action) => {
-        return { ...state, allInterestsError: null, allInterestsLoading: true }
+        return { ...state, deleteProfileError: null, allInterestsLoading: true }
       }
     ],
     [
@@ -219,14 +222,14 @@ export const userReducer = handleActions(
       getProfile,
       (state, action) => ({
         ...state,
-        error: userDefaultState.error
+        getProfileError: userDefaultState.error
       })
     ],
     [
       getProfileSuccess,
       (state, action) => ({
         ...state,
-        error: userDefaultState.error,
+        getProfileError: userDefaultState.error,
         userLoading: false
       })
     ],
@@ -234,23 +237,31 @@ export const userReducer = handleActions(
       getProfileError,
       (state, action) => ({
         ...state,
-        error: action.payload,
+        getProfileError: action.payload,
         userLoading: false
       })
     ],
-    [updateProfile],
+    [
+      updateProfile,
+      (state, action) => ({
+        ...state,
+        saveProfileError: null
+      })
+    ],
     [
       updateProfileSuccess,
       (state, action) => ({
         ...state,
-        error: userDefaultState.error
+        saveProfileError: userDefaultState.error
       })
     ],
     [
       updateProfileError,
       (state, action) => ({
         ...state,
-        error: action.payload.error
+        saveProfileError: !isEmpty(action.payload.error)
+          ? action.payload.error
+          : true
       })
     ],
     [
@@ -374,6 +385,7 @@ export const updateUserData = payload => {
         `/profile/${userUuid}/`,
         payload
       )
+
       dispatch(updateProfileSuccess())
       dispatch(setUserProfile(response.data))
     } catch (error) {
