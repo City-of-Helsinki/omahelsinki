@@ -1,6 +1,8 @@
 {
     "app.loading": "Laddning...",
     "app.saved": "Sparad",
+    "app.cancel": "Avbryt",
+    "app.ok": "OK",
 
     "app.userGreeting": "Hej",
 
@@ -11,8 +13,12 @@
     "app.profile.nickname": "Användarnamn",
     "app.profile.nickname.text":"Användarnamnet används till exempel när du publicerar kommentarer till offentliga samtal",
     "app.profile.delete": "Radera profil",
+    "app.profile.delete.confirmTitle": "Bekräfta radering av profil?",
     "app.profile.delete.confirm": "Är du säker att du vill radera din profil?",
-   
+
+    "app.photo.delete.confirmTitle": "Bekräfta radering av bild",
+    "app.photo.delete.confirm": "Är du säker att du vill radera din bild",
+
     "onboarding.navigation.previous": "Bak",
     "onboarding.navigation.next": "Fortgå",
     "onboarding.navigation.finish": "Redo",
@@ -137,7 +143,7 @@
     "service.lastUsed": "Senast använd:",
 
     "service.consent.button.delete": "Radera förbindelse",
-    "service.consent.delete.confirm": "Är du säker på att du vill radera förbindelsen till {service}?"
-
+    "service.consent.delete.confirm": "Är du säker på att du vill radera förbindelsen till {service}?",
+    "service.consent.delete.confirmTitle": "Bekräfta radering av förbindelsen {service}?"
   }
   
