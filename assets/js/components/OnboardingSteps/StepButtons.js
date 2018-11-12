@@ -4,7 +4,7 @@ import { withWizard } from 'react-albus'
 import { injectIntl } from 'react-intl'
 import { Button } from 'reactstrap'
 import classNames from 'classnames'
-import HelIcon from '../HelIcon'
+import HelIcon from '../HelIcon/HelIcon'
 
 const StepButtons = ({ wizard, intl, onFinish }) => {
   const { steps, step, next, previous } = wizard

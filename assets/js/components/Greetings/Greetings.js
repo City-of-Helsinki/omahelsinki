@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
 import { fetchUserData } from '../../user/redux'
-import ProfilePicture from '../ProfilePicture'
+import ProfilePicture from '../ProfilePicture/ProfilePicture'
 
 class Greetings extends Component {
   componentDidMount() {

@@ -14,7 +14,7 @@ import {
   Interest
 } from '../OnboardingSteps'
 
-import HelIcon from '../HelIcon'
+import HelIcon from '../HelIcon/HelIcon'
 
 class Onboarding extends React.Component {
   constructor(props) {

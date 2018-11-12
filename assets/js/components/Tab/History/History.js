@@ -7,7 +7,7 @@ import BootstrapTable from 'react-bootstrap-table-next'
 import paginationFactory from 'react-bootstrap-table2-paginator'
 
 import { fetchAllHistoryData } from '../../../user/redux'
-import HelIcon from '../../HelIcon'
+import HelIcon from '../../HelIcon/HelIcon'
 
 class History extends Component {
   componentDidMount() {

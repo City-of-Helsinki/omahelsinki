@@ -3,9 +3,9 @@ import { FormattedMessage, injectIntl } from 'react-intl'
 import { Row, Col, Button, Alert } from 'reactstrap'
 import { connect } from 'react-redux'
 
-import Loading from '../../Loading'
+import Loading from '../../Loading/Loading'
 import InterestsList from '../../Interests/InterestsList'
-import HelSelect from '../../HelSelect'
+import HelSelect from '../../HelSelect/HelSelect'
 import {
   fetchAllInterests,
   updateUserData,

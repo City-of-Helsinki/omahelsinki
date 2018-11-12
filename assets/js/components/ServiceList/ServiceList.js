@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Col, Row } from 'reactstrap'
-import Service from '../Service'
+import Service from '../Service/Service'
 
 const ServiceList = ({ services }) => {
   return (

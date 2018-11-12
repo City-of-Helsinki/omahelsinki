@@ -14,7 +14,7 @@ import {
 } from 'reactstrap'
 import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames/bind'
-import Greetings from '../Greetings'
+import Greetings from '../Greetings/Greetings'
 
 const TABS = {
   PROFILE: 'profile',

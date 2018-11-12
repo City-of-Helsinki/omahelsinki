@@ -4,10 +4,10 @@ import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import find from 'lodash/find'
 
-import Loading from '../../Loading'
-import HelCollapsibleField from '../../HelCollapsibleField'
-import ServiceList from '../../ServiceList'
-import ServiceConsent from '../../ServiceConsent'
+import Loading from '../../Loading/Loading'
+import HelCollapsibleField from '../../HelCollapsibleField/HelCollapsibleField'
+import ServiceList from '../../ServiceList/ServiceList'
+import ServiceConsent from '../../ServiceConsent/ServiceConsent'
 
 import { fetchAllServices, fetchConsents } from '../../../services/redux'
 

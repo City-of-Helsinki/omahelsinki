@@ -1,7 +1,7 @@
 import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Form, Row, Col } from 'reactstrap'
-import HelTextInput from '../HelTextInput'
+import HelTextInput from '../HelTextInput/HelTextInput'
 import React, { Component } from 'react'
 
 class CreatePassword extends Component {
