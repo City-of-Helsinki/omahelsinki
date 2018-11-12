@@ -46,11 +46,16 @@
     "app.profile.delete": "Delete profile",
     "app.profile.delete.confirmTitle": "Confirm deletion of profile",
     "app.profile.delete.confirm": "Are you sure you want to delete your profile?",
+    "app.profile.error.onSave": "Your profile could not be saved due to a an error.",
+    "app.profile.error.onDelete": "Your profile could not be deleted due to a an error.",
+    "app.profile.error.onLoad": "Your profile could not be retrieved due to a an error.",
 
     "app.photo.delete.confirmTitle": "Confirm deletion of photo",
     "app.photo.delete.confirm": "Are you sure you want to delete your profile photo?",
 
     "app.interests.text": "Choose topics that are of interest to you that will allow you to recommend content on different services or send notifications according to your specific choices.",
+    "app.interests.error.onSave": "The interest selections could not be saved due to a an error.",
+    "app.interests.error.onLoad": "The interest selections could not be retrieved due to a an error.",
     "app.topics": "Topics",
     "app.topics.text": "What kind of topics are you interested in?",
     "app.topics.culture": "Culture",
@@ -119,6 +124,8 @@
     "app.regions": "Regions",
 
     "app.regions.interest": "What regions interest you the most?",
+    "app.regions.error.onSave": "The region selections could not be saved due to a an error.",
+    "app.regions.error.onLoad": "The region selections could not be retrieved due to a an error.",
     "app.select.area": "Please select the area",
     "app.no.area": "No areas found",
 

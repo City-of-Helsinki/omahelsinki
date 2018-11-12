@@ -15,7 +15,6 @@ import { addMessage } from '../../Message/message-redux'
 
 import ImgDropAndCrop from '../../ImgDropAndCrop'
 import DownloadOwnData from '../../DownloadOwnData'
-import Toast from '../../Message/Toast'
 import ConfirmModal from '../../ConfirmModal'
 
 class Profile extends Component {
@@ -69,7 +68,15 @@ class Profile extends Component {
   }
 
   render() {
-    const { error, intl, tunnistamoUser, user, userDataUpdated } = this.props
+    const {
+      getProfileError,
+      deleteProfileError,
+      saveProfileError,
+      error,
+      intl,
+      tunnistamoUser,
+      user
+    } = this.props
     const hasImage = Boolean(user.image)
     return (
       <div className="profile-view">
@@ -99,6 +106,14 @@ class Profile extends Component {
         <section>
           <Row>
             <Col xs={12}>
+              {getProfileError && (
+                <Alert className="mt-2" color="danger">
+                  <span>
+                    {intl.formatMessage({ id: 'app.profile.error.onLoad' })}
+                  </span>
+                </Alert>
+              )}
+
               <h1>
                 <FormattedMessage id="app.profile" />
               </h1>
@@ -217,15 +232,11 @@ class Profile extends Component {
                 <FormattedMessage id="app.button.saveChanges" />
               </Button>
 
-              <Toast
-                color="success"
-                statusUpdated={userDataUpdated}
-                message="Tallennettu"
-              />
-
-              {error && (
-                <Alert color="danger">
-                  Tietojen tallennuksen yhteydessä sattui virhe
+              {saveProfileError && (
+                <Alert className="mt-2" color="danger">
+                  <span>
+                    {intl.formatMessage({ id: 'app.profile.error.onSave' })}
+                  </span>
                 </Alert>
               )}
             </Col>
@@ -239,6 +250,14 @@ class Profile extends Component {
           >
             <FormattedMessage id="app.profile.delete" />
           </Button>
+
+          {deleteProfileError && (
+            <Alert className="mt-2" color="danger">
+              <span>
+                {intl.formatMessage({ id: 'app.profile.error.onDelete' })}
+              </span>
+            </Alert>
+          )}
         </section>
       </div>
     )
@@ -247,7 +266,10 @@ class Profile extends Component {
 
 const mapStateToProps = state => ({
   user: state.userReducer.user,
-  tunnistamoUser: state.userReducer.tunnistamoUser
+  tunnistamoUser: state.userReducer.tunnistamoUser,
+  deleteProfileError: state.userReducer.deleteProfileError,
+  getProfileError: state.userReducer.getProfileError,
+  saveProfileError: state.userReducer.saveProfileError
 })
 export default connect(
   mapStateToProps,
