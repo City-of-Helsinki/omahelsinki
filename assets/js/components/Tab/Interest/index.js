@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { Row, Col } from 'reactstrap'
+import { FormattedMessage, injectIntl } from 'react-intl'
+import { Row, Col, Button, Alert } from 'reactstrap'
 import { connect } from 'react-redux'
 
 import Loading from '../../Loading'
@@ -11,6 +11,8 @@ import {
   updateUserData,
   fetchAllRegions
 } from '../../../user/redux'
+
+import { addMessage } from '../../Message/message-redux'
 
 class Interest extends Component {
   componentDidMount() {
@@ -36,7 +38,11 @@ class Interest extends Component {
       userRegions,
       allRegions,
       isRegionsLoading,
-      language
+      language,
+      allInterestsError,
+      allRegionsError,
+      saveProfileError,
+      intl
     } = this.props
 
     const interests = isInterestsLoading
@@ -113,6 +119,46 @@ class Interest extends Component {
                   handleChange={this.regionsChange}
                 />
               )}
+
+              {allRegionsError && (
+                <Alert className="mt-2" color="danger">
+                  <span>
+                    {intl.formatMessage({ id: 'app.regions.error.onLoad' })}
+                  </span>
+                </Alert>
+              )}
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <Button
+                className="mt-2"
+                color="success"
+                onClick={() =>
+                  this.props.addMessage(
+                    intl.formatMessage({ id: 'app.saved' }),
+                    'success'
+                  )
+                }
+              >
+                <FormattedMessage id="app.button.saveChanges" />
+              </Button>
+
+              {allInterestsError && (
+                <Alert className="mt-2" color="danger">
+                  <span>
+                    {intl.formatMessage({ id: 'app.interests.error.onLoad' })}
+                  </span>
+                </Alert>
+              )}
+
+              {saveProfileError && (
+                <Alert className="mt-2" color="danger">
+                  <span>
+                    {intl.formatMessage({ id: 'app.profile.error.onSave' })}
+                  </span>
+                </Alert>
+              )}
             </Col>
           </Row>
         </section>
@@ -129,11 +175,14 @@ const mapStateToProps = state => {
     userInterests: state.userReducer.user.concepts_of_interest,
     allRegions: state.userReducer.allRegions,
     allInterests: state.userReducer.allInterests,
-    language: state.intl.locale
+    language: state.intl.locale,
+    allInterestsError: state.userReducer.allInterestsError,
+    allRegionsError: state.userReducer.allRegionsError,
+    saveProfileError: state.userReducer.saveProfileError
   }
 }
 
 export default connect(
   mapStateToProps,
-  { fetchAllInterests, fetchAllRegions, updateUserData }
-)(Interest)
+  { fetchAllInterests, fetchAllRegions, updateUserData, addMessage }
+)(injectIntl(Interest))
