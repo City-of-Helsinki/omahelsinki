@@ -20,7 +20,6 @@ class ImgDropAndCrop extends Component {
   constructor(props) {
     super(props)
     this.imagePreviewCanvasRef = React.createRef()
-    this.dropzone = React.createRef()
     this.state = {
       imgSrc: null,
       crop: {
@@ -131,7 +130,6 @@ class ImgDropAndCrop extends Component {
             <Row>
               <Col xs={12}>
                 <Dropzone
-                  ref={this.dropzone}
                   onDrop={this.handleOnDrop}
                   multiple={false}
                   maxSize={imageMaxSize}
