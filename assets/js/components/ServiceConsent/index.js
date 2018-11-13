@@ -21,20 +21,20 @@ class ServiceConsent extends React.Component {
     this.deleteConsent = this.deleteConsent.bind(this)
 
     this.state = {
-      show: false
+      showConfirmationModal: false
     }
   }
 
   openConfirmationModal() {
-    this.setState({ show: true })
+    this.setState({ showConfirmationModal: true })
   }
 
   closeConfirmationModal() {
-    this.setState({ show: false })
+    this.setState({ showConfirmationModal: false })
   }
 
   deleteConsent() {
-    const { service } = this.props
+    const { service, deleteServiceConsent } = this.props
 
     this.closeConfirmationModal()
 
@@ -51,7 +51,7 @@ class ServiceConsent extends React.Component {
     return (
       <div className="service-consent">
         <ConfirmModal
-          show={this.state.show}
+          show={this.state.showConfirmationModal}
           onSuccess={() => this.deleteConsent()}
           onCancel={() => this.closeConfirmationModal()}
           message={intl.formatMessage(
