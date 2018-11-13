@@ -5,8 +5,8 @@ import { FormattedMessage, injectIntl } from 'react-intl'
 import max from 'lodash/max'
 import moment from 'moment'
 
-import { deleteServiceConsent } from '../../services/redux'
-import ConfirmModal from '../ConfirmModal'
+import { deleteServiceConsent } from '../services/redux'
+import ConfirmModal from './ConfirmModal'
 
 const getLastUsed = (service, history) => {
   const timestamps = history

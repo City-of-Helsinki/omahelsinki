@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchAllInterests, fetchAllRegions } from '../../user/redux'
 import HelSelect from '../HelSelect'
 
-import InterestsList from '../Interests/InterestsList'
+import InterestsList from '../InterestsList'
 
 class Interest extends Component {
   componentDidMount() {

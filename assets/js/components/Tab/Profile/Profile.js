@@ -13,7 +13,7 @@ import {
 
 import { addMessage } from '../../Message/message-redux'
 
-import ImgDropAndCrop from '../../ImgDropAndCrop'
+import ImgDropAndCrop from '../../ImgDropAndCrop/ImgDropAndCrop'
 import DownloadOwnData from '../../DownloadOwnData'
 import ConfirmModal from '../../ConfirmModal'
 

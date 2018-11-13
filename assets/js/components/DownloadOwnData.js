@@ -7,7 +7,7 @@ import {
   tunnistamoUrl,
   profileToken,
   tunnistamoToken
-} from '../../settings'
+} from '../settings'
 class DownloadOwnData extends Component {
   downloadData = obj => {
     const data =
