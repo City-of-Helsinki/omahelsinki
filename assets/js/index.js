@@ -16,7 +16,7 @@ import ToastContainer from './components/containers/ToastContainer'
 import configureStore from './root/store'
 
 import MainPage from './components/Main'
-import UserOnboarding from './components/Onboarding'
+import Onboarding from './components/Onboarding'
 import AllServices from './services/AllServices'
 
 const intlLocaleData = getIntlLocaleData()
@@ -32,7 +32,7 @@ ReactDOM.render(
           <MainLayout>
             <Switch>
               <Route exact path="/mydata/" component={MainPage} />
-              <Route exact path="/welcome/" component={UserOnboarding} />
+              <Route exact path="/welcome/" component={Onboarding} />
               <Route exact path="/services/" component={AllServices} />
             </Switch>
             {ReactDOM.createPortal(

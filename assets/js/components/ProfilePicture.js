@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchUserData } from '../../user/redux'
-import HelIcon from '../HelIcon'
+import { fetchUserData } from '../user/redux'
+import HelIcon from './HelIcon'
 
 class ProfilePicture extends Component {
   componentDidMount() {
