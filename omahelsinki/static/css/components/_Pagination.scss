@@ -4,3 +4,14 @@
     margin-right: 0;
   }
 }
+
+.react-bs-table-sizePerPage-dropdown {
+  ul.dropdown-menu li {
+    padding: 0;
+
+    a {
+      display: block;
+      padding: 0.25rem 1.5rem;
+    }
+  }
+}
