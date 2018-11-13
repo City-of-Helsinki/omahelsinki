@@ -76,7 +76,9 @@ class Profile extends Component {
       tunnistamoUser,
       user
     } = this.props
+
     const hasImage = Boolean(user.image)
+
     return (
       <div className="profile-view">
         <ConfirmModal
@@ -112,21 +114,14 @@ class Profile extends Component {
                   </span>
                 </Alert>
               )}
-
-              <h1>
-                <FormattedMessage id="app.profile" />
-              </h1>
-              <p className="lead">
-                <FormattedMessage id="app.profile.edit" />
-              </p>
             </Col>
           </Row>
         </section>
-        <section>
+        <section className="profile__section">
           <Row className="section">
             <Col xs={12}>
               <h2>
-                <FormattedMessage id="app.basicInfo" />
+                <FormattedMessage id="app.personalInfo" />
               </h2>
               <p className="lead text-muted">
                 <FormattedMessage id="app.not.public" />
@@ -135,28 +130,26 @@ class Profile extends Component {
           </Row>
           <Form className="form-basic-information">
             <Row>
-              <Col xs={12}>
+              <Col xs={12} md={6}>
                 <strong>
                   {intl.formatMessage({ id: 'profile.firstName' })}
                 </strong>{' '}
-                <span>{tunnistamoUser.first_name}</span>
+                <p>{tunnistamoUser.first_name}</p>
               </Col>
-              <Col xs={12}>
+              <Col xs={12} md={6}>
                 <strong>
                   {intl.formatMessage({ id: 'profile.lastName' })}
                 </strong>{' '}
-                <span>{tunnistamoUser.last_name}</span>
+                <p>{tunnistamoUser.last_name}</p>
               </Col>
-            </Row>
-            <Row>
-              <Col xs={12}>
+              <Col xs={12} md={6}>
                 <strong>{intl.formatMessage({ id: 'profile.email' })}</strong>{' '}
-                <span>{tunnistamoUser.email}</span>
+                <p>{tunnistamoUser.email}</p>
               </Col>
             </Row>
           </Form>
         </section>
-        <section>
+        <section className="profile__section">
           <Row>
             <Col xs={12}>
               <h2>
@@ -202,8 +195,10 @@ class Profile extends Component {
               </div>
             </Col>
           </Row>
+        </section>
+        <section className="profile__section">
           <Row>
-            <Col xs={12}>
+            <Col xs={12} md={4}>
               <HelTextInput
                 id="nickname"
                 defaultValue={user.nickname}
@@ -217,9 +212,12 @@ class Profile extends Component {
               />
             </Col>
           </Row>
+        </section>
+        <section>
           <Row>
-            <Col xs={12}>
+            <Col xs={12} md={4}>
               <Button
+                className="profile__button"
                 color="success"
                 onClick={() =>
                   this.props.addMessage(
@@ -239,24 +237,26 @@ class Profile extends Component {
                 </Alert>
               )}
             </Col>
+            <Col xs={12} md={4}>
+              <DownloadOwnData />
+            </Col>
+            <Col xs={12} md={4}>
+              <Button
+                className="profile__button"
+                color="danger"
+                onClick={() => this.openDeleteProfileConfirmationModal()}
+              >
+                <FormattedMessage id="app.profile.delete" />
+              </Button>
+            </Col>
+            {deleteProfileError && (
+              <Alert className="mt-2" color="danger">
+                <span>
+                  {intl.formatMessage({ id: 'app.profile.error.onDelete' })}
+                </span>
+              </Alert>
+            )}
           </Row>
-        </section>
-        <section>
-          <DownloadOwnData />
-          <Button
-            color="danger"
-            onClick={() => this.openDeleteProfileConfirmationModal()}
-          >
-            <FormattedMessage id="app.profile.delete" />
-          </Button>
-
-          {deleteProfileError && (
-            <Alert className="mt-2" color="danger">
-              <span>
-                {intl.formatMessage({ id: 'app.profile.error.onDelete' })}
-              </span>
-            </Alert>
-          )}
         </section>
       </div>
     )

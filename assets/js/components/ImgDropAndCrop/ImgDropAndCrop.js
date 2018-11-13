@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap'
+import { Button, Row, Col } from 'reactstrap'
 import Dropzone from 'react-dropzone'
 /*eslint-disable */
 import ReactCrop from 'react-image-crop'
 /*eslint-enable */
+
 import './canvas-toBlob'
 
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { image64toCanvasRef } from './ReusableUtils'
 
-const imageMaxSize = 1000000 // 1 mb
+const imageMaxSize = 1024 * 1024 * 10 // 10 megabytes
 const acceptedFileTypes =
   'image/x-png, image/png, image/jpg, image/jpeg, image/gif'
 const acceptedFileTypesArray = acceptedFileTypes.split(',').map(item => {
@@ -104,6 +105,7 @@ class ImgDropAndCrop extends Component {
 
   render() {
     const { imgSrc } = this.state
+
     return (
       <div>
         {imgSrc !== null ? (
@@ -125,17 +127,24 @@ class ImgDropAndCrop extends Component {
           </div>
         ) : (
           <div>
-            <p>
-              <FormattedMessage id="app.profile.picture.select.new" />
-            </p>
-            <Dropzone
-              onDrop={this.handleOnDrop}
-              multiple={false}
-              maxSize={imageMaxSize}
-              accept={acceptedFileTypes}
-            >
-              <FormattedMessage id="app.profile.picture.select.infoText" />
-            </Dropzone>
+            <Row>
+              <Col xs={12}>
+                <Dropzone
+                  onDrop={this.handleOnDrop}
+                  multiple={false}
+                  maxSize={imageMaxSize}
+                  accept={acceptedFileTypes}
+                  className="dropzone"
+                  acceptClassName="dropzone__success"
+                >
+                  <FormattedMessage id="app.dropzone.instruction" />
+                  <FormattedMessage id="app.dropzone.or" />
+                  <Button>
+                    <FormattedMessage id="app.dropzone.upload" />
+                  </Button>
+                </Dropzone>
+              </Col>
+            </Row>
           </div>
         )}
         {this.state.pixelCrop && (

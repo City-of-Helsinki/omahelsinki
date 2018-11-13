@@ -16,7 +16,7 @@
 
   "app.profile.edit": "Muokkaa Oma.helsinki-profiilisi tietoja.",
   "app.profile.addImageAndNickName": "Lisää Oma.helsinki-profiiliisi tietoja.",
-  "app.basicInfo": "Tilin perustiedot",
+  "app.personalInfo": "Henkilökohtaiset tiedot",
   "app.not.public": "Nämä tiedot näkyvät vain sinulle",
 
   "app.input.firstname": "Etunimi",
@@ -38,7 +38,7 @@
   "app.profile.picture.select.new": "Valitse uusi profiilikuva",
   "app.profile.picture.select.infoText": "Vedä kuva tähän / Klikkaa valitaksesi kuva",
   "app.profile.picture.cropImage": "Rajaa kuva",
-  "app.profile.picture.limit": "Kuvan sivun pituus vähintään 200px ja enintään 1200px. Tiedostomuoto jpg tai png.",
+  "app.profile.picture.limit": "Kuvan leveys vähintään 200px ja enintään 1200px. Tiedostomuoto jpg tai png.",
   "app.profile.picture.browse": "Selailla",
   "app.profile.picture.delete": "Poista kuva",
   "app.profile.nickname": "Nimimerkki",
@@ -117,9 +117,9 @@
   "app.history.text": "Historiaan kertyvät tiedot palvelujen käytöstä, kun olet kirjautuneena sisään Helsinki-tililläsi.",
   "app.history.youSignedIn": "Kirjauduit sisään",
 
-  "app.interests.your" : "Kiinnostukset",
+  "app.interests.your": "Kiinnostukset",
   "app.subjects": "Aiheet",
-  "app.subject.interest" : "Mistä aiheista olet kiinnostunut?",
+  "app.subject.interest": "Mistä aiheista olet kiinnostunut?",
   "app.regions": "Alueet",
 
   "app.regions.interest": "Mitkä alueet kiinnostavat sinua eniten?",
@@ -128,7 +128,7 @@
   "app.no.area": "Ei löytyneitä alueita",
 
   "app.decision.making": "Päätöksenteko",
-  "app.decision.interest" : "Millaista aiheesta olet kiinnostunut?",
+  "app.decision.interest": "Millaista aiheesta olet kiinnostunut?",
 
   "password.cantBeEmpty": "Salasana ei voi olla tyhjä",
   "password.notStrongEnough": "Salasana ei ole tarpeeksi vahva",
@@ -139,6 +139,10 @@
 
   "app.button.saveCroppedImage": "Tallenna rajattu kuva",
   "app.button.downloadData": "Lataa tiedot",
+
+  "app.dropzone.instruction": "Raahaa tähän kuva",
+  "app.dropzone.or": "-- tai --",
+  "app.dropzone.upload": "Klikkaa ja lisää",
 
   "services.collapsed.isOpenLabel": "Näytä tiedot",
   "services.collapsed.isClosedLabel": "Piilota tiedot",
