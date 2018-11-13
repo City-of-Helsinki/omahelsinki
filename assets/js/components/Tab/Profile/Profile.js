@@ -92,6 +92,18 @@ class Profile extends Component {
             id: 'app.photo.delete.confirmTitle'
           })}
         />
+
+        <ConfirmModal
+          show={this.state.showDeleteProfileConfirmationModal}
+          onSuccess={() => this.deleteProfile()}
+          onCancel={() => this.closeDeleteProfileConfirmationModal()}
+          message={intl.formatMessage({
+            id: 'app.profile.delete.confirm'
+          })}
+          title={intl.formatMessage({
+            id: 'app.profile.delete.confirmTitle'
+          })}
+        />
         <section>
           <Row>
             <Col xs={12}>
@@ -232,7 +244,7 @@ class Profile extends Component {
               <Button
                 className="profile__button"
                 color="danger"
-                onClick={() => this.deleteProfile()}
+                onClick={() => this.openDeleteProfileConfirmationModal()}
               >
                 <FormattedMessage id="app.profile.delete" />
               </Button>
