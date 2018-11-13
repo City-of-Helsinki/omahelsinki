@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import HelIcon from '../HelIcon'
 
-const Loading = () => {
+const Loading = ({ className = 'hel-icon-spin' }) => {
   return (
     <div>
-      <FontAwesomeIcon icon="spinner" size="5x" spin />
+      <HelIcon iconName="sync" className={className} />
     </div>
   )
 }

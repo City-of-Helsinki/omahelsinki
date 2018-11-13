@@ -4,7 +4,7 @@ import 'hel-icons/dist/symbol/svg/hel-icons.svg'
 
 const HelIcon = ({ className = 'hel-icon', iconName }) => {
   return (
-    <svg className="hel-icon">
+    <svg className={className}>
       <use xlinkHref={`#hel-icons_${iconName}`} />
     </svg>
   )
