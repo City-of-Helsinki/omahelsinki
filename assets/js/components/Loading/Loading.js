@@ -1,10 +1,11 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 
-const Loading = () => {
+import HelIcon from '../HelIcon'
+
+const Loading = ({ className = 'hel-icon-spin' }) => {
   return (
     <div>
-      <FormattedMessage id="app.loading" />
+      <HelIcon iconName="sync" className={className} />
     </div>
   )
 }
