@@ -2,7 +2,6 @@
 
 $omaWrapperPadding: 4rem 0 8rem;
 
-
 // Make svg icons pretty
 .icon {
   /* Lets the icon inherit the text color. */
@@ -26,7 +25,6 @@ $omaWrapperPadding: 4rem 0 8rem;
   overflow: hidden;
 }
 
-
 .navbar-brand {
   svg {
     height: 36px;
@@ -40,8 +38,13 @@ $omaWrapperPadding: 4rem 0 8rem;
 .content {
   margin-bottom: $spacer * 2;
 
-  h1, h2, h3, h4, h5, h6 {
-    margin-bottom: $spacer *2;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: $spacer * 2;
   }
 
   a {
@@ -85,7 +88,12 @@ $omaWrapperPadding: 4rem 0 8rem;
   z-index: 1;
   color: $black;
 
-  h1, h2, h3, h4 , h5 ,h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $hel-bus;
   }
 
@@ -105,11 +113,11 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 }
 
-.hero-image-wrapper{
+.hero-image-wrapper {
   position: relative;
   height: 100%;
   margin-bottom: $spacer * -12;
-  margin-top: $spacer *2;
+  margin-top: $spacer * 2;
   text-align: center;
 
   @include media-breakpoint-up(md) {
@@ -142,14 +150,14 @@ $omaWrapperPadding: 4rem 0 8rem;
 .site-footer {
   position: relative;
   min-height: 14em;
-  clear:both;
+  clear: both;
   background-color: $hel-coat;
   color: #ffffff;
   padding: ($spacer * 8) 0;
 
   &::before {
-    content: " ";
-    @include koro("pulse", $hel-coat, 400);
+    content: ' ';
+    @include koro('pulse', $hel-coat, 400);
     width: 100%;
     height: $spacer * 3;
     position: absolute;
@@ -158,7 +166,7 @@ $omaWrapperPadding: 4rem 0 8rem;
 
   @include media-breakpoint-down(sm) {
     &::before {
-      @include koro("pulse", $hel-coat, 100);
+      @include koro('pulse', $hel-coat, 100);
     }
   }
 }
@@ -213,8 +221,8 @@ $omaWrapperPadding: 4rem 0 8rem;
   padding: ($spacer * 8) 0;
 
   &::before {
-    content: " ";
-    @include koro("beat", $white, 500);
+    content: ' ';
+    @include koro('beat', $white, 500);
     width: 100%;
     height: $spacer * 4.5;
     position: absolute;
@@ -232,8 +240,8 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 
   &::before {
-    content: " ";
-    @include koro("beat", $brand-dark, 500);
+    content: ' ';
+    @include koro('beat', $brand-dark, 500);
     width: 100%;
     height: $spacer * 4.5;
     position: absolute;
@@ -246,13 +254,18 @@ $omaWrapperPadding: 4rem 0 8rem;
   background-color: $white;
   padding: ($spacer * 5) 0 ($spacer * 8);
   color: $brand-dark;
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $brand-dark;
   }
 
   &::before {
-    content: " ";
-    @include koro("beat", $white, 300);
+    content: ' ';
+    @include koro('beat', $white, 300);
     width: 100%;
     height: $spacer * 3;
     position: absolute;
@@ -266,8 +279,8 @@ $omaWrapperPadding: 4rem 0 8rem;
   padding: ($spacer * 5) 0 ($spacer * 8);
 
   &::before {
-    content: " ";
-    @include koro("beat", $white, 400);
+    content: ' ';
+    @include koro('beat', $white, 400);
     width: 100%;
     height: $spacer * 4;
     position: absolute;
@@ -280,13 +293,18 @@ $omaWrapperPadding: 4rem 0 8rem;
   background-color: $brand-dark;
   padding: ($spacer * 5) 0 ($spacer * 8);
   color: $white;
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $white;
   }
 
   &::before {
-    content: " ";
-    @include koro("pulse", $brand-dark, 400);
+    content: ' ';
+    @include koro('pulse', $brand-dark, 400);
     width: 100%;
     height: $spacer * 3;
     position: absolute;
@@ -300,8 +318,8 @@ $omaWrapperPadding: 4rem 0 8rem;
   padding: ($spacer * 5) 0 ($spacer * 8);
 
   &::before {
-    content: " ";
-    @include koro("pulse", $brand-light, 400);
+    content: ' ';
+    @include koro('pulse', $brand-light, 400);
     width: 100%;
     height: $spacer * 3;
     position: absolute;
@@ -322,8 +340,8 @@ $omaWrapperPadding: 4rem 0 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #FFF;
-  box-shadow: 2px 2px 2px 0 rgba(#121114,.25);
+  border: 2px solid #fff;
+  box-shadow: 2px 2px 2px 0 rgba(#121114, 0.25);
 
   span {
     display: block;
@@ -343,9 +361,8 @@ $omaWrapperPadding: 4rem 0 8rem;
   }
 
   @include media-breakpoint-down(sm) {
-
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 
     span {
       text-indent: 100%;
@@ -360,7 +377,6 @@ $omaWrapperPadding: 4rem 0 8rem;
     }
   }
 }
-
 
 .hide-text {
   text-indent: 100%;
@@ -414,7 +430,7 @@ $omaWrapperPadding: 4rem 0 8rem;
 }
 
 .oma-admin-section {
-  margin-bottom: $spacer *4;
+  margin-bottom: $spacer * 4;
   h2 {
     //margin-bottom: $spacer * 2;
   }
@@ -426,7 +442,7 @@ $omaWrapperPadding: 4rem 0 8rem;
   white-space: normal;
 
   &:before {
-    content: "";
+    content: '';
     width: 1.5em;
     height: 1.5em;
     display: inline-block;
@@ -546,54 +562,48 @@ $omaWrapperPadding: 4rem 0 8rem;
 }
 
 .profile-picture__picture {
-    margin-bottom: 20px;
-    img {
-      max-width: 135px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
+  margin-bottom: 20px;
+  img {
+    max-width: 135px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
 }
 
 .cropButton {
   margin-top: 10px;
 }
 
-.downloadButton {
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
 //History tab
-
-.history-view{
-  table thead th{
+.history-view {
+  table thead th {
     border-bottom: none;
   }
-  table td{
+  table td {
     border-top: none;
   }
-  table th{
+  table th {
     border-top: none;
   }
-  table tr{
+  table tr {
     height: 75px;
   }
-  .arrow-down{
+  .arrow-down {
     margin-left: -8px;
   }
-  .arrow-icon{
+  .arrow-icon {
     cursor: pointer;
   }
-  .page-item{
+  .page-item {
     margin-right: 10px;
-    box-shadow: 0 3px 10px
+    box-shadow: 0 3px 10px;
   }
-  .page-link{
-    padding:18px;
+  .page-link {
+    padding: 18px;
     color: black;
     font-weight: bold;
   }
-  .btn{
+  .btn {
     padding: 15px;
     background-color: #0072c6;
     border: none;
@@ -604,32 +614,32 @@ $omaWrapperPadding: 4rem 0 8rem;
 // Greetings styles
 
 .greetings-container {
-    display: flex;
-    justify-content: center;
-    background-color: #00d7a7;
-    .greetings-icon-container {
-        width: 70px;
-        height: 70px;
-        left: calc(50% - 25px);
-        background: #0000bf;
-        border-radius: 50%;
-        padding: 20px;
-        svg {
-          height: 30px !important;
-          width: 30px !important;
-          color: #ffffff;
-        }
+  display: flex;
+  justify-content: center;
+  background-color: #00d7a7;
+  .greetings-icon-container {
+    width: 70px;
+    height: 70px;
+    left: calc(50% - 25px);
+    background: #0000bf;
+    border-radius: 50%;
+    padding: 20px;
+    svg {
+      height: 30px !important;
+      width: 30px !important;
+      color: #ffffff;
     }
-    .greetings-text-container {
-        align-items: center;
-        padding-left: 20px;
-        .greetings-text {
-            align-items: center;
-            vertical-align: center;
-            padding-top: 15px;
-            color: #0000bf;
-        }
+  }
+  .greetings-text-container {
+    align-items: center;
+    padding-left: 20px;
+    .greetings-text {
+      align-items: center;
+      vertical-align: center;
+      padding-top: 15px;
+      color: #0000bf;
     }
+  }
 }
 
 .greetings-user-image img {
@@ -642,4 +652,3 @@ $omaWrapperPadding: 4rem 0 8rem;
     margin-bottom: 20px;
   }
 }
-

@@ -1,0 +1,18 @@
+.dropzone {
+  width: 200px;
+  height: 200px;
+
+  margin-bottom: 1rem;
+  border: 4px dashed #525a65;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+  &__success {
+    transform: scale(0.85);
+    border: 4px dashed white;
+  }
+}
