@@ -5,6 +5,8 @@
     "app.loading": "Loading...",
     "app.saved": "Saved",
     "app.error": "An error occurred.",
+    "app.cancel": "Cancel",
+    "app.ok": "OK",
 
     "app.profile": "Profile",
     "app.interests": "Interests",
@@ -42,10 +44,14 @@
     "app.profile.nickname": "Nickname",
     "app.profile.nickname.text": "The nickname is used for example when you publish comments to public conversations",
     "app.profile.delete": "Delete profile",
+    "app.profile.delete.confirmTitle": "Confirm deletion of profile",
     "app.profile.delete.confirm": "Are you sure you want to delete your profile?",
     "app.profile.error.onSave": "Your profile could not be saved due to a an error.",
     "app.profile.error.onDelete": "Your profile could not be deleted due to a an error.",
     "app.profile.error.onLoad": "Your profile could not be retrieved due to a an error.",
+
+    "app.photo.delete.confirmTitle": "Confirm deletion of photo",
+    "app.photo.delete.confirm": "Are you sure you want to delete your profile photo?",
 
     "app.interests.text": "Choose topics that are of interest to you that will allow you to recommend content on different services or send notifications according to your specific choices.",
     "app.interests.error.onSave": "The interest selections could not be saved due to a an error.",
@@ -142,6 +148,7 @@
 
     "service.consent.button.delete": "Delete connection",
     "service.consent.delete.confirm": "Are you sure you want to delete connection to {service}?",
+    "service.consent.delete.confirmTitle": "Confirm deletion of connection to {service}?",
     "service.consent.scopes": "Service uses these information about you:",
     "service.lastUsed": "Last used:"
   }

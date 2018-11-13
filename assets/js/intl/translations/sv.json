@@ -1,6 +1,8 @@
 {
     "app.loading": "Laddning...",
     "app.saved": "Sparad",
+    "app.cancel": "Avbryt",
+    "app.ok": "OK",
 
     "app.userGreeting": "Hej",
 
@@ -11,14 +13,19 @@
     "app.profile.nickname": "Användarnamn",
     "app.profile.nickname.text":"Användarnamnet används till exempel när du publicerar kommentarer till offentliga samtal",
     "app.profile.delete": "Radera profil",
+    "app.profile.delete.confirmTitle": "Bekräfta radering av profil?",
     "app.profile.delete.confirm": "Är du säker att du vill radera din profil?",
-    "app.profile.error.onSave": "Din profil kunde inte sparas på grund av ett fel.",
-    "app.profile.error.onDelete": "Din profil kunde inte tas bort på grund av ett fel.",
-    "app.profile.error.onLoad": "Din profil kunde inte hämtas på grund av ett fel.",
+
+    "app.photo.delete.confirmTitle": "Bekräfta radering av bild",
+    "app.photo.delete.confirm": "Är du säker att du vill radera din bild",
 
     "onboarding.navigation.previous": "Föregående",
     "onboarding.navigation.next": "Nästa",
     "onboarding.navigation.finish": "Klar",
+    "app.profile.error.onSave": "Din profil kunde inte sparas på grund av ett fel.",
+    "app.profile.error.onDelete": "Din profil kunde inte tas bort på grund av ett fel.",
+    "app.profile.error.onLoad": "Din profil kunde inte hämtas på grund av ett fel.",
+
     "onboarding.welcome.heading": "Hej ny användare!",
     "onboarding.welcome.text": "Välkommen till Oma.helsinki. Ett par steg och du är redo att go!",
     
@@ -143,7 +150,7 @@
     "service.lastUsed": "Senast använd:",
 
     "service.consent.button.delete": "Radera förbindelse",
-    "service.consent.delete.confirm": "Är du säker på att du vill radera förbindelsen till {service}?"
-
+    "service.consent.delete.confirm": "Är du säker på att du vill radera förbindelsen till {service}?",
+    "service.consent.delete.confirmTitle": "Bekräfta radering av förbindelsen {service}?"
   }
   

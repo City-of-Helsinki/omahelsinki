@@ -6,6 +6,8 @@
   "app.loading": "Ladataan...",
   "app.saved": "Tallennettu",
   "app.error": "Tapahtui virhe.",
+  "app.cancel": "Peruuta",
+  "app.ok": "OK",
 
   "app.interests": "Kiinnostukset",
   "app.services": "Palvelut",
@@ -42,10 +44,14 @@
   "app.profile.nickname": "Nimimerkki",
   "app.profile.nickname.text": "Nimimerkkiä käytetään esimerkiksi kun julkaiset kommentteja julkisiin keskusteluihin",
   "app.profile.delete": "Poista profiili",
+  "app.profile.delete.confirmTitle": "Olet poistamassa profiilisi",
   "app.profile.delete.confirm": "Haluatko varmasti poistaa profiilisi?",
   "app.profile.error.onSave": "Profiiliasi ei voitu tallentaa virheen vuoksi.",
   "app.profile.error.onDelete": "Profiiliasi ei voitu poistaa virheen vuoksi.",
   "app.profile.error.onLoad": "Profiiliasi ei voitu hakea virheen vuoksi.",
+
+  "app.photo.delete.confirmTitle": "Olet poistamassa kuvasi",
+  "app.photo.delete.confirm": "Haluatko varmasti poistaa kuvasi?",
 
   "app.interests.text": "Valitse aiheet, jotka kiinnostavat sinua, joiden avulla voit suositella sisältöä eri palveluissa tai lähettää ilmoituksia omien valintojesi mukaan.",
   "app.interest.error.onSave": "Valittuja kiinnostuksia ei voitu tallentaa virheen vuoksi.",
@@ -138,6 +144,8 @@
   "services.collapsed.isClosedLabel": "Piilota tiedot",
 
   "service.consent.button.delete": "Poista yhteys",
+  "service.consent.delete.confirmTitle": "Olet poistamassa yhteyden palveluun {service}?",
+
   "service.consent.delete.confirm": "Oletko varma, että haluat poistaa yhteyden palveluun {service}?",
   "service.consent.scopes": "Palvelu saa tietää sinusta:",
   "service.lastUsed": "Käytetty viimeksi:"
