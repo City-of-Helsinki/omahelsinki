@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Alert, Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import HelTextInput from '../../HelTextInput/HelTextInput'
+import HelTextInput from '../../HelTextInput'
 import { connect } from 'react-redux'
 import debounce from 'lodash/debounce'
 
@@ -14,7 +14,7 @@ import {
 import { addMessage } from '../../Message/message-redux'
 
 import ImgDropAndCrop from '../../ImgDropAndCrop/ImgDropAndCrop'
-import DownloadOwnData from '../../DownloadOwnData/DownloadOwnData'
+import DownloadOwnData from '../../DownloadOwnData'
 
 class Profile extends Component {
   componentDidMount() {

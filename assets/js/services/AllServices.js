@@ -5,10 +5,10 @@ import { Col, Container, Row } from 'reactstrap'
 
 import { fetchAllServices } from './redux'
 
-import Loading from '../components/Loading/Loading'
-import Error from '../components/Error/Error'
-import ServiceList from '../components/ServiceList/ServiceList'
-import HelIcon from '../components/HelIcon/HelIcon'
+import Loading from '../components/Loading'
+import Error from '../components/Error'
+import ServiceList from '../components/ServiceList'
+import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
   componentDidMount() {

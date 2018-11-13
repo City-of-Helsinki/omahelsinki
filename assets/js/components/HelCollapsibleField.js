@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Collapse, Button } from 'reactstrap'
 
-import HelIcon from '../HelIcon/HelIcon'
+import HelIcon from './HelIcon'
 
 export default class HelCollapsibleField extends Component {
   static defaultProps = {

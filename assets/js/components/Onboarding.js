@@ -4,18 +4,11 @@ import { connect } from 'react-redux'
 import { Container } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import isEmpty from 'lodash/isEmpty'
-import Loading from '../Loading'
+import Loading from './Loading'
 
-import { createNewUser, fetchUserData } from '../../user/redux'
-
-import {
-  StepButtons,
-  Welcome,
-  ProfileImage,
-  Interest
-} from '../OnboardingSteps'
-
-import HelIcon from '../HelIcon/HelIcon'
+import { createNewUser, fetchUserData } from '../user/redux'
+import { StepButtons, Welcome, ProfileImage, Interest } from './OnboardingSteps'
+import HelIcon from './HelIcon'
 
 class Onboarding extends React.Component {
   constructor(props) {

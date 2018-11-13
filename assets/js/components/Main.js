@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import isEmpty from 'lodash/isEmpty'
-import { Profile, Service, Interest, History } from '../Tab'
+import { Profile, Service, Interest, History } from './Tab'
 import {
   Container,
   TabContent,
@@ -14,7 +14,7 @@ import {
 } from 'reactstrap'
 import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames/bind'
-import Greetings from '../Greetings/Greetings'
+import Greetings from './Greetings'
 
 const TABS = {
   PROFILE: 'profile',

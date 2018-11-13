@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import HelTextInput from '../HelTextInput/HelTextInput'
+import HelTextInput from '../HelTextInput'
 import ImgDropAndCrop from '../ImgDropAndCrop/ImgDropAndCrop'
 
 class ProfileImage extends Component {

@@ -2,7 +2,7 @@ import React from 'react'
 import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Form, FormGroup, Input, Label, Col, Row } from 'reactstrap'
-import HelTextInput from '../HelTextInput/HelTextInput'
+import HelTextInput from '../HelTextInput'
 
 const PersonalInformation = ({
   intl,

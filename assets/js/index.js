@@ -15,8 +15,8 @@ import ToastContainer from './components/containers/ToastContainer'
 
 import configureStore from './root/store'
 
-import MainPage from './components/Main/Main'
-import Onboarding from './components/Onboarding/Onboarding'
+import MainPage from './components/Main'
+import Onboarding from './components/Onboarding'
 import AllServices from './services/AllServices'
 
 const intlLocaleData = getIntlLocaleData()

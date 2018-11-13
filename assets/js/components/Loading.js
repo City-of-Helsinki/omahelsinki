@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HelIcon from '../HelIcon'
+import HelIcon from './HelIcon'
 
 const Loading = ({ className = 'hel-icon-spin' }) => {
   return (
