@@ -64,7 +64,12 @@ class History extends Component {
       }
     ]
     const options = {
-      paginationSize: 4
+      paginationSize: 4,
+      onSizePerPageChange: () => {
+        document
+          .getElementsByClassName('dropdown-menu show')[0]
+          .classList.remove('show')
+      }
     }
     const defaultSorted = [
       {
