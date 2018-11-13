@@ -15,8 +15,18 @@ import { addMessage } from '../../Message/message-redux'
 
 import ImgDropAndCrop from '../../ImgDropAndCrop/ImgDropAndCrop'
 import DownloadOwnData from '../../DownloadOwnData'
+import ConfirmModal from '../../ConfirmModal'
 
 class Profile extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showDeletePhotoConfirmationModal: false,
+      showDeleteProfileConfirmationModal: false
+    }
+  }
+
   componentDidMount() {
     this.props.fetchUserData()
   }
@@ -32,16 +42,29 @@ class Profile extends Component {
   }
 
   unselectImage() {
+    this.closeDeletePhotoConfirmationModal()
     this.props.updateUserData({ image: null })
   }
 
+  openDeletePhotoConfirmationModal() {
+    this.setState({ showDeletePhotoConfirmationModal: true })
+  }
+
+  closeDeletePhotoConfirmationModal() {
+    this.setState({ showDeletePhotoConfirmationModal: false })
+  }
+
+  openDeleteProfileConfirmationModal() {
+    this.setState({ showDeleteProfileConfirmationModal: true })
+  }
+
+  closeDeleteProfileConfirmationModal() {
+    this.setState({ showDeleteProfileConfirmationModal: false })
+  }
+
   deleteProfile = () => {
-    const msg = this.props.intl.formatMessage({
-      id: 'app.profile.delete.confirm'
-    })
-    if (confirm(msg)) {
-      this.props.deleteUserProfile()
-    }
+    this.closeDeleteProfileConfirmationModal()
+    this.props.deleteUserProfile()
   }
 
   render() {
@@ -58,7 +81,18 @@ class Profile extends Component {
 
     return (
       <div className="profile-view">
-        <section className="profile__section">
+        <ConfirmModal
+          show={this.state.showDeletePhotoConfirmationModal}
+          onSuccess={() => this.unselectImage()}
+          onCancel={() => this.closeDeletePhotoConfirmationModal()}
+          message={intl.formatMessage({
+            id: 'app.photo.delete.confirm'
+          })}
+          title={intl.formatMessage({
+            id: 'app.photo.delete.confirmTitle'
+          })}
+        />
+        <section>
           <Row>
             <Col xs={12}>
               {getProfileError && (
@@ -125,7 +159,10 @@ class Profile extends Component {
                     <div className="profile-picture__picture">
                       <img src={user.image} alt="profile" />
                     </div>
-                    <Button color="danger" onClick={() => this.unselectImage()}>
+                    <Button
+                      color="danger"
+                      onClick={() => this.openDeletePhotoConfirmationModal()}
+                    >
                       <FormattedMessage id="app.profile.picture.delete" />
                     </Button>
                   </div>

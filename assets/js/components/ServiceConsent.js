@@ -6,6 +6,7 @@ import max from 'lodash/max'
 import moment from 'moment'
 
 import { deleteServiceConsent } from '../services/redux'
+import ConfirmModal from './ConfirmModal'
 
 const getLastUsed = (service, history) => {
   const timestamps = history
@@ -17,28 +18,51 @@ const getLastUsed = (service, history) => {
 class ServiceConsent extends React.Component {
   constructor(props) {
     super(props)
-    this.deleteConsentClick = this.deleteConsentClick.bind(this)
-  }
+    this.deleteConsent = this.deleteConsent.bind(this)
 
-  deleteConsentClick() {
-    const { service, locale, intl, deleteServiceConsent } = this.props
-    const serviceName = service.name[locale] || service.name['fi']
-    const msg = intl.formatMessage(
-      { id: 'service.consent.delete.confirm' },
-      { service: serviceName }
-    )
-    if (confirm(msg)) {
-      deleteServiceConsent(service.consent)
+    this.state = {
+      showConfirmationModal: false
     }
   }
 
+  openConfirmationModal() {
+    this.setState({ showConfirmationModal: true })
+  }
+
+  closeConfirmationModal() {
+    this.setState({ showConfirmationModal: false })
+  }
+
+  deleteConsent() {
+    const { service, deleteServiceConsent } = this.props
+
+    this.closeConfirmationModal()
+
+    deleteServiceConsent(service.consent)
+  }
+
   render() {
-    const { service, locale, history } = this.props
+    const { intl, service, locale, history } = this.props
     const consent = service.consent
     const description = service.description[locale] || service.description['fi']
     const lastUsedDate = getLastUsed(service, history)
+    const serviceName = service.name[locale] || service.name['fi']
+
     return (
       <div className="service-consent">
+        <ConfirmModal
+          show={this.state.showConfirmationModal}
+          onSuccess={() => this.deleteConsent()}
+          onCancel={() => this.closeConfirmationModal()}
+          message={intl.formatMessage(
+            { id: 'service.consent.delete.confirm' },
+            { service: serviceName }
+          )}
+          title={intl.formatMessage(
+            { id: 'service.consent.delete.confirmTitle' },
+            { service: serviceName }
+          )}
+        />
         <div className="decription">
           <p>{description}</p>
         </div>
@@ -69,7 +93,7 @@ class ServiceConsent extends React.Component {
           <Button
             color="danger"
             className="text-center"
-            onClick={this.deleteConsentClick}
+            onClick={() => this.openConfirmationModal()}
           >
             <FormattedMessage id="service.consent.button.delete" />
           </Button>
