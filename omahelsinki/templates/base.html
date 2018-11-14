@@ -67,9 +67,9 @@
                 {{ LANGUAGE_CODE|upper }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item{% if LANGUAGE_CODE == 'fi' %} active{% endif %}" href="#" data-language="fi">suomi</a>
-                <a class="dropdown-item{% if LANGUAGE_CODE == 'en' %} active{% endif %}" data-language="en" href="#">English</a>
-                <a class="dropdown-item{% if LANGUAGE_CODE == 'sv' %} active{% endif %}" data-language="sv" href="#">svenska</a>
+                <a class="dropdown-item{% if LANGUAGE_CODE == 'fi' %} active{% endif %}" href="#" data-language="fi">Suomi</a>
+                <a class="dropdown-item{% if LANGUAGE_CODE == 'sv' %} active{% endif %}" href="#" data-language="sv">Svenska</a>
+                <a class="dropdown-item{% if LANGUAGE_CODE == 'en' %} active{% endif %}" href="#" data-language="en">English</a>
               </div>
             </li>
             {% if request.user.is_authenticated %}
