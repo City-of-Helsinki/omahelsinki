@@ -599,10 +599,10 @@ $omaWrapperPadding: 4rem 0 8rem;
     box-shadow: 0 3px 10px;
   }
   .page-link {
-    padding: 18px;
+    padding: 13px;
   }
   .btn {
-    padding: 15px;
+    padding: 10px;
     background-color: #0072c6;
     border: none;
     box-shadow: none !important;
@@ -648,5 +648,13 @@ $omaWrapperPadding: 4rem 0 8rem;
 .service-view {
   h2 {
     margin-bottom: 20px;
+  }
+}
+
+// Tables
+
+.react-bootstrap-table {
+  th.sortable .arrow-icon {
+    white-space: nowrap;
   }
 }

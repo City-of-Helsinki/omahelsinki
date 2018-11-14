@@ -1,17 +1,63 @@
 .react-bootstrap-table-pagination-list {
+  margin: auto;
+  width: auto;
+
   li.page-item {
     box-shadow: none;
     margin-right: 0;
   }
+
+  .react-bs-table-sizePerPage-dropdown .dropdown-toggle.btn {
+    padding: 10px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    order: 1;
+  }
+}
+
+.react-bootstrap-table-pagination {
+  div:first-child {
+    flex: 0 0 100%;
+    order: 2;
+  }
 }
 
 .react-bs-table-sizePerPage-dropdown {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
   ul.dropdown-menu li {
     padding: 0;
 
     a {
       display: block;
       padding: 0.25rem 1.5rem;
+    }
+  }
+}
+
+.history-view {
+
+  .react-bootstrap-table-pagination-list {
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      order: 1;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, sm)){
+  .react-bootstrap-table-pagination {
+    .col-sm-6 {
+      flex: 0 0 100%;
+      max-width: inherit;
     }
   }
 }
