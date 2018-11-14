@@ -35,7 +35,6 @@ export default class HelCollapsibleField extends Component {
       <div className="hel-collapsible-field">
         {collapsible ? (
           <Button className="hel-collapsible-field__link" onClick={this.toggle}>
-            {title}
             {this.state.collapse ? (
               <span className="float-right help-label">
                 {collapsedLabel} <HelIcon iconName="angle-up" />
@@ -45,6 +44,7 @@ export default class HelCollapsibleField extends Component {
                 {openLabel} <HelIcon iconName="angle-down" />
               </span>
             )}
+            <p>{title}</p>
           </Button>
         ) : (
           <p className="hel-collapsible-field__title">{title}</p>
