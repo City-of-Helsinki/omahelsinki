@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Row, Button } from 'reactstrap'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 import isEmpty from 'lodash/isEmpty'
 
@@ -10,7 +9,7 @@ import HelIcon from './HelIcon'
 import Service from './Service'
 
 const buttonWithIconStyle = {
-  marginTop: '2rem',
+  margin: '2rem 0',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
@@ -32,11 +31,12 @@ class Landing extends Component {
             <h1>
               <FormattedMessage id="app.landing.header" />
             </h1>
-            <Link to="/services">
+            <a href="/services">
               <Button color="info" style={buttonWithIconStyle}>
-                See all services <HelIcon iconName="arrow-right" />
+                <FormattedMessage id="app.landing.seeAllServices" />{' '}
+                <HelIcon iconName="arrow-right" />
               </Button>
-            </Link>
+            </a>
           </Col>
           {isEmpty(services) ? (
             <HelIcon iconName="sync" className={'hel-icon-spin'} />
@@ -56,6 +56,19 @@ class Landing extends Component {
               </Row>
             </Col>
           )}
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <div className="cta-register">
+              <div className="left-icon d-none d-md-block">
+                <HelIcon iconName="quote-right" />
+              </div>
+              <a href="/help">
+                <FormattedMessage id="app.landing.help" />
+                <HelIcon iconName="arrow-right" />
+              </a>
+            </div>
+          </Col>
         </Row>
       </div>
     )

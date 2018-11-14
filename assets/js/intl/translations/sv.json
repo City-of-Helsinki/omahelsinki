@@ -26,7 +26,6 @@
   "onboarding.navigation.next": "Nästa",
   "onboarding.navigation.finish": "Klar",
 
-
   "onboarding.welcome.heading": "Hej ny användare!",
   "onboarding.welcome.text": "Välkommen till Oma.helsinki. Ett par steg och du är redo att go!",
 
@@ -122,6 +121,10 @@
   "onboarding.hint.weakPassword": "Password is weak. Try use capital letter and what not.",
   "onboarding.hint.ofAge": "Some of the Helsinki city services require over 18 years of age.",
   "onboarding.hint.required": "Required field",
+
+  "app.landing.header": "Du kan använda din oma-helsinki profil med dessa tjänster",
+  "app.landing.seeAllServices": "See all services",
+  "app.landing.help": "Dont´t worry we have answers! See help",
 
   "app.services.related": "Relaterade tjänster",
   "app.services.related.text": "Du kan använda flera Helsinfors stadstjänster och vissa tredjepartstjänster med ditt Oma.helsinki-konto.",

@@ -105,6 +105,10 @@
   "onboarding.hint.ofAge": "Jotkut Helsingin kaupungin palveluista vaativat yli 18-vuotiaita.",
   "onboarding.hint.required": "Pakollinen kenttä",
 
+  "app.landing.header": "Voit käyttää oma.helsinki profiiliasi näissä palveluissa",
+  "app.landing.seeAllServices": "Katso kaikki palvelut",
+  "app.landing.help": "Älä huoli, meillä on vastaukset! Apu löytyy täältä",
+
   "app.services.related": "Liitetyt palvelut",
   "app.services.related.text": "Voit käyttää Oma.helsinki-profiilillasi useita Helsingin kaupungin palveluita ja tiettyjä kolmansien osapuolten palveluita.",
   "app.services.notLinked": "Palvelut, joita et ole vielä liittänyt tiliisi",
