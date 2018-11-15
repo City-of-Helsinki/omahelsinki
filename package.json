@@ -52,7 +52,8 @@
     "reactstrap": "6.1.0",
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "svg4everybody": "^2.1.9"
   },
   "eslintConfig": {
     "extends": "react-app"
