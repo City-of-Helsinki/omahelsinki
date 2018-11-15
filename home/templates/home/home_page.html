@@ -11,15 +11,15 @@
       <div class="col-11 col-md-7">
         <div class="hero-content">
           {% for block in page.hero %}
-          {% if block.block_type == 'heading' %}
-          <h1>{{ block.value }}</h1>
-          {% else %}
-          {% include_block block %}
-          {% endif %}
+            {% if block.block_type == 'heading' %}
+              <h1>{{ block.value }}</h1>
+            {% else %}
+              {% include_block block %}
+            {% endif %}
           {% endfor %}
           {% if not request.user.is_authenticated %}
-          <a href="{% url 'helusers:auth_login' %}"><button type="button" class="btn btn-outline-secondary">{% trans "Log in" %}</button></a>
-          <p><small><a href="{% url 'helusers:auth_login' %}">Tai rekisteröidy täällä</a></small></p>
+            <a href="{% url 'helusers:auth_login' %}"><button type="button" class="btn btn-outline-secondary">{% trans "Log in" %}</button></a>
+            <p><small><a href="{% url 'helusers:auth_login' %}">Tai rekisteröidy täällä</a></small></p>
           {% endif %}
         </div>
       </div>
