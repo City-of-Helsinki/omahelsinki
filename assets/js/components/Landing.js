@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Row, Button } from 'reactstrap'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import isEmpty from 'lodash/isEmpty'
@@ -18,7 +19,7 @@ const buttonWithIconStyle = {
 
 class Landing extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchAllServices())
+    this.props.fetchAllServices()
   }
 
   render() {
@@ -82,4 +83,16 @@ const mapStateToProps = state => {
     isError: state.services.allServicesError
   }
 }
-export default connect(mapStateToProps)(Landing)
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      fetchAllServices
+    },
+    dispatch
+  )
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Landing)
