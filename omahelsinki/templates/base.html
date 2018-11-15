@@ -21,6 +21,9 @@
                 {% endwith %}
             {% endblock %}
         </title>
+
+        <script src="{% static 'svg4everybody/dist/svg4everybody.min.js' %}"></script>
+
         <script>
         {% if request.user.uuid %}
         window.TUNNISTAMO_USER = {
@@ -196,6 +199,8 @@
         $('.nav-link.disabled').click(function(ev) {
           ev.preventDefault();
         });
+
+        svg4everybody();
       </script>
 
       {% block extra_js %}
