@@ -21,7 +21,7 @@ import AllServices from './services/AllServices'
 
 const intlLocaleData = getIntlLocaleData()
 addLocaleData(intlLocaleData)
-
+//console.log(process.env.NODE_ENV)
 const store = configureStore()
 
 ReactDOM.render(
@@ -30,6 +30,9 @@ ReactDOM.render(
       <App>
         <BrowserRouter>
           <MainLayout>
+            <div className="development-banner">
+              <h1>DEVELOPMENT</h1>
+            </div>
             <Switch>
               <Route exact path="/mydata/" component={MainPage} />
               <Route exact path="/welcome/" component={Onboarding} />

@@ -522,6 +522,15 @@ $omaWrapperPadding: 4rem 0 8rem;
   margin-bottom: 40px;
 }
 
+.development-banner {
+  background: #f5a3c7;
+  width: 100%;
+
+  h1 {
+    color: white;
+  }
+}
+
 .cta-register {
   background: $hel-copper;
   margin-bottom: 40px;

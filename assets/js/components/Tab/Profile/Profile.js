@@ -77,6 +77,8 @@ class Profile extends Component {
       user
     } = this.props
 
+    console.log(process.env.NODE_ENV)
+
     const hasImage = Boolean(user.image)
 
     return (
