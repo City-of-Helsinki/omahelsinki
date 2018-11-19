@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Alert, Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
+import { Link } from 'react-router-dom'
+
 import HelTextInput from '../../HelTextInput'
 import { connect } from 'react-redux'
 import debounce from 'lodash/debounce'

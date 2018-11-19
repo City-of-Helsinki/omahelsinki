@@ -4,7 +4,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { addLocaleData } from 'react-intl'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 
 import ConnectedIntlProvider from './intl/ConnectedIntlProvider'
 import getIntlLocaleData from './intl/getIntlLocaleData'
@@ -19,6 +20,9 @@ import MainPage from './components/Main'
 import Onboarding from './components/Onboarding'
 import Landing from './components/Landing'
 import AllServices from './services/AllServices'
+import NotLoggedIn from './components/NotLoggedIn'
+
+const history = createBrowserHistory()
 
 const intlLocaleData = getIntlLocaleData()
 addLocaleData(intlLocaleData)
@@ -29,20 +33,21 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedIntlProvider>
       <App>
-        <BrowserRouter>
+        <Router history={history}>
           <MainLayout>
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/mydata/" component={MainPage} />
               <Route exact path="/welcome/" component={Onboarding} />
               <Route exact path="/services/" component={AllServices} />
+              <Route exact path="/app/please-log-in/" component={NotLoggedIn} />
             </Switch>
             {ReactDOM.createPortal(
               <ToastContainer />,
               document.getElementById('toast-root')
             )}
           </MainLayout>
-        </BrowserRouter>
+        </Router>
       </App>
     </ConnectedIntlProvider>
   </Provider>,

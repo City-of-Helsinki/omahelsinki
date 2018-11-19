@@ -3,6 +3,9 @@
   "app.saved": "Sparad",
   "app.cancel": "Avbryt",
   "app.ok": "OK",
+  "app.logIn": "Logga in",
+  "app.pleaseLogIn": "Var god och logga in",
+  "app.notLoggedIn": "Du är inte inloggad",
 
   "app.userGreeting": "Hej",
 
