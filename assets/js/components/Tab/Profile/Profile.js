@@ -85,7 +85,7 @@ class Profile extends Component {
       <div className="profile-view">
         <ConfirmModal
           show={this.state.showDeletePhotoConfirmationModal}
-          onSuccess={() => this.unselectImage()}
+          onConfirmation={() => this.unselectImage()}
           onCancel={() => this.closeDeletePhotoConfirmationModal()}
           message={intl.formatMessage({
             id: 'app.photo.delete.confirm'
@@ -97,7 +97,7 @@ class Profile extends Component {
 
         <ConfirmModal
           show={this.state.showDeleteProfileConfirmationModal}
-          onSuccess={() => this.deleteProfile()}
+          onConfirmation={() => this.deleteProfile()}
           onCancel={() => this.closeDeleteProfileConfirmationModal()}
           message={intl.formatMessage({
             id: 'app.profile.delete.confirm'

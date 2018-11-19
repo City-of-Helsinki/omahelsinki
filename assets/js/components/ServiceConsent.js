@@ -52,7 +52,7 @@ class ServiceConsent extends React.Component {
       <div className="service-consent">
         <ConfirmModal
           show={this.state.showConfirmationModal}
-          onSuccess={() => this.deleteConsent()}
+          onConfirmation={() => this.deleteConsent()}
           onCancel={() => this.closeConfirmationModal()}
           message={intl.formatMessage(
             { id: 'service.consent.delete.confirm' },
