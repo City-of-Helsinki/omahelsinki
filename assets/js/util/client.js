@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { createBrowserHistory } from 'history'
 
 export default config => {
   const client = axios.create(config)
