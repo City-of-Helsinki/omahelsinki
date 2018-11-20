@@ -16,8 +16,8 @@ class ProfileImage extends Component {
     const hasImage = Boolean(this.props.img)
     return (
       <div className="profile-view">
-        <section>
-          <Row>
+        <section className="profile__section">
+          <Row className="section">
             <Col xs={12}>
               <h1>
                 <FormattedMessage id="app.profile" />
@@ -28,12 +28,12 @@ class ProfileImage extends Component {
             </Col>
           </Row>
         </section>
-        <section>
+        <section className="profile__section">
           <Form
             className="form-profile-information"
             onSubmit={this.submitProfileInfo}
           >
-            <Row>
+            <Row className="profile__section">
               <Col xs={12} sm={6}>
                 <div className="profile-picture">
                   <h5>
