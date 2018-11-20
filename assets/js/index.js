@@ -31,9 +31,6 @@ ReactDOM.render(
       <App>
         <BrowserRouter>
           <MainLayout>
-            <div className="development-banner">
-              <h1>DEVELOPMENT</h1>
-            </div>
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/mydata/" component={MainPage} />
