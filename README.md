@@ -136,4 +136,4 @@ yarn lint
 
 ## License
 
-This project is licensed under the [MIT License] (https://github.com/City-of-Helsinki/omahelsinki/blob/master/LICENSE)
+This project is licensed under the [MIT License](https://github.com/City-of-Helsinki/omahelsinki/blob/master/LICENSE)
