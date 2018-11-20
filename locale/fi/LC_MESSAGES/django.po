@@ -125,3 +125,6 @@ msgstr "Ei hakutuloksia"
 #: users/apps.py:7
 msgid "Users"
 msgstr ""
+
+msgid "This is the development version of Oma.helsinki"
+msgstr "Tämä on Oma.helsingin testiversio"
