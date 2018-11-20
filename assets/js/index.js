@@ -22,7 +22,7 @@ import AllServices from './services/AllServices'
 
 const intlLocaleData = getIntlLocaleData()
 addLocaleData(intlLocaleData)
-//console.log(process.env.NODE_ENV)
+
 const store = configureStore()
 
 ReactDOM.render(
