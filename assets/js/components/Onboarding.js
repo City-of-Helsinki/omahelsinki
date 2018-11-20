@@ -1,5 +1,7 @@
 import React from 'react'
 import { Wizard, Steps, Step } from 'react-albus'
+import { bindActionCreators } from 'redux'
+
 import { connect } from 'react-redux'
 import { Container } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
@@ -27,7 +29,11 @@ class Onboarding extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUserData()
+    const { profileFound, fetchUserData } = this.props
+
+    if (!profileFound) {
+      fetchUserData()
+    }
   }
 
   interestsChanged(interests) {
@@ -133,13 +139,17 @@ class Onboarding extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
+export default connect(
+  state => ({
     profileFound: !isEmpty(state.userReducer.user),
     userLoading: state.userReducer.userLoading
-  }
-}
-export default connect(
-  mapStateToProps,
-  { createNewUser, fetchUserData }
+  }),
+  dispatch =>
+    bindActionCreators(
+      {
+        createNewUser,
+        fetchUserData
+      },
+      dispatch
+    )
 )(Onboarding)

@@ -223,7 +223,8 @@ export const userReducer = handleActions(
       getProfile,
       (state, action) => ({
         ...state,
-        getProfileError: userDefaultState.error
+        getProfileError: userDefaultState.error,
+        userLoading: true
       })
     ],
     [
@@ -357,8 +358,8 @@ export const fetchUserData = () => {
 
     try {
       const response = await profileRequest.get(`/profile/${userUuid}/`)
-      dispatch(getProfileSuccess())
       dispatch(setUserProfile(response.data))
+      dispatch(getProfileSuccess())
     } catch (error) {
       dispatch(getProfileError(error))
     }
