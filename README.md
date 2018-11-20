@@ -2,6 +2,8 @@
 
 :fire: Wagtail CMS + ReactJS :fire:
 
+Oma.helsinki is a MyData-based user account for city services. It provides user-driven data handling and consent management for City of Helsinki services.
+
 ## Installation
 
 ### General prerequisites
@@ -131,3 +133,7 @@ yarn lint
 - Wagtail admin: [/admin](http://localhost:8000/admin)
 - Profile React UI: [/mydata](http://localhost:8000/mydata)
 - Onboarding: [/welcome](http://localhost:8000/welcome)
+
+## License
+
+This project is licensed under the [MIT License] (https://github.com/City-of-Helsinki/omahelsinki/blob/master/LICENSE)
