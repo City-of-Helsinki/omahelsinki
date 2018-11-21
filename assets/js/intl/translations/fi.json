@@ -8,6 +8,9 @@
   "app.error": "Tapahtui virhe.",
   "app.cancel": "Peruuta",
   "app.ok": "OK",
+  "app.logIn": "Kirjaudu sisään",
+  "app.pleaseLogIn": "Ole hyvä ja kirjaudu sisään",
+  "app.notLoggedIn": "Et ole kirjautunut sisään",
 
   "app.interests": "Kiinnostukset",
   "app.services": "Palvelut",

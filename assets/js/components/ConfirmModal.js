@@ -3,7 +3,15 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 
-const ConfirmModal = ({ intl, title, message, show, onSuccess, onCancel }) => (
+const ConfirmModal = ({
+  intl,
+  title,
+  message,
+  show,
+  onConfirmation,
+  onCancel,
+  confirmationButtonTitle
+}) => (
   <div>
     <Modal isOpen={show}>
       <div className="modal-header">
@@ -15,11 +23,13 @@ const ConfirmModal = ({ intl, title, message, show, onSuccess, onCancel }) => (
       <ModalBody>{message}</ModalBody>
       <ModalFooter>
         <Button
-          onClick={onSuccess}
+          onClick={onConfirmation}
           color="primary"
           style={{ padding: '0.7rem', flex: 1 }}
         >
-          {intl.formatMessage({ id: 'app.ok' })}
+          {confirmationButtonTitle
+            ? confirmationButtonTitle
+            : intl.formatMessage({ id: 'app.ok' })}
         </Button>{' '}
         <Button
           onClick={onCancel}

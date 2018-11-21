@@ -1,5 +1,4 @@
 import { createActions, handleActions } from 'redux-actions'
-import axios from 'axios'
 import find from 'lodash/find'
 import isEmpty from 'lodash/isEmpty'
 
@@ -11,16 +10,18 @@ import {
   tunnistamoUser
 } from '../settings'
 
+import createClient from '../util/client'
+
 const userUuid = tunnistamoUser ? tunnistamoUser.uuid : null
 
-const profileRequest = axios.create({
+const profileRequest = createClient({
   baseURL: profileApiUrl,
   headers: {
     Authorization: `Bearer ${profileToken}`
   }
 })
 
-const tunnistamoRequest = axios.create({
+const tunnistamoRequest = createClient({
   baseURL: tunnistamoUrl,
   headers: {
     Authorization: `Bearer ${tunnistamoToken}`
@@ -222,7 +223,8 @@ export const userReducer = handleActions(
       getProfile,
       (state, action) => ({
         ...state,
-        getProfileError: userDefaultState.error
+        getProfileError: userDefaultState.error,
+        userLoading: true
       })
     ],
     [
@@ -356,8 +358,8 @@ export const fetchUserData = () => {
 
     try {
       const response = await profileRequest.get(`/profile/${userUuid}/`)
-      dispatch(getProfileSuccess())
       dispatch(setUserProfile(response.data))
+      dispatch(getProfileSuccess())
     } catch (error) {
       dispatch(getProfileError(error))
     }

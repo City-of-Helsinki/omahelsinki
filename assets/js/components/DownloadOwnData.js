@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Button } from 'reactstrap'
 import { FormattedMessage } from 'react-intl'
 import {
@@ -8,6 +7,9 @@ import {
   profileToken,
   tunnistamoToken
 } from '../settings'
+
+import createClient from '../util/client'
+
 class DownloadOwnData extends Component {
   downloadData = obj => {
     const data =
@@ -35,8 +37,8 @@ class DownloadOwnData extends Component {
       userConsentData: {}
     }
 
-    let userProfileData = axios
-      .get(`${profileApiUrl}/profile/`, profileConfig)
+    let userProfileData = createClient(profileConfig)
+      .get(`${profileApiUrl}/profile/`)
       .then(res => {
         data.userProfileData = res.data.results
       })
@@ -45,20 +47,20 @@ class DownloadOwnData extends Component {
       headers: { Authorization: `Bearer ${tunnistamoToken}` }
     }
 
-    let userServiceData = axios
-      .get(`${tunnistamoUrl}/v1/service/`, tunnistamoConfig)
+    let userServiceData = createClient(tunnistamoConfig)
+      .get(`${tunnistamoUrl}/v1/service/`)
       .then(res => {
         data.userServiceData = res.data.results
       })
 
-    let userLoginEntryData = axios
-      .get(`${tunnistamoUrl}/v1/user_login_entry/`, tunnistamoConfig)
+    let userLoginEntryData = createClient(tunnistamoConfig)
+      .get(`${tunnistamoUrl}/v1/user_login_entry/`)
       .then(res => {
         data.userLoginEntryData = res.data.results
       })
 
-    let userConsentData = axios
-      .get(`${tunnistamoUrl}/v1/user_consent/`, tunnistamoConfig)
+    let userConsentData = createClient(tunnistamoConfig)
+      .get(`${tunnistamoUrl}/v1/user_consent/`)
       .then(res => {
         data.userConsentData = res.data.results
       })

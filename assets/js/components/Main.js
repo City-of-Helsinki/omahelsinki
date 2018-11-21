@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import isEmpty from 'lodash/isEmpty'
@@ -16,6 +17,8 @@ import { FormattedMessage } from 'react-intl'
 import classNames from 'classnames/bind'
 import Greetings from './Greetings'
 
+import { fetchUserData } from '../user/redux'
+
 const TABS = {
   PROFILE: 'profile',
   INTERESTS: 'interests',
@@ -28,6 +31,14 @@ class MainPage extends Component {
     super(props)
     this.state = {
       activeTab: TABS.PROFILE
+    }
+  }
+
+  componentDidMount() {
+    const { user, fetchUserData } = this.props
+
+    if (isEmpty(user)) {
+      fetchUserData()
     }
   }
 
@@ -60,15 +71,15 @@ class MainPage extends Component {
 
   render() {
     const { activeTab } = this.state
-    const { user } = this.props
+    const { user, userLoading, tunnistamoUser } = this.props
 
-    if (isEmpty(user)) {
+    if (!userLoading && isEmpty(user)) {
       return <Redirect to="/welcome/" />
     }
 
     return (
       <div className="oma-main">
-        <Greetings />
+        <Greetings tunnistamoUser={tunnistamoUser} />
 
         <Nav tabs className="oma-tabs">
           {Object.values(TABS).map((tab, index) => {
@@ -118,11 +129,17 @@ class MainPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.userReducer.user,
-  tunnistamoUser: state.userReducer.tunnistamoUser
-})
 export default connect(
-  mapStateToProps,
-  {}
+  state => ({
+    user: state.userReducer.user,
+    tunnistamoUser: state.userReducer.tunnistamoUser,
+    userLoading: state.userReducer.userLoading
+  }),
+  dispatch =>
+    bindActionCreators(
+      {
+        fetchUserData
+      },
+      dispatch
+    )
 )(MainPage)

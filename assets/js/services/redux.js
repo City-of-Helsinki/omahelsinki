@@ -1,12 +1,13 @@
 import { createActions, handleActions } from 'redux-actions'
-import axios from 'axios'
 
 import { tunnistamoUrl, tunnistamoToken } from '../settings'
+import createClient from '../util/client'
 
 const axiosConfig = {
   baseURL: tunnistamoUrl
 }
-const axiosInstance = axios.create(axiosConfig)
+
+const axiosInstance = createClient(axiosConfig)
 
 export const {
   getAllServices,
@@ -42,6 +43,7 @@ const servicesDefaultState = {
   consentsError: null,
   consentsLoading: false
 }
+
 export const servicesReducer = handleActions(
   new Map([
     [

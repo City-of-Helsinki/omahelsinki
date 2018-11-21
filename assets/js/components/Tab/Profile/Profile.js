@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Alert, Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
+
 import HelTextInput from '../../HelTextInput'
 import { connect } from 'react-redux'
 import debounce from 'lodash/debounce'
@@ -83,7 +84,7 @@ class Profile extends Component {
       <div className="profile-view">
         <ConfirmModal
           show={this.state.showDeletePhotoConfirmationModal}
-          onSuccess={() => this.unselectImage()}
+          onConfirmation={() => this.unselectImage()}
           onCancel={() => this.closeDeletePhotoConfirmationModal()}
           message={intl.formatMessage({
             id: 'app.photo.delete.confirm'
@@ -95,7 +96,7 @@ class Profile extends Component {
 
         <ConfirmModal
           show={this.state.showDeleteProfileConfirmationModal}
-          onSuccess={() => this.deleteProfile()}
+          onConfirmation={() => this.deleteProfile()}
           onCancel={() => this.closeDeleteProfileConfirmationModal()}
           message={intl.formatMessage({
             id: 'app.profile.delete.confirm'

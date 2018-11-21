@@ -7,6 +7,9 @@
   "app.error": "An error occurred.",
   "app.cancel": "Cancel",
   "app.ok": "OK",
+  "app.logIn": "Log in",
+  "app.pleaseLogIn": "Please log in",
+  "app.notLoggedIn": "You are not logged in",
 
   "app.profile": "Profile",
   "app.interests": "Interests",
