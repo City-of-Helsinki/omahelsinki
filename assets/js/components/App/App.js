@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 class App extends Component {
   render() {
     return (
-      <main>
+      <div>
         {/*<Header/>*/}
         {this.props.children}
         {/*<Footer/>*/}
-      </main>
+      </div>
     )
   }
 }

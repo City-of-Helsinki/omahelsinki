@@ -39,6 +39,25 @@ class MainPage extends Component {
     }
   }
 
+  renderActiveMenuItemIndicator() {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 600 390"
+        style={{ width: 48 }}
+      >
+        <defs>
+          <style>{`.a{fill:#fff;}`}</style>
+        </defs>
+        <title>koro-marker 1</title>
+        <path
+          className="a"
+          d="M0,391c48.46,0,89.94-28.71,108-72.19,1-2.79,83.6-242.89,83.6-242.89S217.87,1.47,300.92,1.47c49.73,0,92.12,30.23,109.17,74.45.81,1.82,84.12,246,84.12,246S523,391,600,391H0Z"
+        />
+      </svg>
+    )
+  }
+
   render() {
     const { activeTab } = this.state
     const { user } = this.props
@@ -60,6 +79,8 @@ class MainPage extends Component {
                   onClick={() => this.toggleTab(tab)}
                 >
                   <FormattedMessage id={`app.${tab}`} />
+
+                  {activeTab === tab && this.renderActiveMenuItemIndicator()}
                 </NavLink>
               </NavItem>
             )
