@@ -14,12 +14,6 @@
       border: 2px solid black;
 
       padding: 10px 2rem 10px 2rem;
-
-      &:hover {
-        cursor: pointer;
-        color: white;
-        background: lighten($color: $hel-bus, $amount: 25%);
-      }
     }
 
     .selected {
