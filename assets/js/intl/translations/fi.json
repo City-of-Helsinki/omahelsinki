@@ -52,6 +52,7 @@
   "app.profile.error.onSave": "Profiiliasi ei voitu tallentaa virheen vuoksi.",
   "app.profile.error.onDelete": "Profiiliasi ei voitu poistaa virheen vuoksi.",
   "app.profile.error.onLoad": "Profiiliasi ei voitu hakea virheen vuoksi.",
+  "app.profile.picture.error.invalidImage": "Virheellinen kuva",
 
   "app.photo.delete.confirmTitle": "Olet poistamassa kuvasi",
   "app.photo.delete.confirm": "Haluatko varmasti poistaa kuvasi?",
