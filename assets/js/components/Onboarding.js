@@ -74,6 +74,7 @@ class Onboarding extends React.Component {
       formData.append('divisions_of_interest', divisions_of_interest[j])
     }
     this.props.createNewUser(formData)
+    window.scrollTo(0, 0)
   }
 
   render() {
