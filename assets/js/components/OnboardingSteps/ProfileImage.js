@@ -3,12 +3,27 @@ import { Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import HelTextInput from '../HelTextInput'
 import ImgDropAndCrop from '../ImgDropAndCrop/ImgDropAndCrop'
+import { Alert } from 'reactstrap'
 
 class ProfileImage extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      invalidImage: false
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.img && prevProps.img !== this.props.img) {
       URL.revokeObjectURL(prevProps.img)
     }
+  }
+
+  markInvalidImage(foo) {
+    this.setState({
+      invalidImage: true
+    })
   }
 
   render() {
@@ -42,10 +57,19 @@ class ProfileImage extends Component {
                   {hasImage ? (
                     <div>
                       <div className="profile-picture__picture">
-                        <img
-                          src={URL.createObjectURL(this.props.img)}
-                          alt="profile"
-                        />
+                        {!this.state.invalidImage && (
+                          <img
+                            src={URL.createObjectURL(this.props.img)}
+                            alt="profile"
+                            onError={() => this.markInvalidImage()}
+                          />
+                        )}
+                        {this.state.invalidImage && (
+                          <Alert color="danger">
+                            <FormattedMessage id="app.profile.picture.error.invalidImage" />
+                          </Alert>
+                        )}
+                        <p>dff</p>
                       </div>
                       <Button color="danger" onClick={this.props.unselectImage}>
                         <FormattedMessage id="app.profile.picture.delete" />

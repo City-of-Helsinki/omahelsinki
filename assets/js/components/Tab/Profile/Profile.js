@@ -24,7 +24,8 @@ class Profile extends Component {
 
     this.state = {
       showDeletePhotoConfirmationModal: false,
-      showDeleteProfileConfirmationModal: false
+      showDeleteProfileConfirmationModal: false,
+      invalidImage: false
     }
   }
 
@@ -39,6 +40,9 @@ class Profile extends Component {
   selectImage(imgBlob) {
     const formData = new FormData()
     formData.append('image', imgBlob, `${Date.now()}.png`)
+    this.setState({
+      invalidImage: false
+    })
     this.props.updateUserData(formData)
   }
 
@@ -66,6 +70,12 @@ class Profile extends Component {
   deleteProfile = () => {
     this.closeDeleteProfileConfirmationModal()
     this.props.deleteUserProfile()
+  }
+
+  markInvalidImage() {
+    this.setState({
+      invalidImage: true
+    })
   }
 
   render() {
@@ -170,7 +180,19 @@ class Profile extends Component {
                 {hasImage ? (
                   <div>
                     <div className="profile-picture__picture">
-                      <img src={user.image} alt="profile" />
+                      {!this.state.invalidImage && (
+                        <img
+                          src={user.image}
+                          alt="profile"
+                          onError={() => this.markInvalidImage()}
+                        />
+                      )}
+
+                      {this.state.invalidImage && (
+                        <Alert color="danger">
+                          <FormattedMessage id="app.profile.picture.error.invalidImage" />
+                        </Alert>
+                      )}
                     </div>
                     <Button
                       color="danger"
