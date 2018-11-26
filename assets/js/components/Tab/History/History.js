@@ -28,9 +28,11 @@ class History extends Component {
   dateIcon = (cell, row) => (
     <div>
       <HelIcon iconName="calendar" />{' '}
-      {moment(cell)
-        .locale(this.props.locale)
-        .format('l')}
+      <span>
+        {moment(cell)
+          .locale(this.props.locale)
+          .format('l')}
+      </span>
     </div>
   )
 
@@ -48,19 +50,23 @@ class History extends Component {
         text: intl.formatMessage({ id: 'app.history.date' }),
         sort: true,
         headerFormatter: this.sortIcon,
-        formatter: this.dateIcon
+        formatter: this.dateIcon,
+        headerClasses: 'date-col',
+        classes: 'date-col'
       },
       {
         dataField: `service.name.${this.props.locale}`,
         text: intl.formatMessage({ id: 'app.history.name' }),
         sort: true,
-        headerFormatter: this.sortIcon
+        headerFormatter: this.sortIcon,
+        headerClasses: 'name-col'
       },
       {
         dataField: '',
         text: '',
         isDummyField: true,
-        formatter: this.dummyText
+        formatter: this.dummyText,
+        headerClasses: 'message-col'
       }
     ]
     const options = {

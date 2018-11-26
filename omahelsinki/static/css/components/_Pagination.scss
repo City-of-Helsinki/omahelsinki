@@ -42,13 +42,39 @@
 }
 
 .history-view {
-
   .react-bootstrap-table-pagination-list {
     .pagination {
       display: flex;
       justify-content: center;
       align-items: stretch;
       order: 1;
+    }
+  }
+
+  .react-bootstrap-table {
+    th {
+      &.date-col {
+        width: 20%;
+      }
+
+      &.name-col {
+        width: 30%
+      }
+
+      &.message-col {
+        width: 50%
+      }
+    }
+
+    td .date-col {
+      .hel-icon {
+        width: 30px;
+      }
+
+      span {
+        display: inline-block;
+        width: 100px;
+      }
     }
   }
 }
