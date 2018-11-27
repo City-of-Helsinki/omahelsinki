@@ -23,7 +23,6 @@
   "app.profile.error.onLoad": "Din profil kunde inte hämtas på grund av ett fel.",
   "app.profile.picture.error.invalidImage": "Ogiltig bild",
 
-
   "app.photo.delete.confirmTitle": "Bekräfta radering av bild",
   "app.photo.delete.confirm": "Är du säker att du vill radera din bild",
 
@@ -131,6 +130,8 @@
   "app.landing.seeAllServices": "See all services",
   "app.landing.help": "Dont´t worry we have the answers! See help",
 
+  "app.services.hero": "One profile, tens of opportunities",
+  "app.services.featured": "Featured service",
   "app.services.related": "Relaterade tjänster",
   "app.services.related.text": "Du kan använda flera Helsinfors stadstjänster och vissa tredjepartstjänster med ditt Oma.helsinki-konto.",
   "app.services.notLinked": "Services that you have not yet linked to your account",
