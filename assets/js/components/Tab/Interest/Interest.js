@@ -12,6 +12,13 @@ import {
   fetchAllRegions
 } from '../../../user/redux'
 
+import {
+  ComposableMap,
+  ZoomableGroup,
+  Geographies,
+  Geography
+} from 'react-simple-maps'
+
 import { addMessage } from '../../Message/message-redux'
 
 class Interest extends Component {
@@ -129,6 +136,13 @@ class Interest extends Component {
               )}
             </Col>
           </Row>
+
+          <Row>
+            <Col xs={12}>
+              <h1>KARTTA</h1>
+            </Col>
+          </Row>
+
           <Row>
             <Col xs={12}>
               <Button

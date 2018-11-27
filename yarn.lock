@@ -1483,13 +1483,13 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
+commander@2, commander@^2.14.1, commander@^2.9.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+
 commander@^2.11.0, commander@^2.13.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.16.0.tgz#f16390593996ceb4f3eeb020b31d78528f7f8a50"
-
-commander@^2.14.1, commander@^2.9.0:
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
 commander@~2.13.0:
   version "2.13.0"
@@ -1700,6 +1700,30 @@ currently-unhandled@^0.4.1:
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
+
+d3-array@1:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
+
+d3-geo-projection@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/d3-geo-projection/-/d3-geo-projection-1.2.2.tgz#ef0e6cdcfa0df236d0e23f2ca7750462ca331f72"
+  dependencies:
+    commander "2"
+    d3-array "1"
+    d3-geo "^1.1.0"
+
+d3-geo@1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.6.3.tgz#21683a43a061eaba21a7f254b51d5937eb640756"
+  dependencies:
+    d3-array "1"
+
+d3-geo@^1.1.0:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.11.2.tgz#951129d17aef88332c856613368afa40f345bafd"
+  dependencies:
+    d3-array "1"
 
 d@1:
   version "1.0.0"
@@ -5056,6 +5080,14 @@ react-select@^1.2.1:
     prop-types "^15.5.8"
     react-input-autosize "^2.1.2"
 
+react-simple-maps@^0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/react-simple-maps/-/react-simple-maps-0.12.1.tgz#afc732362bb8eb2e5609a61d33bf6567d0fdd02a"
+  dependencies:
+    d3-geo "1.6.3"
+    d3-geo-projection "1.2.2"
+    topojson-client "2.1.0"
+
 react-transition-group@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.3.1.tgz#31d611b33e143a5e0f2d94c348e026a0f3b474b6"
@@ -5918,7 +5950,6 @@ svg-sprite-loader@^3.8.0:
 svg4everybody@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/svg4everybody/-/svg4everybody-2.1.9.tgz#5bd9f6defc133859a044646d4743fabc28db7e2d"
-  integrity sha1-W9n23vwTOFmgRGRtR0P6vCjbfi0=
 
 symbol-observable@^1.1.0, symbol-observable@^1.2.0:
   version "1.2.0"
@@ -6019,6 +6050,12 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+topojson-client@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/topojson-client/-/topojson-client-2.1.0.tgz#ff9f7bf38991185e0b4284c2b06ae834f0eac6c8"
+  dependencies:
+    commander "2"
 
 tough-cookie@~2.4.3:
   version "2.4.3"
