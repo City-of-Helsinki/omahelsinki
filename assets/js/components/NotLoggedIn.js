@@ -14,9 +14,15 @@ const NotLoggedIn = props => {
           <div className="oma-tab-content">
             <ConfirmModal
               show={true}
-              onConfirmation={() => (location.href = '/login?next=/mydata/')}
+              onConfirmation={() =>
+                (location.href =
+                  '/login?next=' +
+                  intl.formatMessage({ id: 'app.routes.profile' }))
+              }
               confirmationButtonTitle={intl.formatMessage({ id: 'app.logIn' })}
-              onCancel={() => (location.href = '/')}
+              onCancel={() =>
+                (location.href = intl.formatMessage({ id: 'app.routes.root' }))
+              }
               message={intl.formatMessage({ id: 'app.pleaseLogIn' })}
               title={intl.formatMessage({ id: 'app.notLoggedIn' })}
             />

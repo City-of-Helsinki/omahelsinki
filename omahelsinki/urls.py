@@ -21,7 +21,7 @@ urlpatterns = [
     path('', include('helusers.urls')),
     path('mydata/', TemplateView.as_view(template_name='react_base.html'), name='mydata'),
     path('welcome/', TemplateView.as_view(template_name='react_base.html'), name='welcome'),
-    re_path(r'^app/', TemplateView.as_view(template_name='react_base.html'), name='app'),
+    re_path(r'^(fi|sv|en)/', TemplateView.as_view(template_name='react_base.html'), name='app'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

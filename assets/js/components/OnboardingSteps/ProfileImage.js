@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Col, Row, Form, Button } from 'reactstrap'
+import { Alert, Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import HelTextInput from '../HelTextInput'
 import ImgDropAndCrop from '../ImgDropAndCrop/ImgDropAndCrop'
-import { Alert } from 'reactstrap'
 
 class ProfileImage extends Component {
   constructor(props) {

@@ -160,5 +160,12 @@
 
   "service.consent.delete.confirm": "Oletko varma, että haluat poistaa yhteyden palveluun {service}?",
   "service.consent.scopes": "Palvelu saa tietää sinusta:",
-  "service.lastUsed": "Käytetty viimeksi:"
+  "service.lastUsed": "Käytetty viimeksi:",
+
+  "app.routes.root": "/fi",
+  "app.routes.profile": "/fi/mydata/profile",
+  "app.routes.interests": "/fi/mydata/interests",
+  "app.routes.services": "/fi/mydata/services",
+  "app.routes.history": "/fi/mydata/history"
+
 }
