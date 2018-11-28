@@ -73,12 +73,14 @@ class ServiceTab extends Component {
             </Col>
           </Row>
         </section>
-        <section>
-          <h2>
-            <FormattedMessage id="app.services.unconnectedHeading" />
-          </h2>
-          <ServiceList services={unusedServices} />
-        </section>
+        {unusedServices.length !== 0 && (
+          <section>
+            <h2>
+              <FormattedMessage id="app.services.unconnectedHeading" />
+            </h2>
+            <ServiceList services={unusedServices} />
+          </section>
+        )}
       </div>
     )
   }
