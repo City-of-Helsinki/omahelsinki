@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
+  Row,
+  Col,
   Card,
   CardImg,
   CardBody,
@@ -14,6 +16,7 @@ const Service = ({ service, locale }) => {
   const name = service.name[locale] || service.name['fi']
   const url = service.url[locale] || service.url['fi']
   const description = service.description[locale] || service.description['fi']
+
   return (
     <Card className="service">
       <CardImg top src={image} />

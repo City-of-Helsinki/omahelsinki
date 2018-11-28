@@ -59,7 +59,7 @@ $omaWrapperPadding: 4rem 0 8rem;
   background-position: center;
   background-size: cover;
   background-color: $hel-copper;
-  padding: ($spacer * 3) 0 ($spacer * 8);
+  padding: ($spacer * 3) 1rem ($spacer * 8) 1rem;
 
   .container {
     z-index: 2;
@@ -514,6 +514,17 @@ $omaWrapperPadding: 4rem 0 8rem;
   border-bottom: 1px solid $brand-dark;
   border-top: 1px solid $brand-dark;
   padding-top: 1em;
+}
+
+.featured {
+  .disclaimer {
+    color: $hel-bus;
+    margin-bottom: 0;
+  }
+}
+
+.card-body {
+  padding-top: 1rem;
 }
 
 .services-amount {

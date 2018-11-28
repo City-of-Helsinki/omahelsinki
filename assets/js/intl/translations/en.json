@@ -114,6 +114,8 @@
   "app.landing.seeAllServices": "See all services",
   "app.landing.help": "Dont´t worry we have the answers! See help",
 
+  "app.services.hero": "One profile, tens of opportunities",
+  "app.services.featured": "Featured service",
   "app.services.related": "Connected services",
   "app.services.related.text": "You can use multiple Helsinki City services and certain third party services with your Oma.helsinki profile.",
   "app.services.notLinked": "Services that you have not yet linked to your account",

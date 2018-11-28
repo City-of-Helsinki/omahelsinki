@@ -18,8 +18,8 @@
             {% endif %}
           {% endfor %}
           {% if not request.user.is_authenticated %}
-            <a href="{% url 'helusers:auth_login' %}"><button type="button" class="btn btn-outline-secondary">{% trans "Log in" %}</button></a>
-            <p><small><a href="{% url 'helusers:auth_login' %}">Tai rekisteröidy täällä</a></small></p>
+            <a href="{% url 'helusers:auth_login' %}?next=/mydata/"><button type="button" class="btn btn-outline-secondary">{% trans "Log in" %}</button></a>
+            <p><small><a href="{% url 'helusers:auth_login' %}?next=/mydata/">Tai rekisteröidy täällä</a></small></p>
           {% endif %}
         </div>
       </div>
