@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-16 09:09+0300\n"
+"POT-Creation-Date: 2018-11-29 16:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,113 +18,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: home/models.py:54
 msgid "FAQs"
-msgstr ""
+msgstr "Usein kysytyt kysymykset"
 
-#: home/templates/home/home_page.html:16 omahelsinki/templates/base.html:89
 msgid "Log in"
 msgstr "Kirjaudu"
 
-#: omahelsinki/settings.py:142
 msgid "Finnish"
-msgstr ""
+msgstr "suomi"
 
-#: omahelsinki/settings.py:143
 msgid "Swedish"
-msgstr ""
+msgstr "ruotsi"
 
-#: omahelsinki/settings.py:144
 msgid "English"
-msgstr ""
+msgstr "englanti"
 
-#: omahelsinki/templates/404.html:7
 msgid "Page not found"
 msgstr "Sivua ei löytynyt"
 
-#: omahelsinki/templates/404.html:9
 msgid "Sorry, this page could not be found."
 msgstr "Pahoittelemme, tätä sivua ei löytynyt."
 
-#: omahelsinki/templates/base.html:80
 msgid "Edit profile"
 msgstr "Muokkaa profiilia"
 
-#: omahelsinki/templates/base.html:81 omahelsinki/templates/base.html:98
 msgid "Oma.helsinki"
 msgstr ""
 
-#: omahelsinki/templates/base.html:83
 msgid "Log out"
 msgstr "Kirjaudu ulos"
 
-#: omahelsinki/templates/base.html:106
 msgid "What is Oma.helsinki?"
 msgstr "Mikä Oma.helsinki?"
 
-#: omahelsinki/templates/base.html:109
 msgid "Services"
 msgstr "Palvelut"
 
-#: omahelsinki/templates/base.html:112
 msgid "Help"
 msgstr "Apua"
 
-#: omahelsinki/templates/base.html:115
 msgid "My data"
 msgstr "Omat tietosi"
 
-#: omahelsinki/templates/base.html:133
+msgid "This is the development version of Oma.helsinki"
+msgstr "Tämä on Oma.helsingin testiversio"
+
 msgid "Give feedback"
 msgstr "Anna palautetta"
 
-#: omahelsinki/templates/base.html:134
 msgid "Contact us"
 msgstr "Ota yhteyttä"
 
-#: omahelsinki/templates/base.html:152
+msgid "About"
+msgstr "Tietoa palvelusta"
+
 msgid "Data use statement"
 msgstr "Tietosuojalauseke"
 
-#: omahelsinki/templates/base.html:153
 msgid "Read more about data protection"
 msgstr "Lue lisää tietosuojasta"
 
-#: omahelsinki/templates/base.html:154
 msgid "Privacy policy"
 msgstr "Rekisteriseloste"
 
-#: omahelsinki/templates/base.html:155
 msgid "Privacy"
 msgstr "Yksityisyydensuoja"
 
-#: omahelsinki/templates/base.html:164
 msgid "Creative Commons"
 msgstr ""
 
-#: omahelsinki/templates/base.html:165
 msgid "2018 City of Helsinki"
 msgstr "2018 Helsingin kaupunki"
 
-#: search/templates/search/search.html:6 search/templates/search/search.html:9
 msgid "Search"
 msgstr "Etsi"
 
-#: search/templates/search/search.html:29
 msgid "Previous"
 msgstr "Edellinen"
 
-#: search/templates/search/search.html:33
 msgid "Next"
 msgstr "Seuraava"
 
-#: search/templates/search/search.html:36
 msgid "No results found"
 msgstr "Ei hakutuloksia"
 
-#: users/apps.py:7
 msgid "Users"
-msgstr ""
-
-msgid "This is the development version of Oma.helsinki"
-msgstr "Tämä on Oma.helsingin testiversio"
+msgstr "Käyttäjät"
