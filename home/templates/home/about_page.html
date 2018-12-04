@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags %}
+
+{% block body_class %}template-faqpage{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-11 col-md-10 col-lg-8">
+        <div class="hero-content hero-content--inverse">
+          <h1>{{ page.hero_text }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--intro">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-10">
+        <div class="body-content">
+          {{ page.body|richtext }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

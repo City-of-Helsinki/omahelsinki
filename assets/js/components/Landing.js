@@ -67,7 +67,7 @@ class Landing extends Component {
               <div className="left-icon d-none d-md-block">
                 <HelIcon iconName="quote-right" />
               </div>
-              <a href="/help">
+              <a className="help-link" href="/help">
                 <FormattedMessage id="app.landing.help" />
                 <HelIcon iconName="arrow-right" />
               </a>
