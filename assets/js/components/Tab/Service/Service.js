@@ -3,6 +3,7 @@ import { Row, Col } from 'reactstrap'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import find from 'lodash/find'
+import isEmpty from 'lodash/isEmpty'
 
 import Loading from '../../Loading'
 import HelCollapsibleField from '../../HelCollapsibleField'
@@ -73,7 +74,7 @@ class ServiceTab extends Component {
             </Col>
           </Row>
         </section>
-        {unusedServices.length !== 0 && (
+        {!isEmpty(unusedServices) && (
           <section>
             <h2>
               <FormattedMessage id="app.services.unconnectedHeading" />
