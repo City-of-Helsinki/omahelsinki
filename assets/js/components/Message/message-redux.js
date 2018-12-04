@@ -1,6 +1,6 @@
 import { List, Map } from 'immutable'
 
-const ADD_MESSAGE = 'oma-helsinki/message/ADD_MESSAGE'
+export const ADD_MESSAGE = 'oma-helsinki/message/ADD_MESSAGE'
 const REMOVE_MESSAGES = 'oma-helsinki/message/REMOVE_MESSAGES'
 
 const initialState = Map({

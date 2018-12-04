@@ -19,6 +19,7 @@
 
   "app.profile.edit": "Edit your Oma.helsinki profile information.",
   "app.profile.addImageAndNickName": "Add your Oma.helsinki profile information.",
+
   "app.personalInfo": "Personal information",
   "app.not.public": "This information will not be displayed publicly",
 
@@ -44,15 +45,19 @@
   "app.profile.picture.limit": "Width of the image should be at least 200px and up to 1200px. File format jpg or png.",
   "app.profile.picture.browse": "Browse",
   "app.profile.picture.delete": "Delete picture",
+  "app.profile.picture.deleted": "Your profile picture was removed.",
+  "app.profile.picture.error.onDelete": "Your profile image could not be deleted due to a an error.",
+  "app.profile.picture.error.invalidImage": "Invalid image",
+
   "app.profile.nickname": "Nickname",
   "app.profile.nickname.text": "The nickname is used for example when you publish comments to public conversations",
   "app.profile.delete": "Delete profile",
+  "app.profile.deleted": "Profile deleted",
   "app.profile.delete.confirmTitle": "Confirm deletion of profile",
   "app.profile.delete.confirm": "Are you sure you want to delete your profile?",
   "app.profile.error.onSave": "Your profile could not be saved due to a an error.",
   "app.profile.error.onDelete": "Your profile could not be deleted due to a an error.",
   "app.profile.error.onLoad": "Your profile could not be retrieved due to a an error.",
-  "app.profile.picture.error.invalidImage": "Invalid image",
 
   "app.photo.delete.confirmTitle": "Confirm deletion of photo",
   "app.photo.delete.confirm": "Are you sure you want to delete your profile photo?",

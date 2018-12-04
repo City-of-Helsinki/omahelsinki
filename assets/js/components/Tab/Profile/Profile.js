@@ -9,7 +9,8 @@ import debounce from 'lodash/debounce'
 import {
   fetchUserData,
   updateUserData,
-  deleteUserProfile
+  deleteUserProfile,
+  removeProfileImage
 } from '../../../user/redux'
 
 import { addMessage } from '../../Message/message-redux'
@@ -47,8 +48,9 @@ class Profile extends Component {
   }
 
   unselectImage() {
+    const { intl } = this.props
     this.closeDeletePhotoConfirmationModal()
-    this.props.updateUserData({ image: null })
+    this.props.removeProfileImage({ image: null }, intl)
   }
 
   openDeletePhotoConfirmationModal() {
@@ -69,7 +71,7 @@ class Profile extends Component {
 
   deleteProfile = () => {
     this.closeDeleteProfileConfirmationModal()
-    this.props.deleteUserProfile()
+    this.props.deleteUserProfile(this.props.intl)
   }
 
   markInvalidImage() {
@@ -295,5 +297,11 @@ const mapStateToProps = state => ({
 })
 export default connect(
   mapStateToProps,
-  { fetchUserData, updateUserData, deleteUserProfile, addMessage }
+  {
+    fetchUserData,
+    updateUserData,
+    deleteUserProfile,
+    addMessage,
+    removeProfileImage
+  }
 )(injectIntl(Profile))
