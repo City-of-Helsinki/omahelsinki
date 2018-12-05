@@ -6,6 +6,8 @@
   "app.logIn": "Logga in",
   "app.pleaseLogIn": "Var god och logga in",
   "app.notLoggedIn": "Du är inte inloggad",
+  "app.pageNotFound": "Sidan kunde inte hittas",
+  "app.pageNotFoundText": "Sidan du sökte kunde inte hittas. Var god och kontrollera adressen.",
 
   "app.userGreeting": "Hej",
 

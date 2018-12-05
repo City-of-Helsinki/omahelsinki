@@ -21,6 +21,7 @@ import Onboarding from './components/Onboarding'
 import Landing from './components/Landing'
 import AllServices from './services/AllServices'
 import NotLoggedIn from './components/NotLoggedIn'
+import NotFound from './components/NotFound'
 
 const history = createBrowserHistory()
 
@@ -41,6 +42,7 @@ ReactDOM.render(
               <Route exact path="/welcome/" component={Onboarding} />
               <Route exact path="/services/" component={AllServices} />
               <Route exact path="/app/please-log-in/" component={NotLoggedIn} />
+              <Route component={NotFound} />
             </Switch>
             {ReactDOM.createPortal(
               <ToastContainer />,

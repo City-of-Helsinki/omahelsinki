@@ -11,6 +11,8 @@
   "app.logIn": "Kirjaudu sisään",
   "app.pleaseLogIn": "Ole hyvä ja kirjaudu sisään",
   "app.notLoggedIn": "Et ole kirjautunut sisään",
+  "app.pageNotFound": "Sivua ei löytynyt",
+  "app.pageNotFoundText": "Sivua jota etsit, ei löytynyt. Ole hyvä ja tarkista osoite.",
 
   "app.interests": "Kiinnostukset",
   "app.services": "Palvelut",

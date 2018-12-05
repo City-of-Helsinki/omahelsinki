@@ -10,6 +10,8 @@
   "app.logIn": "Log in",
   "app.pleaseLogIn": "Please log in",
   "app.notLoggedIn": "You are not logged in",
+  "app.pageNotFound": "Page not found",
+  "app.pageNotFoundText": "The page you were looking for does not exist. Please check the address.",
 
   "app.profile": "Profile",
   "app.interests": "Interests",
