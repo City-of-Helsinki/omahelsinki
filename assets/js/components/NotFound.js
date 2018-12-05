@@ -8,7 +8,7 @@ const NotFound = props => {
     <Container>
       <Row>
         <Col>
-          <div className="oma-tab-content">
+          <div className="main-wrapper">
             <h2>
               <FormattedMessage id="app.pageNotFound" />
             </h2>

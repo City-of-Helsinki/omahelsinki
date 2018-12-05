@@ -11,7 +11,7 @@ const NotLoggedIn = props => {
     <Container>
       <Row>
         <Col>
-          <div className="oma-tab-content">
+          <div className="main-wrapper">
             <ConfirmModal
               show={true}
               onConfirmation={() => (location.href = '/login?next=/mydata/')}

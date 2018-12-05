@@ -103,7 +103,7 @@ class MainPage extends Component {
             <Col xs={12}>
               <TabContent
                 activeTab={this.state.activeTab}
-                className="oma-tab-content"
+                className="main-wrapper"
               >
                 <TabPane tabId={TABS.PROFILE}>
                   <Profile />
