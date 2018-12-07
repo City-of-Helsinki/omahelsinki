@@ -1,5 +1,5 @@
 import React from 'react'
 
 export default function MainLayout({ children }) {
-  return <div>{children}</div>
+  return <div className="main-container">{children}</div>
 }
