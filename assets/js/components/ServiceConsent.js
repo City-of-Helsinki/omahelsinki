@@ -34,11 +34,15 @@ class ServiceConsent extends React.Component {
   }
 
   deleteConsent() {
-    const { service, deleteServiceConsent } = this.props
+    const { intl, locale, service, deleteServiceConsent } = this.props
 
     this.closeConfirmationModal()
 
-    deleteServiceConsent(service.consent)
+    deleteServiceConsent(
+      service.consent,
+      service.name[locale] || service.name['fi'],
+      intl
+    )
   }
 
   render() {
