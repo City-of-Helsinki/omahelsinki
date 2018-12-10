@@ -492,7 +492,7 @@ export const deleteUserProfile = intl => {
       dispatch(deleteProfileSuccess())
 
       dispatch(
-        addDangerMessage(intl.formatMessage({ id: 'app.profile.deleted' }))
+        addWarningMessage(intl.formatMessage({ id: 'app.profile.deleted' }))
       )
 
       setTimeout(() => {
