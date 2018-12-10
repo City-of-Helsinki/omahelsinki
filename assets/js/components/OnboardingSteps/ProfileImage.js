@@ -68,7 +68,6 @@ class ProfileImage extends Component {
                             <FormattedMessage id="app.profile.picture.error.invalidImage" />
                           </Alert>
                         )}
-                        <p>dff</p>
                       </div>
                       <Button color="danger" onClick={this.props.unselectImage}>
                         <FormattedMessage id="app.profile.picture.delete" />
