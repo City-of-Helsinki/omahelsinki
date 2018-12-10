@@ -20,7 +20,10 @@ class AllServices extends React.Component {
     const { services, isLoading, isError } = this.props
     if (isLoading) {
       return (
-        <section className="section section--services">
+        <section
+          className="section section--services"
+          style={{ marginTop: 100 }}
+        >
           <Container>
             <Row>
               <Col xs={12}>
