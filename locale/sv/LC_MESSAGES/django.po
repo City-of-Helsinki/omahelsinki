@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-16 09:09+0300\n"
+"POT-Creation-Date: 2018-11-29 16:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,113 +18,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: home/models.py:54
 msgid "FAQs"
-msgstr ""
+msgstr "Vanliga frågor"
 
-#: home/templates/home/home_page.html:16 omahelsinki/templates/base.html:89
 msgid "Log in"
 msgstr "Logga in"
 
-#: omahelsinki/settings.py:142
 msgid "Finnish"
-msgstr ""
+msgstr "finska"
 
-#: omahelsinki/settings.py:143
 msgid "Swedish"
-msgstr ""
+msgstr "svenska"
 
-#: omahelsinki/settings.py:144
 msgid "English"
-msgstr ""
+msgstr "engelska"
 
-#: omahelsinki/templates/404.html:7
 msgid "Page not found"
 msgstr "Sidan hittades inte"
 
-#: omahelsinki/templates/404.html:9
 msgid "Sorry, this page could not be found."
 msgstr "Tyvärr, den här sidan kunde inte hittas."
 
-#: omahelsinki/templates/base.html:80
 msgid "Edit profile"
 msgstr "Ändra din profil"
 
-#: omahelsinki/templates/base.html:81 omahelsinki/templates/base.html:98
 msgid "Oma.helsinki"
 msgstr ""
 
-#: omahelsinki/templates/base.html:83
 msgid "Log out"
 msgstr "Logga ut"
 
-#: omahelsinki/templates/base.html:106
 msgid "What is Oma.helsinki?"
 msgstr "Vad är Oma.helsinki?"
 
-#: omahelsinki/templates/base.html:109
 msgid "Services"
 msgstr "Tjänster"
 
-#: omahelsinki/templates/base.html:112
 msgid "Help"
 msgstr "Hjälp"
 
-#: omahelsinki/templates/base.html:115
 msgid "My data"
 msgstr "Dina uppgifter"
 
-#: omahelsinki/templates/base.html:133
+msgid "This is the development version of Oma.helsinki"
+msgstr "Detta är testversionen av Oma.helsinki"
+
 msgid "Give feedback"
 msgstr "Ge feedback"
 
-#: omahelsinki/templates/base.html:134
 msgid "Contact us"
 msgstr "Ta kontakt"
 
-#: omahelsinki/templates/base.html:152
+msgid "About"
+msgstr "Information om tjänsten"
+
 msgid "Data use statement"
 msgstr "Dataskyddsbeskrivning"
 
-#: omahelsinki/templates/base.html:153
 msgid "Read more about data protection"
 msgstr "Läs mer om dataskyddet"
 
-#: omahelsinki/templates/base.html:154
 msgid "Privacy policy"
 msgstr "Registerutdrag"
 
-#: omahelsinki/templates/base.html:155
 msgid "Privacy"
 msgstr "Sekretess"
 
-#: omahelsinki/templates/base.html:164
 msgid "Creative Commons"
 msgstr ""
 
-#: omahelsinki/templates/base.html:165
 msgid "2018 City of Helsinki"
 msgstr "2018 Helsingfors stad"
 
-#: search/templates/search/search.html:6 search/templates/search/search.html:9
 msgid "Search"
 msgstr "Sök"
 
-#: search/templates/search/search.html:29
 msgid "Previous"
 msgstr "Föregående"
 
-#: search/templates/search/search.html:33
 msgid "Next"
 msgstr "Nästa"
 
-#: search/templates/search/search.html:36
 msgid "No results found"
 msgstr "Inga resultat"
 
-#: users/apps.py:7
 msgid "Users"
-msgstr ""
-
-msgid "This is the development version of Oma.helsinki"
-msgstr "Detta är testversionen av Oma.helsinki"
+msgstr "Användare"

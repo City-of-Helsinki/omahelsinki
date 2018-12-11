@@ -10,6 +10,8 @@ import {
   tunnistamoUser
 } from '../settings'
 
+import { ADD_MESSAGE } from '../components/Message/message-redux'
+
 import createClient from '../util/client'
 
 const userUuid = tunnistamoUser ? tunnistamoUser.uuid : null
@@ -353,7 +355,7 @@ export const userReducer = handleActions(
 )
 
 export const fetchUserData = () => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
     dispatch(getProfile())
 
     try {
@@ -378,6 +380,31 @@ export const createNewUser = payload => {
   }
 }
 
+export const removeProfileImage = (payload, intl) => {
+  return dispatch => {
+    dispatch(updateUserData(payload)).then(
+      result =>
+        dispatch({
+          type: ADD_MESSAGE,
+          payload: {
+            message: intl.formatMessage({ id: 'app.profile.picture.deleted' }),
+            color: 'warning'
+          }
+        }),
+      error =>
+        dispatch({
+          type: ADD_MESSAGE,
+          payload: {
+            message: intl.formatMessage({
+              id: 'app.profile.picture.error.onDelete'
+            }),
+            color: 'danger'
+          }
+        })
+    )
+  }
+}
+
 export const updateUserData = payload => {
   return async dispatch => {
     dispatch(updateProfile())
@@ -390,8 +417,10 @@ export const updateUserData = payload => {
 
       dispatch(updateProfileSuccess())
       dispatch(setUserProfile(response.data))
+      return Promise.resolve(true)
     } catch (error) {
       dispatch(updateProfileError(error))
+      return Promise.reject(new Error('Could not remove profile image'))
     }
   }
 }
@@ -455,13 +484,23 @@ export const fetchAllHistoryData = () => {
   }
 }
 
-export const deleteUserProfile = () => {
+export const deleteUserProfile = intl => {
   return async dispatch => {
     dispatch(deleteProfile())
     try {
       await profileRequest.delete(`/profile/${userUuid}/`)
       dispatch(deleteProfileSuccess())
-      window.location.href = '/logout'
+      dispatch({
+        type: ADD_MESSAGE,
+        payload: {
+          message: intl.formatMessage({ id: 'app.profile.deleted' }),
+          color: 'warning'
+        }
+      })
+
+      setTimeout(() => {
+        window.location.href = '/logout'
+      }, 2000)
     } catch (error) {
       dispatch(deleteProfileError(error))
     }

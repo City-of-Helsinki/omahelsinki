@@ -88,7 +88,7 @@ class AllServices extends React.Component {
                   <div className="left-icon d-none d-md-block">
                     <HelIcon iconName="user-o" />
                   </div>
-                  <a href="/login">
+                  <a className="help-link" href="/login">
                     <FormattedMessage id="app.services.all.cta" />
                     <HelIcon iconName="arrow-right" />
                   </a>

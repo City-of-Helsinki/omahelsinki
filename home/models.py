@@ -61,3 +61,13 @@ class ServicePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('hero_text'),
     ]
+
+
+class AboutPage(Page):
+    hero_text = models.TextField(blank=True)
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('hero_text'),
+        FieldPanel('body'),
+    ]

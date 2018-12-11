@@ -1,7 +1,7 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from .models import HelpPage, HomePage, PageFAQ, ServicePage
+from .models import AboutPage, HelpPage, HomePage, PageFAQ, ServicePage
 
 
 @register(HomePage)
@@ -22,3 +22,8 @@ class PageFAQListTR(TranslationOptions):
 @register(ServicePage)
 class ServiceTR(TranslationOptions):
     fields = ('hero_text',)
+
+
+@register(AboutPage)
+class AboutTR(TranslationOptions):
+    fields = ('hero_text', 'body')
