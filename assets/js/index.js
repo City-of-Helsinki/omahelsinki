@@ -50,20 +50,6 @@ function MyPageRoute({ match, location }) {
   )
 }
 
-function AppRoute({ match }) {
-  return (
-    <IntlProvider
-      locale={match.params.locale}
-      messages={getMessages(match.params.locale)}
-    >
-      <Switch>
-        <Route path={`${match.url}/please-log-in`} component={NotLoggedIn} />
-        <Route path={`${match.url}/mydata`} component={MyPageRoute} />
-      </Switch>
-    </IntlProvider>
-  )
-}
-
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedIntlProvider>
@@ -74,7 +60,8 @@ ReactDOM.render(
               <Route exact path="/" component={Landing} />
               <Route exact path="/welcome/" component={Onboarding} />
               <Route exact path="/services/" component={AllServices} />
-              <Route path="/:locale/" component={AppRoute} />
+              <Route path="/mydata/" component={MyPageRoute} />
+              <Route path={`/please-log-in`} component={NotLoggedIn} />
             </Switch>
             {ReactDOM.createPortal(
               <ToastContainer />,

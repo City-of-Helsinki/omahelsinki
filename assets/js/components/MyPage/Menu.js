@@ -8,10 +8,10 @@ import { FormattedMessage } from 'react-intl'
 import { Nav, NavItem } from 'reactstrap'
 
 const TABS = {
-  PROFILE: { key: 'profile', path: 'app.routes.profile' },
-  INTERESTS: { key: 'interests', path: 'app.routes.interests' },
-  SERVICES: { key: 'services', path: 'app.routes.services' },
-  HISTORY: { key: 'history', path: 'app.routes.history' }
+  PROFILE: { key: 'profile', path: '/mydata/profile' },
+  INTERESTS: { key: 'interests', path: '/mydata/interests' },
+  SERVICES: { key: 'services', path: '/mydata/services' },
+  HISTORY: { key: 'history', path: '/mydata/history' }
 }
 
 const isActiveMenuItem = (path, location) => {

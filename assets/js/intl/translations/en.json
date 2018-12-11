@@ -168,12 +168,5 @@
   "service.consent.delete.confirm": "Are you sure you want to delete connection to {service}?",
   "service.consent.delete.confirmTitle": "Confirm deletion of connection to {service}?",
   "service.consent.scopes": "Service uses these information about you:",
-  "service.lastUsed": "Last used:",
-
-  "app.routes.root": "/en",
-  "app.routes.profile": "/en/mydata/profile",
-  "app.routes.interests": "/en/mydata/interests",
-  "app.routes.services": "/en/mydata/services",
-  "app.routes.history": "/en/mydata/history"
-
+  "service.lastUsed": "Last used:"
 }

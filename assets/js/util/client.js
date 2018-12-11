@@ -9,7 +9,7 @@ export default config => {
     },
     function(error) {
       if (error.response.status === 401) {
-        location.href = '/app/please-log-in'
+        location.href = '/please-log-in'
       }
       return Promise.reject(error)
     }

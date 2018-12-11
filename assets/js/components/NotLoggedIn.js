@@ -15,14 +15,10 @@ const NotLoggedIn = props => {
             <ConfirmModal
               show={true}
               onConfirmation={() =>
-                (location.href =
-                  '/login?next=' +
-                  intl.formatMessage({ id: 'app.routes.profile' }))
+                (location.href = '/login?next=/mydata/profile')
               }
               confirmationButtonTitle={intl.formatMessage({ id: 'app.logIn' })}
-              onCancel={() =>
-                (location.href = intl.formatMessage({ id: 'app.routes.root' }))
-              }
+              onCancel={() => (location.href = '/')}
               message={intl.formatMessage({ id: 'app.pleaseLogIn' })}
               title={intl.formatMessage({ id: 'app.notLoggedIn' })}
             />

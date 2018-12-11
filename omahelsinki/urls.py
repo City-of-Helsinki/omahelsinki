@@ -19,9 +19,9 @@ urlpatterns = [
 
     path('', include('social_django.urls', namespace='social')),
     path('', include('helusers.urls')),
-    path('mydata/', TemplateView.as_view(template_name='react_base.html'), name='mydata'),
+    re_path(r'mydata/', TemplateView.as_view(template_name='react_base.html'), name='mydata'),
     path('welcome/', TemplateView.as_view(template_name='react_base.html'), name='welcome'),
-    re_path(r'^(fi|sv|en)/', TemplateView.as_view(template_name='react_base.html'), name='app'),
+    path('please-log-in', TemplateView.as_view(template_name='react_base.html'), name='app'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
