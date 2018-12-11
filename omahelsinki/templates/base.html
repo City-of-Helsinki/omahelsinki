@@ -1,4 +1,4 @@
-{% load static wagtailuserbar compress i18n %}
+{% load static wagtailcore_tags wagtailuserbar compress i18n %}
 
 <!DOCTYPE html>
 
@@ -111,12 +111,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="/">{% trans "What is Oma.helsinki?" %}</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/services">{% trans "Services" %}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/help">{% trans "Help" %}</a>
-              </li>
+              {% for menu_page in menu_pages %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% pageurl menu_page %}">{{ menu_page.title }}</a>
+                </li>
+              {% endfor %}
               <li class="nav-item">
                 <a class="nav-link{% if not request.user.is_authenticated %} disabled{% endif %}" href="{% url "mydata" %}">{% trans "My data" %}</a>
               </li>

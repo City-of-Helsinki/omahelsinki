@@ -99,7 +99,8 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'wagtail.contrib.settings.context_processors.settings',
                 'helusers.context_processors.settings',
-                'omahelsinki.context_processors.settings'
+                'omahelsinki.context_processors.settings',
+                'home.context_processors.pages',
             ],
         },
     },
