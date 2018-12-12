@@ -26,7 +26,7 @@
   "app.input.firstname": "Firstname",
   "app.input.lastname": "Lastname",
   "app.input.email": "Email",
-  "app.input.email.placeHolder": "Enter email",
+  "app.input.email.placeHolder": "Enter your email",
   "app.input.email.helpBlock.notShare": "We'll never share your email with anyone else.",
   "app.input.password": "Password",
   "app.button.saveChanges": "Save changes",
@@ -96,7 +96,7 @@
   "onboarding.messages.heading": "Messages",
   "onboarding.messages.text": "I want to get notifications or messages via:",
   "onboarding.notifications.heading": "Notifications",
-  "onboarding.notifications.text": "You will receicve a message/notification when you have got a message or something interesting is happening in your selected region. When do you want to get the notification?",
+  "onboarding.notifications.text": "You will receive a message/notification when you have got a message or something interesting is happening in your selected region. When do you want to get the notification?",
   "onboarding.label.disableNotifications": "No, I don't want notifications",
   "onboarding.label.enableNotifications": "Yes, I want notifications",
   "onboarding.label.passwordRepeat": "Re-enter password",
@@ -152,7 +152,7 @@
   "password.ok": "Password is ok",
   "password.strong": "Password is strong",
 
-  "profile.fileSize.error": "The file size should not exceed 1 MB",
+  "profile.fileSize.error": "The file size of the uploaded file exceeds the limit of {size} MB.",
 
   "app.button.saveCroppedImage": "Save cropped image",
   "app.button.downloadData": "Download data",

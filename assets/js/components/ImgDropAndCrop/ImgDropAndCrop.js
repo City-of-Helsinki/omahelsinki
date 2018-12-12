@@ -38,7 +38,12 @@ class ImgDropAndCrop extends Component {
       const currentFileType = currentFile.type
       const currentFileSize = currentFile.size
       if (currentFileSize > imageMaxSize) {
-        alert(this.props.intl.formatMessage({ id: 'profile.fileSize.error' }))
+        alert(
+          this.props.intl.formatMessage(
+            { id: 'profile.fileSize.error' },
+            { size: 10 }
+          )
+        )
         return false
       }
       if (!acceptedFileTypesArray.includes(currentFileType)) {
