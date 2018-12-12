@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailuserbar compress i18n %}
+{% load static wagtailcore_tags wagtailuserbar compress i18n home_app %}
 
 <!DOCTYPE html>
 
@@ -176,21 +176,12 @@
       <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'js/omahelsinki.js' %}"></script>
-
       <script>
         $('.language-menu .dropdown-item').click(function(ev) {
+          ev.preventDefault();
           var newLanguage = $(ev.target).data('language');
-          $.ajax({
-            type: "POST",
-            url: "{% url 'set_language' %}",
-            data: {
-              language: newLanguage,
-              csrfmiddlewaretoken: "{{ csrf_token }}",
-            },
-            success: function() {
-              location.reload();
-            }
-          });
+          var urls = JSON.parse("{% get_translated_urls_json page as urls %}{{ urls|escapejs }}");
+          window.location = urls[newLanguage];
         });
         $('.nav-link.disabled').click(function(ev) {
           ev.preventDefault();

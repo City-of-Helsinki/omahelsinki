@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path, re_path
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -23,7 +24,12 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('mydata/', TemplateView.as_view(template_name='react_base.html'), name='mydata'),
+    path(_('mydata/'), TemplateView.as_view(template_name='react_base.html'), name='mydata'),
+    path(_('mydata/profile/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-profile'),
+    path(_('mydata/interests/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-interests'),
+    path(_('mydata/services/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-services'),
+    path(_('mydata/history/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-history'),
+
     path('welcome/', TemplateView.as_view(template_name='react_base.html'), name='welcome'),
     re_path(r'^app/', TemplateView.as_view(template_name='react_base.html'), name='app'),
 

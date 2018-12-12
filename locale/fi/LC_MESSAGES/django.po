@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-29 16:28+0200\n"
+"POT-Creation-Date: 2018-12-13 00:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,12 +51,6 @@ msgstr "Kirjaudu ulos"
 msgid "What is Oma.helsinki?"
 msgstr "Mikä Oma.helsinki?"
 
-msgid "Services"
-msgstr "Palvelut"
-
-msgid "Help"
-msgstr "Apua"
-
 msgid "My data"
 msgstr "Omat tietosi"
 
@@ -72,23 +66,23 @@ msgstr "Ota yhteyttä"
 msgid "About"
 msgstr "Tietoa palvelusta"
 
-msgid "Data use statement"
-msgstr "Tietosuojalauseke"
-
-msgid "Read more about data protection"
-msgstr "Lue lisää tietosuojasta"
-
-msgid "Privacy policy"
-msgstr "Rekisteriseloste"
-
-msgid "Privacy"
-msgstr "Yksityisyydensuoja"
-
-msgid "Creative Commons"
-msgstr ""
-
 msgid "2018 City of Helsinki"
 msgstr "2018 Helsingin kaupunki"
+
+msgid "mydata/"
+msgstr "omat-tiedot/"
+
+msgid "mydata/profile/"
+msgstr "omat-tiedot/profiili/"
+
+msgid "mydata/interests/"
+msgstr "omat-tiedot/kiinnostukset/"
+
+msgid "mydata/services/"
+msgstr "omat-tiedot/palvelut/"
+
+msgid "mydata/history/"
+msgstr "omat-tiedot/historia/"
 
 msgid "Search"
 msgstr "Etsi"
