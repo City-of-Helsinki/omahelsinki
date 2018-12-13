@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ProfilePicture from './ProfilePicture'
 
 const Greetings = ({ intl, tunnistamoUser }) => {
-  const name = tunnistamoUser.first_name
+  const name = tunnistamoUser ? tunnistamoUser.first_name : ''
 
   return (
     <div className="greetings-container">
