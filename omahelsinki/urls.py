@@ -24,11 +24,11 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path(_('mydata/'), TemplateView.as_view(template_name='react_base.html'), name='mydata'),
-    path(_('mydata/profile/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-profile'),
-    path(_('mydata/interests/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-interests'),
-    path(_('mydata/services/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-services'),
-    path(_('mydata/history/'), TemplateView.as_view(template_name='react_base.html'), name='mydata-history'),
+    path(_('my-data/'), TemplateView.as_view(template_name='react_base.html'), name='my-data'),
+    path(_('my-data/profile/'), TemplateView.as_view(template_name='react_base.html'), name='my-data-profile'),
+    path(_('my-data/interests/'), TemplateView.as_view(template_name='react_base.html'), name='my-data-interests'),
+    path(_('my-data/services/'), TemplateView.as_view(template_name='react_base.html'), name='my-data-services'),
+    path(_('my-data/history/'), TemplateView.as_view(template_name='react_base.html'), name='my-data-history'),
 
     path('welcome/', TemplateView.as_view(template_name='react_base.html'), name='welcome'),
     re_path(r'^app/', TemplateView.as_view(template_name='react_base.html'), name='app'),

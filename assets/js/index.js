@@ -37,7 +37,7 @@ ReactDOM.render(
           <MainLayout>
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/**/mydata/" component={MainPage} />
+              <Route exact path="/**/my-data/" component={MainPage} />
               <Route exact path="/**/welcome/" component={Onboarding} />
               <Route exact path="/**/services/" component={AllServices} />
               <Route
