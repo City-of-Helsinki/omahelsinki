@@ -22,6 +22,7 @@
   "app.profile.error.onSave": "Din profil kunde inte sparas på grund av ett fel.",
   "app.profile.error.onDelete": "Din profil kunde inte tas bort på grund av ett fel.",
   "app.profile.error.onLoad": "Din profil kunde inte hämtas på grund av ett fel.",
+  "app.profile.service.deleted": "Tjänsten {name} har tagits bort från din profil.",
 
   "app.photo.delete.confirmTitle": "Bekräfta radering av bild",
   "app.photo.delete.confirm": "Är du säker att du vill radera din bild",
