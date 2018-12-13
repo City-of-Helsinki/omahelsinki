@@ -69,19 +69,19 @@ msgstr "Tietoa palvelusta"
 msgid "2018 City of Helsinki"
 msgstr "2018 Helsingin kaupunki"
 
-msgid "mydata/"
+msgid "my-data/"
 msgstr "omat-tiedot/"
 
-msgid "mydata/profile/"
+msgid "my-data/profile/"
 msgstr "omat-tiedot/profiili/"
 
-msgid "mydata/interests/"
+msgid "my-data/interests/"
 msgstr "omat-tiedot/kiinnostukset/"
 
-msgid "mydata/services/"
+msgid "my-data/services/"
 msgstr "omat-tiedot/palvelut/"
 
-msgid "mydata/history/"
+msgid "my-data/history/"
 msgstr "omat-tiedot/historia/"
 
 msgid "Search"

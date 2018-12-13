@@ -83,7 +83,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right user-menu__dropdown" aria-labelledby="navbarDropdown">
                 <span class="dropdown-header user-name">{{ request.user.get_display_name }}</span>
-                <a class="dropdown-item" href="{% url 'mydata' %}">{% trans "Edit profile" %}</a>
+                <a class="dropdown-item" href="{% url 'my-data' %}">{% trans "Edit profile" %}</a>
                 <a class="dropdown-item" href="/">{% trans "Oma.helsinki" %}</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'helusers:auth_logout' %}?next=/"><strong>{% trans "Log out" %}</strong></a>
@@ -91,7 +91,7 @@
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'helusers:auth_login' %}?next=/mydata/">
+              <a class="nav-link" href="{% url 'helusers:auth_login' %}?next=/my-data/">
                 {% trans "Log in" %}
               </a>
             </li>
@@ -117,7 +117,7 @@
                 </li>
               {% endfor %}
               <li class="nav-item">
-                <a class="nav-link{% if not request.user.is_authenticated %} disabled{% endif %}" href="{% url "mydata" %}">{% trans "My data" %}</a>
+                <a class="nav-link{% if not request.user.is_authenticated %} disabled{% endif %}" href="{% url "my-data" %}">{% trans "My data" %}</a>
               </li>
             </ul>
           </div>
