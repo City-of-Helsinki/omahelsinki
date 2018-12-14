@@ -10,7 +10,10 @@ import {
   tunnistamoUser
 } from '../settings'
 
-import { ADD_MESSAGE } from '../components/Message/message-redux'
+import {
+  addWarningMessage,
+  addDangerMessage
+} from '../components/Message/message-redux'
 
 import createClient from '../util/client'
 
@@ -383,24 +386,21 @@ export const createNewUser = payload => {
 export const removeProfileImage = (payload, intl) => {
   return dispatch => {
     dispatch(updateUserData(payload)).then(
-      result =>
-        dispatch({
-          type: ADD_MESSAGE,
-          payload: {
-            message: intl.formatMessage({ id: 'app.profile.picture.deleted' }),
-            color: 'warning'
-          }
-        }),
+      result => {
+        dispatch(
+          addWarningMessage(
+            intl.formatMessage({ id: 'app.profile.picture.deleted' })
+          )
+        )
+      },
       error =>
-        dispatch({
-          type: ADD_MESSAGE,
-          payload: {
-            message: intl.formatMessage({
+        dispatch(
+          addDangerMessage(
+            intl.formatMessage({
               id: 'app.profile.picture.error.onDelete'
-            }),
-            color: 'danger'
-          }
-        })
+            })
+          )
+        )
     )
   }
 }
@@ -490,13 +490,10 @@ export const deleteUserProfile = intl => {
     try {
       await profileRequest.delete(`/profile/${userUuid}/`)
       dispatch(deleteProfileSuccess())
-      dispatch({
-        type: ADD_MESSAGE,
-        payload: {
-          message: intl.formatMessage({ id: 'app.profile.deleted' }),
-          color: 'warning'
-        }
-      })
+
+      dispatch(
+        addWarningMessage(intl.formatMessage({ id: 'app.profile.deleted' }))
+      )
 
       setTimeout(() => {
         window.location.href = '/logout'

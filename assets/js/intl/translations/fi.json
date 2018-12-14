@@ -24,8 +24,8 @@
 
   "app.input.firstname": "Etunimi",
   "app.input.lastname": "Sukunimi",
-  "app.input.email": "Sähköposti",
-  "app.input.email.placeHolder": "Syötä sähköposti",
+  "app.input.email": "Sähköpostiosoite",
+  "app.input.email.placeHolder": "Syötä sähköpostiosoite",
   "app.input.email.helpBlock.notShare": "Emme koskaan jakaa sähköpostisi kenenkään muun kanssa.",
   "app.input.password": "Salasana",
   "app.button.saveChanges": "Tallenna muutokset",
@@ -57,6 +57,7 @@
   "app.profile.error.onSave": "Profiiliasi ei voitu tallentaa virheen vuoksi.",
   "app.profile.error.onDelete": "Profiiliasi ei voitu poistaa virheen vuoksi.",
   "app.profile.error.onLoad": "Profiiliasi ei voitu hakea virheen vuoksi.",
+  "app.profile.service.deleted": "Palvelu {name} on poistettu profiiliistasi.",
 
   "app.photo.delete.confirmTitle": "Olet poistamassa kuvasi",
   "app.photo.delete.confirm": "Haluatko varmasti poistaa kuvasi?",
@@ -149,7 +150,7 @@
   "password.ok": "Salasana on ok",
   "password.strong": "Salasana on vahva",
 
-  "profile.fileSize.error": "The file size should not exceed 1 MB",
+  "profile.fileSize.error": "Tallennettavan tiedoston koko ylittää sallitun rajan, joka on {size} MB.",
 
   "app.button.saveCroppedImage": "Tallenna rajattu kuva",
   "app.button.downloadData": "Lataa tiedot",
