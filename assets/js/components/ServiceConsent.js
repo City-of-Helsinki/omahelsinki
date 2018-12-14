@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import max from 'lodash/max'
+import { isEmpty, max } from 'lodash'
 import moment from 'moment'
+import { OrderedSet } from 'immutable'
 
 import { deleteServiceConsent } from '../services/redux'
 import ConfirmModal from './ConfirmModal'
@@ -45,6 +46,39 @@ class ServiceConsent extends React.Component {
     )
   }
 
+  renderConsent(consent, currentLocale) {
+    let name = consent.id
+    let description = null
+
+    const locales = OrderedSet([currentLocale, 'fi', 'en'])
+
+    for (const locale of locales.toArray()) {
+      if (!isEmpty(consent.name[locale])) {
+        name = consent.name[locale]
+        break
+      }
+    }
+
+    for (const locale of locales.toArray()) {
+      if (!isEmpty(consent.description[locale])) {
+        description = consent.description[locale]
+        break
+      }
+    }
+
+    return (
+      <span>
+        <strong>{name}</strong>
+        {description && (
+          <span>
+            <br />
+            <span className="list-description">{description}</span>
+          </span>
+        )}
+      </span>
+    )
+  }
+
   render() {
     const { intl, service, locale, history } = this.props
     const consent = service.consent
@@ -76,7 +110,7 @@ class ServiceConsent extends React.Component {
           </strong>
           <ul>
             {consent.scopes.map((scope, index) => {
-              return <li key={index}>{scope}</li>
+              return <li key={index}>{this.renderConsent(scope, locale)}</li>
             })}
           </ul>
         </div>
