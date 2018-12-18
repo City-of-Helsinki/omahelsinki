@@ -91,6 +91,17 @@ class Interest extends Component {
       return Object.values(regionsByOcdId).find(r => r.origin_id === id)
     })
 
+    const selectedRegions =
+      !userRegions || isRegionsLoading
+        ? []
+        : userRegions
+            .map(ur => neighbourhoodsByOcdId[ur] || false)
+            .filter(Boolean)
+            .map(region => ({
+              label: region.name[language] || region.name['fi'],
+              value: region.ocd_id
+            }))
+
     return (
       <div className="interests-view">
         <section>
@@ -139,9 +150,7 @@ class Interest extends Component {
               ) : (
                 <HelSelect
                   options={neighborhoodsWithSubdistricts}
-                  multi={true}
-                  searchable={true}
-                  selectedOption={userRegions}
+                  value={selectedRegions}
                   handleChange={this.regionsChange}
                 />
               )}
