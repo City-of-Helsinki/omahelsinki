@@ -234,11 +234,13 @@ export const userReducer = handleActions(
     ],
     [
       getProfileSuccess,
-      (state, action) => ({
-        ...state,
-        getProfileError: userDefaultState.error,
-        userLoading: false
-      })
+      (state, action) => {
+        return {
+          ...state,
+          getProfileError: userDefaultState.error,
+          userLoading: false
+        }
+      }
     ],
     [
       getProfileError,

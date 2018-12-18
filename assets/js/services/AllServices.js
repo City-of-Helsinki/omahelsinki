@@ -2,8 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Col, Container, Row } from 'reactstrap'
+import isEmpty from 'lodash/isEmpty'
 
 import { fetchAllServices } from './redux'
+
+import { fetchUserData } from '../user/redux'
 
 import Loading from '../components/Loading'
 import Error from '../components/Error'
@@ -13,12 +16,17 @@ import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
   componentDidMount() {
-    const { intl } = this.pros
+    const { intl, user } = this.props
+
+    if (isEmpty(user)) {
+      this.props.dispatch(fetchUserData(intl))
+    }
+
     this.props.dispatch(fetchAllServices(intl))
   }
 
   render() {
-    const { services, isLoading, isError } = this.props
+    const { services, isLoading, isError, user } = this.props
     if (isLoading) {
       return (
         <section
@@ -51,11 +59,11 @@ class AllServices extends React.Component {
     }
     const amountOfServices = services.length
     const servicesForFirstRow = services.splice(0, 3)
-
+    console.log(amountOfServices)
     return (
       <div>
-        <section class="hero-section">
-          <div class="container">
+        <section className="hero-section">
+          <div className="container">
             <Row>
               <Col xs={12} md={4} className="hero-content">
                 <h2>
@@ -113,7 +121,8 @@ const mapStateToProps = state => {
   return {
     services: state.services.allServices,
     isLoading: state.services.allServicesLoading,
-    isError: state.services.allServicesError
+    isError: state.services.allServicesError,
+    user: state.userReducer.user
   }
 }
 export default connect(mapStateToProps)(injectIntl(AllServices))
