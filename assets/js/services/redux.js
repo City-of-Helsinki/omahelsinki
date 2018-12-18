@@ -1,7 +1,10 @@
 import { createActions, handleActions } from 'redux-actions'
 
 import { tunnistamoUrl, tunnistamoToken } from '../settings'
-import { ADD_MESSAGE } from '../components/Message/message-redux'
+import {
+  addWarningMessage,
+  addDangerMessage
+} from '../components/Message/message-redux'
 
 import createClient from '../util/client'
 
@@ -112,7 +115,7 @@ export const servicesReducer = handleActions(
   servicesDefaultState
 )
 
-export const fetchAllServices = () => {
+export const fetchAllServices = intl => {
   return async dispatch => {
     dispatch(getAllServices())
     try {
@@ -120,11 +123,18 @@ export const fetchAllServices = () => {
       dispatch(getAllServicesSuccess(response.data))
     } catch (error) {
       dispatch(getAllServicesError(error))
+      dispatch(
+        addDangerMessage(
+          intl.formatMessage({
+            id: 'app.services.error.onFetchAllServices'
+          })
+        )
+      )
     }
   }
 }
 
-export const fetchConsents = () => {
+export const fetchConsents = intl => {
   return async dispatch => {
     dispatch(getConsents())
     try {
@@ -137,6 +147,13 @@ export const fetchConsents = () => {
       dispatch(getConsentsSuccess(response.data))
     } catch (error) {
       dispatch(getConsentsError(error))
+      dispatch(
+        addDangerMessage(
+          intl.formatMessage({
+            id: 'service.consent.error.onFetchConsents'
+          })
+        )
+      )
     }
   }
 }
@@ -152,20 +169,29 @@ export const deleteServiceConsent = (consent, localizedServiceName, intl) => {
       }
       await axiosInstance.delete(`/v1/user_consent/${consent.id}/`, conf)
       dispatch(deleteConsentSuccess(consent))
-      dispatch({
-        type: ADD_MESSAGE,
-        payload: {
-          message: intl.formatMessage(
+
+      dispatch(
+        addWarningMessage(
+          intl.formatMessage(
             {
               id: 'app.profile.service.deleted'
             },
             { name: localizedServiceName }
-          ),
-          color: 'warning'
-        }
-      })
+          )
+        )
+      )
     } catch (error) {
       dispatch(deleteConsentError(error))
+      dispatch(
+        addDangerMessage(
+          intl.formatMessage(
+            {
+              id: 'service.consent.error.onDelete'
+            },
+            { name: localizedServiceName }
+          )
+        )
+      )
     }
   }
 }
