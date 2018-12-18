@@ -1,12 +1,10 @@
 {
   "app.welcome": "Welcome!",
   "app.userGreeting": "Hello",
-  "app.user.error.onCreatingNewUser": "Failed to create new user due to an error.",
 
   "app.loading": "Loading...",
   "app.saved": "Saved",
   "app.error": "An error occurred.",
-  "app.error.fetchInformation": "Failed to obtain information.",
   "app.cancel": "Cancel",
   "app.ok": "OK",
   "app.logIn": "Log in",
@@ -58,8 +56,8 @@
   "app.profile.delete.confirmTitle": "Confirm deletion of profile",
   "app.profile.delete.confirm": "Are you sure you want to delete your profile?",
   "app.profile.error.onSave": "Your profile could not be saved due to a an error.",
-  "app.profile.error.onDelete": "Your profile could not be deleted due to an error.",
-  "app.profile.error.onLoad": "Your profile could not be retrieved due to an error.",
+  "app.profile.error.onDelete": "Your profile could not be deleted due to a an error.",
+  "app.profile.error.onLoad": "Your profile could not be retrieved due to a an error.",
   "app.profile.service.deleted": "The service {name} has been removed from your profile.",
 
   "app.photo.delete.confirmTitle": "Confirm deletion of photo",
@@ -130,13 +128,11 @@
   "app.services.all.amountOfServices": "We have {amount} services",
   "app.services.all.cta": "Not a user? Start by creating an account",
   "app.services.unconnectedHeading": "Not yet connected services",
-  "app.services.error.onFetchAllServices": "Could not get services due to an error.",
 
   "app.history.date": "Date",
   "app.history.name": "Name",
   "app.history.text": "Historical data about the use of services when you are logged in with your Helsinki account.",
   "app.history.youSignedIn": "You signed in",
-  "app.history.error.onFetchAllHistoryData": "History data could not be loaded due to an error.",
 
   "app.interests.your": "Your interests",
   "app.subjects": "Subjects",
@@ -172,9 +168,6 @@
   "service.consent.button.delete": "Delete connection",
   "service.consent.delete.confirm": "Are you sure you want to delete connection to {service}?",
   "service.consent.delete.confirmTitle": "Confirm deletion of connection to {service}?",
-  "service.consent.error.onDelete": "The connection to service {name} could not be removed due to an error.",
-  "service.consent.error.onFetchConsents": "Connections to services could not be loaded due to an error",
-
   "service.consent.scopes": "Service uses these information about you:",
   "service.lastUsed": "Last used:"
 }
