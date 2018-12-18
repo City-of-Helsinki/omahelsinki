@@ -24,8 +24,6 @@ class DownloadOwnData extends Component {
   }
 
   getDataAndDownload() {
-    const { onError } = this.props
-
     const profileConfig = {
       headers: {
         Authorization: `Bearer ${profileToken}`
@@ -36,15 +34,14 @@ class DownloadOwnData extends Component {
       userProfileData: {},
       userServiceData: {},
       userLoginEntryData: {},
-      userConsentData: {},
-      success: true
+      userConsentData: {}
     }
 
     let userProfileData = createClient(profileConfig)
       .get(`${profileApiUrl}/profile/`)
       .then(res => {
         data.userProfileData = res.data.results
-      }, (data.success = false))
+      })
 
     const tunnistamoConfig = {
       headers: { Authorization: `Bearer ${tunnistamoToken}` }
@@ -54,35 +51,28 @@ class DownloadOwnData extends Component {
       .get(`${tunnistamoUrl}/v1/service/`)
       .then(res => {
         data.userServiceData = res.data.results
-      }, (data.success = false))
+      })
 
     let userLoginEntryData = createClient(tunnistamoConfig)
       .get(`${tunnistamoUrl}/v1/user_login_entry/`)
       .then(res => {
         data.userLoginEntryData = res.data.results
-      }, (data.success = false))
+      })
 
     let userConsentData = createClient(tunnistamoConfig)
       .get(`${tunnistamoUrl}/v1/user_consent/`)
       .then(res => {
         data.userConsentData = res.data.results
-      }, (data.success = false))
+      })
 
     Promise.all([
       userProfileData,
       userServiceData,
       userLoginEntryData,
       userConsentData
-    ]).then(
-      values => {
-        this.downloadData(data)
-      },
-      error => (data.success = false)
-    )
-
-    if (!data.success) {
-      onError()
-    }
+    ]).then(values => {
+      this.downloadData(data)
+    })
   }
 
   render() {

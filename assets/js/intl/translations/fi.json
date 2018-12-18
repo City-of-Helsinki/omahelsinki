@@ -1,14 +1,11 @@
 {
   "app.welcome": "Tervetuloa!",
   "app.userGreeting": "Hei",
-  "app.user.error.onCreatingNewUser": "Käyttäjää ei voitu luoda virheen vuoksi.",
-
   "app.profile": "Profiili",
 
   "app.loading": "Ladataan...",
   "app.saved": "Tallennettu",
   "app.error": "Tapahtui virhe.",
-  "app.error.fetchInformation": "Tietojen haku epäonnistui.",
   "app.cancel": "Peruuta",
   "app.ok": "OK",
   "app.logIn": "Kirjaudu sisään",
@@ -60,7 +57,7 @@
   "app.profile.error.onSave": "Profiiliasi ei voitu tallentaa virheen vuoksi.",
   "app.profile.error.onDelete": "Profiiliasi ei voitu poistaa virheen vuoksi.",
   "app.profile.error.onLoad": "Profiiliasi ei voitu hakea virheen vuoksi.",
-  "app.profile.service.deleted": "Palvelu {name} on poistettu profiilistasi.",
+  "app.profile.service.deleted": "Palvelu {name} on poistettu profiiliistasi.",
 
   "app.photo.delete.confirmTitle": "Olet poistamassa kuvasi",
   "app.photo.delete.confirm": "Haluatko varmasti poistaa kuvasi?",
@@ -129,13 +126,11 @@
   "app.services.all.amountOfServices": "Meillä on {amount} palvelua",
   "app.services.all.cta": "Et vielä käyttäjä? Luo tili",
   "app.services.unconnectedHeading": "Palveluita joihin et ole vielä liittänyt profiiliasi",
-  "app.services.error.onFetchAllServices": "Palveluita ei voitu hakea virheen vuoksi.",
 
   "app.history.date": "Päivä",
   "app.history.name": "Nimi",
   "app.history.text": "Historiaan kertyvät tiedot palvelujen käytöstä, kun olet kirjautuneena sisään Helsinki-tililläsi.",
   "app.history.youSignedIn": "Kirjauduit sisään",
-  "app.history.error.onFetchAllHistoryData": "Historiatietoja ei voitu hakea virheen vuoksi.",
 
   "app.interests.your": "Kiinnostukset",
   "app.subjects": "Aiheet",
@@ -168,11 +163,9 @@
   "services.collapsed.isClosedLabel": "Piilota tiedot",
 
   "service.consent.button.delete": "Poista yhteys",
-  "service.consent.delete.confirm": "Oletko varma, että haluat poistaa yhteyden palveluun {service}?",
   "service.consent.delete.confirmTitle": "Olet poistamassa yhteyden palveluun {service}?",
-  "service.consent.error.onDelete": "Yhteyttä palveluun {name} ei voitu poistaa virheen vuoksi.",
-  "service.consent.error.onFetchConsents": "Yhteyksiä palveluihin ei voitu hakea virheen vuoksi.",
 
+  "service.consent.delete.confirm": "Oletko varma, että haluat poistaa yhteyden palveluun {service}?",
   "service.consent.scopes": "Palvelu saa tietää sinusta:",
   "service.lastUsed": "Käytetty viimeksi:"
 }

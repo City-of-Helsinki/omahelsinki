@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Col, Row, Button } from 'reactstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import isEmpty from 'lodash/isEmpty'
 
 import { fetchAllServices } from '../services/redux'
@@ -19,9 +19,7 @@ const buttonWithIconStyle = {
 
 class Landing extends Component {
   componentDidMount() {
-    const { fetchAllServices, intl } = this.props
-
-    fetchAllServices(intl)
+    this.props.fetchAllServices()
   }
 
   render() {
@@ -100,4 +98,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(injectIntl(Landing))
+)(Landing)
