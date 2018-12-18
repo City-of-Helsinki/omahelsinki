@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { Col, Container, Row } from 'reactstrap'
 
 import { fetchAllServices } from './redux'
@@ -13,7 +13,8 @@ import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchAllServices())
+    const { intl } = this.pros
+    this.props.dispatch(fetchAllServices(intl))
   }
 
   render() {
@@ -115,4 +116,4 @@ const mapStateToProps = state => {
     isError: state.services.allServicesError
   }
 }
-export default connect(mapStateToProps)(AllServices)
+export default connect(mapStateToProps)(injectIntl(AllServices))

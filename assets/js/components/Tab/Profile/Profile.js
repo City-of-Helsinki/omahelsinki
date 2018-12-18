@@ -13,7 +13,10 @@ import {
   removeProfileImage
 } from '../../../user/redux'
 
-import { addMessage } from '../../Message/message-redux'
+import {
+  addDangerMessage,
+  addSuccessMessage
+} from '../../Message/message-redux'
 
 import ImgDropAndCrop from '../../ImgDropAndCrop/ImgDropAndCrop'
 import DownloadOwnData from '../../DownloadOwnData'
@@ -82,6 +85,8 @@ class Profile extends Component {
 
   render() {
     const {
+      addDangerMessage,
+      addSuccessMessage,
       getProfileError,
       deleteProfileError,
       saveProfileError,
@@ -245,10 +250,7 @@ class Profile extends Component {
                 className="profile__button"
                 color="success"
                 onClick={() =>
-                  this.props.addMessage(
-                    intl.formatMessage({ id: 'app.saved' }),
-                    'success'
-                  )
+                  addSuccessMessage(intl.formatMessage({ id: 'app.saved' }))
                 }
               >
                 <FormattedMessage id="app.button.saveChanges" />
@@ -263,7 +265,16 @@ class Profile extends Component {
               )}
             </Col>
             <Col xs={12} md={4}>
-              <DownloadOwnData />
+              <DownloadOwnData
+                intl={intl}
+                onError={() =>
+                  addDangerMessage(
+                    intl.formatMessage({
+                      id: 'app.error.fetchInformation'
+                    })
+                  )
+                }
+              />
             </Col>
             <Col xs={12} md={4}>
               <Button
@@ -301,7 +312,8 @@ export default connect(
     fetchUserData,
     updateUserData,
     deleteUserProfile,
-    addMessage,
+    addSuccessMessage,
+    addDangerMessage,
     removeProfileImage
   }
 )(injectIntl(Profile))

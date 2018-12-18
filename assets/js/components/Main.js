@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { injectIntl } from 'react-intl'
 import isEmpty from 'lodash/isEmpty'
 import { Profile, Service, Interest, History } from './Tab'
 import {
@@ -35,10 +36,10 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    const { user, fetchUserData } = this.props
+    const { user, fetchUserData, intl } = this.props
 
     if (isEmpty(user)) {
-      fetchUserData()
+      fetchUserData(intl)
     }
   }
 
@@ -142,4 +143,4 @@ export default connect(
       },
       dispatch
     )
-)(MainPage)
+)(injectIntl(MainPage))

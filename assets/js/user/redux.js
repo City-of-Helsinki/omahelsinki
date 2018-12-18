@@ -357,7 +357,7 @@ export const userReducer = handleActions(
   userDefaultState
 )
 
-export const fetchUserData = () => {
+export const fetchUserData = intl => {
   return async (dispatch, getState) => {
     dispatch(getProfile())
 
@@ -367,18 +367,34 @@ export const fetchUserData = () => {
       dispatch(getProfileSuccess())
     } catch (error) {
       dispatch(getProfileError(error))
+
+      dispatch(
+        addDangerMessage(
+          intl.formatMessage({
+            id: 'app.profile.error.onLoad'
+          })
+        )
+      )
     }
   }
 }
 
 //creating new user onboarding
-export const createNewUser = payload => {
+export const createNewUser = (payload, intl) => {
   return async dispatch => {
     try {
       const response = await profileRequest.post(`/profile/`, payload)
       dispatch(newUserSuccess(response.data))
     } catch (error) {
       dispatch(newUserError(error))
+
+      dispatch(
+        addDangerMessage(
+          intl.formatMessage({
+            id: 'app.user.error.onCreatingNewUser'
+          })
+        )
+      )
     }
   }
 }
@@ -437,20 +453,6 @@ export const fetchAllInterests = () => {
   }
 }
 
-export const getUserInterest = payload => {
-  return async dispatch => {
-    dispatch(getInterest())
-
-    try {
-      const response = await profileRequest.get(`/interest-concept/`)
-      dispatch(getInterestSuccess())
-      dispatch(setInterest(response.data.results))
-    } catch (error) {
-      dispatch(getInterestError(error))
-    }
-  }
-}
-
 export const fetchAllRegions = () => {
   return async dispatch => {
     dispatch(getAllRegions())
@@ -463,7 +465,7 @@ export const fetchAllRegions = () => {
   }
 }
 
-export const fetchAllHistoryData = () => {
+export const fetchAllHistoryData = intl => {
   return async dispatch => {
     dispatch(getAllHistoryData())
     try {
@@ -480,6 +482,11 @@ export const fetchAllHistoryData = () => {
       dispatch(getAllHistoryDataSuccess(data))
     } catch (error) {
       dispatch(getAllHistoryDataError(error))
+      dispatch(
+        addDangerMessage(
+          intl.formatMessage({ id: 'app.history.error.onFetchAllHistoryData' })
+        )
+      )
     }
   }
 }

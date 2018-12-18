@@ -11,7 +11,8 @@ import HelIcon from '../../HelIcon'
 
 class History extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchAllHistoryData())
+    const { intl } = this.props
+    this.props.dispatch(fetchAllHistoryData(intl))
   }
 
   sortIcon = (column, colIndex) => (

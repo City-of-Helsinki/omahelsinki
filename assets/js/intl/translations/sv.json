@@ -1,6 +1,8 @@
 {
   "app.loading": "Laddning...",
   "app.saved": "Sparad",
+  "app.error": "Ett fel inträffade.",
+  "app.error.fetchInformation": "Kunde inte hämta informationen.",
   "app.cancel": "Avbryt",
   "app.ok": "OK",
   "app.logIn": "Logga in",
@@ -8,6 +10,7 @@
   "app.notLoggedIn": "Du är inte inloggad",
 
   "app.userGreeting": "Hej",
+  "app.user.error.onCreatingNewUser": "Kunde inte skapa användaren på grund av ett fel.",
 
   "app.profile.addImageAndNickName": "Lägg till din Oma.helsinki profil information.",
   "app.profile.picture": "Profil bild",
@@ -38,6 +41,7 @@
   "app.history.name": "Namn",
   "app.history.text": "Historikdata om användningen av våra tjänster med ditt oma.helsinki-konto",
   "app.history.youSignedIn": "Du loggade in",
+  "app.history.error.onFetchAllHistoryData": "Hiatorikdata kunde inte hämtas på grund av ett fel.",
 
   "app.interests.your": "Dina intressen",
   "app.subjects": "Ämnen",
@@ -143,6 +147,7 @@
   "app.services.all.amountOfServices": "Vi har {amount} tjänster",
   "app.services.all.cta": "Inte en användare? Börja med att skapa ett konto",
   "app.services.unconnectedHeading": "Tjänster som du ännu inte har anslutit till din profil",
+  "app.services.error.onFetchAllServices": "Tjänsterna kunde inte hämtas på grund av ett fel.",
 
   "app.decision.making": "Decision making",
   "app.decision.interest": "What kind of subject you are interested in?",
@@ -170,5 +175,7 @@
 
   "service.consent.button.delete": "Radera förbindelse",
   "service.consent.delete.confirm": "Är du säker på att du vill radera förbindelsen till {service}?",
-  "service.consent.delete.confirmTitle": "Bekräfta radering av förbindelsen {service}?"
+  "service.consent.delete.confirmTitle": "Bekräfta radering av förbindelsen {service}?",
+  "service.consent.error.onDelete": "Förbindelsen till tjänsten {name} kunde inte tas bort på grund av ett fel.",
+  "service.consent.error.onFetchConsents": "Förbindelserna till tjänsterna kunde inte laddas på grund av ett fel."
 }

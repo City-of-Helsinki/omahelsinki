@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
 import find from 'lodash/find'
 import isEmpty from 'lodash/isEmpty'
@@ -18,8 +18,10 @@ const getServiceName = (service, locale) => {
 
 class ServiceTab extends Component {
   componentDidMount() {
-    this.props.fetchAllServices()
-    this.props.fetchConsents()
+    const { intl } = this.props
+
+    this.props.fetchAllServices(intl)
+    this.props.fetchConsents(intl)
   }
 
   render() {
@@ -100,4 +102,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { fetchAllServices, fetchConsents }
-)(ServiceTab)
+)(injectIntl(ServiceTab))

@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Container } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
+import { injectIntl } from 'react-intl'
+
 import isEmpty from 'lodash/isEmpty'
 import Loading from './Loading'
 
@@ -29,10 +31,10 @@ class Onboarding extends React.Component {
   }
 
   componentDidMount() {
-    const { profileFound, fetchUserData } = this.props
+    const { profileFound, fetchUserData, intl } = this.props
 
     if (!profileFound) {
-      fetchUserData()
+      fetchUserData(intl)
     }
   }
 
@@ -59,6 +61,8 @@ class Onboarding extends React.Component {
   }
 
   wizardFinished() {
+    const { intl } = this.props
+
     const nickname = this.state.nickname
     const concepts_of_interest = this.state.interests
     const divisions_of_interest = this.state.regions
@@ -73,7 +77,7 @@ class Onboarding extends React.Component {
     for (let j = 0; j < divisions_of_interest.length; j++) {
       formData.append('divisions_of_interest', divisions_of_interest[j])
     }
-    this.props.createNewUser(formData)
+    this.props.createNewUser(formData, intl)
     window.scrollTo(0, 0)
   }
 
@@ -153,4 +157,4 @@ export default connect(
       },
       dispatch
     )
-)(Onboarding)
+)(injectIntl(Onboarding))
