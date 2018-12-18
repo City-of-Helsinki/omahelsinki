@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchUserData } from '../user/redux'
-import { injectIntl } from 'react-intl'
 import HelIcon from './HelIcon'
 
 class ProfilePicture extends Component {
   componentDidMount() {
-    const { intl } = this.props
-
-    this.props.fetchUserData(intl)
+    this.props.fetchUserData()
   }
 
   render() {
@@ -34,4 +31,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchUserData }
-)(injectIntl(ProfilePicture))
+)(ProfilePicture)
