@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Row, Col, Button, Alert } from 'reactstrap'
 import { connect } from 'react-redux'
+import keyBy from 'lodash/keyBy'
+import mapValues from 'lodash/mapValues'
 
 import Loading from '../../Loading'
 import InterestsList from '../../InterestsList'
@@ -32,6 +34,13 @@ class Interest extends Component {
     this.props.updateUserData({ divisions_of_interest: ids })
   }
 
+  handleMapClick = selectedRegion => {
+    const { userRegions } = this.props
+
+    const ids = userRegions.concat(selectedRegion.ocd_id)
+    this.props.updateUserData({ divisions_of_interest: ids })
+  }
+
   render() {
     const {
       userInterests,
@@ -39,6 +48,8 @@ class Interest extends Component {
       isInterestsLoading,
       userRegions,
       allRegions,
+      neighborhoods,
+      subDistricts,
       isRegionsLoading,
       language,
       allInterestsError,
@@ -58,14 +69,27 @@ class Interest extends Component {
           }
         })
 
-    const regions = isRegionsLoading
-      ? []
-      : allRegions.map(region => {
-          return {
-            label: region.name[language] || region.name['fi'],
-            value: region.ocd_id
-          }
+    const neighborhoodsWithSubdistricts = neighborhoods.map(nbr => {
+      const name = nbr.name[language] || nbr.name['fi']
+      const sbr = subDistricts
+        .filter(r => {
+          return r.origin_id.slice(0, 2) === nbr.origin_id
         })
+        .map(sbr => sbr.name[language] || sbr.name['fi'])
+
+      const label = sbr.length > 0 ? `${name} (${sbr.join(', ')})` : name
+
+      return {
+        label: label,
+        value: nbr.ocd_id
+      }
+    })
+
+    const regionsByOcdId = keyBy(allRegions, region => region.ocd_id)
+    const neighbourhoodsByOcdId = mapValues(regionsByOcdId, region => {
+      const id = region.origin_id.slice(0, 2)
+      return Object.values(regionsByOcdId).find(r => r.origin_id === id)
+    })
 
     return (
       <div className="interests-view">
@@ -114,7 +138,7 @@ class Interest extends Component {
                 <Loading />
               ) : (
                 <HelSelect
-                  options={regions}
+                  options={neighborhoodsWithSubdistricts}
                   multi={true}
                   searchable={true}
                   selectedOption={userRegions}
@@ -135,7 +159,15 @@ class Interest extends Component {
           <Row>
             <Col xs={12}>
               <h1>KARTTA</h1>
-              <RegionMap />
+              {!isRegionsLoading && (
+                <RegionMap
+                  userRegions={userRegions}
+                  regionsByOcdId={regionsByOcdId}
+                  neighbourhoodsByOcdId={neighbourhoodsByOcdId}
+                  handleMapClick={this.handleMapClick}
+                  language={language}
+                />
+              )}
             </Col>
           </Row>
 
@@ -184,6 +216,12 @@ const mapStateToProps = state => {
     userRegions: state.userReducer.user.divisions_of_interest,
     userInterests: state.userReducer.user.concepts_of_interest,
     allRegions: state.userReducer.allRegions,
+    subDistricts: state.userReducer.allRegions.filter(
+      r => r.type === 'sub_district'
+    ),
+    neighborhoods: state.userReducer.allRegions.filter(
+      r => r.type === 'neighborhood'
+    ),
     allInterests: state.userReducer.allInterests,
     language: state.intl.locale,
     allInterestsError: state.userReducer.allInterestsError,
