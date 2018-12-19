@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Row, Col, Button, Alert } from 'reactstrap'
 import { connect } from 'react-redux'
-import keyBy from 'lodash/keyBy'
-import mapValues from 'lodash/mapValues'
 
 import Loading from '../../Loading'
 import InterestsList from '../../InterestsList'
@@ -13,8 +11,12 @@ import {
   updateUserData,
   fetchAllRegions
 } from '../../../user/redux'
-
 import RegionMap from './RegionMap'
+import {
+  getNeighborhoodSubdistricts,
+  neighborhoodsWithOcdId,
+  regionsWithOcdId
+} from '../../../services/RegionService'
 
 import { addMessage } from '../../Message/message-redux'
 
@@ -69,27 +71,13 @@ class Interest extends Component {
           }
         })
 
-    const neighborhoodsWithSubdistricts = neighborhoods.map(nbr => {
-      const name = nbr.name[language] || nbr.name['fi']
-      const sbr = subDistricts
-        .filter(r => {
-          return r.origin_id.slice(0, 2) === nbr.origin_id
-        })
-        .map(sbr => sbr.name[language] || sbr.name['fi'])
-
-      const label = sbr.length > 0 ? `${name} (${sbr.join(', ')})` : name
-
-      return {
-        label: label,
-        value: nbr.ocd_id
-      }
-    })
-
-    const regionsByOcdId = keyBy(allRegions, region => region.ocd_id)
-    const neighbourhoodsByOcdId = mapValues(regionsByOcdId, region => {
-      const id = region.origin_id.slice(0, 2)
-      return Object.values(regionsByOcdId).find(r => r.origin_id === id)
-    })
+    const neighborhoodsWithSubdistricts = getNeighborhoodSubdistricts(
+      neighborhoods,
+      subDistricts,
+      language
+    )
+    const regionsByOcdId = regionsWithOcdId(allRegions)
+    const neighbourhoodsByOcdId = neighborhoodsWithOcdId(regionsByOcdId)
 
     const selectedRegions =
       !userRegions || isRegionsLoading
@@ -167,7 +155,6 @@ class Interest extends Component {
 
           <Row>
             <Col xs={12}>
-              <h1>KARTTA</h1>
               {!isRegionsLoading && (
                 <RegionMap
                   userRegions={userRegions}

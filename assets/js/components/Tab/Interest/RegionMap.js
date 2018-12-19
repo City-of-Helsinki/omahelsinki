@@ -42,8 +42,8 @@ class RegionMap extends Component {
     )
 
     return (
-      <div>
-        <ComposableMap className="selection-map" projection="mercator">
+      <div className="map-wrapper">
+        <ComposableMap projection="mercator">
           <ZoomableGroup
             zoom={this.state.zoom}
             center={[25.04, 60.21]}
