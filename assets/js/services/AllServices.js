@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { Col, Container, Row } from 'reactstrap'
 import isEmpty from 'lodash/isEmpty'
+import { List } from 'immutable'
 
 import { fetchAllServices } from './redux'
 
@@ -57,9 +58,12 @@ class AllServices extends React.Component {
     } else if (!services) {
       return null
     }
-    const amountOfServices = services.length
-    const servicesForFirstRow = services.splice(0, 3)
-    console.log(amountOfServices)
+
+    const cloned = services.slice(0)
+    const amountOfServices = cloned.length
+    const servicesForFirstRow = cloned.splice(0, 3)
+    const remainingServices = cloned.splice(0, 1)
+
     return (
       <div>
         <section className="hero-section">
@@ -75,7 +79,7 @@ class AllServices extends React.Component {
                   <p className="disclaimer">
                     <FormattedMessage id="app.services.featured" />
                   </p>
-                  {services.slice(0, 1).map(service => (
+                  {remainingServices.map(service => (
                     <Service horizontal key={service.id} service={service} />
                   ))}
                 </div>
@@ -87,26 +91,23 @@ class AllServices extends React.Component {
           <Container>
             <Row>
               <Col xs={12}>
-                <div className="services-amount">
-                  <FormattedMessage
-                    id="app.services.all.amountOfServices"
-                    values={{ amount: amountOfServices }}
-                  />
-                </div>
                 <div className="service-list">
                   <ServiceList services={servicesForFirstRow} />
                 </div>
-                <div className="cta-register">
-                  <div className="left-icon d-none d-md-block">
-                    <HelIcon iconName="user-o" />
+                {isEmpty(user) && (
+                  <div className="cta-register">
+                    <div className="left-icon d-none d-md-block">
+                      <HelIcon iconName="user-o" />
+                    </div>
+                    <a className="help-link" href="/login">
+                      <FormattedMessage id="app.services.all.cta" />
+                      <HelIcon iconName="arrow-right" />
+                    </a>
                   </div>
-                  <a className="help-link" href="/login">
-                    <FormattedMessage id="app.services.all.cta" />
-                    <HelIcon iconName="arrow-right" />
-                  </a>
-                </div>
+                )}
+
                 <div className="service-list">
-                  <ServiceList services={services} />
+                  <ServiceList services={cloned} />
                 </div>
               </Col>
             </Row>
