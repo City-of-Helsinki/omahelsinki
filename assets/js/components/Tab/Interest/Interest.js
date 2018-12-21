@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { Row, Col, Button, Alert } from 'reactstrap'
 import { connect } from 'react-redux'
+import { List } from 'immutable'
 
 import Loading from '../../Loading'
 import InterestsList from '../../InterestsList'
@@ -39,7 +40,17 @@ class Interest extends Component {
   handleMapClick = selectedRegion => {
     const { userRegions } = this.props
 
-    const ids = userRegions.concat(selectedRegion.ocd_id)
+    const index = userRegions.indexOf(selectedRegion.ocd_id)
+    let ids = []
+
+    if (index === -1) {
+      ids = userRegions.concat(selectedRegion.ocd_id)
+    } else {
+      ids = List(userRegions)
+        .splice(index, 1)
+        .toArray()
+    }
+
     this.props.updateUserData({ divisions_of_interest: ids })
   }
 

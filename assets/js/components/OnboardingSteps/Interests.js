@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
+import { List } from 'immutable'
 
 import {
   getNeighborhoodSubdistricts,
@@ -30,7 +31,17 @@ class Interest extends Component {
 
   handleMapClick = selectedRegion => {
     const { selectedRegions } = this.props
-    const ids = selectedRegions.concat(selectedRegion.ocd_id)
+    const index = selectedRegions.indexOf(selectedRegion.ocd_id)
+    let ids = []
+
+    if (index === -1) {
+      ids = selectedRegions.concat(selectedRegion.ocd_id)
+    } else {
+      ids = List(selectedRegions)
+        .splice(index, 1)
+        .toArray()
+    }
+
     this.props.onRegionsChanged(ids)
   }
 
