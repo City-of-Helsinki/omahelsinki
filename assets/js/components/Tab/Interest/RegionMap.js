@@ -8,8 +8,8 @@ import {
 import ReactTooltip from 'react-tooltip'
 import indexOf from 'lodash/indexOf'
 
-import HELSINKI_HOODS from './helsinki-hoods-topo.json'
-import HELSINKI_SEA from './helsinki-sea-topo.json'
+import HELSINKI_HOODS from '../../../data/helsinki-hoods-topo.json'
+import HELSINKI_SEA from '../../../data/helsinki-sea-topo.json'
 
 class RegionMap extends Component {
   state = {

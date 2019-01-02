@@ -59,7 +59,7 @@ $omaWrapperPadding: 4rem 0 8rem;
   background-position: center;
   background-size: cover;
   background-color: $hel-copper;
-  padding: ($spacer * 3) 0 ($spacer * 8);
+  padding: ($spacer * 3) 1rem ($spacer * 8) 1rem;
 
   .container {
     z-index: 2;
@@ -528,6 +528,17 @@ $omaWrapperPadding: 4rem 0 8rem;
   padding-top: 1em;
 }
 
+.featured {
+  .disclaimer {
+    color: $hel-bus;
+    margin-bottom: 0;
+  }
+}
+
+.card-body {
+  padding-top: 1rem;
+}
+
 .services-amount {
   color: $hel-bus;
   font-size: 1.5rem;
@@ -536,6 +547,14 @@ $omaWrapperPadding: 4rem 0 8rem;
 }
 
 .development-banner {
+  @include media-breakpoint-down(xs) {
+    p {
+      margin-right: 20px;
+      width: 92%;
+      font-size: 17px;
+    }
+  }
+
   background: #f5a3c7;
   padding: 20px 10px 10px 10px;
   margin-bottom: 0;
@@ -548,6 +567,15 @@ $omaWrapperPadding: 4rem 0 8rem;
   margin-bottom: 40px;
   padding-bottom: 30px;
   padding-top: 30px;
+
+  a.help-link {
+    span {
+      width: 90%;
+    }
+
+  }
+
+
   .left-icon {
     position: absolute;
     transform: translateX(-50%);

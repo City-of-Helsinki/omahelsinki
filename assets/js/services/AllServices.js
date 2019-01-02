@@ -8,6 +8,7 @@ import { fetchAllServices } from './redux'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
 import ServiceList from '../components/ServiceList'
+import Service from '../components/Service'
 import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
@@ -19,7 +20,10 @@ class AllServices extends React.Component {
     const { services, isLoading, isError } = this.props
     if (isLoading) {
       return (
-        <section className="section section--services">
+        <section
+          className="section section--services"
+          style={{ marginTop: 100 }}
+        >
           <Container>
             <Row>
               <Col xs={12}>
@@ -46,36 +50,60 @@ class AllServices extends React.Component {
     }
     const amountOfServices = services.length
     const servicesForFirstRow = services.splice(0, 3)
+
     return (
-      <section className="section section--services">
-        <Container>
-          <Row>
-            <Col xs={12}>
-              <div className="services-amount">
-                <FormattedMessage
-                  id="app.services.all.amountOfServices"
-                  values={{ amount: amountOfServices }}
-                />
-              </div>
-              <div className="service-list">
-                <ServiceList services={servicesForFirstRow} />
-              </div>
-              <div className="cta-register">
-                <div className="left-icon d-none d-md-block">
-                  <HelIcon iconName="user-o" />
+      <div>
+        <section class="hero-section">
+          <div class="container">
+            <Row>
+              <Col xs={12} md={4} className="hero-content">
+                <h2>
+                  <FormattedMessage id="app.services.hero" />
+                </h2>
+              </Col>
+              <Col xs={12} md={8}>
+                <div className="featured">
+                  <p className="disclaimer">
+                    <FormattedMessage id="app.services.featured" />
+                  </p>
+                  {services.slice(0, 1).map(service => (
+                    <Service horizontal key={service.id} service={service} />
+                  ))}
                 </div>
-                <a href="/login">
-                  <FormattedMessage id="app.services.all.cta" />
-                  <HelIcon iconName="arrow-right" />
-                </a>
-              </div>
-              <div className="service-list">
-                <ServiceList services={services} />
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+              </Col>
+            </Row>
+          </div>
+        </section>
+        <section className="section section--services">
+          <Container>
+            <Row>
+              <Col xs={12}>
+                <div className="services-amount">
+                  <FormattedMessage
+                    id="app.services.all.amountOfServices"
+                    values={{ amount: amountOfServices }}
+                  />
+                </div>
+                <div className="service-list">
+                  <ServiceList services={servicesForFirstRow} />
+                </div>
+                <div className="cta-register">
+                  <div className="left-icon d-none d-md-block">
+                    <HelIcon iconName="user-o" />
+                  </div>
+                  <a className="help-link" href="/login">
+                    <FormattedMessage id="app.services.all.cta" />
+                    <HelIcon iconName="arrow-right" />
+                  </a>
+                </div>
+                <div className="service-list">
+                  <ServiceList services={services} />
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      </div>
     )
   }
 }

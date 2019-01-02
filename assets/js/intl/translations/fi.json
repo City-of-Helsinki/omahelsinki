@@ -24,8 +24,8 @@
 
   "app.input.firstname": "Etunimi",
   "app.input.lastname": "Sukunimi",
-  "app.input.email": "Sähköposti",
-  "app.input.email.placeHolder": "Syötä sähköposti",
+  "app.input.email": "Sähköpostiosoite",
+  "app.input.email.placeHolder": "Syötä sähköpostiosoite",
   "app.input.email.helpBlock.notShare": "Emme koskaan jakaa sähköpostisi kenenkään muun kanssa.",
   "app.input.password": "Salasana",
   "app.button.saveChanges": "Tallenna muutokset",
@@ -44,15 +44,20 @@
   "app.profile.picture.limit": "Kuvan leveys vähintään 200px ja enintään 1200px. Tiedostomuoto jpg tai png.",
   "app.profile.picture.browse": "Selailla",
   "app.profile.picture.delete": "Poista kuva",
+  "app.profile.picture.deleted": "Profiilikuva poistettu.",
+  "app.profile.picture.error.onDelete": "Profiilikuvaasi ei voitu poistaa virheen vuoksi.",
+  "app.profile.picture.error.invalidImage": "Virheellinen kuva",
+
   "app.profile.nickname": "Nimimerkki",
   "app.profile.nickname.text": "Nimimerkkiä käytetään esimerkiksi kun julkaiset kommentteja julkisiin keskusteluihin",
   "app.profile.delete": "Poista profiili",
+  "app.profile.deleted": "Profiili poistettu.",
   "app.profile.delete.confirmTitle": "Olet poistamassa profiilisi",
   "app.profile.delete.confirm": "Haluatko varmasti poistaa profiilisi?",
   "app.profile.error.onSave": "Profiiliasi ei voitu tallentaa virheen vuoksi.",
   "app.profile.error.onDelete": "Profiiliasi ei voitu poistaa virheen vuoksi.",
   "app.profile.error.onLoad": "Profiiliasi ei voitu hakea virheen vuoksi.",
-  "app.profile.picture.error.invalidImage": "Virheellinen kuva",
+  "app.profile.service.deleted": "Palvelu {name} on poistettu profiiliistasi.",
 
   "app.photo.delete.confirmTitle": "Olet poistamassa kuvasi",
   "app.photo.delete.confirm": "Haluatko varmasti poistaa kuvasi?",
@@ -113,6 +118,8 @@
   "app.landing.seeAllServices": "Katso kaikki palvelut",
   "app.landing.help": "Älä huoli, meillä on vastaukset! Apu löytyy täältä",
 
+  "app.services.hero": "Yksi profiili, kymmeniä mahdollisuuksia",
+  "app.services.featured": "Korostettu palvelu",
   "app.services.related": "Liitetyt palvelut",
   "app.services.related.text": "Voit käyttää Oma.helsinki-profiilillasi useita Helsingin kaupungin palveluita ja tiettyjä kolmansien osapuolten palveluita.",
   "app.services.notLinked": "Palvelut, joita et ole vielä liittänyt tiliisi",
@@ -143,7 +150,7 @@
   "password.ok": "Salasana on ok",
   "password.strong": "Salasana on vahva",
 
-  "profile.fileSize.error": "The file size should not exceed 1 MB",
+  "profile.fileSize.error": "Tallennettavan tiedoston koko ylittää sallitun rajan, joka on {size} MB.",
 
   "app.button.saveCroppedImage": "Tallenna rajattu kuva",
   "app.button.downloadData": "Lataa tiedot",

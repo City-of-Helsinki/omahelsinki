@@ -14,6 +14,7 @@ const Service = ({ service, locale }) => {
   const name = service.name[locale] || service.name['fi']
   const url = service.url[locale] || service.url['fi']
   const description = service.description[locale] || service.description['fi']
+
   return (
     <Card className="service">
       <CardImg top src={image} />

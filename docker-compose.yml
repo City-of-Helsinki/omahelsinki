@@ -16,7 +16,6 @@ services:
     build:
       context: ./
       dockerfile: ./docker/django/Dockerfile
-    command: bash -c "yarn && gunicorn omahelsinki.wsgi:application --reload --access-logfile - --bind 0.0.0.0:8000 --workers 3"
     environment:
       DATABASE_URL: postgres://omahelsinki:omahelsinki@omahelsinki-db/omahelsinki
     volumes:

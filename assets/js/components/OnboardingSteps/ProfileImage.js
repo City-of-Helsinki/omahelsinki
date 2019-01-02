@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Col, Row, Form, Button, Alert } from 'reactstrap'
+import { Alert, Col, Row, Form, Button } from 'reactstrap'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import HelTextInput from '../HelTextInput'
 import ImgDropAndCrop from '../ImgDropAndCrop/ImgDropAndCrop'
@@ -68,7 +68,6 @@ class ProfileImage extends Component {
                             <FormattedMessage id="app.profile.picture.error.invalidImage" />
                           </Alert>
                         )}
-                        <p>dff</p>
                       </div>
                       <Button color="danger" onClick={this.props.unselectImage}>
                         <FormattedMessage id="app.profile.picture.delete" />

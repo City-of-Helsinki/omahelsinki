@@ -24,6 +24,7 @@ class Landing extends Component {
 
   render() {
     const { services } = this.props
+    const visibleServiceCount = 2
 
     return (
       <div className="container">
@@ -32,19 +33,21 @@ class Landing extends Component {
             <h1>
               <FormattedMessage id="app.landing.header" />
             </h1>
-            <a href="/services">
-              <Button color="info" style={buttonWithIconStyle}>
-                <FormattedMessage id="app.landing.seeAllServices" />{' '}
-                <HelIcon iconName="arrow-right" />
-              </Button>
-            </a>
+            {services.length > visibleServiceCount && (
+              <a href="/services">
+                <Button color="info" style={buttonWithIconStyle}>
+                  <FormattedMessage id="app.landing.seeAllServices" />{' '}
+                  <HelIcon iconName="arrow-right" />
+                </Button>
+              </a>
+            )}
           </Col>
           {isEmpty(services) ? (
             <HelIcon iconName="sync" className={'hel-icon-spin'} />
           ) : (
             <Col xs={12} md={8}>
               <Row>
-                {services.slice(0, 2).map(service => (
+                {services.slice(0, visibleServiceCount).map(service => (
                   <Col
                     key={service.id}
                     xs={12}
@@ -64,7 +67,7 @@ class Landing extends Component {
               <div className="left-icon d-none d-md-block">
                 <HelIcon iconName="quote-right" />
               </div>
-              <a href="/help">
+              <a className="help-link" href="/help">
                 <FormattedMessage id="app.landing.help" />
                 <HelIcon iconName="arrow-right" />
               </a>

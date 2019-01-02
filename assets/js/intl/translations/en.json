@@ -19,13 +19,14 @@
 
   "app.profile.edit": "Edit your Oma.helsinki profile information.",
   "app.profile.addImageAndNickName": "Add your Oma.helsinki profile information.",
+
   "app.personalInfo": "Personal information",
   "app.not.public": "This information will not be displayed publicly",
 
   "app.input.firstname": "Firstname",
   "app.input.lastname": "Lastname",
   "app.input.email": "Email",
-  "app.input.email.placeHolder": "Enter email",
+  "app.input.email.placeHolder": "Enter your email",
   "app.input.email.helpBlock.notShare": "We'll never share your email with anyone else.",
   "app.input.password": "Password",
   "app.button.saveChanges": "Save changes",
@@ -44,15 +45,20 @@
   "app.profile.picture.limit": "Width of the image should be at least 200px and up to 1200px. File format jpg or png.",
   "app.profile.picture.browse": "Browse",
   "app.profile.picture.delete": "Delete picture",
+  "app.profile.picture.deleted": "Your profile picture was removed.",
+  "app.profile.picture.error.onDelete": "Your profile image could not be deleted due to a an error.",
+  "app.profile.picture.error.invalidImage": "Invalid image",
+
   "app.profile.nickname": "Nickname",
   "app.profile.nickname.text": "The nickname is used for example when you publish comments to public conversations",
   "app.profile.delete": "Delete profile",
+  "app.profile.deleted": "Profile deleted",
   "app.profile.delete.confirmTitle": "Confirm deletion of profile",
   "app.profile.delete.confirm": "Are you sure you want to delete your profile?",
   "app.profile.error.onSave": "Your profile could not be saved due to a an error.",
   "app.profile.error.onDelete": "Your profile could not be deleted due to a an error.",
   "app.profile.error.onLoad": "Your profile could not be retrieved due to a an error.",
-  "app.profile.picture.error.invalidImage": "Invalid image",
+  "app.profile.service.deleted": "The service {name} has been removed from your profile.",
 
   "app.photo.delete.confirmTitle": "Confirm deletion of photo",
   "app.photo.delete.confirm": "Are you sure you want to delete your profile photo?",
@@ -91,7 +97,7 @@
   "onboarding.messages.heading": "Messages",
   "onboarding.messages.text": "I want to get notifications or messages via:",
   "onboarding.notifications.heading": "Notifications",
-  "onboarding.notifications.text": "You will receicve a message/notification when you have got a message or something interesting is happening in your selected region. When do you want to get the notification?",
+  "onboarding.notifications.text": "You will receive a message/notification when you have got a message or something interesting is happening in your selected region. When do you want to get the notification?",
   "onboarding.label.disableNotifications": "No, I don't want notifications",
   "onboarding.label.enableNotifications": "Yes, I want notifications",
   "onboarding.label.passwordRepeat": "Re-enter password",
@@ -114,6 +120,8 @@
   "app.landing.seeAllServices": "See all services",
   "app.landing.help": "Dont´t worry we have the answers! See help",
 
+  "app.services.hero": "One profile, tens of opportunities",
+  "app.services.featured": "Featured service",
   "app.services.related": "Connected services",
   "app.services.related.text": "You can use multiple Helsinki City services and certain third party services with your Oma.helsinki profile.",
   "app.services.notLinked": "Services that you have not yet linked to your account",
@@ -145,7 +153,7 @@
   "password.ok": "Password is ok",
   "password.strong": "Password is strong",
 
-  "profile.fileSize.error": "The file size should not exceed 1 MB",
+  "profile.fileSize.error": "The file size of the uploaded file exceeds the limit of {size} MB.",
 
   "app.button.saveCroppedImage": "Save cropped image",
   "app.button.downloadData": "Download data",

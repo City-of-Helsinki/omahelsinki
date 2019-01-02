@@ -1,6 +1,8 @@
 import { createActions, handleActions } from 'redux-actions'
 
 import { tunnistamoUrl, tunnistamoToken } from '../settings'
+import { ADD_MESSAGE } from '../components/Message/message-redux'
+
 import createClient from '../util/client'
 
 const axiosConfig = {
@@ -139,7 +141,7 @@ export const fetchConsents = () => {
   }
 }
 
-export const deleteServiceConsent = consent => {
+export const deleteServiceConsent = (consent, localizedServiceName, intl) => {
   return async dispatch => {
     dispatch(deleteConsent(consent))
     try {
@@ -150,6 +152,18 @@ export const deleteServiceConsent = consent => {
       }
       await axiosInstance.delete(`/v1/user_consent/${consent.id}/`, conf)
       dispatch(deleteConsentSuccess(consent))
+      dispatch({
+        type: ADD_MESSAGE,
+        payload: {
+          message: intl.formatMessage(
+            {
+              id: 'app.profile.service.deleted'
+            },
+            { name: localizedServiceName }
+          ),
+          color: 'warning'
+        }
+      })
     } catch (error) {
       dispatch(deleteConsentError(error))
     }

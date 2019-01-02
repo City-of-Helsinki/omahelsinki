@@ -4,7 +4,7 @@ import HelIcon from './HelIcon'
 
 const Loading = ({ className = 'hel-icon-spin' }) => {
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <HelIcon iconName="sync" className={className} />
     </div>
   )
