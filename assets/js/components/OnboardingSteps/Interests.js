@@ -112,6 +112,30 @@ class Interest extends Component {
             <FormattedMessage id="app.regions.interest" />
           </p>
           <HelSelect
+            formatOptionLabel={({
+              color,
+              label,
+              neighborHoodName,
+              subDistricts
+            }) => (
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div
+                  style={{
+                    background: color,
+                    height: 4,
+                    width: 4,
+                    marginRight: 4
+                  }}
+                />
+                <strong>
+                  {neighborHoodName}
+                  &nbsp;
+                </strong>
+                {subDistricts && (
+                  <span className="sub-districts">({subDistricts})</span>
+                )}
+              </div>
+            )}
             options={neighborhoodsWithSubdistricts}
             value={userRegions}
             handleChange={this.regionsChangedHandler}

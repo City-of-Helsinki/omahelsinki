@@ -17,7 +17,9 @@ export function getNeighborhoodSubdistricts(
 
     return {
       label: label,
-      value: nbr.ocd_id
+      value: nbr.ocd_id,
+      neighborHoodName: name,
+      subDistricts: sbr.length > 0 ? sbr.join(', ') : ''
     }
   })
 }
