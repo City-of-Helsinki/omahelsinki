@@ -133,7 +133,10 @@ export const fetchConsents = () => {
           Authorization: `Bearer ${tunnistamoToken}`
         }
       }
-      const response = await axiosInstance.get(`/v1/user_consent/`, conf)
+      const response = await axiosInstance.get(
+        `/v1/user_consent/?include=scope`,
+        conf
+      )
       dispatch(getConsentsSuccess(response.data))
     } catch (error) {
       dispatch(getConsentsError(error))
