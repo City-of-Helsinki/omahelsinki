@@ -1,24 +1,6 @@
 // Import Open City Design styles
 
 @import 'ocd-bootstrap';
-
-// import react-select styling
-
-$select-input-border-color: $hel-black;
-$select-input-border-width: 2px;
-$select-input-height: 50px;
-$select-input-border-radius: 0;
-
-$select-item-border-radius: 0;
-$select-item-gutter: 4px;
-$select-item-padding-vertical: 5px;
-$select-item-padding-horizontal: 10px;
-$select-item-font-size: 1em;
-$select-item-color: $hel-white;
-$select-item-bg: $hel-bus;
-$select-item-border-color: $hel-bus;
-
-@import '~react-select/scss/default';
 @import '~react-image-crop/lib/ReactCrop';
 // Service specific color overrides
 $brand-light: $hel-copper; //$hel-fog
@@ -41,3 +23,4 @@ $brand-dark: $hel-bus; //$hel-tram
 @import 'components/Pagination';
 @import 'components/Profile';
 @import 'components/Dropzone';
+@import 'components/HelSelect';

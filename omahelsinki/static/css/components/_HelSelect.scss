@@ -1,0 +1,12 @@
+.region-select {
+  border: 2px solid black;
+  border-radius: 0;
+
+  > div {
+    border-radius: 0;
+  }
+
+  .sub-districts {
+    color: $hel-gray
+  }
+}
