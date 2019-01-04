@@ -18,7 +18,6 @@ import {
 import createClient from '../util/client'
 
 const userUuid = tunnistamoUser ? tunnistamoUser.uuid : null
-
 const profileRequest = createClient({
   baseURL: profileApiUrl,
   headers: {
@@ -234,11 +233,13 @@ export const userReducer = handleActions(
     ],
     [
       getProfileSuccess,
-      (state, action) => ({
-        ...state,
-        getProfileError: userDefaultState.error,
-        userLoading: false
-      })
+      (state, action) => {
+        return {
+          ...state,
+          getProfileError: userDefaultState.error,
+          userLoading: false
+        }
+      }
     ],
     [
       getProfileError,
@@ -281,10 +282,12 @@ export const userReducer = handleActions(
     [getInterest],
     [
       getInterestSuccess,
-      (state, action) => ({
-        ...state,
-        error: userDefaultState.error
-      })
+      (state, action) => {
+        return {
+          ...state,
+          error: userDefaultState.error
+        }
+      }
     ],
     [
       getInterestError,
