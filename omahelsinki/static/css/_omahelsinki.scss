@@ -195,6 +195,18 @@ $omaWrapperPadding: 4rem 0 8rem;
   //text-align: right;
 }
 
+.map-wrapper {
+  overflow: auto;
+
+  margin: 2rem 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .small-print-nav {
   color: #ebedf1;
   font-size: 14px;

@@ -2,8 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { Col, Container, Row } from 'reactstrap'
+import isEmpty from 'lodash/isEmpty'
+import { List } from 'immutable'
 
 import { fetchAllServices } from './redux'
+
+import { fetchUserData } from '../user/redux'
 
 import Loading from '../components/Loading'
 import Error from '../components/Error'
@@ -13,11 +17,17 @@ import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchAllServices())
+    const { intl, user } = this.props
+
+    if (isEmpty(user)) {
+      this.props.dispatch(fetchUserData(intl))
+    }
+
+    this.props.dispatch(fetchAllServices(intl))
   }
 
   render() {
-    const { services, isLoading, isError } = this.props
+    const { services, isLoading, isError, user } = this.props
     if (isLoading) {
       return (
         <section
@@ -48,13 +58,16 @@ class AllServices extends React.Component {
     } else if (!services) {
       return null
     }
-    const amountOfServices = services.length
-    const servicesForFirstRow = services.splice(0, 3)
+
+    const cloned = services.slice(0)
+    const amountOfServices = cloned.length
+    const servicesForFirstRow = cloned.splice(0, 3)
+    const remainingServices = cloned.splice(0, 1)
 
     return (
       <div>
-        <section class="hero-section">
-          <div class="container">
+        <section className="hero-section">
+          <div className="container">
             <Row>
               <Col xs={12} md={4} className="hero-content">
                 <h2>
@@ -66,7 +79,7 @@ class AllServices extends React.Component {
                   <p className="disclaimer">
                     <FormattedMessage id="app.services.featured" />
                   </p>
-                  {services.slice(0, 1).map(service => (
+                  {remainingServices.map(service => (
                     <Service horizontal key={service.id} service={service} />
                   ))}
                 </div>
@@ -78,26 +91,23 @@ class AllServices extends React.Component {
           <Container>
             <Row>
               <Col xs={12}>
-                <div className="services-amount">
-                  <FormattedMessage
-                    id="app.services.all.amountOfServices"
-                    values={{ amount: amountOfServices }}
-                  />
-                </div>
                 <div className="service-list">
                   <ServiceList services={servicesForFirstRow} />
                 </div>
-                <div className="cta-register">
-                  <div className="left-icon d-none d-md-block">
-                    <HelIcon iconName="user-o" />
+                {isEmpty(user) && (
+                  <div className="cta-register">
+                    <div className="left-icon d-none d-md-block">
+                      <HelIcon iconName="user-o" />
+                    </div>
+                    <a className="help-link" href="/login">
+                      <FormattedMessage id="app.services.all.cta" />
+                      <HelIcon iconName="arrow-right" />
+                    </a>
                   </div>
-                  <a className="help-link" href="/login">
-                    <FormattedMessage id="app.services.all.cta" />
-                    <HelIcon iconName="arrow-right" />
-                  </a>
-                </div>
+                )}
+
                 <div className="service-list">
-                  <ServiceList services={services} />
+                  <ServiceList services={cloned} />
                 </div>
               </Col>
             </Row>
@@ -112,7 +122,8 @@ const mapStateToProps = state => {
   return {
     services: state.services.allServices,
     isLoading: state.services.allServicesLoading,
-    isError: state.services.allServicesError
+    isError: state.services.allServicesError,
+    user: state.userReducer.user
   }
 }
 export default connect(mapStateToProps)(AllServices)
