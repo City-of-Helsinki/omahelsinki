@@ -54,7 +54,8 @@ class Interest extends Component {
       neighborhoods,
       subDistricts,
       selectedRegions,
-      intl
+      intl,
+      isRegionsLoading
     } = this.props
 
     const interests = allInterests.map(item => {
@@ -71,6 +72,7 @@ class Interest extends Component {
       subDistricts,
       language
     )
+
     const regionsByOcdId = regionsWithOcdId(allRegions)
     const neighbourhoodsByOcdId = neighborhoodsWithOcdId(regionsByOcdId)
 
@@ -128,7 +130,7 @@ class Interest extends Component {
                   }}
                 />
                 <strong>
-                  {neighborHoodName}
+                  {neighborHoodName || label}
                   &nbsp;
                 </strong>
                 {subDistricts && (
@@ -143,14 +145,16 @@ class Interest extends Component {
             noResultsText={intl.formatMessage({ id: 'app.no.area' })}
           />
         </div>
-        <RegionMap
-          style={{ maxWidth: '500px' }}
-          userRegions={selectedRegionOcdIds}
-          regionsByOcdId={regionsByOcdId}
-          neighbourhoodsByOcdId={neighbourhoodsByOcdId}
-          handleMapClick={this.handleMapClick}
-          language={language}
-        />
+        {!isRegionsLoading && (
+          <RegionMap
+            style={{ maxWidth: '500px' }}
+            userRegions={selectedRegionOcdIds}
+            regionsByOcdId={regionsByOcdId}
+            neighbourhoodsByOcdId={neighbourhoodsByOcdId}
+            handleMapClick={this.handleMapClick}
+            language={language}
+          />
+        )}
       </section>
     )
   }
@@ -158,6 +162,7 @@ class Interest extends Component {
 
 const mapStateToProps = state => {
   return {
+    isRegionsLoading: state.userReducer.allRegionsLoading,
     language: state.intl.locale,
     allInterests: state.userReducer.allInterests,
     allRegions: state.userReducer.allRegions,

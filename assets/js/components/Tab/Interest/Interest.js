@@ -164,7 +164,7 @@ class Interest extends Component {
                         }}
                       />
                       <strong>
-                        {neighborHoodName}
+                        {neighborHoodName || label}
                         &nbsp;
                       </strong>
                       {subDistricts && (
