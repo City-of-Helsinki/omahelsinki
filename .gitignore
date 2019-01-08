@@ -31,3 +31,4 @@ perf*csv
 /.pytest_cache
 /omahelsinki-datadump.json
 /package-lock.json
+/tmp

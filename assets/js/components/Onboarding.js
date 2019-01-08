@@ -101,7 +101,7 @@ class Onboarding extends React.Component {
       <div className="oma-onboarding-wrapper">
         <Container>
           <div className="oma-onboarding-container">
-            <div className="oma-onboarding">
+            <div className="container oma-onboarding">
               <div className="user-icon">
                 <HelIcon iconName="user-o" />
               </div>
