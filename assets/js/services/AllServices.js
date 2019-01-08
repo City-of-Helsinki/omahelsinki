@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { Col, Container, Row } from 'reactstrap'
 import isEmpty from 'lodash/isEmpty'
-import { List } from 'immutable'
 
 import { fetchAllServices } from './redux'
 
@@ -60,7 +59,6 @@ class AllServices extends React.Component {
     }
 
     const cloned = services.slice(0)
-    const amountOfServices = cloned.length
     const servicesForFirstRow = cloned.splice(0, 3)
     const remainingServices = cloned.splice(0, 1)
 
