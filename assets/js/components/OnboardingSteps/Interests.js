@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
 import { List } from 'immutable'
+import { Container, Row, Col } from 'reactstrap'
 
 import {
   getNeighborhoodSubdistricts,
@@ -91,70 +92,74 @@ class Interest extends Component {
         className="oma-interest"
         style={{ maxWidth: '830px', overflow: 'hidden' }}
       >
-        <h2>
-          <FormattedMessage id="app.interests.your" />
-        </h2>
-        <div className="oma-interest__subjects">
-          <h4>
-            <FormattedMessage id="app.subjects" />
-          </h4>
-          <p>
-            <FormattedMessage id="app.subject.interest" />
-          </p>
-          <InterestsList
-            interests={interests}
-            onChange={this.interestChangeHandler}
-          />
-        </div>
-        <div className="oma-interest__regions">
-          <h4>
-            <FormattedMessage id="app.regions" />
-          </h4>
-          <p>
-            <FormattedMessage id="app.regions.interest" />
-          </p>
-          <HelSelect
-            formatOptionLabel={({
-              color,
-              label,
-              neighborHoodName,
-              subDistricts
-            }) => (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div
-                  style={{
-                    background: color,
-                    height: 4,
-                    width: 4,
-                    marginRight: 4
-                  }}
-                />
-                <strong>
-                  {neighborHoodName || label}
-                  &nbsp;
-                </strong>
-                {subDistricts && (
-                  <span className="sub-districts">({subDistricts})</span>
+        <Row>
+          <Col xs={12}>
+            <h2>
+              <FormattedMessage id="app.interests.your" />
+            </h2>
+            <div className="oma-interest__subjects">
+              <h4>
+                <FormattedMessage id="app.subjects" />
+              </h4>
+              <p>
+                <FormattedMessage id="app.subject.interest" />
+              </p>
+              <InterestsList
+                interests={interests}
+                onChange={this.interestChangeHandler}
+              />
+            </div>
+            <div className="oma-interest__regions">
+              <h4>
+                <FormattedMessage id="app.regions" />
+              </h4>
+              <p>
+                <FormattedMessage id="app.regions.interest" />
+              </p>
+              <HelSelect
+                formatOptionLabel={({
+                  color,
+                  label,
+                  neighborHoodName,
+                  subDistricts
+                }) => (
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div
+                      style={{
+                        background: color,
+                        height: 4,
+                        width: 4,
+                        marginRight: 4
+                      }}
+                    />
+                    <strong>
+                      {neighborHoodName || label}
+                      &nbsp;
+                    </strong>
+                    {subDistricts && (
+                      <span className="sub-districts">({subDistricts})</span>
+                    )}
+                  </div>
                 )}
-              </div>
+                options={neighborhoodsWithSubdistricts}
+                value={userRegions}
+                handleChange={this.regionsChangedHandler}
+                placeholder={intl.formatMessage({ id: 'app.select.area' })}
+                noResultsText={intl.formatMessage({ id: 'app.no.area' })}
+              />
+            </div>
+            {!isRegionsLoading && (
+              <RegionMap
+                style={{ maxWidth: '500px' }}
+                userRegions={selectedRegionOcdIds}
+                regionsByOcdId={regionsByOcdId}
+                neighbourhoodsByOcdId={neighbourhoodsByOcdId}
+                handleMapClick={this.handleMapClick}
+                language={language}
+              />
             )}
-            options={neighborhoodsWithSubdistricts}
-            value={userRegions}
-            handleChange={this.regionsChangedHandler}
-            placeholder={intl.formatMessage({ id: 'app.select.area' })}
-            noResultsText={intl.formatMessage({ id: 'app.no.area' })}
-          />
-        </div>
-        {!isRegionsLoading && (
-          <RegionMap
-            style={{ maxWidth: '500px' }}
-            userRegions={selectedRegionOcdIds}
-            regionsByOcdId={regionsByOcdId}
-            neighbourhoodsByOcdId={neighbourhoodsByOcdId}
-            handleMapClick={this.handleMapClick}
-            language={language}
-          />
-        )}
+          </Col>
+        </Row>
       </section>
     )
   }
