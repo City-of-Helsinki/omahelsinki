@@ -16,9 +16,13 @@ import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
   componentDidMount() {
-    const { intl, user } = this.props
+    const { intl, tunnistamoUser, user } = this.props
 
-    if (isEmpty(user)) {
+    if (
+      !isEmpty(tunnistamoUser) &&
+      !isEmpty(tunnistamoUser.uuid) &&
+      isEmpty(user)
+    ) {
       this.props.dispatch(fetchUserData(intl))
     }
 
@@ -27,6 +31,7 @@ class AllServices extends React.Component {
 
   render() {
     const { services, isLoading, isError, user } = this.props
+
     if (isLoading) {
       return (
         <section
@@ -121,7 +126,8 @@ const mapStateToProps = state => {
     services: state.services.allServices,
     isLoading: state.services.allServicesLoading,
     isError: state.services.allServicesError,
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    tunnistamoUser: state.userReducer.tunnistamoUser
   }
 }
 export default connect(mapStateToProps)(AllServices)
