@@ -3,7 +3,7 @@ import { Wizard, Steps, Step } from 'react-albus'
 import { bindActionCreators } from 'redux'
 
 import { connect } from 'react-redux'
-import { Container } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 import isEmpty from 'lodash/isEmpty'
 import Loading from './Loading'
@@ -100,40 +100,42 @@ class Onboarding extends React.Component {
     return (
       <div className="oma-onboarding-wrapper">
         <Container>
-          <div className="oma-onboarding-container">
-            <div className="container oma-onboarding">
-              <div className="user-icon">
-                <HelIcon iconName="user-o" />
-              </div>
-              <Wizard>
-                <div className="oma-onboarding-steps">
-                  <Steps>
-                    <Step id="welcome">
-                      <Welcome />
-                    </Step>
-                    <Step id="profileImage">
-                      <ProfileImage
-                        nickname={nickname}
-                        img={img}
-                        handleInputNickName={this.handleInputNickName}
-                        unselectImage={this.unselectImage}
-                        onImageCrop={this.onImageCrop}
-                      />
-                    </Step>
-                    <Step id="interests">
-                      <Interest
-                        selectedInterests={interests}
-                        onInterestsChanged={this.interestsChanged}
-                        selectedRegions={regions}
-                        onRegionsChanged={this.regionsChanged}
-                      />
-                    </Step>
-                  </Steps>
+          <Col xs={12}>
+            <div className="oma-onboarding-container">
+              <div className="oma-onboarding">
+                <div className="user-icon">
+                  <HelIcon iconName="user-o" />
                 </div>
-                <StepButtons onFinish={this.wizardFinished} />
-              </Wizard>
+                <Wizard>
+                  <div className="oma-onboarding-steps">
+                    <Steps>
+                      <Step id="welcome">
+                        <Welcome />
+                      </Step>
+                      <Step id="profileImage">
+                        <ProfileImage
+                          nickname={nickname}
+                          img={img}
+                          handleInputNickName={this.handleInputNickName}
+                          unselectImage={this.unselectImage}
+                          onImageCrop={this.onImageCrop}
+                        />
+                      </Step>
+                      <Step id="interests">
+                        <Interest
+                          selectedInterests={interests}
+                          onInterestsChanged={this.interestsChanged}
+                          selectedRegions={regions}
+                          onRegionsChanged={this.regionsChanged}
+                        />
+                      </Step>
+                    </Steps>
+                  </div>
+                  <StepButtons onFinish={this.wizardFinished} />
+                </Wizard>
+              </div>
             </div>
-          </div>
+          </Col>
         </Container>
       </div>
     )

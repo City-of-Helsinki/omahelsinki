@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { Col, Container, Row } from 'reactstrap'
 import isEmpty from 'lodash/isEmpty'
-import { List } from 'immutable'
 
 import { fetchAllServices } from './redux'
 
@@ -17,9 +16,13 @@ import HelIcon from '../components/HelIcon'
 
 class AllServices extends React.Component {
   componentDidMount() {
-    const { intl, user } = this.props
+    const { intl, tunnistamoUser, user } = this.props
 
-    if (isEmpty(user)) {
+    if (
+      !isEmpty(tunnistamoUser) &&
+      !isEmpty(tunnistamoUser.uuid) &&
+      isEmpty(user)
+    ) {
       this.props.dispatch(fetchUserData(intl))
     }
 
@@ -28,6 +31,7 @@ class AllServices extends React.Component {
 
   render() {
     const { services, isLoading, isError, user } = this.props
+
     if (isLoading) {
       return (
         <section
@@ -60,7 +64,6 @@ class AllServices extends React.Component {
     }
 
     const cloned = services.slice(0)
-    const amountOfServices = cloned.length
     const servicesForFirstRow = cloned.splice(0, 3)
     const remainingServices = cloned.splice(0, 1)
 
@@ -123,7 +126,8 @@ const mapStateToProps = state => {
     services: state.services.allServices,
     isLoading: state.services.allServicesLoading,
     isError: state.services.allServicesError,
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    tunnistamoUser: state.userReducer.tunnistamoUser
   }
 }
 export default connect(mapStateToProps)(AllServices)

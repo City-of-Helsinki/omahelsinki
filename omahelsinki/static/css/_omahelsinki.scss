@@ -549,7 +549,7 @@ $omaWrapperPadding: 4rem 0 8rem;
 .development-banner {
   @include media-breakpoint-down(xs) {
     p {
-      margin-right: 20px;
+      padding-right: 20px;
       width: 92%;
       font-size: 17px;
     }

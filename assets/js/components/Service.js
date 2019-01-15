@@ -17,7 +17,14 @@ const Service = ({ service, locale }) => {
 
   return (
     <Card className="service">
-      <CardImg top src={image} />
+      <CardImg
+        top
+        style={{
+          backgroundImage: `url("${image}")`,
+          backgroundSize: 'cover',
+          backgroundPosition: '50%'
+        }}
+      />
       <CardBody>
         <CardTitle>
           <CardLink href={url}>{name}</CardLink>
