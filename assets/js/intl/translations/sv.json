@@ -173,8 +173,9 @@
   "service.consent.delete.confirmTitle": "Bekräfta radering av förbindelsen {service}?",
 
   "app.routes.root": "/sv",
-  "app.routes.profile": "/sv/my-data/profile",
-  "app.routes.interests": "/sv/my-data/interests",
-  "app.routes.services": "/sv/my-data/services",
-  "app.routes.history": "/sv/my-data/history"
+  "app.routes.myData": "/sv/mina-uppgifter",
+  "app.routes.profile": "/sv/mina-uppgifter/profil",
+  "app.routes.interests": "/sv/mina-uppgifter/intressen",
+  "app.routes.services": "/sv/mina-uppgifter/tjanster",
+  "app.routes.history": "/sv/mina-uppgifter/historia"
 }

@@ -170,9 +170,10 @@
   "service.lastUsed": "Käytetty viimeksi:",
 
   "app.routes.root": "/fi",
-  "app.routes.profile": "/fi/my-data/profile",
-  "app.routes.interests": "/fi/my-data/interests",
-  "app.routes.services": "/fi/my-data/services",
-  "app.routes.history": "/fi/my-data/history"
+  "app.routes.myData": "/fi/omat-tiedot",
+  "app.routes.profile": "/fi/omat-tiedot/profiili",
+  "app.routes.interests": "/fi/omat-tiedot/kiinnostukset",
+  "app.routes.services": "/fi/omat-tiedot/palvelut",
+  "app.routes.history": "/fi/omat-tiedot/historia"
 
 }

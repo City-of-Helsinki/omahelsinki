@@ -9,6 +9,7 @@ import { createBrowserHistory } from 'history'
 
 import ConnectedIntlProvider from './intl/ConnectedIntlProvider'
 import getIntlLocaleData from './intl/getIntlLocaleData'
+import { getMessages } from './intl/getMessages'
 
 import App from './components/App/App'
 
@@ -33,17 +34,24 @@ const history = createBrowserHistory()
 const intlLocaleData = getIntlLocaleData()
 addLocaleData(intlLocaleData)
 
+const locale = window.LANGUAGE_CODE || 'en'
+const translations = getMessages(locale)
+
 const store = configureStore()
+
+function translate(key) {
+  return translations[key]
+}
 
 function MyPageRoute({ match, location }) {
   return (
     <MyPageLayout location={location}>
       <Switch>
-        <Route exact path={`${match.url}/`} component={Profile} />
-        <Route path={`${match.url}/profile`} component={Profile} />
-        <Route path={`${match.url}/interests`} component={Interests} />
-        <Route path={`${match.url}/services`} component={Services} />
-        <Route path={`${match.url}/history`} component={History} />
+        <Route exact path={`${match.url}`} component={Profile} />
+        <Route path={translate('app.routes.profile')} component={Profile} />
+        <Route path={translate('app.routes.interests')} component={Interests} />
+        <Route path={translate('app.routes.services')} component={Services} />
+        <Route path={translate('app.routes.history')} component={History} />
       </Switch>
     </MyPageLayout>
   )
@@ -57,7 +65,10 @@ ReactDOM.render(
           <MainLayout>
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route path="/**/my-data/" component={MyPageRoute} />
+              <Route
+                path={translate('app.routes.myData')}
+                component={MyPageRoute}
+              />
               <Route exact path="/**/welcome/" component={Onboarding} />
               <Route exact path="/**/services/" component={AllServices} />
               <Route path="/**/app/please-log-in/" component={NotLoggedIn} />

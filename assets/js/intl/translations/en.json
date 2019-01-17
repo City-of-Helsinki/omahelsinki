@@ -172,9 +172,9 @@
   "service.lastUsed": "Last used:",
 
   "app.routes.root": "/en",
-  "app.routes.profile": "/en/mydata/profile",
-  "app.routes.interests": "/en/mydata/interests",
-  "app.routes.services": "/en/mydata/services",
-  "app.routes.history": "/en/mydata/history"
-
+  "app.routes.myData": "/en/my-data",
+  "app.routes.profile": "/en/my-data/profile",
+  "app.routes.interests": "/en/my-data/interests",
+  "app.routes.services": "/en/my-data/services",
+  "app.routes.history": "/en/my-data/history"
 }
