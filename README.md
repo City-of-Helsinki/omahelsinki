@@ -131,7 +131,7 @@ yarn lint
 
 - Landing page: [localhost:8000](http://localhost:8000)
 - Wagtail admin: [/admin](http://localhost:8000/admin)
-- Profile React UI: [/mydata](http://localhost:8000/mydata)
+- Profile React UI: [/my-data](http://localhost:8000/my-data)
 - Onboarding: [/welcome](http://localhost:8000/welcome)
 
 ## License

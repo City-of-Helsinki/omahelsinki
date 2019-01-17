@@ -170,5 +170,12 @@
 
   "service.consent.button.delete": "Radera förbindelse",
   "service.consent.delete.confirm": "Är du säker på att du vill radera förbindelsen till {service}?",
-  "service.consent.delete.confirmTitle": "Bekräfta radering av förbindelsen {service}?"
+  "service.consent.delete.confirmTitle": "Bekräfta radering av förbindelsen {service}?",
+
+  "app.routes.root": "/sv",
+  "app.routes.myData": "/sv/mina-uppgifter",
+  "app.routes.profile": "/sv/mina-uppgifter/profil",
+  "app.routes.interests": "/sv/mina-uppgifter/intressen",
+  "app.routes.services": "/sv/mina-uppgifter/tjanster",
+  "app.routes.history": "/sv/mina-uppgifter/historia"
 }

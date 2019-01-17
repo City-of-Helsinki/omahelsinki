@@ -1,4 +1,4 @@
-{% load static wagtailuserbar compress i18n %}
+{% load static wagtailcore_tags wagtailuserbar compress i18n home_app %}
 
 <!DOCTYPE html>
 
@@ -83,22 +83,21 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right user-menu__dropdown" aria-labelledby="navbarDropdown">
                 <span class="dropdown-header user-name">{{ request.user.get_display_name }}</span>
-                <a class="dropdown-item" href="{% url 'mydata' %}">{% trans "Edit profile" %}</a>
+                <a class="dropdown-item" href="{% url 'my-data' %}">{% trans "Edit profile" %}</a>
                 <a class="dropdown-item" href="/">{% trans "Oma.helsinki" %}</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'helusers:auth_logout' %}?next=/"><strong>{% trans "Log out" %}</strong></a>
+                <a class="dropdown-item" href="{% url 'helusers:auth_logout' %}?next=/{{ LANGUAGE_CODE}}"><strong>{% trans "Log out" %}</strong></a>
               </div>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'helusers:auth_login' %}?next=/mydata/">
+              <a class="nav-link" href="{% url 'helusers:auth_login' %}?next=/my-data/">
                 {% trans "Log in" %}
               </a>
             </li>
             {% endif %}
           </ul>
         </nav>
-
 
         <nav class="navbar navbar-expand-md navbar-light service-navbar">
           <a class="navbar-brand" href="/">{% trans "Oma.helsinki" %}</a>
@@ -111,14 +110,13 @@
               <li class="nav-item">
                 <a class="nav-link" href="/">{% trans "What is Oma.helsinki?" %}</a>
               </li>
+              {% for menu_page in menu_pages %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% pageurl menu_page %}">{{ menu_page.title }}</a>
+                </li>
+              {% endfor %}
               <li class="nav-item">
-                <a class="nav-link" href="/services">{% trans "Services" %}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/help">{% trans "Help" %}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link{% if not request.user.is_authenticated %} disabled{% endif %}" href="{% url "mydata" %}">{% trans "My data" %}</a>
+                <a class="nav-link{% if not request.user.is_authenticated %} disabled{% endif %}" href="{% url "my-data" %}">{% trans "My data" %}</a>
               </li>
             </ul>
           </div>
@@ -177,21 +175,12 @@
       <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'js/omahelsinki.js' %}"></script>
-
       <script>
         $('.language-menu .dropdown-item').click(function(ev) {
+          ev.preventDefault();
           var newLanguage = $(ev.target).data('language');
-          $.ajax({
-            type: "POST",
-            url: "{% url 'set_language' %}",
-            data: {
-              language: newLanguage,
-              csrfmiddlewaretoken: "{{ csrf_token }}",
-            },
-            success: function() {
-              location.reload();
-            }
-          });
+          var urls = JSON.parse("{% get_translated_urls_json page as urls %}{{ urls|escapejs }}");
+          window.location = urls[newLanguage];
         });
         $('.nav-link.disabled').click(function(ev) {
           ev.preventDefault();

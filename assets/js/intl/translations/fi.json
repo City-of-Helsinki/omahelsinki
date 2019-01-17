@@ -167,5 +167,13 @@
 
   "service.consent.delete.confirm": "Oletko varma, että haluat poistaa yhteyden palveluun {service}?",
   "service.consent.scopes": "Palvelu saa tietää sinusta:",
-  "service.lastUsed": "Käytetty viimeksi:"
+  "service.lastUsed": "Käytetty viimeksi:",
+
+  "app.routes.root": "/fi",
+  "app.routes.myData": "/fi/omat-tiedot",
+  "app.routes.profile": "/fi/omat-tiedot/profiili",
+  "app.routes.interests": "/fi/omat-tiedot/kiinnostukset",
+  "app.routes.services": "/fi/omat-tiedot/palvelut",
+  "app.routes.history": "/fi/omat-tiedot/historia"
+
 }

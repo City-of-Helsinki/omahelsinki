@@ -92,6 +92,9 @@ class Profile extends Component {
 
     const hasImage = Boolean(user.image)
 
+    if (!tunnistamoUser) {
+      return null
+    }
     return (
       <div className="profile-view">
         <ConfirmModal
