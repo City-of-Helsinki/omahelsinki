@@ -12,14 +12,33 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import subprocess
 
 import environ
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 env = environ.Env(
     DATABASE_URL=(str, 'sqlite:///db.sqlite3'),
+)
+
+# Extract version (or commit hash) for sentry
+try:
+    version = subprocess.check_output(['git', 'describe']).strip()
+except Exception:
+    try:
+        version = subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip().decode('utf-8')
+    except Exception:
+        version = 'n/a'
+
+sentry_sdk.init(
+    dsn=env.str('SENTRY_DSN', ''),
+    release=version,
+    environment=env.str('SENTRY_ENVIRONMENT', 'development'),
+    integrations=[DjangoIntegration()],
 )
 
 # Quick-start development settings - unsuitable for production
