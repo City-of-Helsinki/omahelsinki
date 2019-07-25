@@ -4,8 +4,8 @@ from django.apps import AppConfig
 
 
 class HomeConfig(AppConfig):
-    name = 'home'
-    verbose_name = 'Home'
+    name = "home"
+    verbose_name = "Home"
 
     def ready(self):
         from .models import PageFAQ
