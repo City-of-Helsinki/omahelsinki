@@ -1,0 +1,10 @@
+[tool.black]
+exclude = '''
+(
+  /(
+      \.git
+    | \.idea
+    | node_modules
+  )/
+)
+'''
