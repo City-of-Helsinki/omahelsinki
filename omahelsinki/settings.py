@@ -21,23 +21,25 @@ from sentry_sdk.integrations.django import DjangoIntegration
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-env = environ.Env(
-    DATABASE_URL=(str, 'sqlite:///db.sqlite3'),
-)
+env = environ.Env(DATABASE_URL=(str, "sqlite:///db.sqlite3"))
 
 # Extract version (or commit hash) for sentry
 try:
-    version = subprocess.check_output(['git', 'describe']).strip()
+    version = subprocess.check_output(["git", "describe"]).strip()
 except Exception:
     try:
-        version = subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip().decode('utf-8')
+        version = (
+            subprocess.check_output(["git", "rev-parse", "HEAD"])
+            .strip()
+            .decode("utf-8")
+        )
     except Exception:
-        version = 'n/a'
+        version = "n/a"
 
 sentry_sdk.init(
-    dsn=env.str('SENTRY_DSN', ''),
+    dsn=env.str("SENTRY_DSN", ""),
     release=version,
-    environment=env.str('SENTRY_ENVIRONMENT', 'development'),
+    environment=env.str("SENTRY_ENVIRONMENT", "development"),
     integrations=[DjangoIntegration()],
 )
 
@@ -48,123 +50,114 @@ sentry_sdk.init(
 # Application definition
 
 INSTALLED_APPS = [
-    'wagtail_modeltranslation',
-    'wagtail_modeltranslation.makemigrations',
-    'wagtail_modeltranslation.migrate',
-
-    'helusers',
-    'home',
-    'search',
-    'users',
-    'mydata',
-
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.contrib.modeladmin',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail.core',
-
-    'modelcluster',
-    'taggit',
-
-    'social_django',
-    'webpack_loader',
-    'compressor',
-
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "wagtail_modeltranslation",
+    "wagtail_modeltranslation.makemigrations",
+    "wagtail_modeltranslation.migrate",
+    "helusers",
+    "home",
+    "search",
+    "users",
+    "mydata",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.contrib.modeladmin",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.core",
+    "modelcluster",
+    "taggit",
+    "social_django",
+    "webpack_loader",
+    "compressor",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
 MIDDLEWARE = [
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-
-    'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "wagtail.core.middleware.SiteMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
-ROOT_URLCONF = 'omahelsinki.urls'
+ROOT_URLCONF = "omahelsinki.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(PROJECT_DIR, 'templates'),
-        ],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',
-                'wagtail.contrib.settings.context_processors.settings',
-                'helusers.context_processors.settings',
-                'omahelsinki.context_processors.settings'
-            ],
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(PROJECT_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.i18n",
+                "wagtail.contrib.settings.context_processors.settings",
+                "helusers.context_processors.settings",
+                "omahelsinki.context_processors.settings",
+            ]
         },
-    },
+    }
 ]
 
-WSGI_APPLICATION = 'omahelsinki.wsgi.application'
+WSGI_APPLICATION = "omahelsinki.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {'default': env.db()}
+DATABASES = {"default": env.db()}
 
 #
 # Authentication
 #
 AUTHENTICATION_BACKENDS = (
-    'helusers.tunnistamo_oidc.TunnistamoOIDCAuth',
-    'django.contrib.auth.backends.ModelBackend',
+    "helusers.tunnistamo_oidc.TunnistamoOIDCAuth",
+    "django.contrib.auth.backends.ModelBackend",
 )
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
-from helusers.defaults import SOCIAL_AUTH_PIPELINE as HELUSERS_PIPELINE  # noqa isort:skip
+from helusers.defaults import (  # noqa isort:skip
+    SOCIAL_AUTH_PIPELINE as HELUSERS_PIPELINE,
+)
+
 SOCIAL_AUTH_PIPELINE = HELUSERS_PIPELINE + (
-    'users.pipeline.set_session_expiration_from_api_token',
+    "users.pipeline.set_session_expiration_from_api_token",
 )
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'fi'
+LANGUAGE_CODE = "fi"
 
 from django.utils.translation import gettext_lazy as _  # noqa isort:skip
 
-LANGUAGES = (
-    ('fi', _('Finnish')),
-    ('sv', _('Swedish')),
-    ('en', _('English')),
-)
+LANGUAGES = (("fi", _("Finnish")), ("sv", _("Swedish")), ("en", _("English")))
 
 
-TIME_ZONE = 'Europe/Helsinki'
+TIME_ZONE = "Europe/Helsinki"
 
 USE_I18N = True
 
@@ -177,37 +170,39 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-    'npm.finders.NpmFinder'
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
+    "npm.finders.NpmFinder",
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static'),
-    os.path.join(BASE_DIR, 'assets'),
+    os.path.join(PROJECT_DIR, "static"),
+    os.path.join(BASE_DIR, "assets"),
 ]
 
 WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
+    "DEFAULT": {
+        "BUNDLE_DIR_NAME": "bundles/",
+        "STATS_FILE": os.path.join(BASE_DIR, "webpack-stats.json"),
     }
 }
 
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', '%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}' % (BASE_DIR, BASE_DIR)),  # noqa
+    (
+        "text/x-scss",
+        "%s/node_modules/.bin/node-sass --importer=%s/node_modules/node-sass-tilde-importer {infile} {outfile}"
+        % (BASE_DIR, BASE_DIR),
+    ),  # noqa
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale')
-]
+LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 
 # Wagtail settings
 
@@ -215,15 +210,19 @@ WAGTAIL_SITE_NAME = "omahelsinki"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = "http://example.com"
 
-SOCIAL_AUTH_TUNNISTAMO_SCOPE = ['https://api.hel.fi/auth/profiles', 'login_entries', 'consents']
+SOCIAL_AUTH_TUNNISTAMO_SCOPE = [
+    "https://api.hel.fi/auth/profiles",
+    "login_entries",
+    "consents",
+]
 
 # You should override this in your local_settings.py
-TUNNISTAMO_BASE_URL = 'https://api.hel.fi/sso'
+TUNNISTAMO_BASE_URL = "https://api.hel.fi/sso"
 
 # TODO: should probably not point to test server
-PROFILE_API_URL = 'https://profile-api.test.hel.ninja/profile-test/v1'
+PROFILE_API_URL = "https://profile-api.test.hel.ninja/profile-test/v1"
 
 
 # local_settings.py can be used to override environment-specific settings
@@ -232,25 +231,38 @@ f = os.path.join(BASE_DIR, "local_settings.py")
 if os.path.exists(f):
     import sys
     import imp
-    module_name = "%s.local_settings" % ROOT_URLCONF.split('.')[0]
+
+    module_name = "%s.local_settings" % ROOT_URLCONF.split(".")[0]
     module = imp.new_module(module_name)
     module.__file__ = f
     sys.modules[module_name] = module
     exec(open(f, "rb").read())
 
-if 'SECRET_KEY' not in locals():
-    secret_file = os.path.join(BASE_DIR, '.django_secret')
+if "SECRET_KEY" not in locals():
+    secret_file = os.path.join(BASE_DIR, ".django_secret")
     try:
         SECRET_KEY = open(secret_file).read().strip()
     except IOError:
         import random
+
         system_random = random.SystemRandom()
         try:
-            SECRET_KEY = ''.join([system_random.choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(64)])  # noqa
-            secret = open(secret_file, 'w')
+            SECRET_KEY = "".join(
+                [
+                    system_random.choice(
+                        "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
+                    )
+                    for i in range(64)
+                ]
+            )  # noqa
+            secret = open(secret_file, "w")
             import os
+
             os.chmod(secret_file, 0o0600)
             secret.write(SECRET_KEY)
             secret.close()
         except IOError:
-            Exception('Please create a %s file with random characters to generate your secret key!' % secret_file)
+            Exception(
+                "Please create a %s file with random characters to generate your secret key!"
+                % secret_file
+            )

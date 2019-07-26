@@ -8,27 +8,35 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0040_page_draft_title'),
-        ('home', '0003_add_page_models'),
+        ("wagtailcore", "0040_page_draft_title"),
+        ("home", "0003_add_page_models"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AboutPage',
+            name="AboutPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('hero_text', models.TextField(blank=True)),
-                ('hero_text_fi', models.TextField(blank=True, null=True)),
-                ('hero_text_sv', models.TextField(blank=True, null=True)),
-                ('hero_text_en', models.TextField(blank=True, null=True)),
-                ('body', wagtail.core.fields.RichTextField(blank=True)),
-                ('body_fi', wagtail.core.fields.RichTextField(blank=True, null=True)),
-                ('body_sv', wagtail.core.fields.RichTextField(blank=True, null=True)),
-                ('body_en', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                ("hero_text", models.TextField(blank=True)),
+                ("hero_text_fi", models.TextField(blank=True, null=True)),
+                ("hero_text_sv", models.TextField(blank=True, null=True)),
+                ("hero_text_en", models.TextField(blank=True, null=True)),
+                ("body", wagtail.core.fields.RichTextField(blank=True)),
+                ("body_fi", wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ("body_sv", wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ("body_en", wagtail.core.fields.RichTextField(blank=True, null=True)),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=('wagtailcore.page',),
-        ),
+            options={"abstract": False},
+            bases=("wagtailcore.page",),
+        )
     ]

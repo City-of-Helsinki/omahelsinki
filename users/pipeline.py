@@ -3,10 +3,12 @@ from datetime import datetime, timezone
 import jwt
 
 
-def set_session_expiration_from_api_token(details, backend, response, request, user=None, *args, **kwargs):  # noqa
+def set_session_expiration_from_api_token(  # noqa
+    details, backend, response, request, user=None, *args, **kwargs
+):
     if not user:
         return
-    api_tokens = request.session.get('api_tokens')
+    api_tokens = request.session.get("api_tokens")
     if not api_tokens:
         return
 
@@ -18,7 +20,7 @@ def set_session_expiration_from_api_token(details, backend, response, request, u
         except Exception:
             continue
 
-        exp = claims.get('exp')
+        exp = claims.get("exp")
         if not exp:
             continue
 

@@ -9,25 +9,28 @@ from wagtail.documents import urls as wagtaildocs_urls
 from search import views as search_views
 
 urlpatterns = [
-    path('django-admin/', admin.site.urls),
-
-    path('admin/', include(wagtailadmin_urls)),
-    path('i18n/', include('django.conf.urls.i18n')),
-    path('documents/', include(wagtaildocs_urls)),
-
-    path('search/', search_views.search, name='search'),
-
-    path('', include('social_django.urls', namespace='social')),
-    path('', include('helusers.urls')),
-    path('mydata/', TemplateView.as_view(template_name='react_base.html'), name='mydata'),
-    path('welcome/', TemplateView.as_view(template_name='react_base.html'), name='welcome'),
-    re_path(r'^app/', TemplateView.as_view(template_name='react_base.html'), name='app'),
-
+    path("django-admin/", admin.site.urls),
+    path("admin/", include(wagtailadmin_urls)),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("documents/", include(wagtaildocs_urls)),
+    path("search/", search_views.search, name="search"),
+    path("", include("social_django.urls", namespace="social")),
+    path("", include("helusers.urls")),
+    path(
+        "mydata/", TemplateView.as_view(template_name="react_base.html"), name="mydata"
+    ),
+    path(
+        "welcome/",
+        TemplateView.as_view(template_name="react_base.html"),
+        name="welcome",
+    ),
+    re_path(
+        r"^app/", TemplateView.as_view(template_name="react_base.html"), name="app"
+    ),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
-    path('', include(wagtail_urls)),
-
+    path("", include(wagtail_urls)),
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
     #    path('pages/', include(wagtail_urls)),
