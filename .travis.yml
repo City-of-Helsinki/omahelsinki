@@ -15,6 +15,7 @@ script:
   # Run the tests
   - flake8
   - isort -c
+  - black . --check
   - pytest -ra -vvv --cov=.
 
 addons:
