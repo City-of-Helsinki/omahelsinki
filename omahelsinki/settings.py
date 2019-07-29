@@ -23,19 +23,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 env = environ.Env(DATABASE_URL=(str, "sqlite:///db.sqlite3"))
 
-# Extract version (or commit hash) for sentry
-try:
-    version = subprocess.check_output(["git", "describe"]).strip()
-except Exception:
-    try:
-        version = (
-            subprocess.check_output(["git", "rev-parse", "HEAD"])
-            .strip()
-            .decode("utf-8")
-        )
-    except Exception:
-        version = "n/a"
-
+version = subprocess.check_output(["git", "describe", "--always"]).strip()
 sentry_sdk.init(
     dsn=env.str("SENTRY_DSN", ""),
     release=version,
