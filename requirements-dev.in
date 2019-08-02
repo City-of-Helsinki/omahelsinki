@@ -1,9 +1,9 @@
 black
+factory-boy
 flake8
+freezegun
+httpretty
 isort
 pytest
 pytest-cov
 pytest-django
-httpretty
-factory_boy
-freezegun
