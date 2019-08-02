@@ -104,6 +104,36 @@ curl "https://omahelsinki.test.hel.ninja/media/omahelsinki-datadump.json" > omah
 python manage.py loaddata omahelsinki-datadump.json
 ```
 
+## Authentication
+
+In order to log in into the profile through Omahelsinki UI you either:
+
+a). Have proper keys to test instance of Tunnisamo mentioned in part 3 of 
+[general prerequisites](#general-prerequisites)
+
+or
+
+b). Have set up your own local instances of:
+
+- [Tunnistamo](https://github.com/City-of-Helsinki/tunnistamo)
+- [Open-city-profile](https://github.com/City-of-Helsinki/open-city-profile)
+- [this Omahelsinki UI](https://github.com/City-of-Helsinki/omahelsinki)
+
+If you are running all of these services locally through Docker, you need
+to make sure that they can communicate with each other. Here is a guide that will
+help you to set them up properly:
+
+- [How to connect Tunnistamo, Profile and Omahelsinki running on Docker](docs/connecting-docker-containers.md)
+
+If you are not using Docker (you run all of the projects directly on your machine with
+some virtual environment for python dependencies), you can skip this part.
+
+Here is a guide that will help you configure all of the clients, scopes and APIs in
+you local Tunnistamo:
+
+- [How to configure clients, scopes and APIs for Omahelsinki](docs/configuring-local-tunnistamo.md)
+
+
 ## Prettier / eslint
 
 It's recommended to have format on save in your editor to automatically comply with prettier/eslint rules.
