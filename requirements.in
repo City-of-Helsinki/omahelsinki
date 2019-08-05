@@ -1,11 +1,11 @@
-Django
-wagtail
-psycopg2 --no-binary psycopg2
-social-auth-app-django
 -e git+https://github.com/City-of-Helsinki/django-helusers.git#egg=django-helusers
+-e git+https://github.com/infoportugal/wagtail-modeltranslation@django2#egg=wagtail-modeltranslation
+Django
+django-environ
 django-npm
 django-webpack-loader
 django_compressor
--e git+https://github.com/infoportugal/wagtail-modeltranslation@django2#egg=wagtail-modeltranslation
-django-environ
+psycopg2 --no-binary psycopg2
 sentry-sdk
+social-auth-app-django
+wagtail
