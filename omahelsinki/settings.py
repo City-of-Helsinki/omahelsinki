@@ -23,7 +23,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 env = environ.Env(DATABASE_URL=(str, "sqlite:///db.sqlite3"))
 
-version = subprocess.check_output(["git", "describe", "--always"]).strip()
+try:
+    version = subprocess.check_output(["git", "describe", "--always"]).strip()
+except subprocess.CalledProcessError:  # git not installed
+    version = "n/a"
 sentry_sdk.init(
     dsn=env.str("SENTRY_DSN", ""),
     release=version,
