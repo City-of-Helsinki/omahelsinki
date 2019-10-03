@@ -45,3 +45,8 @@ services:
 volumes:
   ? omahelsinki-postgres-data-volume
   ? omahelsinki-media-volume
+
+
+networks:
+  default:
+    name: helsinki
