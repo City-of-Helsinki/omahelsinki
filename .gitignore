@@ -32,3 +32,4 @@ perf*csv
 /omahelsinki-datadump.json
 /package-lock.json
 /tmp
+docker-compose.env.yaml
