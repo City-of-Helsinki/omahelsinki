@@ -21,12 +21,25 @@ from sentry_sdk.integrations.django import DjangoIntegration
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-env = environ.Env(DATABASE_URL=(str, "sqlite:///db.sqlite3"))
+env = environ.Env(
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, ""),
+    DATABASE_URL=(str, "sqlite:///db.sqlite3"),
+    ALLOWED_HOSTS=(list, []),
+    APPLICATION_VERSION=(str, "n/a"),
+    BASE_URL=(str, "http://example.com"),
+    TUNNISTAMO_BASE_URL=(str, "https://api.hel.fi/sso"),
+    SOCIAL_AUTH_TUNNISTAMO_KEY=(str, ""),
+    SOCIAL_AUTH_TUNNISTAMO_SECRET=(str, ""),
+    SOCIAL_AUTH_TUNNISTAMO_OIDC_ENDPOINT=(str, "https://api.hel.fi/sso/openid"),
+    PROFILE_API_URL=(str, "https://profile-api.test.hel.ninja/profile-test/v1"),
+    SOCIAL_AUTH_TUNNISTAMO_PROFILE_SCOPE=(str, "https://api.hel.fi/auth/profiles"),
+)
 
 try:
     version = subprocess.check_output(["git", "describe", "--always"]).strip()
 except subprocess.CalledProcessError:  # git not installed
-    version = "n/a"
+    version = env("APPLICATION_VERSION")
 sentry_sdk.init(
     dsn=env.str("SENTRY_DSN", ""),
     release=version,
@@ -37,6 +50,8 @@ sentry_sdk.init(
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
+DEBUG = env("DEBUG")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 # Application definition
 
@@ -72,6 +87,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "utils",
 ]
 
 MIDDLEWARE = [
@@ -201,19 +217,23 @@ WAGTAIL_SITE_NAME = "omahelsinki"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = "http://example.com"
+BASE_URL = env("BASE_URL")
 
 SOCIAL_AUTH_TUNNISTAMO_SCOPE = [
-    "https://api.hel.fi/auth/profiles",
+    env("SOCIAL_AUTH_TUNNISTAMO_PROFILE_SCOPE"),
     "login_entries",
     "consents",
 ]
+SOCIAL_AUTH_TUNNISTAMO_KEY = env("SOCIAL_AUTH_TUNNISTAMO_KEY")
+SOCIAL_AUTH_TUNNISTAMO_SECRET = env("SOCIAL_AUTH_TUNNISTAMO_SECRET")
+SOCIAL_AUTH_TUNNISTAMO_OIDC_ENDPOINT = env("SOCIAL_AUTH_TUNNISTAMO_OIDC_ENDPOINT")
+SOCIAL_AUTH_TUNNISTAMO_PROFILE_SCOPE = env("SOCIAL_AUTH_TUNNISTAMO_PROFILE_SCOPE")
 
 # You should override this in your local_settings.py
-TUNNISTAMO_BASE_URL = "https://api.hel.fi/sso"
+TUNNISTAMO_BASE_URL = env("TUNNISTAMO_BASE_URL")
 
 # TODO: should probably not point to test server
-PROFILE_API_URL = "https://profile-api.test.hel.ninja/profile-test/v1"
+PROFILE_API_URL = env("PROFILE_API_URL")
 
 
 # local_settings.py can be used to override environment-specific settings
@@ -234,26 +254,28 @@ if "SECRET_KEY" not in locals():
     try:
         SECRET_KEY = open(secret_file).read().strip()
     except IOError:
-        import random
+        SECRET_KEY = env("SECRET_KEY")
+        if not SECRET_KEY:
+            import random
 
-        system_random = random.SystemRandom()
-        try:
-            SECRET_KEY = "".join(
-                [
-                    system_random.choice(
-                        "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
-                    )
-                    for i in range(64)
-                ]
-            )  # noqa
-            secret = open(secret_file, "w")
-            import os
+            system_random = random.SystemRandom()
+            try:
+                SECRET_KEY = "".join(
+                    [
+                        system_random.choice(
+                            "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
+                        )
+                        for i in range(64)
+                    ]
+                )  # noqa
+                secret = open(secret_file, "w")
+                import os
 
-            os.chmod(secret_file, 0o0600)
-            secret.write(SECRET_KEY)
-            secret.close()
-        except IOError:
-            Exception(
-                "Please create a %s file with random characters to generate your secret key!"
-                % secret_file
-            )
+                os.chmod(secret_file, 0o0600)
+                secret.write(SECRET_KEY)
+                secret.close()
+            except IOError:
+                Exception(
+                    "Please create a %s file with random characters to generate your secret key!"
+                    % secret_file
+                )

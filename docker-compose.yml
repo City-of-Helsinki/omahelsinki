@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   postgres:
     image: postgres:9.6
@@ -7,41 +7,50 @@ services:
       POSTGRES_PASSWORD: omahelsinki
       POSTGRES_DB: omahelsinki
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
       - omahelsinki-postgres-data-volume:/var/lib/postgres/data
     container_name: omahelsinki-db
 
   django:
     build:
-      context: ./
-      dockerfile: ./docker/django/Dockerfile
+      context: .
+      target: development
+    env_file:
+      - docker-compose.env.yaml
     environment:
       DATABASE_URL: postgres://omahelsinki:omahelsinki@omahelsinki-db/omahelsinki
+      DATABASE_HOST: omahelsinki-db
     volumes:
-      - .:/code
+      - .:/app
       - omahelsinki-media-volume:/var/media/
-      - /code/node_modules
+      - /app/node_modules
     ports:
-      - "8000:8000"
+      - "8001:8001"
     depends_on:
       - postgres
     container_name: omahelsinki
 
   react:
     build:
-      context: ./
-      dockerfile: ./docker/react/Dockerfile
+      context: .
+      target: development
     environment:
       SERVER_URL: 0.0.0.0
+      SKIP_DATABASE_CHECK: 1
     container_name: omahelsinki-react
     volumes:
-      - .:/code
-      - /code/node_modules
+      - .:/app
+      - /app/node_modules
     ports:
       - "3000:3000"
-    command: ash -c "yarn && yarn start"
+    command: yarn start
 
 volumes:
   ? omahelsinki-postgres-data-volume
   ? omahelsinki-media-volume
+
+
+networks:
+  default:
+    name: helsinki
