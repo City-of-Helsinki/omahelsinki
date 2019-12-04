@@ -25,7 +25,7 @@ django==2.0.8
 djangorestframework==3.8.2  # via drf-oidc-auth, wagtail
 draftjs-exporter==2.1.2   # via wagtail
 drf-oidc-auth==0.9
-ecdsa==0.13.2             # via python-jose
+ecdsa==0.13.3             # via python-jose
 future==0.16.0            # via pyjwkest, python-jose
 html5lib==1.0.1           # via wagtail
 idna==2.7                 # via requests
