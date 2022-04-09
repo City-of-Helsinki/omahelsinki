@@ -36,7 +36,7 @@
     "immutable": "^4.0.0-rc.12",
     "jquery": "^1.9.1",
     "json-loader": "^0.5.7",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "open-city-design": "1.0.0-alpha.2",
     "popper.js": "^1.14.3",
     "prop-types": "^15.5.4",
