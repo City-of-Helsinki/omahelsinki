@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/City-of-Helsinki/omahelsinki#readme",
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
+    "@babel/polyfill": "^7.12.1",
     "axios": "^0.18.0",
     "babel-eslint": "7.2.3",
     "babel-runtime": "^6.23.0",
